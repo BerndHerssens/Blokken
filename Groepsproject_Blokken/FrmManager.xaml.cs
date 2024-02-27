@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
+//Todo: Met front end de lijst displayen en zorgen dat we deze kunnen crudden
 namespace Groepsproject_Blokken
 {
     /// <summary>
@@ -22,6 +13,27 @@ namespace Groepsproject_Blokken
         public FrmManager()
         {
             InitializeComponent();
+        }
+        List<Question> tempquestions = new List<Question>(); //Opslagen van questions om later te editten
+
+        public void WegSchrijven()
+        {
+            JsonSerializerOptions options = new JsonSerializerOptions();
+            options.IncludeFields = false;
+            options.WriteIndented = true;
+            string json = JsonSerializer.Serialize(tempquestions, options);
+            File.WriteAllText("../../Questionaires/VragenJson", json);
+        }
+        public void InlezenVragen()
+        {
+            using (StreamReader r = new StreamReader("../../Questionaires/VragenJson"))
+            {
+                JsonSerializerOptions options = new JsonSerializerOptions();
+                options.IncludeFields = false;
+                tempquestions.Clear();            // Lijst leegmaken
+                string json = r.ReadToEnd(); // Tekst inlezen in een string
+                tempquestions = JsonSerializer.Deserialize<List<Question>>(json); //De string inlezen en deserializen in een list, de properties moeten overeen komen.
+            }
         }
     }
 }

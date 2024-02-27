@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -16,17 +17,35 @@ namespace Groepsproject_Blokken
         private string _wrongAnswerThree;
         private int _questionDisplayTime;
         private DispatcherTimer _timer;
-
+        private static int _questioncounter = 0;
+        private int _questionID;
         //Constr
+        [JsonConstructor]
+        public Question()
+        {
+            _questioncounter += 1;
+            QuestionID = _questioncounter;
+        }
         public Question(string aQuestion, string aCorrectAnswer, string aWrongAnswerOne, string aWrongAnswerTwo, string aWrongAnswerThree)
         {
+            _questioncounter += 1;
+            QuestionID = _questioncounter;
             TheQuestion = aQuestion;
             CorrectAnswer = aCorrectAnswer;
             WrongAnswerOne = aWrongAnswerOne;
             WrongAnswerTwo = aWrongAnswerTwo;
             WrongAnswerThree = aWrongAnswerThree;
+            QuestionDisplayTime = 10;
+            Timer = new DispatcherTimer();
+            Timer.Interval = new TimeSpan(0, 0, 1);
+            Timer.Tick += Timer_Tick;
         }
         //Properties in volgorde , met het juiste antwoord als eerste
+        public int QuestionID
+        {
+            get { return _questionID; }
+            set { _questionID = value; }
+        }
         public string TheQuestion
         {
             get { return _question; }
@@ -52,25 +71,23 @@ namespace Groepsproject_Blokken
             get { return _wrongAnswerThree; }
             set { _wrongAnswerThree = value; }
         }
+
+        [System.Text.Json.Serialization.JsonIgnore]
         public int QuestionDisplayTime
         {
             get { return _questionDisplayTime; }
             set { _questionDisplayTime = value; }
         }
+        [System.Text.Json.Serialization.JsonIgnore]
         public DispatcherTimer Timer
         {
             get { return _timer; }
             set { _timer = value; }
         }
-
         //Methodes Timer
         public void StartTimer() //Settings van timer instellen dan -> start de timer - Dit kon mss in constructor (?)
         {
-            _timer = new DispatcherTimer();
-            _timer.Interval = new TimeSpan(0, 0, 1);
-            _timer.Tick += Timer_Tick;
             Timer.Start();
-
         }
         public void Timer_Tick(object sender, EventArgs e) //Elke tick (1 tick = 1 seconde) , de displaytime met 1 naar beneden, als de displaytime 0 is, stop de timer
         {
@@ -80,7 +97,6 @@ namespace Groepsproject_Blokken
                 Timer.Stop();
             }
         }
-
         //Methodes Answers/Buttons
         //Antwoorden in random buttons steken
         public void InsertAnswersInButtons(Button topLeftButton1, Button topRightButton2, Button bottomLeftButton3, Button bottomRightButton4)
@@ -119,7 +135,6 @@ namespace Groepsproject_Blokken
                     bottomRightButton4.Content = WrongAnswerThree;
                     break;
             }
-
         }
         //Highlight if wrong or correct answer
         public void AnswerHighlight(Button selectedButton)
@@ -144,13 +159,6 @@ namespace Groepsproject_Blokken
                 }
             }
         }
-
-
-
-
-
-
-
-
     }
 }
+
