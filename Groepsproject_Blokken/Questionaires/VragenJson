@@ -1,0 +1,82 @@
+[
+  {
+    "QuestionID": 1,
+    "TheQuestion": "Welke 2 landen werden zwaar getroffen door een aardbeving in februari?",
+    "CorrectAnswer": "Turkije en Syri\u00EB",
+    "WrongAnswerOne": "Japan en Hawa\u00EF",
+    "WrongAnswerTwo": "Bulgarije en Griekenland",
+    "WrongAnswerThree": "Belgi\u00EB en Nederland"
+  },
+  {
+    "QuestionID": 2,
+    "TheQuestion": "Welk land trad vanaf 1 januari 2023 toe tot de eurozone en de Schengenzone?",
+    "CorrectAnswer": "Kroati\u00EB",
+    "WrongAnswerOne": "Ukra\u00EFne",
+    "WrongAnswerTwo": "Nederland",
+    "WrongAnswerThree": "Turkij\u00EB"
+  },
+  {
+    "QuestionID": 3,
+    "TheQuestion": "Om welke reden werd een jong stel in Iran veroordeeld tot 10 jaar cel?",
+    "CorrectAnswer": "Het online zetten van een dans video",
+    "WrongAnswerOne": "Een seks-schandaal",
+    "WrongAnswerTwo": "Rascistische opmerkingen geroepen",
+    "WrongAnswerThree": "Wegens het toepassen van abortus op hunzelf"
+  },
+  {
+    "QuestionID": 4,
+    "TheQuestion": "Welke bekende Amerikaanse bank wordt in maart 2023 failliet verklaard?",
+    "CorrectAnswer": "Silicon Valley Bank",
+    "WrongAnswerOne": "National Bank",
+    "WrongAnswerTwo": "JPMorgan Chase",
+    "WrongAnswerThree": "Citigroup"
+  },
+  {
+    "QuestionID": 5,
+    "TheQuestion": "Op 5 maart 2023 werd een historisch VN-verdrag beklonken, waar ging dit over?",
+    "CorrectAnswer": "Bescherming van de oceanen",
+    "WrongAnswerOne": "Bescherming van vluchtelingen",
+    "WrongAnswerTwo": "Bescherming van bossen",
+    "WrongAnswerThree": "Bescherming van kinderrechten"
+  },
+  {
+    "QuestionID": 6,
+    "TheQuestion": "Welk land trad in april 2023 officieel toe tot de NAVO?",
+    "CorrectAnswer": "Finland",
+    "WrongAnswerOne": "Kroati\u00EB",
+    "WrongAnswerTwo": "Ijsland",
+    "WrongAnswerThree": "Ukra\u00EFne"
+  },
+  {
+    "QuestionID": 7,
+    "TheQuestion": "Waardoor raakte de Dalai Lama dit jaar in opspraak?",
+    "CorrectAnswer": "Hij stak zijn tong uit en vroeg een jongetje eraan te zuigen",
+    "WrongAnswerOne": "Hij ging schaars gekleed naar een gebed",
+    "WrongAnswerTwo": "Hij sprak een verkeerd politiek getinte mening",
+    "WrongAnswerThree": "Hij had een relatie met een vertegenwoordige"
+  },
+  {
+    "QuestionID": 8,
+    "TheQuestion": "Na weken van demonstraties wordt in Frankrijk de pensioenleeftijd toch verhoogd. Naar welke leeftijd?",
+    "CorrectAnswer": "64",
+    "WrongAnswerOne": "65",
+    "WrongAnswerTwo": "66",
+    "WrongAnswerThree": "63"
+  },
+  {
+    "QuestionID": 9,
+    "TheQuestion": "Welke voormalig Europees president wordt veroordeeld voor onder meer corruptie en mag de straf thuis uitzitten met een enkelband?",
+    "CorrectAnswer": "De Franse ex-president Nicolas Sarkozy",
+    "WrongAnswerOne": "Roberta Metsola",
+    "WrongAnswerTwo": "Charles Michel",
+    "WrongAnswerThree": "Donald Tusk"
+  },
+  {
+    "QuestionID": 10,
+    "TheQuestion": "Van welke tegenstander verliest Inter Milaan de finale van de UEFA Champions League 2023?",
+    "CorrectAnswer": "Manchester City",
+    "WrongAnswerOne": "Barcelona",
+    "WrongAnswerTwo": "Porto",
+    "WrongAnswerThree": "Arsenal"
+  }
+]
