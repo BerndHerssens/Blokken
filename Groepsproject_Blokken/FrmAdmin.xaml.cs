@@ -23,5 +23,15 @@ namespace Groepsproject_Blokken
         {
             InitializeComponent();
         }
+
+        private void btnCreateManager_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

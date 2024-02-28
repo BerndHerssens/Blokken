@@ -70,13 +70,14 @@ namespace Groepsproject_Blokken
                             partsArray[i, 0] = parts[0];  // Left part/Primeword = this.Prime
                             this.Primeword = parts[0];
                             partsArray[i, 1] = parts[1]; // Right part
-                            this.Hint = parts[1];   
+                            this.Hint = parts[1];
                         }
                         else
                         {
 
                         }
-                    }return primeWordList;
+                    }
+                    return primeWordList;
                 }
                 catch (FileNotFoundException)
                 {
