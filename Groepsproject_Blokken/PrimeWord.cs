@@ -1,12 +1,21 @@
-﻿using System.IO;
+
+﻿using System;
+using System.IO;
+using System.Net.NetworkInformation;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 
 namespace Groepsproject_Blokken
+
 {
     internal class PrimeWord
     {
         string _primeword;
         string _hint;
+        public PrimeWord()
+        {
+
+        }
         public PrimeWord(string primeword, string hint)
         {
             Primeword = primeword;
@@ -22,6 +31,7 @@ namespace Groepsproject_Blokken
             get { return _hint; }
             set { _hint = value; }
         }
+        //TODO: deze zal in de main window moeten
         public bool CheckAnswerIfPrimeWord(string answer)
         {
             try //added a try catch, in case the answer would be not validated before it gets here
@@ -35,43 +45,38 @@ namespace Groepsproject_Blokken
             }
             catch { return false; }
         }
-        public void ReadAndFillPrimeWordList()
+        //TODO: Deze zal in de main window moeten
+        public void ReadAndFillPrimeWordList() //i want to make a method that will fill in a 2d array of (prime)words, read from a txt
         {
             try
             {
-                var filepath = "../../PrimeWords/List.txt";
+                var filepath = "../../PrimeWords/List1.txt";
                 try
                 {
 
                     StreamReader readobject = new StreamReader(filepath);
                     string[] temperaryLines;
-                    string[,] partsArray;
+                    string[,] wordsThatAreParted; //TODO: deze moet je in de mainwindow alleen zetten
                     var teller = 0;
-                    while (!readobject.EndOfStream)
+
+                    while (!readobject.EndOfStream)//here i just need the lenght of the list, so i need to increase "teller"
                     {
                         teller++;
                         readobject.ReadLine();
                     }
-                    temperaryLines = new string[teller];
+                    temperaryLines = new string[teller]; //now that i have teller, i can make my length
                     for (int i = 0; i < teller; i++)
                     {
                         temperaryLines[i] = readobject.ReadLine();
                     }
-                    partsArray = new string[teller, 2];
-
+                    wordsThatAreParted = new string[teller, 2];
                     for (int i = 0; i < teller; i++)
                     {
                         string[] parts = temperaryLines[i].Split(';');
-
-
                         if (parts.Length >= 2)
                         {
-                            partsArray[i, 0] = parts[0]; // Left part
-                            partsArray[i, 1] = parts[1]; // Right part
-                        }
-                        else
-                        {
-
+                            wordsThatAreParted[i, 0] = parts[0];  // Left part this will be the primeword then
+                            wordsThatAreParted[i, 1] = parts[1];  // Right part this will be the hint
                         }
                     }
                 }
@@ -82,6 +87,42 @@ namespace Groepsproject_Blokken
             }
             catch { }
         }
+        public void RandomPrimeWordConstruction()
+        {
+            string[,] wordsThatAreParted; //TODO: deze moeten weg, we spreken de algemene aan
+            wordsThatAreParted = new string[10, 2];
+            Random myRandom = new Random();
+            PrimeWord myPrimeWord;
+            var randomNumberToPickAndRemove = myRandom.Next(0, wordsThatAreParted.Length);
+            myPrimeWord = new PrimeWord((wordsThatAreParted[randomNumberToPickAndRemove, 0]), (wordsThatAreParted[randomNumberToPickAndRemove, 1])); //here we have our random prime word with the random Hint
+            string[,] writeAwayString = new string[wordsThatAreParted.Length - 1, 2]; //TODO: this one we can move to main, so we can get it for the writing for the new TXT
+            for (int i = 0, j = 0; i < wordsThatAreParted.GetLength(0); i++)
+            {
+                if (i == randomNumberToPickAndRemove)
+                    continue;
+
+                for (int k = 0, u = 0; k < wordsThatAreParted.GetLength(1); k++)
+                {
+                    if (k == randomNumberToPickAndRemove)
+                        continue;
+
+                    writeAwayString[j, u] = wordsThatAreParted[i, k];
+                    u++;
+                }
+                j++;
+            }
+            //TODO: hier moet er nog een writer komen voor naar txt1
+            WriteAwayToTxtTwo(myPrimeWord);
+        }
+        public void WriteAwayToTxtTwo(PrimeWord wegschrijvenWord) //ik heb de Primeword nodig
+        {
+            var filepath = "../../PrimeWords/List2.txt";
+            string writeAway;
+
+            using (StreamWriter writer = new StreamWriter(filepath))
+            {
+
+            }
+        }
     }
 }
-

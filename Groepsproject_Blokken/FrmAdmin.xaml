@@ -7,6 +7,28 @@
         mc:Ignorable="d"
         Title="FrmAdmin" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="140"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="Assets/Blokken achtergrond Hi Res.jpg"/>
+        </Grid.Background>
+        <Label Content="Gebruikersnaam:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+        <TextBox x:Name="txtUsername" Grid.Row="0" Grid.Column="2" Width="175" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="25"/>
+        <Label Content="Wachtwoord:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+        <TextBox x:Name="txtPassword" Grid.Row="1" Grid.Column="2" Width="175" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="25"/>
+        <Label Content="Wachtwoord bevestigen:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+        <TextBox x:Name="txtConfirmPassword" Grid.Row="2" Grid.Column="2" Width="175" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="25"/>
+        <Button x:Name="btnCreateManager" Content="Manager aanmaken" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" Height="50" Width="150" Margin="25" Click="btnCreateManager_Click"/>
+        <Button x:Name="btnBack" Content="Terug" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" Height="50" Width="150" Margin="25" Click="btnBack_Click"/>
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Documents;
 
@@ -6,6 +7,7 @@ namespace Groepsproject_Blokken
 {
     internal static class DataManager
     {
+        //TODO: Speler met de beste winrate en aantal games tonen(minstens 5 games)Je kan sorten op winrate en aantal games
         //1 record ophalen: Speler, Admin of Manager
         public static Player GetOnePlayer(int pkPlayer)
         {

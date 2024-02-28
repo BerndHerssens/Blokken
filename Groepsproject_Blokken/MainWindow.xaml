@@ -5,8 +5,64 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Groepsproject_Blokken"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"
+        Height="450"
+        Width="800"
+        WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="btnPlay"
+                    Content="Play"
+                    Width="200"
+                    Height="60"
+                    FontSize="30"
+                    Click="btnPlay_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius"
+                                Value="40" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="btnHighscore"
+                    Content="Highscore"
+                    Width="200"
+                    Height="60"
+                    FontSize="30"
+                    Click="btnHighscore_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius"
+                                Value="40" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="btnProfile"
+                    Content="Profile"
+                    Width="200"
+                    Height="60"
+                    FontSize="30"
+                    Click="btnProfile_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius"
+                                Value="40" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="btnReturn"
+                    Content="Return"
+                    Width="200"
+                    Height="60"
+                    FontSize="30"
+                    Click="btnReturn_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius"
+                                Value="40" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>

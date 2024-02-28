@@ -1,5 +1,5 @@
 Topic: "HardLvl Actualiteit 2023"
-Vraag: "Welke 2 landen werden zwaar getroffen door een aardbeving in februari?"
+Vraag: "Welke 2 landen werden zwaar getroffen door een aardbeving in februari 2023?"
 Antwoord1: "Turkije en Syrië"
 Antwoord2: "Japan en Hawaï"
 Antwoord3: "Bulgarije en Griekenland"

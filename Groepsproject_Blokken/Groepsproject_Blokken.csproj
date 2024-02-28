@@ -74,6 +74,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -92,6 +93,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminPlus.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Block.cs" />
     <Compile Include="BlockQueue.cs" />
@@ -101,6 +103,7 @@
     <Compile Include="IBlock.cs" />
     <Compile Include="JBlock.cs" />
     <Compile Include="LBlock.cs" />
+    <Compile Include="ManagerPlus.cs" />
     <Compile Include="OBlock.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Question.cs" />
@@ -272,6 +275,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GebruikersProfielen\" />
+    <Folder Include="PrimeWords\" />
     <Folder Include="Questionaires\" />
   </ItemGroup>
   <ItemGroup>
