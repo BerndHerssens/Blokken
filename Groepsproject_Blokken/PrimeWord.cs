@@ -35,56 +35,56 @@ namespace Groepsproject_Blokken
             }
             catch { return false; }
         }
-        //public static void ReadAndFillPrimeWordList(List<PrimeWord> primeWordList) //i want to make a method that will fill in a list array of primewords, read from a 
-        //{
-        //    try
-        //    {
-        //        var filepath = "../../PrimeWords/List.txt";
-        //        try
-        //        {
+        public static void ReadAndFillPrimeWordList(List<PrimeWord> primeWordList) //i want to make a method that will fill in a list array of primewords, read from a 
+        {
+            try
+            {
+                var filepath = "../../PrimeWords/List.txt";
+                try
+                {
 
-        //            StreamReader readobject = new StreamReader(filepath);
-        //            string[] temperaryLines;
-        //            string[,] partsArray;
-        //            var teller = 0;
-        //            while (!readobject.EndOfStream)
-        //            {
-        //                teller++;
-        //                readobject.ReadLine();
-        //            }
-        //            temperaryLines = new string[teller];
-        //            for (int i = 0; i < teller; i++)
-        //            {
-        //                temperaryLines[i] = readobject.ReadLine();
-        //            }
-        //            partsArray = new string[teller, 2];
+                    StreamReader readobject = new StreamReader(filepath);
+                    string[] temperaryLines;
+                    string[,] partsArray;
+                    var teller = 0;
+                    while (!readobject.EndOfStream)
+                    {
+                        teller++;
+                        readobject.ReadLine();
+                    }
+                    temperaryLines = new string[teller];
+                    for (int i = 0; i < teller; i++)
+                    {
+                        temperaryLines[i] = readobject.ReadLine();
+                    }
+                    partsArray = new string[teller, 2];
 
-        //            for (int i = 0; i < teller; i++)
-        //            {
-        //                string[] parts = temperaryLines[i].Split(';');
+                    for (int i = 0; i < teller; i++)
+                    {
+                        string[] parts = temperaryLines[i].Split(';');
 
 
-        //                if (parts.Length >= 2)
-        //                {
-        //                    partsArray[i, 0] = parts[0];  // Left part/Primeword = this.Prime
-        //                    this.Primeword = parts[0];
-        //                    partsArray[i, 1] = parts[1]; // Right part
-        //                    this.Hint = parts[1];
-        //                }
-        //                else
-        //                {
+                        if (parts.Length >= 2)
+                        {
+                            partsArray[i, 0] = parts[0];  // Left part/Primeword = this.Prime
+                            this.Primeword = parts[0];
+                            partsArray[i, 1] = parts[1]; // Right part
+                            this.Hint = parts[1];
+                        }
+                        else
+                        {
 
-        //                }
-        //            }
-        //            return primeWordList;
-        //        }
-        //        catch (FileNotFoundException)
-        //        {
-        //            MessageBox.Show("File not found. Please check the file path", "Error");
-        //        }
-        //    }
-        //    catch { }
-        //}
+                        }
+                    }
+                    return primeWordList;
+                }
+                catch (FileNotFoundException)
+                {
+                    MessageBox.Show("File not found. Please check the file path", "Error");
+                }
+            }
+            catch { }
+        }
     }
 }
 
