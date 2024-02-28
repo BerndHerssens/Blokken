@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Windows;
+using System.Windows.Documents;
 
 namespace Groepsproject_Blokken
 {
@@ -35,7 +36,7 @@ namespace Groepsproject_Blokken
             }
             catch { return false; }
         }
-        public void ReadAndFillPrimeWordList()
+        public static void ReadAndFillPrimeWordList(List<PrimeWord> primeWordList) //i want to make a method that will fill in a list array of primewords, read from a 
         {
             try
             {
@@ -66,14 +67,16 @@ namespace Groepsproject_Blokken
 
                         if (parts.Length >= 2)
                         {
-                            partsArray[i, 0] = parts[0]; // Left part
+                            partsArray[i, 0] = parts[0];  // Left part/Primeword = this.Prime
+                            this.Primeword = parts[0];
                             partsArray[i, 1] = parts[1]; // Right part
+                            this.Hint = parts[1];   
                         }
                         else
                         {
 
                         }
-                    }
+                    }return primeWordList;
                 }
                 catch (FileNotFoundException)
                 {
