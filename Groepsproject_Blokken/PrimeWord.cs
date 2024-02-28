@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+﻿namespace Groepsproject_Blokken
+=======
 ﻿using System;
 using System.IO;
 using System.Net.NetworkInformation;
@@ -5,6 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 
 namespace Groepsproject_Blokken
+>>>>>>> 71729ae5ac7a0a85f96159bcadc0bb1fe542e0bd
 {
     internal class PrimeWord
     {
@@ -43,6 +47,57 @@ namespace Groepsproject_Blokken
             }
             catch { return false; }
         }
+<<<<<<< HEAD
+        //public static void ReadAndFillPrimeWordList(List<PrimeWord> primeWordList) //i want to make a method that will fill in a list array of primewords, read from a 
+        //{
+        //    try
+        //    {
+        //        var filepath = "../../PrimeWords/List.txt";
+        //        try
+        //        {
+
+        //            StreamReader readobject = new StreamReader(filepath);
+        //            string[] temperaryLines;
+        //            string[,] partsArray;
+        //            var teller = 0;
+        //            while (!readobject.EndOfStream)
+        //            {
+        //                teller++;
+        //                readobject.ReadLine();
+        //            }
+        //            temperaryLines = new string[teller];
+        //            for (int i = 0; i < teller; i++)
+        //            {
+        //                temperaryLines[i] = readobject.ReadLine();
+        //            }
+        //            partsArray = new string[teller, 2];
+
+        //            for (int i = 0; i < teller; i++)
+        //            {
+        //                string[] parts = temperaryLines[i].Split(';');
+
+
+        //                if (parts.Length >= 2)
+        //                {
+        //                    partsArray[i, 0] = parts[0];  // Left part/Primeword = this.Prime
+        //                    this.Primeword = parts[0];
+        //                    partsArray[i, 1] = parts[1]; // Right part
+        //                    this.Hint = parts[1];
+        //                }
+        //                else
+        //                {
+
+        //                }
+        //            }
+        //            return primeWordList;
+        //        }
+        //        catch (FileNotFoundException)
+        //        {
+        //            MessageBox.Show("File not found. Please check the file path", "Error");
+        //        }
+        //    }
+        //    catch { }
+=======
         //TODO: Deze zal in de main window moeten
         public void ReadAndFillPrimeWordList() //i want to make a method that will fill in a 2d array of (prime)words, read from a txt
         {
@@ -122,6 +177,8 @@ namespace Groepsproject_Blokken
 
             }
         }
+>>>>>>> 71729ae5ac7a0a85f96159bcadc0bb1fe542e0bd
     }
 }
+
 
