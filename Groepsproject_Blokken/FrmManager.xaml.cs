@@ -15,6 +15,8 @@ namespace Groepsproject_Blokken
             InitializeComponent();
         }
         List<Question> tempquestions = new List<Question>(); //Opslagen van questions om later te editten
+        Question question1;
+
 
         public void WegSchrijven()
         {
@@ -23,6 +25,7 @@ namespace Groepsproject_Blokken
             options.WriteIndented = true;
             string json = JsonSerializer.Serialize(tempquestions, options);
             File.WriteAllText("../../Questionaires/VragenJson", json);
+
         }
         public void InlezenVragen()
         {
@@ -34,6 +37,11 @@ namespace Groepsproject_Blokken
                 string json = r.ReadToEnd(); // Tekst inlezen in een string
                 tempquestions = JsonSerializer.Deserialize<List<Question>>(json); //De string inlezen en deserializen in een list, de properties moeten overeen komen.
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
