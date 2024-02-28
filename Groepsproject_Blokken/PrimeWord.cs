@@ -117,11 +117,20 @@ namespace Groepsproject_Blokken
         public void WriteAwayToTxtTwo(PrimeWord wegschrijvenWord) //ik heb de Primeword nodig
         {
             var filepath = "../../PrimeWords/List2.txt";
-            string writeAway;
-
+            string toWriteAway = "";
+            StreamReader readobject = new StreamReader(filepath);
+            string temperaryLines;
+            while (!readobject.EndOfStream)
+            {       
+               toWriteAway += readobject.ReadLine();
+            }
             using (StreamWriter writer = new StreamWriter(filepath))
             {
-
+                for (int i =0; i < toWriteAway.Length; i++) //we write away first the lines that we aleady can read
+                { writer.WriteLine(toWriteAway[i]); }
+                temperaryLines = wegschrijvenWord.Primeword + ";" + wegschrijvenWord.Hint; 
+                writer.WriteLine(temperaryLines); //we write away the new used primeword
+                writer.Close();
             }
         }
     }
