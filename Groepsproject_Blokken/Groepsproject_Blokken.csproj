@@ -269,6 +269,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GebruikersProfielen\" />
+    <Folder Include="PrimeWords\" />
     <Folder Include="Questionaires\" />
   </ItemGroup>
   <ItemGroup>
