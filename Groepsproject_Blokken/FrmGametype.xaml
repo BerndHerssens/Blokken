@@ -7,6 +7,33 @@
         mc:Ignorable="d"
         Title="FrmGametype" Height="450" Width="800">
     <Grid>
-        
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="btnSingle"
+                    Content="1P"
+                    Width="100"
+                    Height="100"
+                    FontSize="30"
+                    Click="btnSingle_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius"
+                                Value="100" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="btnVS"
+                    Content="2P-VS"
+                    Width="100"
+                    Height="100"
+                    FontSize="30"
+                    Click="btnVS_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius"
+                                Value="100" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>

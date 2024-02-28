@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace Groepsproject_Blokken
 {
@@ -22,6 +10,23 @@ namespace Groepsproject_Blokken
         public FrmGametype()
         {
             InitializeComponent();
+        }
+
+        private void btnSingle_Click(object sender, RoutedEventArgs e)
+        {
+            FrmQuizWindow WindowSP = new FrmQuizWindow();
+            this.Hide();
+            WindowSP.ShowDialog();
+
+
+        }
+
+        private void btnVS_Click(object sender, RoutedEventArgs e)
+        {
+            FrmVersusQuizWindow windowVS = new FrmVersusQuizWindow();
+            this.Hide();
+            windowVS.ShowDialog();
+
         }
     }
 }

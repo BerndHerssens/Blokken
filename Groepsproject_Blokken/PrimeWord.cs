@@ -3,7 +3,6 @@ using System.IO;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows;
-using System.Windows.Documents;
 
 namespace Groepsproject_Blokken
 {
@@ -74,10 +73,24 @@ namespace Groepsproject_Blokken
                         string[] parts = temperaryLines[i].Split(';');
                         if (parts.Length >= 2)
                         {
+<<<<<<< HEAD
                             wordsThatAreParted[i, 0] = parts[0];  // Left part this will be the primeword then
                             wordsThatAreParted[i, 1] = parts[1];  // Right part this will be the hint
                         }                       
                     }
+=======
+                            partsArray[i, 0] = parts[0];  // Left part/Primeword = this.Prime
+                            this.Primeword = parts[0];
+                            partsArray[i, 1] = parts[1]; // Right part
+                            this.Hint = parts[1];
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    return primeWordList;
+>>>>>>> 45c7729027c3e5304fd586d822fe4b8c4870a2f1
                 }
                 catch (FileNotFoundException)
                 {
