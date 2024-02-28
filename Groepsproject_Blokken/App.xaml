@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:Groepsproject_Blokken"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="BlokkenFont">./Fonts/FontsFree-Net-Geogtq-Sb.ttf#BlokkenFont</FontFamily> 
     </Application.Resources>
 </Application>
