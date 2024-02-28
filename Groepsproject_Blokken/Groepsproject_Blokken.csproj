@@ -93,6 +93,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminPlus.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Block.cs" />
     <Compile Include="BlockQueue.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="IBlock.cs" />
     <Compile Include="JBlock.cs" />
     <Compile Include="LBlock.cs" />
+    <Compile Include="ManagerPlus.cs" />
     <Compile Include="OBlock.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Question.cs" />
@@ -238,6 +240,8 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Resource Include="Assets\Blokken achtergrond Hi Res.jpg" />
+    <Resource Include="Assets\Blokken Logo.png" />
     <Content Include="Assets\Fonts\FontsFree-Net-Geogtq-Sb.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -270,6 +274,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GebruikersProfielen\" />
+    <Folder Include="PrimeWords\" />
     <Folder Include="Questionaires\" />
   </ItemGroup>
   <ItemGroup>
