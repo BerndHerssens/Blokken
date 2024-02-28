@@ -14,19 +14,23 @@ namespace Groepsproject_Blokken
 
         private void btnSingle_Click(object sender, RoutedEventArgs e)
         {
-            FrmQuizWindow WindowSP = new FrmQuizWindow();
-            this.Hide();
-            WindowSP.ShowDialog();
-
-
+            FrmQuizWindow windowSP = new FrmQuizWindow();
+            this.Close();
+            windowSP.ShowDialog();
         }
 
         private void btnVS_Click(object sender, RoutedEventArgs e)
         {
             FrmVersusQuizWindow windowVS = new FrmVersusQuizWindow();
-            this.Hide();
+            this.Close();
             windowVS.ShowDialog();
+        }
 
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = new MainWindow();
+            this.Close();
+            window.ShowDialog();
         }
     }
 }

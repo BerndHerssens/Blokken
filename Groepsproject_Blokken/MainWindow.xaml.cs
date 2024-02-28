@@ -18,15 +18,14 @@ namespace Groepsproject_Blokken
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
             FrmGametype chooseGame = new FrmGametype();
-            this.Hide();
+            this.Close();
             chooseGame.ShowDialog();
-
         }
 
         private void btnHighscore_Click(object sender, RoutedEventArgs e)
         {
             FrmHighscores frmHighscores = new FrmHighscores();
-            this.Hide();
+            this.Close();
             frmHighscores.ShowDialog();
 
         }
@@ -34,10 +33,17 @@ namespace Groepsproject_Blokken
         private void btnProfile_Click(object sender, RoutedEventArgs e)
         {
             FrmPlayerscreen frmPlayerscreen = new FrmPlayerscreen();
-            this.Hide();
+            this.Close();
             frmPlayerscreen.ShowDialog();
+        }
 
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: Nog niks , weet nog niet 100% zeker waar we terug gaan
         }
     }
 
+
 }
+
+

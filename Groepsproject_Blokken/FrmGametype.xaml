@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Groepsproject_Blokken"
         mc:Ignorable="d"
-        Title="FrmGametype" Height="450" Width="800">
+        Title="FrmGametype"
+        Height="450"
+        Width="800"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel Orientation="Horizontal">
             <Button x:Name="btnSingle"
@@ -31,6 +34,19 @@
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius"
                                 Value="100" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="btnReturn"
+                    Content="Return"
+                    Width="200"
+                    Height="60"
+                    FontSize="30"
+                    Click="btnReturn_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius"
+                                Value="40" />
                     </Style>
                 </Button.Resources>
             </Button>
