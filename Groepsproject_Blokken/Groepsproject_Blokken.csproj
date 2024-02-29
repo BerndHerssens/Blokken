@@ -277,10 +277,10 @@
     <Folder Include="Admins\" />
     <Folder Include="GameLogSP\" />
     <Folder Include="GameLogVS\" />
-    <Folder Include="GebruikersProfielen\" />
     <Folder Include="Managers\" />
     <Folder Include="Players\" />
     <Folder Include="PrimeWords\" />
+    <Folder Include="Profielfotos\" />
     <Folder Include="Questionaires\" />
   </ItemGroup>
   <ItemGroup>
