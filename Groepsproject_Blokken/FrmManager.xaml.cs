@@ -18,21 +18,18 @@ namespace Groepsproject_Blokken
         Question question1;
 
 
-        public void WegSchrijven()
+        public void WegSchrijven(List<Question> eenList, string fileName)
         {
             JsonSerializerOptions options = new JsonSerializerOptions();
-            options.IncludeFields = false;
             options.WriteIndented = true;
-            string json = JsonSerializer.Serialize(tempquestions, options);
-            File.WriteAllText("../../Questionaires/VragenJson", json);
-
+            string json = JsonSerializer.Serialize(eenList, options);
+            File.WriteAllText("../../Questionaires/" + fileName, json);
         }
         public void InlezenVragen()
         {
             using (StreamReader r = new StreamReader("../../Questionaires/VragenJson"))
             {
                 JsonSerializerOptions options = new JsonSerializerOptions();
-                options.IncludeFields = false;
                 tempquestions.Clear();            // Lijst leegmaken
                 string json = r.ReadToEnd(); // Tekst inlezen in een string
                 tempquestions = JsonSerializer.Deserialize<List<Question>>(json); //De string inlezen en deserializen in een list, de properties moeten overeen komen.

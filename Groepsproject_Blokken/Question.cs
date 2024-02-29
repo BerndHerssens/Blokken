@@ -7,7 +7,7 @@ using System.Windows.Threading;
 //TODO: (nog) niks
 namespace Groepsproject_Blokken
 {
-    internal class Question
+    public class Question
     {
         //Attributen
         private string _question;

@@ -274,7 +274,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Admins\" />
+    <Folder Include="GameLogSP\" />
+    <Folder Include="GameLogVS\" />
     <Folder Include="GebruikersProfielen\" />
+    <Folder Include="Managers\" />
+    <Folder Include="Players\" />
     <Folder Include="PrimeWords\" />
     <Folder Include="Questionaires\" />
   </ItemGroup>
