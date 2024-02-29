@@ -1,5 +1,5 @@
 
-﻿using System;
+using System;
 using System.IO;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography.X509Certificates;
@@ -52,8 +52,7 @@ namespace Groepsproject_Blokken
             {
                 var filepath = "../../PrimeWords/List1.txt";
                 try
-                {
-
+                { //TODO: hier moet er nog een what if txt1 leeg is
                     StreamReader readobject = new StreamReader(filepath);
                     string[] temperaryLines;
                     string[,] wordsThatAreParted; //TODO: deze moet je in de mainwindow alleen zetten
@@ -90,13 +89,13 @@ namespace Groepsproject_Blokken
         public void RandomPrimeWordConstruction()
         {
             string[,] wordsThatAreParted; //TODO: deze moeten weg, we spreken de algemene aan
-            wordsThatAreParted = new string[10, 2];
+            wordsThatAreParted = new string[10, 2];//TODO: ook weg, we moeten een algemene gebruiken
             Random myRandom = new Random();
             PrimeWord myPrimeWord;
             var randomNumberToPickAndRemove = myRandom.Next(0, wordsThatAreParted.Length);
             myPrimeWord = new PrimeWord((wordsThatAreParted[randomNumberToPickAndRemove, 0]), (wordsThatAreParted[randomNumberToPickAndRemove, 1])); //here we have our random prime word with the random Hint
             string[,] writeAwayString = new string[wordsThatAreParted.Length - 1, 2]; //TODO: this one we can move to main, so we can get it for the writing for the new TXT
-            for (int i = 0, j = 0; i < wordsThatAreParted.GetLength(0); i++)
+            for (int i = 0, j = 0; i < wordsThatAreParted.GetLength(0); i++) //ik wil hier een 2d string opvullen zonder het gekozen woord
             {
                 if (i == randomNumberToPickAndRemove)
                     continue;
@@ -112,6 +111,7 @@ namespace Groepsproject_Blokken
                 j++;
             }
             //TODO: hier moet er nog een writer komen voor naar txt1
+            WriteAwayToTxtOne(writeAwayString);
             WriteAwayToTxtTwo(myPrimeWord);
         }
         public void WriteAwayToTxtTwo(PrimeWord wegschrijvenWord) //ik heb de Primeword nodig
@@ -121,16 +121,26 @@ namespace Groepsproject_Blokken
             StreamReader readobject = new StreamReader(filepath);
             string temperaryLines;
             while (!readobject.EndOfStream)
-            {       
-               toWriteAway += readobject.ReadLine();
+            {
+                toWriteAway += readobject.ReadLine();
             }
             using (StreamWriter writer = new StreamWriter(filepath))
             {
-                for (int i =0; i < toWriteAway.Length; i++) //we write away first the lines that we aleady can read
+                for (int i = 0; i < toWriteAway.Length; i++) //we write away first the lines that we aleady can read
                 { writer.WriteLine(toWriteAway[i]); }
-                temperaryLines = wegschrijvenWord.Primeword + ";" + wegschrijvenWord.Hint; 
+                temperaryLines = wegschrijvenWord.Primeword + ";" + wegschrijvenWord.Hint;
                 writer.WriteLine(temperaryLines); //we write away the new used primeword
-                writer.Close();
+            }
+        }
+        public void WriteAwayToTxtOne(string[,] writeAwayString) //overschrijven List1 maar dan zonder de gekozen Primeword
+        {
+            var filepath = "../../PrimeWords/List1.txt";
+            using (StreamWriter writer = new StreamWriter(filepath))
+            {
+                for (int i = 0; i < writeAwayString.Length; i++) //we write away first the lines that we aleady can read
+                {
+                    writer.WriteLine(writeAwayString[i, 0] + ";" + writeAwayString[i, 1]);
+                }
             }
         }
     }
