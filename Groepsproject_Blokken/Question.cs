@@ -159,6 +159,10 @@ namespace Groepsproject_Blokken
                 }
             }
         }
+        public override string ToString()
+        {
+            return $"{TheQuestion}{Environment.NewLine}{CorrectAnswer}{Environment.NewLine}{WrongAnswerOne}{Environment.NewLine}{WrongAnswerTwo}{Environment.NewLine}{WrongAnswerThree}";
+        }
     }
 }
 
