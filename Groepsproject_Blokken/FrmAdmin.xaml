@@ -6,11 +6,14 @@
         xmlns:local="clr-namespace:Groepsproject_Blokken"
         mc:Ignorable="d"
         Title="FrmAdmin" Height="450" Width="800">
+    <Window.DataContext>
+        <local:Manager/>
+    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="140"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -22,13 +25,29 @@
         <Grid.Background>
             <ImageBrush ImageSource="Assets/Blokken achtergrond Hi Res.jpg"/>
         </Grid.Background>
+
         <Label Content="Gebruikersnaam:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-        <TextBox x:Name="txtUsername" Grid.Row="0" Grid.Column="2" Width="175" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="25"/>
+        <TextBox x:Name="txtUsername" Text="{Binding NameValidation, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="2" Width="175" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="25"/>
+        <Label x:Name="lblUsernameDataInfo" Content="{Binding (Validation.Errors)[0].ErrorContent, ElementName=txtUsername}" Grid.Column="3" Grid.Row="0" Background="#fea702" Foreground="Red" HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="25" FontWeight="Bold"/>
         <Label Content="Wachtwoord:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-        <TextBox x:Name="txtPassword" Grid.Row="1" Grid.Column="2" Width="175" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="25"/>
+        <TextBox x:Name="txtPassword" Text="{Binding PasswordValidation, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="2" Width="175" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="25"/>
+        <Label x:Name="lblPasswordDataInfo" Content="{Binding (Validation.Errors)[0].ErrorContent, ElementName=txtPassword}" Grid.Column="3" Grid.Row="1" Background="#fea702" Foreground="Red" HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="25" FontWeight="Bold"/>
         <Label Content="Wachtwoord bevestigen:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-        <TextBox x:Name="txtConfirmPassword" Grid.Row="2" Grid.Column="2" Width="175" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="25"/>
-        <Button x:Name="btnCreateManager" Content="Manager aanmaken" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" Height="50" Width="150" Margin="25" Click="btnCreateManager_Click"/>
-        <Button x:Name="btnBack" Content="Terug" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" Height="50" Width="150" Margin="25" Click="btnBack_Click"/>
+        <TextBox x:Name="txtConfirmPassword" Text="{Binding PasswordConfirmValidation, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="2" Width="175" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="25"/>
+        <Label x:Name="lblPasswordConfirmDataInfo" Content="{Binding (Validation.Errors)[0].ErrorContent, ElementName=txtConfirmPassword}" Grid.Column="3" Grid.Row="2" Background="#fea702" Foreground="Red" HorizontalContentAlignment="Left" VerticalAlignment="Center" Margin="25" FontWeight="Bold"/>
+        <Button x:Name="btnCreateManager" Content="MANAGER AANMAKEN" Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" Height="25" Width="150" Margin="25" Click="btnCreateManager_Click" FontWeight="Bold">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="btnBack" Content="TERUG" Background="#fea702" FontFamily="{StaticResource BlokkenFont}"  Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" Height="25" Width="100" Margin="25" Click="btnBack_Click" FontWeight="Bold">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>

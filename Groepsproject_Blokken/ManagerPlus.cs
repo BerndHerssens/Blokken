@@ -1,41 +1,88 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Groepsproject_Blokken
 {
     public partial class Manager : INotifyPropertyChanged, IDataErrorInfo
     {
+        private string _nameValidation;
+        private string _passwordValidation;
+        private string _passwordConfirmValidation;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public string NameValidation
+        {
+            get { return _nameValidation; }
+            set
+            {
+                OnPropertyChanged(ref _nameValidation, value);
+            }
+        }
+        public string PasswordValidation
+        {
+            get { return _passwordValidation; }
+            set
+            {
+                OnPropertyChanged(ref _passwordValidation, value);
+            }
+        }
+        public string PasswordConfirmValidation
+        {
+            get { return _passwordConfirmValidation; }
+            set
+            {
+                OnPropertyChanged(ref _passwordConfirmValidation, value);
+            }
+        }
+
         public string this[string columnName]
         {
             get
             {
                 string result = null;
-                if (columnName == "Name")
+                if (columnName == "NameValidation")
                 {
-                    if (String.IsNullOrEmpty(Name))
+                    if (string.IsNullOrEmpty(NameValidation))
                     {
                         result = "Geef een naam in";
+                    }
+                }
+                if (columnName == "PasswordValidation")
+                {
+                    if (string.IsNullOrEmpty(PasswordValidation))
+                    {
+                        result = "Geef een paswoord in";
+                    }
+                }
+                if (columnName == "PasswordConfirmValidation")
+                {
+                    if (string.IsNullOrEmpty(PasswordConfirmValidation))
+                    {
+                        result = "Gelieve uw paswoord te bevestigen";
                     }
                 }
                 return result;
             }
         }
 
-        public string NameValidation
-        {
-            get { return Name; }
-            set
-            {
-                Name = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Name"));
-                }
-            }
-        }
-
         public string Error => throw new NotImplementedException();
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        protected virtual bool OnPropertyChanged<T>(ref T backingField, T value, [CallerMemberName] string propertyName = "")
+        {
+            if (EqualityComparer<T>.Default.Equals(backingField, value))
+                return false;
+
+            backingField = value;
+            OnPropertyChanged(propertyName);
+            return true;
+        }
+
     }
 }

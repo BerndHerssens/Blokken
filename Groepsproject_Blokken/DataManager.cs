@@ -8,6 +8,7 @@ namespace Groepsproject_Blokken
     internal static class DataManager
     {
         //TODO: Speler met de beste winrate en aantal games tonen(minstens 5 games)Je kan sorten op winrate en aantal games
+        //TODO: Extra functie query toevoegen: zoeken op username en wachtwoord
         //1 record ophalen: Speler, Admin of Manager
         public static Player GetOnePlayer(int pkPlayer)
         {
