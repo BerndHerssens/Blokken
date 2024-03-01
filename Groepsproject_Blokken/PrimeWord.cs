@@ -1,14 +1,11 @@
 
 using System;
 using System.IO;
-using System.Net.NetworkInformation;
-using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 
 namespace Groepsproject_Blokken
-
 {
-    internal class PrimeWord
+    public class PrimeWord
     {
         string _primeword;
         string _hint;
