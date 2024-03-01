@@ -361,8 +361,7 @@ namespace Groepsproject_Blokken
 
             //Json Versie
 
-            //List<Player> players = GetAllPlayers();
-            List<Player> players = new List<Player>();
+            List<Player> players = GetAllPlayers();
             players.Add(aPlayer);
             JsonSerializerOptions options = new JsonSerializerOptions();
             options.IncludeFields = false;

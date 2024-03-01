@@ -1,0 +1,14 @@
+[
+  {
+    "SpelerID": 0,
+    "Name": "Illyav",
+    "Password": "123",
+    "ProfilePicture": "niks.png",
+    "SPHighscore": null,
+    "SPGamesPlayed": null,
+    "SPGamesWon": null,
+    "VSHighscore": null,
+    "VSGamesPlayed": null,
+    "VSGamesWon": null
+  }
+]

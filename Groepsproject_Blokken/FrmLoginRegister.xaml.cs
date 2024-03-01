@@ -41,11 +41,10 @@ namespace Groepsproject_Blokken
             tempPlayer.Name = "tPlayer";
             tempPlayer.Password = "tPlayer";
             //Inladen van db/json 
-            //DIT STAAT DISABLED OMDAT DE FUNCTIE NIET WERKT MET DB
-            //playerList = DataManager.GetAllPlayers();
-            //managerList = DataManager.GetAllManagers();
-            //adminList = DataManager.GetAllAdmins();
 
+            playerList = DataManager.GetAllPlayers();
+            managerList = DataManager.GetAllManagers();
+            adminList = DataManager.GetAllAdmins();
 
         }
         private void btnAanmelden_Click(object sender, RoutedEventArgs e)
@@ -54,7 +53,7 @@ namespace Groepsproject_Blokken
             LoginAlsTempGebruiker();
 
             //eerste attempt om een login systeem te maken voor met json/db
-            //VindIngelogdeGebruiker(); 
+            VindIngelogdeGebruiker();
         }
 
 
@@ -70,8 +69,6 @@ namespace Groepsproject_Blokken
 
         private void btnAanmelden_MouseEnter(object sender, MouseEventArgs e)
         {
-
-
             btnAanmelden.Background = (Brush)bc.ConvertFrom("#002266");
         }
 
@@ -164,9 +161,9 @@ namespace Groepsproject_Blokken
                     {
                         ingelogdePlayer = DataManager.GetLoggedInPlayer(txtUsername.Text, txtPassword.Password);
                         playerGevonden = true;
-                        FrmPlayerscreen frmPlayerscreen = new FrmPlayerscreen();
+                        MainWindow mainwindow = new MainWindow();
                         this.Close();
-                        frmPlayerscreen.ShowDialog();
+                        mainwindow.ShowDialog();
                     }
                 }
             }
@@ -174,10 +171,6 @@ namespace Groepsproject_Blokken
             adminGevonden = false;
             managerGevonden = false;
             playerGevonden = false;
-
-
-
-
         }
         //(TIJDELIJKE) Methode voor te kunnen inloggen zonder json gedoe
         private void LoginAlsTempGebruiker()
@@ -200,10 +193,7 @@ namespace Groepsproject_Blokken
                 this.Close();
                 mainwindow.ShowDialog();
             }
-            else
-            {
-                MessageBox.Show("U werd niet gevonden, u kon niet inloggen.", "ERROR-Z0RGEL005", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
+
         }
 
 
