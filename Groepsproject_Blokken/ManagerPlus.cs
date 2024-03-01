@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -12,6 +11,7 @@ namespace Groepsproject_Blokken
         private string _passwordConfirmValidation;
 
         public event PropertyChangedEventHandler PropertyChanged;
+        [System.Text.Json.Serialization.JsonIgnore]
 
         public string NameValidation
         {
@@ -21,6 +21,8 @@ namespace Groepsproject_Blokken
                 OnPropertyChanged(ref _nameValidation, value);
             }
         }
+        [System.Text.Json.Serialization.JsonIgnore]
+
         public string PasswordValidation
         {
             get { return _passwordValidation; }
@@ -29,6 +31,8 @@ namespace Groepsproject_Blokken
                 OnPropertyChanged(ref _passwordValidation, value);
             }
         }
+        [System.Text.Json.Serialization.JsonIgnore]
+
         public string PasswordConfirmValidation
         {
             get { return _passwordConfirmValidation; }
@@ -67,8 +71,8 @@ namespace Groepsproject_Blokken
                 return result;
             }
         }
-
-        public string Error => throw new NotImplementedException();
+        [System.Text.Json.Serialization.JsonIgnore]
+        public string Error => throw new System.Exception();
 
         protected virtual void OnPropertyChanged(string propertyName)
         {
@@ -85,6 +89,22 @@ namespace Groepsproject_Blokken
             backingField = value;
             OnPropertyChanged(propertyName);
             return isChanged;
+        }
+        public override bool Equals(object obj)
+        {
+            bool resultaat = false;
+            if (obj != null)
+            {
+                if (GetType() == obj.GetType())
+                {
+                    Manager g = (Manager)obj;
+                    if (this.Name == g.Name)
+                    {
+                        resultaat = true;
+                    }
+                }
+            }
+            return resultaat;
         }
 
     }

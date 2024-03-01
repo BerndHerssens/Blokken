@@ -13,8 +13,6 @@ namespace Groepsproject_Blokken
             InitializeComponent();
         }
 
-
-
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
             FrmGametype chooseGame = new FrmGametype();

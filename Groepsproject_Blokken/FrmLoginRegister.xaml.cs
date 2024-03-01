@@ -105,8 +105,6 @@ namespace Groepsproject_Blokken
 
         }
 
-
-
         private void txtUsername_GotFocus(object sender, RoutedEventArgs e)
         {
 

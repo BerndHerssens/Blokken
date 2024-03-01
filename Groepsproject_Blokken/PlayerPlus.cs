@@ -34,6 +34,22 @@ namespace Groepsproject_Blokken
             }
             return WinrateVS;
         }
+        public override bool Equals(object obj)
+        {
+            bool resultaat = false;
+            if (obj != null)
+            {
+                if (GetType() == obj.GetType())
+                {
+                    Player g = (Player)obj;
+                    if (this.Name == g.Name)
+                    {
+                        resultaat = true;
+                    }
+                }
+            }
+            return resultaat;
+        }
     }
 }
 
