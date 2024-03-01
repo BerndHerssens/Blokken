@@ -15,25 +15,30 @@ namespace Groepsproject_Blokken
     {
         List<Question> tempquestions = new List<Question>(); //Opslagen van questions om later te editten
         Question question = new Question();
-        OpenFileDialog openFileDialog = new OpenFileDialog()
-        {
-            DefaultExt = "",
-            Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*"
-        };
+        OpenFileDialog openFileDialog = new OpenFileDialog();
+        bool fileIsLoaded = false;
         public FrmManager()
         {
             InitializeComponent();
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
         private void btnAddToList_Click(object sender, RoutedEventArgs e)
         {
             if (!(string.IsNullOrEmpty(txtQuestion.Text) && string.IsNullOrEmpty(txtCorrectAnswer.Text) && string.IsNullOrEmpty(txtWrongAnswer1.Text) && string.IsNullOrEmpty(txtWrongAnswer2.Text) && string.IsNullOrEmpty(txtWrongAnswer3.Text)))
             {
+                if (lbQuestions.SelectedIndex == -1) //enkel een nieuwe question aanmaken als er geen geselecteerd is, anders geselecteerde vraag aanpassen
+                {
+                    question = new Question();
+                }
                 question.TheQuestion = txtQuestion.Text;
                 question.CorrectAnswer = txtCorrectAnswer.Text;
                 question.WrongAnswerOne = txtWrongAnswer1.Text;
                 question.WrongAnswerTwo = txtWrongAnswer2.Text;
                 question.WrongAnswerThree = txtWrongAnswer3.Text;
-                if (lbQuestions.Items.Count != 0)
+                if (lbQuestions.Items.Count != 0 && lbQuestions.SelectedIndex != -1)
                 {
                     foreach (Question q in tempquestions)
                     {
@@ -47,7 +52,8 @@ namespace Groepsproject_Blokken
                             break;
                         }
                     }
-                } else
+                }
+                else
                 {
                     tempquestions.Add(question);
                 }
@@ -62,8 +68,10 @@ namespace Groepsproject_Blokken
                 {
                     WegSchrijven(tempquestions, txtFileName.Text);
                     tempquestions.Clear();
+                    fileIsLoaded = false;
                     RefreshFields();
                     System.Windows.MessageBox.Show("Vragenlijst succesvol opgeslagen!", "Vragen opgeslagen", MessageBoxButton.OK, MessageBoxImage.Information);
+                    txtFileName.IsEnabled = true;
                 }
             }
             catch
@@ -74,15 +82,24 @@ namespace Groepsproject_Blokken
 
         private void btnDeleteQuestion_Click(object sender, RoutedEventArgs e)
         {
-
+            tempquestions.Remove((Question)lbQuestions.SelectedItem);
+            RefreshFields();
         }
         private void btnLoadList_Click(object sender, RoutedEventArgs e)
         {
+            openFileDialog = new OpenFileDialog()
+            {
+                DefaultExt = "",
+                Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*"
+            };
             tempquestions.Clear();
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 InlezenVragen(openFileDialog.FileName);
+                fileIsLoaded = true;
                 RefreshFields();
+                txtFileName.Text = openFileDialog.FileName.ToString();
+                txtFileName.IsEnabled = false;
             }
         }
         private void btnReturn_Click(object sender, RoutedEventArgs e)
@@ -95,7 +112,14 @@ namespace Groepsproject_Blokken
             JsonSerializerOptions options = new JsonSerializerOptions();
             options.WriteIndented = true;
             string json = JsonSerializer.Serialize(eenList, options);
-            File.WriteAllText("../../Questionaires/" + fileName, json);
+            if (fileIsLoaded == true)
+            {
+                File.WriteAllText(openFileDialog.FileName, json);
+            }
+            else
+            {
+                File.WriteAllText("../../Questionaires/" + fileName, json);
+            }
         }
         public void InlezenVragen(string pad)
         {
@@ -114,9 +138,12 @@ namespace Groepsproject_Blokken
             txtWrongAnswer1.Text = string.Empty;
             txtWrongAnswer2.Text = string.Empty;
             txtWrongAnswer3.Text = string.Empty;
-            txtFileName.Text = "Filename";
-            txtFileName.Foreground = Brushes.LightSlateGray;
-            txtFileName.GotFocus += txtFileName_GotFocus;
+            if (fileIsLoaded == false)
+            {
+                txtFileName.Text = "Filenaam";
+                txtFileName.Foreground = Brushes.LightSlateGray;
+                txtFileName.GotFocus += txtFileName_GotFocus;
+            }
             lbQuestions.ItemsSource = null;
             lbQuestions.ItemsSource = tempquestions;
             lbQuestions.SelectedIndex = -1;
@@ -148,6 +175,21 @@ namespace Groepsproject_Blokken
                 txtWrongAnswer2.Text = (string)question.WrongAnswerTwo;
                 txtWrongAnswer3.Text = (string)question.WrongAnswerThree;
             }
+        }
+
+        private void btnAddQuestionnaire_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnReturnQuestionnaireSelection_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnSaveQuestionnaireSelection_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
