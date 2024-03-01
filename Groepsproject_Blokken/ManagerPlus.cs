@@ -76,12 +76,15 @@ namespace Groepsproject_Blokken
         }
         protected virtual bool OnPropertyChanged<T>(ref T backingField, T value, [CallerMemberName] string propertyName = "")
         {
+            bool isChanged = true;
             if (EqualityComparer<T>.Default.Equals(backingField, value))
-                return false;
+            {
+                isChanged = false;
+            }
 
             backingField = value;
             OnPropertyChanged(propertyName);
-            return true;
+            return isChanged;
         }
 
     }
