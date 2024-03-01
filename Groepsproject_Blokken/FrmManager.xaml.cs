@@ -30,8 +30,9 @@ namespace Groepsproject_Blokken
                     RefreshFields();
                     MessageBox.Show("Vragenlijst succesvol opgeslagen!", "Vragen opgeslagen", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-            } catch 
-            { 
+            }
+            catch
+            {
                 MessageBox.Show("Er ging iets mis. Het bestand is niet opgeslagen.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -87,6 +88,12 @@ namespace Groepsproject_Blokken
             tb.Text = string.Empty;
             tb.Foreground = Brushes.Black;
             tb.GotFocus -= txtFileName_GotFocus;
+        }
+
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.Application.Restart();
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }

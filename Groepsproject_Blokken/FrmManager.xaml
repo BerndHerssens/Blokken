@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Groepsproject_Blokken"
         mc:Ignorable="d"
-        Title="FrmManager" Height="500" Width="1000">
+        Title="FrmManager" Height="525" Width="1000">
     <Window.DataContext>
         <local:Question/>
     </Window.DataContext>
@@ -26,6 +26,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="Assets/Blokken achtergrond Hi Res.jpg"/>
@@ -60,6 +61,25 @@
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="btnReturn"
+                Content="TERUG"
+                Background="#fea702"
+                FontFamily="{StaticResource BlokkenFont}"
+                Grid.Row="7"
+                Grid.Column="5"
+                HorizontalAlignment="Left"
+                Height="25"
+                Width="200"
+                Margin="10,10,10,10"
+                FontWeight="Bold"
+                Click="btnReturn_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius"
+                            Value="15" />
                 </Style>
             </Button.Resources>
         </Button>

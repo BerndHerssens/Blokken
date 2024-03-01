@@ -21,15 +21,13 @@ namespace Groepsproject_Blokken
                 return query.FirstOrDefault();
             }
             //Json versie
-            //List<Player> list = GetAllPlayers;
+            //List<Player> list = GetAllPlayers();
             //Player returnGebruiker = new Player();
             //foreach (Player gevondenGebruiker in list)
             //{
             //    if (gevondenGebruiker.Name == naam && gevondenGebruiker.Password == wachtwoord)
             //    {
             //        returnGebruiker = gevondenGebruiker;
-            //        return gevondenGebruiker;                                           //TODO: Niet blij mee, wou de returnwaarde niet op 52, maar mag niet alleen hier
-
             //    }
             //}
             //return returnGebruiker;
@@ -55,7 +53,7 @@ namespace Groepsproject_Blokken
             //    if (gevondenGebruiker.Name == naam && gevondenGebruiker.Password == wachtwoord)
             //    {
             //        returnGebruiker = gevondenGebruiker;
-            //        return gevondenGebruiker;                                           //TODO: Niet blij mee, wou de returnwaarde niet op 52, maar mag niet alleen hier
+            //                                                 
 
             //    }
             //}
@@ -81,8 +79,7 @@ namespace Groepsproject_Blokken
             //    if (gevondenGebruiker.Name == naam && gevondenGebruiker.Password == wachtwoord)
             //    {
             //        returnGebruiker = gevondenGebruiker;
-            //        return gevondenGebruiker;                                           //TODO: Niet blij mee, wou de returnwaarde niet op 52, maar mag niet alleen hier
-
+            //                                                
             //    }
             //}
             //return returnGebruiker;

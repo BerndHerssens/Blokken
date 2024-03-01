@@ -39,7 +39,8 @@ namespace Groepsproject_Blokken
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: Nog niks , weet nog niet 100% zeker waar we terug gaan
+            System.Windows.Forms.Application.Restart();
+            System.Windows.Application.Current.Shutdown();
         }
     }
 

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="FrmLoginRegister" Height="400" Width="650">
+        Title="FrmLoginRegister" Height="400" Width="650" Loaded="Window_Loaded">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Assets/Blokken achtergrond Hi Res.jpg" Stretch="UniformToFill"/>
