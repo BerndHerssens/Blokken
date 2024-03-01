@@ -284,12 +284,12 @@ namespace Groepsproject_Blokken
             //Json Versie
             using (StreamReader r = new StreamReader("../../Managers/CurrentManagers"))
             {
-                List<Manager> lijstPlayers = new List<Manager>();
+                List<Manager> lijstManagers = new List<Manager>();
                 JsonSerializerOptions options = new JsonSerializerOptions();
                 options.IncludeFields = false;
                 string json = r.ReadToEnd();
-                lijstPlayers = JsonSerializer.Deserialize<List<Manager>>(json);
-                return lijstPlayers;
+                lijstManagers = JsonSerializer.Deserialize<List<Manager>>(json);
+                return lijstManagers;
             }
         }
         //1 record toevoegen: Gamelogs, Players, Manager

@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Documents;
 
 namespace Groepsproject_Blokken
 {
@@ -10,8 +12,13 @@ namespace Groepsproject_Blokken
         public FrmAdmin()
         {
             InitializeComponent();
-        }
+            lijstManagers = DataManager.GetAllManagers();
+            lstManagers.ItemsSource = lijstManagers;
+            lstManagers.DisplayMemberPath = "Name";
 
+        }
+       private List<Manager> lijstManagers = new List<Manager>();
+        
         private void btnCreateManager_Click(object sender, RoutedEventArgs e) //TODO: Extra databinding voor validatie overeenkomende paswoorden (voorlopig messagebox) + labels hiden
         {
             Manager manager = new Manager();
@@ -37,6 +44,11 @@ namespace Groepsproject_Blokken
         {
             System.Windows.Forms.Application.Restart();
             System.Windows.Application.Current.Shutdown();
+        }
+
+        public override string ToString()
+        {
+           return Name;
         }
     }
 }
