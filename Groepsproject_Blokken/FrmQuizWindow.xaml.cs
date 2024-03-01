@@ -58,6 +58,7 @@ namespace Groepsproject_Blokken
         {
             ClickEvent();
             CheckAnswer(btnAntwoord2);
+            Delay();
 
         }
 
@@ -65,7 +66,7 @@ namespace Groepsproject_Blokken
         {
             ClickEvent();
             CheckAnswer(btnAntwoord3);
-
+            Delay();
 
         }
 
@@ -73,6 +74,7 @@ namespace Groepsproject_Blokken
         {
             ClickEvent();
             CheckAnswer(btnAntwoord4);
+            Delay();
 
 
         }
@@ -165,6 +167,7 @@ namespace Groepsproject_Blokken
             else
             {
                 button.Background = Brushes.OrangeRed;
+                button.BorderThickness = new Thickness(0);
                 txtScore.Text = (Convert.ToInt32(txtScore.Text) - 50).ToString();
 
                 ShowCorrectAnswer(new List<Button> { btnAntwoord1, btnAntwoord2, btnAntwoord3, btnAntwoord4 });
@@ -207,6 +210,7 @@ namespace Groepsproject_Blokken
                     btnAntwoord4.MouseEnter += btnAntwoord4_MouseEnter;
                     btnAntwoord4.MouseLeave += btnAntwoord4_MouseLeave;
                     btnAntwoord4.Click += btnAntwoord4_Click;
+
                 });
             };
             _delayTimer.AutoReset = false;
