@@ -39,7 +39,7 @@ namespace Groepsproject_Blokken
 
         public void InlezenVragen()
         {
-            using (StreamReader r = new StreamReader("../../Questionaires/VragenJson"))
+            using (StreamReader r = new StreamReader("../../Questionaires/Actua2023"))
             {
                 JsonSerializerOptions options = new JsonSerializerOptions();
                 lijstVragen.Clear();            // Lijst leegmaken
