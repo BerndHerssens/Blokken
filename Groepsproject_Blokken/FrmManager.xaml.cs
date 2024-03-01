@@ -3,6 +3,7 @@ using System.IO;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Media;
 //Todo: Met front end de lijst displayen en zorgen dat we deze kunnen crudden
 namespace Groepsproject_Blokken
@@ -13,12 +14,46 @@ namespace Groepsproject_Blokken
     public partial class FrmManager : Window
     {
         List<Question> tempquestions = new List<Question>(); //Opslagen van questions om later te editten
-        Question question;
+        Question question = new Question();
+        OpenFileDialog openFileDialog = new OpenFileDialog()
+        {
+            DefaultExt = "",
+            Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*"
+        };
         public FrmManager()
         {
             InitializeComponent();
         }
-
+        private void btnAddToList_Click(object sender, RoutedEventArgs e)
+        {
+            if (!(string.IsNullOrEmpty(txtQuestion.Text) && string.IsNullOrEmpty(txtCorrectAnswer.Text) && string.IsNullOrEmpty(txtWrongAnswer1.Text) && string.IsNullOrEmpty(txtWrongAnswer2.Text) && string.IsNullOrEmpty(txtWrongAnswer3.Text)))
+            {
+                question.TheQuestion = txtQuestion.Text;
+                question.CorrectAnswer = txtCorrectAnswer.Text;
+                question.WrongAnswerOne = txtWrongAnswer1.Text;
+                question.WrongAnswerTwo = txtWrongAnswer2.Text;
+                question.WrongAnswerThree = txtWrongAnswer3.Text;
+                if (lbQuestions.Items.Count != 0)
+                {
+                    foreach (Question q in tempquestions)
+                    {
+                        if (q.QuestionID == question.QuestionID)
+                        {
+                            q.TheQuestion = question.TheQuestion;
+                            q.CorrectAnswer = question.CorrectAnswer;
+                            q.WrongAnswerOne = question.WrongAnswerOne;
+                            q.WrongAnswerTwo = question.WrongAnswerTwo;
+                            q.WrongAnswerThree = question.WrongAnswerThree;
+                            break;
+                        }
+                    }
+                } else
+                {
+                    tempquestions.Add(question);
+                }
+                RefreshFields();
+            }
+        }
         private void btnSaveList_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -28,28 +63,32 @@ namespace Groepsproject_Blokken
                     WegSchrijven(tempquestions, txtFileName.Text);
                     tempquestions.Clear();
                     RefreshFields();
-                    MessageBox.Show("Vragenlijst succesvol opgeslagen!", "Vragen opgeslagen", MessageBoxButton.OK, MessageBoxImage.Information);
+                    System.Windows.MessageBox.Show("Vragenlijst succesvol opgeslagen!", "Vragen opgeslagen", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             catch
             {
-                MessageBox.Show("Er ging iets mis. Het bestand is niet opgeslagen.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show("Er ging iets mis. Het bestand is niet opgeslagen.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        private void btnAddToList_Click(object sender, RoutedEventArgs e)
+        private void btnDeleteQuestion_Click(object sender, RoutedEventArgs e)
         {
-            question = new Question();
-            if (!(string.IsNullOrEmpty(txtQuestion.Text) && string.IsNullOrEmpty(txtCorrectAnswer.Text) && string.IsNullOrEmpty(txtWrongAnswer1.Text) && string.IsNullOrEmpty(txtWrongAnswer2.Text) && string.IsNullOrEmpty(txtWrongAnswer3.Text)))
+
+        }
+        private void btnLoadList_Click(object sender, RoutedEventArgs e)
+        {
+            tempquestions.Clear();
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                question.TheQuestion = txtQuestion.Text;
-                question.CorrectAnswer = txtCorrectAnswer.Text;
-                question.WrongAnswerOne = txtWrongAnswer1.Text;
-                question.WrongAnswerTwo = txtWrongAnswer2.Text;
-                question.WrongAnswerThree = txtWrongAnswer3.Text;
-                tempquestions.Add(question);
+                InlezenVragen(openFileDialog.FileName);
                 RefreshFields();
             }
+        }
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.Application.Restart();
+            System.Windows.Application.Current.Shutdown();
         }
         public void WegSchrijven(List<Question> eenList, string fileName)
         {
@@ -58,9 +97,9 @@ namespace Groepsproject_Blokken
             string json = JsonSerializer.Serialize(eenList, options);
             File.WriteAllText("../../Questionaires/" + fileName, json);
         }
-        public void InlezenVragen()
+        public void InlezenVragen(string pad)
         {
-            using (StreamReader r = new StreamReader("../../Questionaires/VragenJson"))
+            using (StreamReader r = new StreamReader(pad))
             {
                 JsonSerializerOptions options = new JsonSerializerOptions();
                 tempquestions.Clear();            // Lijst leegmaken
@@ -80,20 +119,35 @@ namespace Groepsproject_Blokken
             txtFileName.GotFocus += txtFileName_GotFocus;
             lbQuestions.ItemsSource = null;
             lbQuestions.ItemsSource = tempquestions;
+            lbQuestions.SelectedIndex = -1;
         }
 
         private void txtFileName_GotFocus(object sender, RoutedEventArgs e)
         {
-            TextBox tb = (TextBox)sender;
+            System.Windows.Controls.TextBox tb = (System.Windows.Controls.TextBox)sender;
             tb.Text = string.Empty;
             tb.Foreground = Brushes.Black;
             tb.GotFocus -= txtFileName_GotFocus;
         }
 
-        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        private void lbQuestions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            System.Windows.Forms.Application.Restart();
-            System.Windows.Application.Current.Shutdown();
+            if (lbQuestions.SelectedIndex == -1)
+            {
+                btnAddToList.Content = "VRAAG AAN LIJST TOEVOEGEN";
+                btnDeleteQuestion.Visibility = Visibility.Hidden;
+            }
+            if (lbQuestions.SelectedIndex != -1)
+            {
+                btnAddToList.Content = "VRAAG WIJZIGEN";
+                btnDeleteQuestion.Visibility = Visibility.Visible;
+                question = (Question)lbQuestions.SelectedItem;
+                txtQuestion.Text = (string)question.TheQuestion;
+                txtCorrectAnswer.Text = (string)question.CorrectAnswer;
+                txtWrongAnswer1.Text = (string)question.WrongAnswerOne;
+                txtWrongAnswer2.Text = (string)question.WrongAnswerTwo;
+                txtWrongAnswer3.Text = (string)question.WrongAnswerThree;
+            }
         }
     }
 }
