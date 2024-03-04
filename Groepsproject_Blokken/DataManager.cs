@@ -10,19 +10,21 @@ namespace Groepsproject_Blokken
         //TODO: Speler met de beste winrate en aantal games tonen(minstens 5 games)Je kan sorten op winrate en aantal games
         //TODO: Extra functie query toevoegen: zoeken op username en wachtwoord
 
+
+
+
+
+        //JSON VERSIES - HIER NIET VOORBIJ GAAN MET COMMENTEN
+
+
+
+
+
+
+
         //Haalt de ingelogde gebruiker op
         public static Player GetLoggedInPlayer(string naam, string wachtwoord)
         {
-            //Database Versie
-
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    var query = from Player in BenKrabbeDBEntities.Players
-            //                where Player.Name == naam && Player.Password == wachtwoord
-            //                select Player;
-            //    return query.FirstOrDefault();
-            //}
-            //Json versie
             List<Player> list = GetAllPlayers();
             Player returnGebruiker = new Player();
             foreach (Player gevondenGebruiker in list)
@@ -36,17 +38,7 @@ namespace Groepsproject_Blokken
         }
         public static Admin GetLoggedInAdmin(string naam, string wachtwoord)
         {
-            //Database Versie
 
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    var query = from Admin in BenKrabbeDBEntities.Admins
-            //                where Admin.Name == naam && Admin.Password == wachtwoord
-            //                select Admin;
-            //    return query.FirstOrDefault();
-            //}
-
-            //JSON Versie
 
             List<Admin> list = GetAllAdmins();
             Admin returnGebruiker = new Admin();
@@ -64,16 +56,6 @@ namespace Groepsproject_Blokken
         }
         public static Manager GetLoggedInManager(string naam, string wachtwoord)
         {
-            //Database versie
-
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    var query = from Manager in BenKrabbeDBEntities.Managers
-            //                where Manager.Name == naam && Manager.Password == wachtwoord
-            //                select Manager;
-            //    return query.FirstOrDefault();
-            //}
-            //Json Versie
             List<Manager> list = GetAllManagers();
             Manager returnGebruiker = new Manager();
             foreach (Manager gevondenGebruiker in list)
@@ -90,16 +72,6 @@ namespace Groepsproject_Blokken
         //1 record ophalen: Speler, Admin of Manager
         public static Player GetOnePlayer(int pkPlayer)
         {
-            //Database Versie
-
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    var query = from Player in BenKrabbeDBEntities.Players
-            //                where Player.SpelerID == pkPlayer
-            //                select Player;
-            //    return query.FirstOrDefault();
-            //}
-            //JSON Versie
             List<Player> list = GetAllPlayers();
             Player gevondenPlayer = new Player();
             foreach (Player player in list)
@@ -113,16 +85,7 @@ namespace Groepsproject_Blokken
         }
         public static Admin GetOneAdmin(int pkAdmin)
         {
-            //Database Versie
 
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    var query = from Admin in BenKrabbeDBEntities.Admins
-            //                where Admin.AdminID == pkAdmin
-            //                select Admin;
-            //    return query.FirstOrDefault();
-            //}
-            //JSON Versie
             List<Admin> list = GetAllAdmins();
             Admin returnGebruiker = new Admin();
             foreach (Admin gevondenGebruiker in list)
@@ -137,16 +100,7 @@ namespace Groepsproject_Blokken
         }
         public static Manager GetOneManager(int pkManager)
         {
-            //Database Versie
 
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    var query = from Manager in BenKrabbeDBEntities.Managers
-            //                where Manager.ManagerID == pkManager
-            //                select Manager;
-            //    return query.FirstOrDefault();
-            //}
-            //Json Versie
             List<Manager> list = GetAllManagers();
             Manager returnGebruiker = new Manager();
             foreach (Manager gevondenGebruiker in list)
@@ -160,14 +114,7 @@ namespace Groepsproject_Blokken
         }
         //alle records ophalen: Gamelogs, Players, Admins, Managers
         public static List<GameLogVS> GetAllGameLogVS()
-        {            //Database Versie
-
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    return BenKrabbeDBEntities.GamesLogVS.ToList();
-            //}
-
-            //Json Versie
+        {
 
             using (StreamReader r = new StreamReader("../../GameLogVS/GamelogsVS"))
             {
@@ -180,13 +127,7 @@ namespace Groepsproject_Blokken
             }
         }
         public static List<GameLogSP> GetAllGameLogSP()
-        {            //Database Versie
-
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    return BenKrabbeDBEntities.GamesLogSP.ToList();
-            //}
-            //Json Versie
+        {
             using (StreamReader r = new StreamReader("../../GameLogVS/GamelogsSP"))
             {
                 List<GameLogSP> lijstSP = new List<GameLogSP>();
@@ -198,14 +139,7 @@ namespace Groepsproject_Blokken
             }
         }
         public static List<Player> GetAllPlayersSorted() //haalt spelers op en displayt voorlopig gewonnen games, later aanpassen naar winrate%? of verder filteren?
-        {   //Database Versie
-
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    return BenKrabbeDBEntities.Players.OrderBy(x => x.VSGamesWon).ToList();
-            //}
-
-            //Json Versie
+        {
             using (StreamReader r = new StreamReader("../../Players/CurrentPlayers"))
             {
                 List<Player> lijstOrderPlayers = new List<Player>();
@@ -218,13 +152,7 @@ namespace Groepsproject_Blokken
             }
         }
         public static List<GameLogSP> GetAllGameLogSPSorted()
-        {   //Database Versie
-
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    return BenKrabbeDBEntities.GamesLogSP.OrderBy(x => x.Score).ToList();
-            //}
-            //JSON Versie
+        {
             using (StreamReader r = new StreamReader("../../GameLogSP/GamelogsSP"))
             {
                 List<GameLogSP> lijstGameSP = new List<GameLogSP>();
@@ -238,13 +166,7 @@ namespace Groepsproject_Blokken
 
         }
         public static List<Player> GetAllPlayers()
-        {            //Database Versie
-
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    return BenKrabbeDBEntities.Players.ToList();
-            //}
-            //JSON Versie
+        {
             using (StreamReader r = new StreamReader("../../Players/CurrentPlayers"))
             {
                 List<Player> lijstPlayers = new List<Player>();
@@ -257,13 +179,7 @@ namespace Groepsproject_Blokken
 
         }
         public static List<Admin> GetAllAdmins()
-        {            //Database Versie
-
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    return BenKrabbeDBEntities.Admins.ToList();
-            //}
-            //JSON Versie
+        {
             using (StreamReader r = new StreamReader("../../Admins/CurrentAdmins"))
             {
                 List<Admin> lijstAdmins = new List<Admin>();
@@ -275,13 +191,7 @@ namespace Groepsproject_Blokken
             }
         }
         public static List<Manager> GetAllManagers()
-        {            //Database Versie
-
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    return BenKrabbeDBEntities.Managers.ToList();
-            //}
-            //Json Versie
+        {
             using (StreamReader r = new StreamReader("../../Managers/CurrentManagers"))
             {
                 List<Manager> lijstManagers = new List<Manager>();
@@ -294,21 +204,8 @@ namespace Groepsproject_Blokken
         }
         //1 record toevoegen: Gamelogs, Players, Manager
         public static bool InsertGameLogVS(GameLogVS aGameLogVS)
-        {            //Database Versie
-
+        {
             bool insertSucceeded = false;
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    BenKrabbeDBEntities.GamesLogVS.Add(aGameLogVS);
-            //    if (0 < BenKrabbeDBEntities.SaveChanges())
-            //    {
-            //        insertSucceeded = true;
-            //    }
-            //}
-            //return insertSucceeded;
-
-            //Json Versie
-
             List<GameLogVS> listGameLogVS = GetAllGameLogVS();
             listGameLogVS.Add(aGameLogVS);
             JsonSerializerOptions options = new JsonSerializerOptions();
@@ -320,20 +217,9 @@ namespace Groepsproject_Blokken
             return insertSucceeded;
         }
         public static bool InsertGameLogSP(GameLogSP aGameLogSP)
-        {            //Database Versie
-
+        {
             bool insertSucceeded = false;
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    BenKrabbeDBEntities.GamesLogSP.Add(aGameLogSP);
-            //    if (0 < BenKrabbeDBEntities.SaveChanges())
-            //    {
-            //        insertSucceeded = true;
-            //    }
-            //}
-            //return insertSucceeded;
 
-            //JSon Versie
             List<GameLogSP> listGameLogSP = GetAllGameLogSP();
             listGameLogSP.Add(aGameLogSP);
             JsonSerializerOptions options = new JsonSerializerOptions();
@@ -346,20 +232,10 @@ namespace Groepsproject_Blokken
 
         }
         public static bool InsertPlayer(Player aPlayer)
-        {            //Database Versie
+        {
 
             bool insertSucceeded = false;
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    BenKrabbeDBEntities.Players.Add(aPlayer);
-            //    if (0 < BenKrabbeDBEntities.SaveChanges())
-            //    {
-            //        insertSucceeded = true;
-            //    }
-            //}
-            //return insertSucceeded;
 
-            //Json Versie
 
             List<Player> players = GetAllPlayers();
             players.Add(aPlayer);
@@ -372,23 +248,10 @@ namespace Groepsproject_Blokken
             return insertSucceeded;
         }
         public static bool InsertManager(Manager aManager)
-        {            //Database Versie
+        {
 
             bool insertSucceeded = false;
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    BenKrabbeDBEntities.Managers.Add(aManager);
-            //    if (0 < BenKrabbeDBEntities.SaveChanges())
-            //    {
-            //        insertSucceeded = true;
-            //    }
-            //}
-            //return insertSucceeded;
-
-            ////Json Versie
-
             List<Manager> managers = GetAllManagers();
-
             managers.Add(aManager);
             JsonSerializerOptions options = new JsonSerializerOptions();
             options.IncludeFields = false;
@@ -400,21 +263,9 @@ namespace Groepsproject_Blokken
         }
         //1 record wijzigen: Players, Managers
         public static bool UpdatePlayer(Player aPlayer) //TOdo: kweet ff niet hoe het te schrijven
-        {            //Database Versie
+        {
 
             bool updateSucceeded = false;
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    BenKrabbeDBEntities.Entry(aPlayer).State = System.Data.Entity.EntityState.Modified;
-            //    if (0 < BenKrabbeDBEntities.SaveChanges())
-            //    {
-            //        updateSucceeded = true;
-            //    }
-            //}
-            //return updateSucceeded;
-
-            //Json Versie
-
             List<Player> players = GetAllPlayers();
             foreach (Player player in players)
             {
@@ -440,20 +291,9 @@ namespace Groepsproject_Blokken
 
         }
         public static bool UpdateManager(Manager aManager)
-        {            //Database Versie
+        {
 
             bool updateSucceeded = false;
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    BenKrabbeDBEntities.Entry(aManager).State = System.Data.Entity.EntityState.Modified;
-            //    if (0 < BenKrabbeDBEntities.SaveChanges())
-            //    {
-            //        updateSucceeded = true;
-            //    }
-            //}
-            //return updateSucceeded;
-
-            //Json Versie
             List<Manager> managers = GetAllManagers();
             foreach (Manager manager in managers)
             {
@@ -474,21 +314,8 @@ namespace Groepsproject_Blokken
         }
         //1 record verwijderen: Gamelogs, Players, Manager
         public static bool DeleteGameLogVS(GameLogVS aGameLogVS)
-        {            //Database Versie
-
+        {
             bool deleteSucceeded = false;
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    BenKrabbeDBEntities.Entry(aGameLogVS).State = System.Data.Entity.EntityState.Deleted;
-            //    if (0 < BenKrabbeDBEntities.SaveChanges())
-            //    {
-            //        deleteSucceeded = true;
-            //    }
-            //}
-            //return deleteSucceeded;
-
-            //Json
-
             List<GameLogVS> listGameLogVS = GetAllGameLogVS();
             foreach (GameLogVS gameLogVS in listGameLogVS)
             {
@@ -506,19 +333,9 @@ namespace Groepsproject_Blokken
             return deleteSucceeded;
         }
         public static bool DeleteGameLogSP(GameLogSP aGameLogSP)
-        {            //Database Versie
+        {
 
             bool deleteSucceeded = false;
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    BenKrabbeDBEntities.Entry(aGameLogSP).State = System.Data.Entity.EntityState.Deleted;
-            //    if (0 < BenKrabbeDBEntities.SaveChanges())
-            //    {
-            //        deleteSucceeded = true;
-            //    }
-            //}
-            //return deleteSucceeded;
-            //JSON Versie
             List<GameLogSP> listGameLogSP = GetAllGameLogSP();
             foreach (GameLogSP gameLogSP in listGameLogSP)
             {
@@ -536,20 +353,8 @@ namespace Groepsproject_Blokken
             return deleteSucceeded;
         }
         public static bool DeletePlayer(Player aPlayer)
-        {            //Database Versie
-
+        {
             bool deleteSucceeded = false;
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    BenKrabbeDBEntities.Entry(aPlayer).State = System.Data.Entity.EntityState.Deleted;
-            //    if (0 < BenKrabbeDBEntities.SaveChanges())
-            //    {
-            //        deleteSucceeded = true;
-            //    }
-            //}
-            //return deleteSucceeded;
-            //Json Versie
-
             List<Player> players = GetAllPlayers();
             foreach (Player player in players)
             {
@@ -565,24 +370,10 @@ namespace Groepsproject_Blokken
             string json = JsonSerializer.Serialize(players, options);
             File.WriteAllText("../../Players/CurrentPlayers", json);
             return deleteSucceeded;
-
         }
         public static bool DeleteManager(Manager aManager)
-        {            //Database Versie
-
+        {
             bool deleteSucceeded = false;
-            //using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
-            //{
-            //    BenKrabbeDBEntities.Entry(aManager).State = System.Data.Entity.EntityState.Deleted;
-            //    if (0 < BenKrabbeDBEntities.SaveChanges())
-            //    {
-            //        deleteSucceeded = true;
-            //    }
-            //}
-            //return deleteSucceeded;
-
-
-            //Json Versie
             List<Manager> managers = GetAllManagers();
             foreach (Manager manager in managers)
             {
@@ -599,5 +390,337 @@ namespace Groepsproject_Blokken
             File.WriteAllText("../../Managers/CurrentManagers", json);
             return deleteSucceeded;
         }
+
+
+
+
+
+
+
+
+
+
+
+        //DATABASE VERSIES - HIER NIET VOORBIJ GAAN  MET COMMENTEN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ////Haalt de ingelogde gebruiker op
+        //public static Player GetLoggedInPlayer(string naam, string wachtwoord)
+        //{
+
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        var query = from Player in BenKrabbeDBEntities.Players
+        //                    where Player.Name == naam && Player.Password == wachtwoord
+        //                    select Player;
+        //        return query.FirstOrDefault();
+        //    }
+
+        //}
+        //public static Admin GetLoggedInAdmin(string naam, string wachtwoord)
+        //{
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        var query = from Admin in BenKrabbeDBEntities.Admins
+        //                    where Admin.Name == naam && Admin.Password == wachtwoord
+        //                    select Admin;
+        //        return query.FirstOrDefault();
+        //    }
+        //}
+        //public static Manager GetLoggedInManager(string naam, string wachtwoord)
+        //{
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        var query = from Manager in BenKrabbeDBEntities.Managers
+        //                    where Manager.Name == naam && Manager.Password == wachtwoord
+        //                    select Manager;
+        //        return query.FirstOrDefault();
+        //    }
+        //}
+
+        ////1 record ophalen: Speler, Admin of Manager
+        //public static Player GetOnePlayer(int pkPlayer)
+        //{
+
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        var query = from Player in BenKrabbeDBEntities.Players
+        //                    where Player.SpelerID == pkPlayer
+        //                    select Player;
+        //        return query.FirstOrDefault();
+        //    }
+
+        //}
+        //public static Admin GetOneAdmin(int pkAdmin)
+        //{
+
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        var query = from Admin in BenKrabbeDBEntities.Admins
+        //                    where Admin.AdminID == pkAdmin
+        //                    select Admin;
+        //        return query.FirstOrDefault();
+        //    }
+
+        //}
+        //public static Manager GetOneManager(int pkManager)
+        //{
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        var query = from Manager in BenKrabbeDBEntities.Managers
+        //                    where Manager.ManagerID == pkManager
+        //                    select Manager;
+        //        return query.FirstOrDefault();
+        //    }
+        //}
+        ////alle records ophalen: Gamelogs, Players, Admins, Managers
+        //public static List<GameLogVS> GetAllGameLogVS()
+        //{
+
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        return BenKrabbeDBEntities.GamesLogVS.ToList();
+        //    }
+
+        //}
+        //public static List<GameLogSP> GetAllGameLogSP()
+        //{
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        return BenKrabbeDBEntities.GamesLogSP.ToList();
+        //    }
+
+        //}
+        //public static List<Player> GetAllPlayersSorted() //haalt spelers op en displayt voorlopig gewonnen games, later aanpassen naar winrate%? of verder filteren?
+        //{
+
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        return BenKrabbeDBEntities.Players.OrderBy(x => x.VSGamesWon).ToList();
+        //    }
+
+
+        //}
+        //public static List<GameLogSP> GetAllGameLogSPSorted()
+        //{
+
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        return BenKrabbeDBEntities.GamesLogSP.OrderBy(x => x.Score).ToList();
+        //    }
+
+
+        //}
+        //public static List<Player> GetAllPlayers()
+        //{
+
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        return BenKrabbeDBEntities.Players.ToList();
+        //    }
+
+
+        //}
+        //public static List<Admin> GetAllAdmins()
+        //{
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        return BenKrabbeDBEntities.Admins.ToList();
+        //    }
+
+        //}
+        //public static List<Manager> GetAllManagers()
+        //{
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        return BenKrabbeDBEntities.Managers.ToList();
+        //    }
+        //}
+        ////1 record toevoegen: Gamelogs, Players, Manager
+        //public static bool InsertGameLogVS(GameLogVS aGameLogVS)
+        //{
+
+        //    bool insertSucceeded = false;
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        BenKrabbeDBEntities.GamesLogVS.Add(aGameLogVS);
+        //        if (0 < BenKrabbeDBEntities.SaveChanges())
+        //        {
+        //            insertSucceeded = true;
+        //        }
+        //    }
+        //    return insertSucceeded;
+
+        //}
+        //public static bool InsertGameLogSP(GameLogSP aGameLogSP)
+        //{
+
+        //    bool insertSucceeded = false;
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        BenKrabbeDBEntities.GamesLogSP.Add(aGameLogSP);
+        //        if (0 < BenKrabbeDBEntities.SaveChanges())
+        //        {
+        //            insertSucceeded = true;
+        //        }
+        //    }
+        //    return insertSucceeded;
+
+        //}
+        //public static bool InsertPlayer(Player aPlayer)
+        //{
+
+        //    bool insertSucceeded = false;
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        BenKrabbeDBEntities.Players.Add(aPlayer);
+        //        if (0 < BenKrabbeDBEntities.SaveChanges())
+        //        {
+        //            insertSucceeded = true;
+        //        }
+        //    }
+        //    return insertSucceeded;
+
+
+        //}
+        //public static bool InsertManager(Manager aManager)
+        //{
+        //    bool insertSucceeded = false;
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        BenKrabbeDBEntities.Managers.Add(aManager);
+        //        if (0 < BenKrabbeDBEntities.SaveChanges())
+        //        {
+        //            insertSucceeded = true;
+        //        }
+        //    }
+        //    return insertSucceeded;
+        //}
+        ////1 record wijzigen: Players, Managers
+        //public static bool UpdatePlayer(Player aPlayer) //TOdo: kweet ff niet hoe het te schrijven
+        //{            //Database Versie
+
+        //    bool updateSucceeded = false;
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        BenKrabbeDBEntities.Entry(aPlayer).State = System.Data.Entity.EntityState.Modified;
+        //        if (0 < BenKrabbeDBEntities.SaveChanges())
+        //        {
+        //            updateSucceeded = true;
+        //        }
+        //    }
+        //    return updateSucceeded;
+        //}
+        //public static bool UpdateManager(Manager aManager)
+        //{
+
+        //    bool updateSucceeded = false;
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        BenKrabbeDBEntities.Entry(aManager).State = System.Data.Entity.EntityState.Modified;
+        //        if (0 < BenKrabbeDBEntities.SaveChanges())
+        //        {
+        //            updateSucceeded = true;
+        //        }
+        //    }
+        //    return updateSucceeded;
+        //}
+        ////1 record verwijderen: Gamelogs, Players, Manager
+        //public static bool DeleteGameLogVS(GameLogVS aGameLogVS)
+        //{            //Database Versie
+
+        //    bool deleteSucceeded = false;
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        BenKrabbeDBEntities.Entry(aGameLogVS).State = System.Data.Entity.EntityState.Deleted;
+        //        if (0 < BenKrabbeDBEntities.SaveChanges())
+        //        {
+        //            deleteSucceeded = true;
+        //        }
+        //    }
+        //    return deleteSucceeded;
+
+        //}
+        //public static bool DeleteGameLogSP(GameLogSP aGameLogSP)
+        //{
+
+        //    bool deleteSucceeded = false;
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        BenKrabbeDBEntities.Entry(aGameLogSP).State = System.Data.Entity.EntityState.Deleted;
+        //        if (0 < BenKrabbeDBEntities.SaveChanges())
+        //        {
+        //            deleteSucceeded = true;
+        //        }
+        //    }
+        //    return deleteSucceeded;
+        //}
+        //public static bool DeletePlayer(Player aPlayer)
+        //{
+        //    bool deleteSucceeded = false;
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        BenKrabbeDBEntities.Entry(aPlayer).State = System.Data.Entity.EntityState.Deleted;
+        //        if (0 < BenKrabbeDBEntities.SaveChanges())
+        //        {
+        //            deleteSucceeded = true;
+        //        }
+        //    }
+        //    return deleteSucceeded;
+
+
+        //}
+        //public static bool DeleteManager(Manager aManager)
+        //{
+
+        //    bool deleteSucceeded = false;
+        //    using (var BenKrabbeDBEntities = new BenKrabbeDBEntities())
+        //    {
+        //        BenKrabbeDBEntities.Entry(aManager).State = System.Data.Entity.EntityState.Deleted;
+        //        if (0 < BenKrabbeDBEntities.SaveChanges())
+        //        {
+        //            deleteSucceeded = true;
+        //        }
+        //    }
+        //    return deleteSucceeded;
+
+
+        //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //HIER NIET VOORBIJ GAAN MET COMMENTEN :)
+
+
+
+
+
     }
 }
