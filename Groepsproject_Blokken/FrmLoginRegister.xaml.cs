@@ -60,8 +60,13 @@ namespace Groepsproject_Blokken
         private void btnRegistreren_Click(object sender, RoutedEventArgs e)
         {
             FrmPlayerRegister frmPlayerRegister = new FrmPlayerRegister();
+            frmPlayerRegister.lstPlayers = playerList;
             this.Hide();
-            frmPlayerRegister.ShowDialog();
+            if (frmPlayerRegister.ShowDialog() == true)
+            {
+                playerList = frmPlayerRegister.lstPlayers;
+            }
+            this.ShowDialog();
         }
 
         private void btnDoorgaanAlsGast_Click(object sender, RoutedEventArgs e)

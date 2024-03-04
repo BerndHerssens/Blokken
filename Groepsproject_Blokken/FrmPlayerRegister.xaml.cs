@@ -20,6 +20,7 @@ namespace Groepsproject_Blokken
     /// </summary>
     public partial class FrmPlayerRegister : Window
     {
+        public List<Player> lstPlayers = new List<Player>();
         BitmapImage defaultProfile = new BitmapImage(new Uri(@"../../Profielfotos/default.jpg", UriKind.RelativeOrAbsolute));
         OpenFileDialog dialogChoosePicture = new OpenFileDialog
         {
@@ -34,6 +35,7 @@ namespace Groepsproject_Blokken
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             txtProfilePicturePreview.Source = defaultProfile;
+            txtProfilePictureSource.Text = defaultProfile.UriSource.ToString();
         }
 
         private void btnSelectProfilePic_Click(object sender, RoutedEventArgs e)
@@ -66,6 +68,9 @@ namespace Groepsproject_Blokken
                     if (DataManager.InsertPlayer(player) == true)
                     {
                         System.Windows.Forms.MessageBox.Show("Speler succesvol aangemaakt!", "Speler registreren", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        lstPlayers.Add(player);
+                        this.DialogResult = true;
+                        return;
                     }
                     else
                     {
