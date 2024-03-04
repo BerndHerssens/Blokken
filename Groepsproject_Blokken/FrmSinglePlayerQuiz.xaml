@@ -15,16 +15,20 @@
             <ColumnDefinition Width="102*"></ColumnDefinition>
             <ColumnDefinition Width="157*"></ColumnDefinition>
             <ColumnDefinition Width="36*"></ColumnDefinition>
-            <ColumnDefinition Width="350*"></ColumnDefinition>
+            <ColumnDefinition Name="Middelkolom" Width="350*"></ColumnDefinition>
             <ColumnDefinition Width="155*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="16*"></RowDefinition>
             <RowDefinition Height="84*"></RowDefinition>
+            <RowDefinition Name="ScoreEnTimerTabel" Height="16*"></RowDefinition>
             <RowDefinition Height="100*"></RowDefinition>
             <RowDefinition Height="100*"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Vertical" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2">
+        <TextBlock Grid.Row="2" Grid.Column="3" Name="txtScore" HorizontalAlignment="Center" VerticalAlignment="Stretch" Text="Score" FontFamily="{StaticResource BlokkenFont}" Background="#fea702"></TextBlock>
+        <Rectangle Grid.Column="4" Grid.Row="2" Stroke="#fea702" Height="{Binding ActualHeight, ElementName=BerndCrabbeIdleAnimation}" Width="auto" Opacity="0.8" Fill="#fea702"></Rectangle>
+        <TextBlock Grid.Row="2" Grid.Column="4" Name="txtTimer" HorizontalAlignment="Right" VerticalAlignment="Stretch" Text="Timer" FontFamily="{StaticResource BlokkenFont}" Background="#fea702" Width="{Binding ActualWidth, ElementName=BerndCrabbeIdleAnimation}" Height="{Binding ActualHeight, ElementName=BerndCrabbeIdleAnimation}"></TextBlock>
+        <StackPanel Orientation="Vertical" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -72,9 +76,17 @@ Value="80" />
                 </Button>
             </Grid>
         </StackPanel>
-        <TextBlock Name="txtVraag" Grid.Column="3" Grid.Row="1" FontSize="20"  TextWrapping="Wrap" Text="Vraag" VerticalAlignment="Center" HorizontalAlignment="Center" Background="#fea702" Height="121" Width="350" />
-        <MediaElement Name="BerndCrabbeIdleAnimation" Grid.Column="4" Grid.RowSpan="2" Stretch="Uniform" HorizontalAlignment="Right">
+        <Rectangle Grid.Column="3" Grid.RowSpan="2" Grid.ColumnSpan="2" Stroke="#fea702" Height="{Binding ActualHeight, ElementName=BerndCrabbeIdleAnimation}" Width="auto" Opacity="0.8" Fill="#fea702"></Rectangle>
+        <!--<TextBlock Grid.Column="3" Grid.RowSpan="2" Grid.ColumnSpan="2" FontSize="20" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" HorizontalAlignment="Center" Background="#fea702" Height="{Binding ActualHeight, ElementName=BerndCrabbeIdleAnimation}" Width="{Binding Width, ElementName=Middelkolom}" Opacity="0.8" FontFamily="{StaticResource BlokkenFont}">
             
+        </TextBlock>-->
+        <TextBlock Name="txtVraag" Grid.Column="3" Grid.RowSpan="2" FontSize="20" VerticalAlignment="Center" Text ="Vraag" HorizontalAlignment="Center"  FontFamily="{StaticResource BlokkenFont}" Foreground="Black" TextWrapping="Wrap"/>
+
+
+
+
+        <MediaElement Name="BerndCrabbeIdleAnimation" Grid.Column="4" Grid.RowSpan="2" Stretch="Uniform" HorizontalAlignment="Right">
+
             <MediaElement.Triggers>
                 <EventTrigger RoutedEvent="MediaElement.Loaded">
                     <EventTrigger.Actions>
@@ -87,6 +99,6 @@ Value="80" />
                 </EventTrigger>
             </MediaElement.Triggers>
         </MediaElement>
-        
+
     </Grid>
 </Window>
