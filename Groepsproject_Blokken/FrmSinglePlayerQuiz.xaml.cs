@@ -30,7 +30,7 @@ namespace Groepsproject_Blokken
         }
 
         public MediaPlayer backgroundMusicPlayer = new MediaPlayer();
-        string backgroundMusicFilePath = "/Assets/Blokken PlaceHolderLoop.wav";
+        
         private BrushConverter bc = new BrushConverter();
         private List<Question> lijstVragen = new List<Question>();
         private Random random = new Random();
@@ -171,13 +171,13 @@ namespace Groepsproject_Blokken
             if ((string)button.Content == nieuweVraag.CorrectAnswer)
             {
                 button.Background = Brushes.Green;
-                txtScore.Text = (Convert.ToInt32(txtScore.Text) + 50).ToString();
+                //txtScore.Text = (Convert.ToInt32(txtScore.Text) + 50).ToString();
             }
             else
             {
                 button.Background = Brushes.OrangeRed;
                 button.BorderThickness = new Thickness(0);
-                txtScore.Text = (Convert.ToInt32(txtScore.Text) - 50).ToString();
+                //txtScore.Text = (Convert.ToInt32(txtScore.Text) - 50).ToString();
 
                 ShowCorrectAnswer(new List<Button> { btnAntwoord1, btnAntwoord2, btnAntwoord3, btnAntwoord4 });
             }
@@ -227,13 +227,12 @@ namespace Groepsproject_Blokken
         }
         public void PlaybackMusic()
         {
-            if (backgroundMusicFilePath != null)
+            string backgroundMusicFilePath = "../../Assets/Blokken PlaceHolderLoop.wav";
+            if (!string.IsNullOrEmpty(backgroundMusicFilePath))
             {
-                backgroundMusicPlayer.Open(new Uri(backgroundMusicFilePath));
+                backgroundMusicPlayer.Open(new Uri(backgroundMusicFilePath, UriKind.Relative));
                 backgroundMusicPlayer.MediaEnded += new EventHandler(Media_Ended);
                 backgroundMusicPlayer.Play();
-
-                return;
             }
         }
         private void Media_Ended(object sender, EventArgs e)

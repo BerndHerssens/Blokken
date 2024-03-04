@@ -9,7 +9,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Assets/Background SinglePlayer.png" Stretch="Fill"/>
+            <ImageBrush ImageSource="\Assets\Background SinglePlayer.png" Stretch="Fill"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="102*"></ColumnDefinition>
@@ -72,23 +72,21 @@ Value="80" />
                 </Button>
             </Grid>
         </StackPanel>
-        <MediaElement Name="BerndCrabbeIdleAnimation" Grid.Column="4" Grid.RowSpan="3" Stretch="Uniform" HorizontalAlignment="Left" Margin="155,0,0,144" Width="0">
+        <TextBlock Name="txtVraag" Grid.Column="3" Grid.Row="1" FontSize="20"  TextWrapping="Wrap" Text="Vraag" VerticalAlignment="Center" HorizontalAlignment="Center" Background="#fea702" Height="121" Width="350" />
+        <MediaElement Name="BerndCrabbeIdleAnimation" Grid.Column="4" Grid.RowSpan="2" Stretch="Uniform" HorizontalAlignment="Right">
+            
             <MediaElement.Triggers>
                 <EventTrigger RoutedEvent="MediaElement.Loaded">
                     <EventTrigger.Actions>
                         <BeginStoryboard>
                             <Storyboard>
-
-
-                                <MediaTimeline Source="/Assets/Bernd Crabbe Idle Animation Loop.mp4" Storyboard.TargetName="BerndCrabbeIdleAnimation"  
-                 RepeatBehavior="Forever" />
-
+                                <MediaTimeline Source="Assets/Bernd Crabbe Idle Animation Loop.mp4" Storyboard.TargetName="BerndCrabbeIdleAnimation" RepeatBehavior="Forever" />
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger.Actions>
                 </EventTrigger>
             </MediaElement.Triggers>
         </MediaElement>
-        <TextBlock Name="txtVraag" Grid.Column="3" Grid.Row="1" FontSize="20"  TextWrapping="Wrap" Text="Vraag" VerticalAlignment="Center" HorizontalAlignment="Center" Background="#fea702" Height="121" Width="350" />
+        
     </Grid>
 </Window>
