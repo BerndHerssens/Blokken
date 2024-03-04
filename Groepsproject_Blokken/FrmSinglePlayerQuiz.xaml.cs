@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Groepsproject_Blokken
 {
@@ -27,6 +28,10 @@ namespace Groepsproject_Blokken
             PlaybackMusic();
             InlezenVragen();
             RandomQuestionPicker();
+            timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Tick += timer_Tick;
+            timer.Start();
         }
 
         public MediaPlayer backgroundMusicPlayer = new MediaPlayer();
@@ -37,7 +42,8 @@ namespace Groepsproject_Blokken
         private Question nieuweVraag = new Question();
 
         private System.Timers.Timer _delayTimer;
-
+        private int teller = 120;
+        private DispatcherTimer timer;
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
@@ -239,6 +245,22 @@ namespace Groepsproject_Blokken
         {
             backgroundMusicPlayer.Position = TimeSpan.Zero;
             backgroundMusicPlayer.Play();
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            //teller--;
+            //txtTimer.Text = teller.ToString();
+            //if (teller < 0)
+            //{
+            //    GameLogSP eenGame = new GameLogSP();
+            //    eenGame.PlayerName = "Gast"; // TODO : We moeten de speler overdragen
+            //    eenGame.Date = DateTime.Now;
+            //    eenGame.Score = Convert.ToInt32(txtScore.Text);
+            //    eenGame.GameNumber = eenGame.GetHashCode();
+            //    DataManager.InsertGameLogSP(eenGame);
+
+            //}
         }
     }  
 }

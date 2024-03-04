@@ -26,8 +26,8 @@
             <RowDefinition Height="100*"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="2" Grid.Column="3" Name="txtScore" HorizontalAlignment="Center" VerticalAlignment="Stretch" Text="Score" FontFamily="{StaticResource BlokkenFont}" Background="#fea702"></TextBlock>
-        <Rectangle Grid.Column="4" Grid.Row="2" Stroke="#fea702" Height="{Binding ActualHeight, ElementName=BerndCrabbeIdleAnimation}" Width="auto" Opacity="0.8" Fill="#fea702"></Rectangle>
-        <TextBlock Grid.Row="2" Grid.Column="4" Name="txtTimer" HorizontalAlignment="Right" VerticalAlignment="Stretch" Text="Timer" FontFamily="{StaticResource BlokkenFont}" Background="#fea702" Width="{Binding ActualWidth, ElementName=BerndCrabbeIdleAnimation}" Height="{Binding ActualHeight, ElementName=BerndCrabbeIdleAnimation}"></TextBlock>
+        <!--<Rectangle Grid.Column="4" Grid.RowSpan="3" Stroke="#fea702" Height="{Binding ActualHeight, ElementName=BerndCrabbeIdleAnimation}" Width="auto" Opacity="0.8" Fill="#fea702"></Rectangle>-->
+        <TextBlock Grid.RowSpan="3" Grid.Column="4" Name="txtTimer" HorizontalAlignment="Right" VerticalAlignment="Stretch" Text="Timer" FontFamily="{StaticResource BlokkenFont}" Background="#fea702" Width="{Binding ActualWidth, ElementName=BerndCrabbeIdleAnimation}" Opacity="0.8" TextAlignment="Center"></TextBlock>
         <StackPanel Orientation="Vertical" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2">
             <Grid>
                 <Grid.ColumnDefinitions>
