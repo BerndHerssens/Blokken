@@ -177,6 +177,7 @@ namespace Groepsproject_Blokken
             if ((string)button.Content == nieuweVraag.CorrectAnswer)
             {
                 button.Background = Brushes.Green;
+                button.BorderThickness = new Thickness(0);
                 //txtScore.Text = (Convert.ToInt32(txtScore.Text) + 50).ToString();
             }
             else

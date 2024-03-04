@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Groepsproject_Blokken"
         mc:Ignorable="d"
-        Title="FrmSinglePlayerQuiz" Height="450" Width="800">
+        Title="FrmSinglePlayerQuiz" Height="720" Width="1280" MinHeight="720" MinWidth="1280"
+        WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Grid.Background>
@@ -22,12 +23,13 @@
             <RowDefinition Height="16*"></RowDefinition>
             <RowDefinition Height="84*"></RowDefinition>
             <RowDefinition Name="ScoreEnTimerTabel" Height="16*"></RowDefinition>
-            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Name="AntwoordenTabel" Height="100*"></RowDefinition>
             <RowDefinition Height="100*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="2" Grid.Column="3" Name="txtScore" HorizontalAlignment="Center" VerticalAlignment="Stretch" Text="Score" FontFamily="{StaticResource BlokkenFont}" Background="#fea702"></TextBlock>
+        <!--<Label Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Name="txtScore" HorizontalAlignment="Center" VerticalAlignment="Stretch" Content="Score" FontFamily="{StaticResource BlokkenFont}" Background="#fea702" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" FontWeight="Bold" Opacity="0.8"></Label>-->
         <!--<Rectangle Grid.Column="4" Grid.RowSpan="3" Stroke="#fea702" Height="{Binding ActualHeight, ElementName=BerndCrabbeIdleAnimation}" Width="auto" Opacity="0.8" Fill="#fea702"></Rectangle>-->
-        <TextBlock Grid.RowSpan="3" Grid.Column="4" Name="txtTimer" HorizontalAlignment="Right" VerticalAlignment="Stretch" Text="Timer" FontFamily="{StaticResource BlokkenFont}" Background="#fea702" Width="{Binding ActualWidth, ElementName=BerndCrabbeIdleAnimation}" Opacity="0.8" TextAlignment="Center"></TextBlock>
+        
+        <Label Grid.RowSpan="3" Grid.Column="4" Name="txtTimer" HorizontalAlignment="Right" VerticalAlignment="Stretch" Content="Score en Timer" FontFamily="{StaticResource BlokkenFont}" Background="#fea702" Width="{Binding ActualWidth, ElementName=BerndCrabbeIdleAnimation}" Opacity="0.8" HorizontalContentAlignment="Center" VerticalContentAlignment ="Bottom" FontWeight="Bold"></Label>
         <StackPanel Orientation="Vertical" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -35,10 +37,10 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Name="HoogteAntwoorden" Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button Name="btnAntwoord1" Content="Antwoord1" Click="btnAntwoord1_Click" Grid.Column="0" Grid.Row="0"  Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Height="65" Margin="5" MouseEnter="btnAntwoord1_MouseEnter" MouseLeave="btnAntwoord1_MouseLeave">
+                <Button Name="btnAntwoord1" Content="Antwoord1" Click="btnAntwoord1_Click" Grid.Column="0" Grid.Row="0"  Background="#fea702" FontFamily="{StaticResource BlokkenFont}" MinHeight="60" Margin="5" MouseEnter="btnAntwoord1_MouseEnter" MouseLeave="btnAntwoord1_MouseLeave" Opacity="0.8">
 
                     <Button.Resources>
                         <Style TargetType="Border">
@@ -47,7 +49,7 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button Name="btnAntwoord2" Content="Antwoord2" Click="btnAntwoord2_Click" Grid.Column="1" Grid.Row="0"  Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Margin="4" MouseEnter="btnAntwoord2_MouseEnter" MouseLeave="btnAntwoord2_MouseLeave">
+                <Button Name="btnAntwoord2" Content="Antwoord2" Click="btnAntwoord2_Click" Grid.Column="1" Grid.Row="0"  Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Margin="4" MouseEnter="btnAntwoord2_MouseEnter" MouseLeave="btnAntwoord2_MouseLeave" Opacity="0.8">
 
                     <Button.Resources>
                         <Style TargetType="Border">
@@ -56,7 +58,7 @@ Value="80" />
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button Name="btnAntwoord3" Content="Antwoord3" Click="btnAntwoord3_Click" Grid.Column="0" Grid.Row="1"  Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Height="65" Margin="5" MouseEnter="btnAntwoord3_MouseEnter" MouseLeave="btnAntwoord3_MouseLeave" >
+                <Button Name="btnAntwoord3" Content="Antwoord3" Click="btnAntwoord3_Click" Grid.Column="0" Grid.Row="1"  Background="#fea702" FontFamily="{StaticResource BlokkenFont}" MinHeight="60" Margin="5" MouseEnter="btnAntwoord3_MouseEnter" MouseLeave="btnAntwoord3_MouseLeave" Opacity="0.8" >
 
                     <Button.Resources>
                         <Style TargetType="Border">
@@ -65,7 +67,7 @@ Value="80" />
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button Name="btnAntwoord4" Content="Antwoord4" Click="btnAntwoord4_Click" Grid.Column="1" Grid.Row="1"  Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Margin="5" MouseEnter="btnAntwoord4_MouseEnter" MouseLeave="btnAntwoord4_MouseLeave">
+                <Button Name="btnAntwoord4" Content="Antwoord4" Click="btnAntwoord4_Click" Grid.Column="1" Grid.Row="1"  Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Margin="5" MouseEnter="btnAntwoord4_MouseEnter" MouseLeave="btnAntwoord4_MouseLeave" Opacity="0.8">
 
                     <Button.Resources>
                         <Style TargetType="Border">
