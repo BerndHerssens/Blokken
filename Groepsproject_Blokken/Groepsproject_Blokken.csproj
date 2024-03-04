@@ -133,6 +133,9 @@
     <Compile Include="Block.cs" />
     <Compile Include="BlockQueue.cs" />
     <Compile Include="DataManager.cs" />
+    <Compile Include="FrmPlayerRegister.xaml.cs">
+      <DependentUpon>FrmPlayerRegister.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FrmSinglePlayerQuiz.xaml.cs">
       <DependentUpon>FrmSinglePlayerQuiz.xaml</DependentUpon>
     </Compile>
@@ -165,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FrmManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmPlayerRegister.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -274,6 +281,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="Profielfotos\default.jpg" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -327,7 +335,6 @@
     <Folder Include="Managers\" />
     <Folder Include="Players\" />
     <Folder Include="PrimeWords\" />
-    <Folder Include="Profielfotos\" />
     <Folder Include="Questionaires\" />
   </ItemGroup>
   <ItemGroup>
