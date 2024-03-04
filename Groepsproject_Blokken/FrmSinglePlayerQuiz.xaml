@@ -6,7 +6,89 @@
         xmlns:local="clr-namespace:Groepsproject_Blokken"
         mc:Ignorable="d"
         Title="FrmSinglePlayerQuiz" Height="450" Width="800">
+
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/Background SinglePlayer.png" Stretch="Fill"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="102*"></ColumnDefinition>
+            <ColumnDefinition Width="157*"></ColumnDefinition>
+            <ColumnDefinition Width="36*"></ColumnDefinition>
+            <ColumnDefinition Width="350*"></ColumnDefinition>
+            <ColumnDefinition Width="155*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="16*"></RowDefinition>
+            <RowDefinition Height="84*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="100*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button Name="btnAntwoord1" Content="Antwoord1" Click="btnAntwoord1_Click" Grid.Column="0" Grid.Row="0"  Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Height="65" Margin="5" MouseEnter="btnAntwoord1_MouseEnter" MouseLeave="btnAntwoord1_MouseLeave">
+
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius"
+                Value="80" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button Name="btnAntwoord2" Content="Antwoord2" Click="btnAntwoord2_Click" Grid.Column="1" Grid.Row="0"  Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Margin="4" MouseEnter="btnAntwoord2_MouseEnter" MouseLeave="btnAntwoord2_MouseLeave">
+
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius"
+Value="80" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button Name="btnAntwoord3" Content="Antwoord3" Click="btnAntwoord3_Click" Grid.Column="0" Grid.Row="1"  Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Height="65" Margin="5" MouseEnter="btnAntwoord3_MouseEnter" MouseLeave="btnAntwoord3_MouseLeave" >
+
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius"
+Value="80" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button Name="btnAntwoord4" Content="Antwoord4" Click="btnAntwoord4_Click" Grid.Column="1" Grid.Row="1"  Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Margin="5" MouseEnter="btnAntwoord4_MouseEnter" MouseLeave="btnAntwoord4_MouseLeave">
+
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius"
+Value="80" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Grid>
+        </StackPanel>
+        <MediaElement Name="BerndCrabbeIdleAnimation" Grid.Column="4" Grid.RowSpan="3" Stretch="Uniform" HorizontalAlignment="Left" Margin="155,0,0,144" Width="0">
+            <MediaElement.Triggers>
+                <EventTrigger RoutedEvent="MediaElement.Loaded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+
+
+                                <MediaTimeline Source="/Assets/Bernd Crabbe Idle Animation Loop.mp4" Storyboard.TargetName="BerndCrabbeIdleAnimation"  
+                 RepeatBehavior="Forever" />
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </MediaElement.Triggers>
+        </MediaElement>
+        <TextBlock Name="txtVraag" Grid.Column="3" Grid.Row="1" FontSize="20"  TextWrapping="Wrap" Text="Vraag" VerticalAlignment="Center" HorizontalAlignment="Center" Background="#fea702" Height="121" Width="350" />
     </Grid>
 </Window>
