@@ -22,6 +22,7 @@ namespace Groepsproject_Blokken
     /// </summary>
     public partial class FrmSinglePlayerQuiz : Window
     {
+        public Player ingelogdePlayerSPQuiz = new Player();
         public FrmSinglePlayerQuiz()
         {
             InitializeComponent();
@@ -250,18 +251,27 @@ namespace Groepsproject_Blokken
 
         void timer_Tick(object sender, EventArgs e)
         {
-            //teller--;
-            //txtTimer.Text = teller.ToString();
-            //if (teller < 0)
-            //{
-            //    GameLogSP eenGame = new GameLogSP();
-            //    eenGame.PlayerName = "Gast"; // TODO : We moeten de speler overdragen
-            //    eenGame.Date = DateTime.Now;
-            //    eenGame.Score = Convert.ToInt32(txtScore.Text);
-            //    eenGame.GameNumber = eenGame.GetHashCode();
-            //    DataManager.InsertGameLogSP(eenGame);
-
-            //}
+            teller--;
+            lblTimer.Content = teller.ToString();
+            if (teller <= 0)
+            {
+                if (ingelogdePlayerSPQuiz != null)
+                {
+                    GameLogSP eenGame = new GameLogSP();
+                    eenGame.PlayerName = ingelogdePlayerSPQuiz.Name;
+                    eenGame.Date = DateTime.Now;
+                    eenGame.Score = Convert.ToInt32(lblTimer.Content);
+                    eenGame.GameNumber = eenGame.GetHashCode();
+                }
+                else
+                {
+                    GameLogSP eenGame = new GameLogSP();
+                    eenGame.PlayerName = "Gast";
+                    eenGame.Date = DateTime.Now;
+                    eenGame.Score = Convert.ToInt32(lblTimer.Content);
+                    eenGame.GameNumber = eenGame.GetHashCode();
+                }
+            }
         }
     }  
 }

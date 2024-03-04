@@ -16,7 +16,7 @@ namespace Groepsproject_Blokken
         private void btnSingle_Click(object sender, RoutedEventArgs e)
         {
             FrmSinglePlayerQuiz windowSP = new FrmSinglePlayerQuiz();
-            //windowSP.ingelogdePlayerSPQuiz = ingelogdePlayerMainwindow;
+            windowSP.ingelogdePlayerSPQuiz = ingelogdePlayerMainWindow;
             this.Close();
             windowSP.ShowDialog();
         }
