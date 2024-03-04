@@ -133,6 +133,9 @@
     <Compile Include="Block.cs" />
     <Compile Include="BlockQueue.cs" />
     <Compile Include="DataManager.cs" />
+    <Compile Include="FrmSinglePlayerQuiz.xaml.cs">
+      <DependentUpon>FrmSinglePlayerQuiz.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GameGrid.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="IBlock.cs" />
@@ -170,6 +173,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FrmQuizWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FrmSinglePlayerQuiz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
