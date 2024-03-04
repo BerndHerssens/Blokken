@@ -43,8 +43,9 @@ namespace Groepsproject_Blokken
         private Question nieuweVraag = new Question();
 
         private System.Timers.Timer _delayTimer;
-        private int teller = 120;
+        private int tellerTimer = 60;
         private DispatcherTimer timer;
+        private int score = 0;
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
@@ -179,12 +180,15 @@ namespace Groepsproject_Blokken
             {
                 button.Background = Brushes.Green;
                 button.BorderThickness = new Thickness(0);
+                score += 50;
+                lblTimerEnScore.Content = "Score: " + score.ToString() + " " + "Timer: " + tellerTimer;
                 //txtScore.Text = (Convert.ToInt32(txtScore.Text) + 50).ToString();
             }
             else
             {
                 button.Background = Brushes.OrangeRed;
                 button.BorderThickness = new Thickness(0);
+                score -= 50;
                 //txtScore.Text = (Convert.ToInt32(txtScore.Text) - 50).ToString();
 
                 ShowCorrectAnswer(new List<Button> { btnAntwoord1, btnAntwoord2, btnAntwoord3, btnAntwoord4 });
@@ -251,16 +255,16 @@ namespace Groepsproject_Blokken
 
         void timer_Tick(object sender, EventArgs e)
         {
-            teller--;
-            lblTimer.Content = teller.ToString();
-            if (teller <= 0)
+            tellerTimer--;
+            lblTimerEnScore.Content = "Score: " + score.ToString() + " " + "Timer: " + tellerTimer;
+            if (tellerTimer <= 0)
             {
                 if (ingelogdePlayerSPQuiz != null)
                 {
                     GameLogSP eenGame = new GameLogSP();
                     eenGame.PlayerName = ingelogdePlayerSPQuiz.Name;
                     eenGame.Date = DateTime.Now;
-                    eenGame.Score = Convert.ToInt32(lblTimer.Content);
+                    eenGame.Score = Convert.ToInt32(score);
                     eenGame.GameNumber = eenGame.GetHashCode();
                 }
                 else
@@ -268,9 +272,12 @@ namespace Groepsproject_Blokken
                     GameLogSP eenGame = new GameLogSP();
                     eenGame.PlayerName = "Gast";
                     eenGame.Date = DateTime.Now;
-                    eenGame.Score = Convert.ToInt32(lblTimer.Content);
+                    eenGame.Score = Convert.ToInt32(score);
                     eenGame.GameNumber = eenGame.GetHashCode();
                 }
+                MessageBox.Show("Game Over! Uw score was: " + score, "Game Over!",MessageBoxButton.OK, MessageBoxImage.Stop);
+                timer.Stop();
+                this.Close();
             }
         }
     }  

@@ -29,7 +29,7 @@
         <!--<Label Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Name="txtScore" HorizontalAlignment="Center" VerticalAlignment="Stretch" Content="Score" FontFamily="{StaticResource BlokkenFont}" Background="#fea702" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" FontWeight="Bold" Opacity="0.8"></Label>-->
         <!--<Rectangle Grid.Column="4" Grid.RowSpan="3" Stroke="#fea702" Height="{Binding ActualHeight, ElementName=BerndCrabbeIdleAnimation}" Width="auto" Opacity="0.8" Fill="#fea702"></Rectangle>-->
         
-        <Label Grid.RowSpan="3" Grid.Column="4" x:Name="lblTimer" HorizontalAlignment="Right" VerticalAlignment="Stretch" Content="Score en Timer" FontFamily="{StaticResource BlokkenFont}" Background="#fea702" Width="{Binding ActualWidth, ElementName=BerndCrabbeIdleAnimation}" Opacity="0.8" HorizontalContentAlignment="Center" VerticalContentAlignment ="Bottom" FontWeight="Bold"></Label>
+        <Label Grid.RowSpan="3" Grid.Column="4" x:Name="lblTimerEnScore" HorizontalAlignment="Right" VerticalAlignment="Stretch" Content="Score: 0 Timer: 120" FontFamily="{StaticResource BlokkenFont}" Background="#fea702" Width="{Binding ActualWidth, ElementName=BerndCrabbeIdleAnimation}" Opacity="0.8" HorizontalContentAlignment="Center" VerticalContentAlignment ="Bottom" FontWeight="Bold"></Label>
         <StackPanel Orientation="Vertical" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2">
             <Grid>
                 <Grid.ColumnDefinitions>
