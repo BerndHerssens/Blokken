@@ -7,6 +7,7 @@ namespace Groepsproject_Blokken
     /// </summary>
     public partial class FrmVersusQuizWindow : Window
     {
+        public Player ingelogdePlayerMainWindow = new Player();
         public FrmVersusQuizWindow()
         {
             InitializeComponent();

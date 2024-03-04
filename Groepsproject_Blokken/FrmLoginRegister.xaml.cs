@@ -171,6 +171,7 @@ namespace Groepsproject_Blokken
                         ingelogdePlayer = DataManager.GetLoggedInPlayer(txtUsername.Text, txtPassword.Password);
                         playerGevonden = true;
                         MainWindow mainwindow = new MainWindow();
+                        mainwindow.ingelogdePlayerLoginscreen = ingelogdePlayer;
                         this.Close();
                         mainwindow.ShowDialog();
                     }

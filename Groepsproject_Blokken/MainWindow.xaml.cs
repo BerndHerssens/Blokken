@@ -7,7 +7,7 @@ namespace Groepsproject_Blokken
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        public Player ingelogdePlayerLoginscreen = new Player();
         public MainWindow()
         {
             InitializeComponent();
@@ -16,6 +16,7 @@ namespace Groepsproject_Blokken
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
             FrmGametype chooseGame = new FrmGametype();
+            chooseGame.ingelogdePlayerMainWindow = ingelogdePlayerLoginscreen;
             this.Close();
             chooseGame.ShowDialog();
         }
@@ -23,6 +24,7 @@ namespace Groepsproject_Blokken
         private void btnHighscore_Click(object sender, RoutedEventArgs e)
         {
             FrmHighscores frmHighscores = new FrmHighscores();
+            frmHighscores.ingelogdePlayerMainWindow = ingelogdePlayerLoginscreen;
             this.Close();
             frmHighscores.ShowDialog();
 
@@ -31,6 +33,7 @@ namespace Groepsproject_Blokken
         private void btnProfile_Click(object sender, RoutedEventArgs e)
         {
             FrmPlayerscreen frmPlayerscreen = new FrmPlayerscreen();
+            frmPlayerscreen.ingelogdePlayerMainWindow = ingelogdePlayerLoginscreen;
             this.Close();
             frmPlayerscreen.ShowDialog();
         }
