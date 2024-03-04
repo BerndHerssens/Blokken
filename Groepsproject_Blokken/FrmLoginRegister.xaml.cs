@@ -72,6 +72,7 @@ namespace Groepsproject_Blokken
         private void btnDoorgaanAlsGast_Click(object sender, RoutedEventArgs e)
         {
             FrmSinglePlayerQuiz frmQuizWindow = new FrmSinglePlayerQuiz();
+            this.Hide();
             frmQuizWindow.ShowDialog();
 
         }
@@ -176,6 +177,10 @@ namespace Groepsproject_Blokken
                         mainwindow.ShowDialog();
                     }
                 }
+            }
+            if (playerGevonden == false && managerGevonden == false && adminGevonden == false)
+            {
+                MessageBox.Show("Gebruiker werd niet gevonden!", "Gebruiker niet gevonden", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             //reset bools voor volgende login
             adminGevonden = false;

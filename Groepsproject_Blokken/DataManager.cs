@@ -128,7 +128,7 @@ namespace Groepsproject_Blokken
         }
         public static List<GameLogSP> GetAllGameLogSP()
         {
-            using (StreamReader r = new StreamReader("../../GameLogVS/GamelogsSP"))
+            using (StreamReader r = new StreamReader("../../GameLogSP/GamelogsSP"))
             {
                 List<GameLogSP> lijstSP = new List<GameLogSP>();
                 JsonSerializerOptions options = new JsonSerializerOptions();

@@ -1,18 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace Groepsproject_Blokken
@@ -22,7 +14,7 @@ namespace Groepsproject_Blokken
     /// </summary>
     public partial class FrmSinglePlayerQuiz : Window
     {
-        public Player ingelogdePlayerSPQuiz = new Player();
+        public Player ingelogdePlayerSPQuiz;
         public FrmSinglePlayerQuiz()
         {
             InitializeComponent();
@@ -36,12 +28,12 @@ namespace Groepsproject_Blokken
         }
 
         public MediaPlayer backgroundMusicPlayer = new MediaPlayer();
-        
+
         private BrushConverter bc = new BrushConverter();
         private List<Question> lijstVragen = new List<Question>();
         private Random random = new Random();
         private Question nieuweVraag = new Question();
-
+        private GameLogSP eenGame = new GameLogSP();
         private System.Timers.Timer _delayTimer;
         private int tellerTimer = 60;
         private DispatcherTimer timer;
@@ -244,6 +236,7 @@ namespace Groepsproject_Blokken
             {
                 backgroundMusicPlayer.Open(new Uri(backgroundMusicFilePath, UriKind.Relative));
                 backgroundMusicPlayer.MediaEnded += new EventHandler(Media_Ended);
+                backgroundMusicPlayer.Volume = 0.15;
                 backgroundMusicPlayer.Play();
             }
         }
@@ -259,26 +252,38 @@ namespace Groepsproject_Blokken
             lblTimerEnScore.Content = "Score: " + score.ToString() + " " + "Timer: " + tellerTimer;
             if (tellerTimer <= 0)
             {
+                backgroundMusicPlayer.Stop();
+                MessageBox.Show("Game Over! Uw score was: " + score, "Game Over!", MessageBoxButton.OK, MessageBoxImage.Stop);
+                timer.Stop();
+
                 if (ingelogdePlayerSPQuiz != null)
                 {
-                    GameLogSP eenGame = new GameLogSP();
+                    eenGame = new GameLogSP();
                     eenGame.PlayerName = ingelogdePlayerSPQuiz.Name;
                     eenGame.Date = DateTime.Now;
                     eenGame.Score = Convert.ToInt32(score);
                     eenGame.GameNumber = eenGame.GetHashCode();
+                    DataManager.InsertGameLogSP(eenGame);
+                    MainWindow mainwindow = new MainWindow();
+                    mainwindow.ingelogdePlayerLoginscreen = ingelogdePlayerSPQuiz;
+                    this.Close();
+                    mainwindow.ShowDialog();
                 }
                 else
                 {
-                    GameLogSP eenGame = new GameLogSP();
+                    eenGame = new GameLogSP();
                     eenGame.PlayerName = "Gast";
                     eenGame.Date = DateTime.Now;
                     eenGame.Score = Convert.ToInt32(score);
                     eenGame.GameNumber = eenGame.GetHashCode();
+                    DataManager.InsertGameLogSP(eenGame);
+                    this.Close();
+                    System.Windows.Forms.Application.Restart();
                 }
-                MessageBox.Show("Game Over! Uw score was: " + score, "Game Over!",MessageBoxButton.OK, MessageBoxImage.Stop);
-                timer.Stop();
-                this.Close();
+
+
+
             }
         }
-    }  
+    }
 }
