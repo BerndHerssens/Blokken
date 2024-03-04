@@ -64,7 +64,7 @@ namespace Groepsproject_Blokken
 
         private void btnDoorgaanAlsGast_Click(object sender, RoutedEventArgs e)
         {
-            FrmQuizWindow frmQuizWindow = new FrmQuizWindow();
+            FrmSinglePlayerQuiz frmQuizWindow = new FrmSinglePlayerQuiz();
             frmQuizWindow.ShowDialog();
 
         }
