@@ -26,5 +26,33 @@
     "PlayerName": "Illyav",
     "Score": 50,
     "Date": "2024-03-04T17:10:55.2816204+01:00"
+  },
+  {
+    "ScoreID": 0,
+    "GameNumber": 49150280,
+    "PlayerName": "Gast",
+    "Score": 50,
+    "Date": "2024-03-04T17:39:45.889463+01:00"
+  },
+  {
+    "ScoreID": 0,
+    "GameNumber": 49150280,
+    "PlayerName": "Gast",
+    "Score": 0,
+    "Date": "2024-03-04T17:42:11.218902+01:00"
+  },
+  {
+    "ScoreID": 0,
+    "GameNumber": 9647994,
+    "PlayerName": "Hans",
+    "Score": 200,
+    "Date": "2024-03-05T08:36:59.9206196+01:00"
+  },
+  {
+    "ScoreID": 0,
+    "GameNumber": 48257652,
+    "PlayerName": "Gast",
+    "Score": 100,
+    "Date": "2024-03-05T08:40:01.7587963+01:00"
   }
 ]

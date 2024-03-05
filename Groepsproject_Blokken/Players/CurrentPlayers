@@ -46,5 +46,17 @@
     "VSHighscore": null,
     "VSGamesPlayed": null,
     "VSGamesWon": null
+  },
+  {
+    "SpelerID": 0,
+    "Name": "Hans",
+    "Password": "Hans123",
+    "ProfilePicture": "file:///C:/Users/gille/Downloads/default.jpg",
+    "SPHighscore": null,
+    "SPGamesPlayed": null,
+    "SPGamesWon": null,
+    "VSHighscore": null,
+    "VSGamesPlayed": null,
+    "VSGamesWon": null
   }
 ]

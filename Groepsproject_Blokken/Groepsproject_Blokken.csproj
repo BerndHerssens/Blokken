@@ -314,6 +314,22 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Oranje lijn.png" />
+    <Resource Include="Assets\Tetris\Block-Empty.png" />
+    <Resource Include="Assets\Tetris\Block-I.png" />
+    <Resource Include="Assets\Tetris\Block-J.png" />
+    <Resource Include="Assets\Tetris\Block-L.png" />
+    <Resource Include="Assets\Tetris\Block-O.png" />
+    <Resource Include="Assets\Tetris\Block-S.png" />
+    <Resource Include="Assets\Tetris\Block-T.png" />
+    <Resource Include="Assets\Tetris\Block-Z.png" />
+    <Resource Include="Assets\Tetris\TileBlue.png" />
+    <Resource Include="Assets\Tetris\TileCyan.png" />
+    <Resource Include="Assets\Tetris\TileEmpty.png" />
+    <Resource Include="Assets\Tetris\TileGreen.png" />
+    <Resource Include="Assets\Tetris\TileOrange.png" />
+    <Resource Include="Assets\Tetris\TilePurple.png" />
+    <Resource Include="Assets\Tetris\TileRed.png" />
+    <Resource Include="Assets\Tetris\TileYellow.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
