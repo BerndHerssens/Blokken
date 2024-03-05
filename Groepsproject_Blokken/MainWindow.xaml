@@ -6,62 +6,98 @@
         xmlns:local="clr-namespace:Groepsproject_Blokken"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="450"
-        Width="800"
+        Height="480"
+        Width="854"
         WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderThickness="8" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" CornerRadius="25" BorderBrush="#fea702">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsMouseOver" Value="true">
+
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation To="230"  Storyboard.TargetProperty="Width" Duration="0:0:0.3" />
+                                            <DoubleAnimation To="90"  Storyboard.TargetProperty="Height" Duration="0:0:0.3" />
+                                            <ColorAnimation To="#0D0080" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" Duration="0:0:0.3"/>
+                                            <ColorAnimation To="WhiteSmoke" Storyboard.TargetProperty="Foreground.(SolidColorBrush.Color)" Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation To="200"  Storyboard.TargetProperty="Width" Duration="0:0:0.3" />
+                                            <DoubleAnimation To="60"  Storyboard.TargetProperty="Height" Duration="0:0:0.3" />
+                                            <ColorAnimation To="#fea702" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" Duration="0:0:0.3"/>
+                                            <ColorAnimation To="Black" Storyboard.TargetProperty="Foreground.(SolidColorBrush.Color)" Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button x:Name="btnPlay"
+                    Margin="3"
                     Content="Play"
                     Width="200"
                     Height="60"
                     FontSize="30"
-                    Click="btnPlay_Click">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius"
-                                Value="40" />
-                    </Style>
-                </Button.Resources>
+                    Click="btnPlay_Click"
+                    Background="#fea702"
+                    Foreground="Black"
+FontFamily="{StaticResource BlokkenFont}">
             </Button>
             <Button x:Name="btnHighscore"
+                    Margin="3"
                     Content="Highscore"
                     Width="200"
                     Height="60"
                     FontSize="30"
+                    Background="#fea702"
+                    Foreground="Black"
+FontFamily="{StaticResource BlokkenFont}"
                     Click="btnHighscore_Click">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius"
-                                Value="40" />
-                    </Style>
-                </Button.Resources>
+
             </Button>
             <Button x:Name="btnProfile"
+                    Margin="3"
                     Content="Profile"
                     Width="200"
                     Height="60"
                     FontSize="30"
+                    Background="#fea702"
+                    Foreground="Black"
+FontFamily="{StaticResource BlokkenFont}"
                     Click="btnProfile_Click">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius"
-                                Value="40" />
-                    </Style>
-                </Button.Resources>
             </Button>
             <Button x:Name="btnReturn"
+                    Margin="3"
                     Content="Return"
                     Width="200"
                     Height="60"
                     FontSize="30"
+                    Background="#fea702"
+                    Foreground="Black"
+                    FontFamily="{StaticResource BlokkenFont}"
                     Click="btnReturn_Click">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius"
-                                Value="40" />
-                    </Style>
-                </Button.Resources>
             </Button>
         </StackPanel>
     </Grid>
