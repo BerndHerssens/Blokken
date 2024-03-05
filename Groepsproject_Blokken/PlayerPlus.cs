@@ -108,7 +108,7 @@ namespace Groepsproject_Blokken
             var WinrateSP = Convert.ToString(SPGamesWon / SPGamesPlayed * 100) + "%";
             if (this.SPGamesPlayed == null)
             {
-                WinrateSP = "N/A";
+                WinrateSP = "No games played yet!";
             }
             return WinrateSP;
         }
@@ -117,7 +117,7 @@ namespace Groepsproject_Blokken
             var WinrateVS = Convert.ToString(VSGamesWon / VSGamesPlayed * 100) + "%";
             if (this.VSGamesPlayed == null)
             {
-                WinrateVS = "N/A";
+                WinrateVS = "No games played yet!";
             }
             return WinrateVS;
         }
@@ -137,6 +137,7 @@ namespace Groepsproject_Blokken
             }
             return resultaat;
         }
+
     }
 }
 

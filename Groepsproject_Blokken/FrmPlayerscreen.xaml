@@ -5,20 +5,190 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Groepsproject_Blokken"
         mc:Ignorable="d"
-        Title="FrmPlayerscreen" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="FrmPlayerscreen"
+        Height="540"
+        Width="960"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
     <Grid>
-        <Button x:Name="btnReturn"
-                Content="Return"
-                Width="200"
-                Height="60"
-                FontSize="30"
-                Click="btnReturn_Click">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius"
-                            Value="40" />
-                </Style>
-            </Button.Resources>
-        </Button>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Image x:Name="txtProfilePicturePreview"
+               Grid.Row="0"
+               Grid.Column="2"
+               Width="390"
+               Height="300"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               IsEnabled="False"
+               Grid.RowSpan="4"
+               Grid.ColumnSpan="2" />
+
+        <StackPanel Grid.Row="0"
+                    Grid.RowSpan="4"
+                    Grid.Column="1"
+                    HorizontalAlignment="Left">
+            <Label Content="0"
+                   FontSize="20"
+                   x:Name="lblNaamDisp" />
+            <Label Content="0"
+                   FontSize="20"
+                   x:Name="lblHighscoreSPDisp" />
+            <Label Content="0"
+                   FontSize="20"
+                   x:Name="lblHighscoreVSDisp" />
+            <Label Content="0"
+                   FontSize="20"
+                   Name="lblGamesGespeeldSPDisp" />
+            <Label Content="0"
+                   FontSize="20"
+                   x:Name="lblGamesGespeeldVSDisp" />
+            <Label Content="0"
+                   FontSize="20"
+                   Name="lblWinrateSPDisp" />
+            <Label Content="0"
+                   FontSize="20"
+                   x:Name="lblWinrateVSDisp" />
+
+
+        </StackPanel>
+        <StackPanel Grid.Row="0"
+                    Grid.RowSpan="4"
+                    HorizontalAlignment="Right">
+            <Label Content="Naam:"
+                   FontSize="20" 
+                   x:Name="lblNaam"/>
+            <Label Content="Highscore SP:"
+                   FontSize="20" 
+                   x:Name="lblHighscoreSP"/>
+            <Label Content="Highscore VS:"
+                   FontSize="20" 
+                   x:Name="lblHighscoreVS"/>
+            <Label Content="Games gespeeld SP:"
+                   FontSize="20" 
+                   x:Name="lblGamesGespeeldSP"/>
+            <Label Content="Games gespeeld VS:"
+                   FontSize="20" 
+                   x:Name="lblGamesGespeeldVS"/>
+            <Label Content="Winrate SP:"
+                   FontSize="20"
+                   x:Name="lblWinrateSP" />
+            <Label Content="Winrate VS:"
+                   FontSize="20"
+                   x:Name="lblWinrateVS" />
+
+
+        </StackPanel>
+        <!--Dit zijn de labels-->
+        <StackPanel Grid.Row="4"
+                    Orientation="Horizontal"
+                    Grid.ColumnSpan="4">
+            <Button x:Name="btnReturn"
+                    Content="Return"
+                    Width="200"
+                    Height="60"
+                    FontSize="25"
+                    Margin="8"
+                    Click="btnReturn_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius"
+                                Value="40" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="btnWijzigWW"
+                    Content="WW Wijzigen"
+                    Width="200"
+                    Height="60"
+                    FontSize="25"
+                    Margin="0,0,8,0"
+                    Click="btnWijzigWW_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius"
+                                Value="40" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="btnWijzigPFP"
+                    Content="PFP Wijzigen"
+                    Width="200"
+                    Height="60"
+                    FontSize="25"
+                    Margin="0,0,8,0"
+                    Click="btnWijzigPFP_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius"
+                                Value="40" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="btnShare"
+                    Content="Share"
+                    Width="150"
+                    Height="60"
+                    FontSize="25"
+                    Click="btnShare_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius"
+                                Value="40" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+        <!--Dit zijn buttons-->
+        <Grid x:Name="InputBox"
+              Visibility="Collapsed"
+              Grid.RowSpan="4"
+              Grid.ColumnSpan="4">
+            <Grid Background="Black"
+                  Opacity="0.5" />
+            <Border MinWidth="250"
+                    Background="Orange"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    CornerRadius="0,55,0,55"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock Margin="5"
+                               Text="Input Box:"
+                               FontWeight="Bold"
+                               FontFamily="Cambria" />
+                    <TextBox MinWidth="150"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             x:Name="InputTextBox" />
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                        <Button x:Name="YesButton"
+                                Margin="5"
+                                Content="Wijzig"
+                                Background="{x:Null}"
+                                Click="YesButton_Click" />
+                        <Button x:Name="NoButton"
+                                Margin="5"
+                                Content="Annuleer"
+                                Background="{x:Null}"
+                                Click="NoButton_Click" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+<!--Dit is de popupbox bij WW wijzigen-->
     </Grid>
 </Window>

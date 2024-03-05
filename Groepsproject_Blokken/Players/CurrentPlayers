@@ -58,5 +58,17 @@
     "VSHighscore": null,
     "VSGamesPlayed": null,
     "VSGamesWon": null
+  },
+  {
+    "SpelerID": 0,
+    "Name": "Illyave",
+    "Password": "12",
+    "ProfilePicture": "C:\\Users\\Gebruiker\\Desktop\\FMY_P5-WUAQzA3q.jpg",
+    "SPHighscore": null,
+    "SPGamesPlayed": null,
+    "SPGamesWon": null,
+    "VSHighscore": null,
+    "VSGamesPlayed": null,
+    "VSGamesWon": null
   }
 ]
