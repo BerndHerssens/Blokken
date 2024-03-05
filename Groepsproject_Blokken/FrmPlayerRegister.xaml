@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Groepsproject_Blokken"
         mc:Ignorable="d"
-        Title="Registreren" Loaded="Window_Loaded" Height="450" Width="825">
+        Title="Registreren" Loaded="Window_Loaded" Height="450" Width="825" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <local:Player/>
     </Window.DataContext>

@@ -6,8 +6,7 @@
         xmlns:local="clr-namespace:Groepsproject_Blokken"
         mc:Ignorable="d"
         Title="FrmPlayerscreen"
-        Height="540"
-        Width="960"
+        Height="720" Width="1280" MinHeight="720" MinWidth="1280"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">
     <Grid>

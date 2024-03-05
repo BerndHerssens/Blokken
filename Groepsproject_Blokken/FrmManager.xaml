@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Groepsproject_Blokken"
         mc:Ignorable="d"
-        Title="FrmManager" Loaded="Window_Loaded" Height="585" Width="1000">
+        Title="FrmManager" Loaded="Window_Loaded" Height="585" Width="1000" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <local:Question/>
     </Window.DataContext>
