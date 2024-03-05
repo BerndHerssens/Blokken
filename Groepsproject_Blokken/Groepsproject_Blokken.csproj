@@ -296,7 +296,9 @@
     <Content Include="Assets\Bernd Crabbe Idle Animation Loop.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Assets\BerndCrabbe NoBackGround.png" />
     <Content Include="Assets\Blokken PlaceHolderLoop.wav" />
+    <Resource Include="Assets\BlokkenLogo2.png" />
     <Content Include="Assets\Fonts\FontsFree-Net-Geogtq-Sb.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -330,6 +332,10 @@
     <Resource Include="Assets\Tetris\TilePurple.png" />
     <Resource Include="Assets\Tetris\TileRed.png" />
     <Resource Include="Assets\Tetris\TileYellow.png" />
+    <Resource Include="Assets\Icon High.png" />
+    <Resource Include="Assets\Icon Low.png" />
+    <Resource Include="Assets\Icon Mid.png" />
+    <Resource Include="Assets\Icon Mute.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
