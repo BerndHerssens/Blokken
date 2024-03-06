@@ -32,18 +32,30 @@ namespace Groepsproject_Blokken
 
         private void btnVS_Click(object sender, RoutedEventArgs e)
         {
-            FrmVersusQuizWindow windowVS = new FrmVersusQuizWindow();
-            windowVS.ingelogdePlayerMainWindow = ingelogdePlayerMainWindow;
-            this.Close();
-            windowVS.ShowDialog();
+            StackPanelButtonsWeg.Completed += (s, args) =>
+            {
+                FrmVersusQuizWindow windowVS = new FrmVersusQuizWindow();
+                windowVS.ingelogdePlayerMainWindow = ingelogdePlayerMainWindow;
+                this.Close();
+                windowVS.ShowDialog();
+            };
+            StackPanelButtonsWeg.Begin();
         }
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow window = new MainWindow();
-            window.ingelogdePlayerLoginscreen = ingelogdePlayerMainWindow;
-            this.Close();
-            window.ShowDialog();
+            
+            StackPanelButtonsWeg.Completed += (s, args) =>
+            {
+                MainWindow window = new MainWindow();
+                window.ingelogdePlayerLoginscreen = ingelogdePlayerMainWindow;
+                this.Close();
+                window.ShowDialog();
+            };
+            StackPanelButtonsWeg.Begin();
+            
+
+
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

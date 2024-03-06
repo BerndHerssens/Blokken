@@ -17,10 +17,15 @@ namespace Groepsproject_Blokken
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
-            FrmGametype chooseGame = new FrmGametype();
-            chooseGame.ingelogdePlayerMainWindow = ingelogdePlayerLoginscreen;
-            this.Close();
-            chooseGame.ShowDialog();
+            StackPanelButtonsWeg.Completed += (s, args) =>
+            {
+                FrmGametype chooseGame = new FrmGametype();
+                chooseGame.ingelogdePlayerMainWindow = ingelogdePlayerLoginscreen;
+                this.Close();
+                chooseGame.ShowDialog();
+            };
+
+            StackPanelButtonsWeg.Begin();
         }
 
         private void btnHighscore_Click(object sender, RoutedEventArgs e)

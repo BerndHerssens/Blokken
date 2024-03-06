@@ -70,5 +70,17 @@
     "VSHighscore": null,
     "VSGamesPlayed": null,
     "VSGamesWon": null
+  },
+  {
+    "SpelerID": 0,
+    "Name": "A",
+    "Password": "A",
+    "ProfilePicture": "file:///C:/Users/Cedric/Documents/Afbeelding van WhatsApp op 2023-04-13 om 12.39.01.jpg",
+    "SPHighscore": null,
+    "SPGamesPlayed": null,
+    "SPGamesWon": null,
+    "VSHighscore": null,
+    "VSGamesPlayed": null,
+    "VSGamesWon": null
   }
 ]

@@ -9,12 +9,21 @@
         Height="720" Width="1280" MinHeight="720" MinWidth="1280"
         WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Window.Triggers>
-        <EventTrigger RoutedEvent="Button.Click">
+        <EventTrigger RoutedEvent="Button.Click" SourceName="btnSingle">
             <BeginStoryboard>
                 <Storyboard x:Name="DramatischeFadeToBlack">
                     <DoubleAnimation Storyboard.TargetProperty="(Window.Opacity)"
                         From="1.0" To="0.0" Duration="0:0:2"
                         AutoReverse="False"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Button.Click" SourceName="btnVS">
+            <BeginStoryboard>
+                <Storyboard x:Name="DramatischeFadeToBlack2">
+                    <DoubleAnimation Storyboard.TargetProperty="(Window.Opacity)"
+                From="1.0" To="0.0" Duration="0:0:2"
+                AutoReverse="False"/>
                 </Storyboard>
             </BeginStoryboard>
         </EventTrigger>
@@ -111,7 +120,29 @@ AutoReverse="False"/>
             </Image.Triggers>
 
         </Image>
-        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Name="StackPanel">
+            <StackPanel.Triggers>
+                <EventTrigger RoutedEvent="Window.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="StackPanel" Storyboard.TargetProperty="Opacity"
+                From="0" To="1" Duration="0:0:1" DecelerationRatio="0.9"
+                AutoReverse="False"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard x:Name="StackPanelButtonsWeg">
+                            <DoubleAnimation Storyboard.TargetName="StackPanel" Storyboard.TargetProperty="Opacity"
+From="1" To="0" Duration="0:0:1" DecelerationRatio="0.9"
+AutoReverse="False"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </StackPanel.Triggers>
+            
+            
             <Button x:Name="btnSingle"
         Margin="3"
         Content="Finalespel"
