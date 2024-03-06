@@ -45,6 +45,11 @@ namespace Groepsproject_Blokken
         public FrmSinglePlayerQuiz()
         {
             InitializeComponent();
+            arrImageControls = SetupGameCanvas(gameState.GameGrid);
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
             PlaybackMusic();
             InlezenVragen();
             RandomQuestionPicker();
@@ -52,13 +57,12 @@ namespace Groepsproject_Blokken
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += timer_Tick;
             timer.Start();
-            arrImageControls = SetupGameCanvas(gameState.GameGrid);
         }
-
         public MediaPlayer backgroundMusicPlayer = new MediaPlayer();
 
         private BrushConverter bc = new BrushConverter();
-        private List<Question> lijstVragen = new List<Question>();
+        private List<Question> tempLijstVragen = new List<Question>();
+        private List<Question> finalLijstVragen = new List<Question>();
         private Random random = new Random();
         private Question nieuweVraag = new Question();
         private GameLogSP eenGame = new GameLogSP();
@@ -66,6 +70,8 @@ namespace Groepsproject_Blokken
         private int tellerTimer = 60;
         private DispatcherTimer timer;
         private int score = 0;
+        public List<string> gekozenVragenLijsten = new List<string>();
+        string json = "";
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
@@ -74,15 +80,32 @@ namespace Groepsproject_Blokken
             gametype.ShowDialog();
         }
 
-        public void InlezenVragen()
+        public void InlezenVragen() //Todo lijst actieve vragenlijsten overdragen
         {
-            using (StreamReader r = new StreamReader("../../Questionaires/Actua2023"))
+            //using (StreamReader r = new StreamReader("../../Questionaires/Actua2023"))
+            //{
+            //    JsonSerializerOptions options = new JsonSerializerOptions();
+            //    lijstVragen.Clear();            // Lijst leegmaken
+            //    string json = r.ReadToEnd(); // Tekst inlezen in een string
+            //    lijstVragen = JsonSerializer.Deserialize<List<Question>>(json);
+            //}
+
+            foreach (string path in gekozenVragenLijsten)
             {
-                JsonSerializerOptions options = new JsonSerializerOptions();
-                lijstVragen.Clear();            // Lijst leegmaken
-                string json = r.ReadToEnd(); // Tekst inlezen in een string
-                lijstVragen = JsonSerializer.Deserialize<List<Question>>(json);
+                using (StreamReader r = new StreamReader("../../Questionaires/" + path))
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions();
+                    tempLijstVragen.Clear();
+                    json = r.ReadToEnd(); // Tekst inlezen in een string
+                    tempLijstVragen = JsonSerializer.Deserialize<List<Question>>(json);
+
+                    foreach (Question aQuestion in tempLijstVragen)
+                    {
+                        finalLijstVragen.Add(aQuestion);
+                    }
+                }
             }
+
         }
         private void btnAntwoord1_Click(object sender, RoutedEventArgs e)
         {
@@ -170,9 +193,9 @@ namespace Groepsproject_Blokken
 
         private void RandomQuestionPicker()
         {
-            int randomQuestionIndex = random.Next(0, lijstVragen.Count);
-            nieuweVraag = lijstVragen[randomQuestionIndex];
-            lijstVragen.RemoveAt(randomQuestionIndex);
+            int randomQuestionIndex = random.Next(0, finalLijstVragen.Count);
+            nieuweVraag = finalLijstVragen[randomQuestionIndex];
+            finalLijstVragen.RemoveAt(randomQuestionIndex);
             txtVraag.Text = nieuweVraag.TheQuestion;
             nieuweVraag.InsertAnswersInButtons(btnAntwoord1, btnAntwoord2, btnAntwoord3, btnAntwoord4);
             btnAntwoord1.Background = (Brush)bc.ConvertFrom("#fea702");
@@ -428,5 +451,7 @@ namespace Groepsproject_Blokken
             grdGameOver.Visibility = Visibility.Hidden;
             await GameLoop();
         }
+
+
     }
 }

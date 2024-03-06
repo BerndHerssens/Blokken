@@ -18,13 +18,16 @@ namespace Groepsproject_Blokken
         Question question = new Question();
         OpenFileDialog openFileDialog = new OpenFileDialog();
         bool fileIsLoaded = false;
+        List<string> listAlleVragenlijsten;
+        List<string> listActieveVragenlijsten;
         public FrmManager()
         {
             InitializeComponent();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            LaadTxtsInListboxen();
+            VulAlleVragenListBoxenIn();
         }
         private void btnAddToList_Click(object sender, RoutedEventArgs e)
         {
@@ -74,7 +77,7 @@ namespace Groepsproject_Blokken
                     RefreshFields();
                     System.Windows.MessageBox.Show("Vragenlijst succesvol opgeslagen!", "Vragen opgeslagen", MessageBoxButton.OK, MessageBoxImage.Information);
                     txtFileName.IsEnabled = true;
-                    LijstAlleVragenOpvullen();
+                    VulAlleVragenListBoxenIn();
                 }
             }
             catch
@@ -108,6 +111,8 @@ namespace Groepsproject_Blokken
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.Application.Restart();
+            System.Windows.Application.Current.Shutdown();
+
 
         }
         public void WegSchrijven(List<Question> eenList, string fileName)
@@ -183,12 +188,15 @@ namespace Groepsproject_Blokken
         private void btnAddQuestionnaire_Click(object sender, RoutedEventArgs e)
         {
             var item = lbAllQuestionnaires.SelectedItem;
-            lbActiveQuestionnaires.Items.Add(item);
+            listActieveVragenlijsten.Add(item.ToString());
+            VulAlleVragenListBoxenIn();
+
         }
 
         private void btnReturnQuestionnaireSelection_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.Application.Restart();
+            System.Windows.Application.Current.Shutdown();
         }
 
         private void btnSaveQuestionnaireSelection_Click(object sender, RoutedEventArgs e)
@@ -207,11 +215,19 @@ namespace Groepsproject_Blokken
                 w.Write(temp + Environment.NewLine + vraagTopic);
             }
         }
-        private void LijstAlleVragenOpvullen()
+        private void VulAlleVragenListBoxenIn()
         {
-            string[] tempp = File.ReadAllLines("../../Questionaires/VragenlijstAlles.txt");
+
+            lbAllQuestionnaires.ItemsSource = null;
+            lbAllQuestionnaires.ItemsSource = listAlleVragenlijsten;
             lbActiveQuestionnaires.ItemsSource = null;
-            lbAllQuestionnaires.ItemsSource = tempp;
+            lbActiveQuestionnaires.ItemsSource = listActieveVragenlijsten;
+
+        }
+        private void LaadTxtsInListboxen()
+        {
+            listAlleVragenlijsten = new List<string>(File.ReadAllLines("../../Questionaires/VragenlijstAlles.txt"));
+            listActieveVragenlijsten = new List<string>(File.ReadAllLines("../../Questionaires/VragenlijstActief.txt"));
         }
         private void ActieveVragenLijstOpslagen()
         {
@@ -221,6 +237,23 @@ namespace Groepsproject_Blokken
                 {
                     wr.WriteLine(item.ToString());
                 }
+            }
+        }
+
+        private void btnDeleteQuestionnaire_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbActiveQuestionnaires.SelectedIndex != -1)
+            {
+                var selectedItem = lbActiveQuestionnaires.SelectedItem;
+                foreach (var item in listActieveVragenlijsten)
+                {
+                    if (selectedItem.ToString() == item.ToString())
+                    {
+                        listActieveVragenlijsten.Remove(item);
+                        break;
+                    }
+                }
+                VulAlleVragenListBoxenIn();
             }
         }
     }

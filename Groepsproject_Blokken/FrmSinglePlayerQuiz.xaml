@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Groepsproject_Blokken"
         mc:Ignorable="d"
         Title="FrmSinglePlayerQuiz" Height="720" Width="1280" MinHeight="720" MinWidth="1280"
-        WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown">
+        WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown" Loaded="Window_Loaded">
     <Window.Triggers>
         <EventTrigger RoutedEvent="Window.Loaded">
             <BeginStoryboard>

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
@@ -14,14 +16,20 @@ namespace Groepsproject_Blokken
         {
             InitializeComponent();
         }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            LaadTXTinCMB();
+        }
+        List<string> listIngeladenActieveVragenlijsten; //Txt's
+        List<string> listGekozenVragenlijsten = new List<string>(); //Leeg -> dit gaan we de selectie van de gebruiker inladen
 
         private void btnSingle_Click(object sender, RoutedEventArgs e)
         {
-            
             BerndCrabbeWeg.Completed += (s, args) =>
             {
                 FrmSinglePlayerQuiz windowSP = new FrmSinglePlayerQuiz();
                 windowSP.ingelogdePlayerSPQuiz = ingelogdePlayerMainWindow;
+                windowSP.gekozenVragenLijsten = listGekozenVragenlijsten;
                 this.Close();
                 windowSP.ShowDialog();
             };
@@ -44,7 +52,7 @@ namespace Groepsproject_Blokken
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            
+
             StackPanelButtonsWeg.Completed += (s, args) =>
             {
                 MainWindow window = new MainWindow();
@@ -53,7 +61,7 @@ namespace Groepsproject_Blokken
                 window.ShowDialog();
             };
             StackPanelButtonsWeg.Begin();
-            
+
 
 
         }
@@ -95,6 +103,24 @@ namespace Groepsproject_Blokken
                 {
                     imgVolume.Source = new BitmapImage(new Uri("Assets/Icon High.png", UriKind.Relative));
                 }
+            }
+        }
+        private void LaadTXTinCMB()
+        {
+
+            listIngeladenActieveVragenlijsten = new List<string>(File.ReadAllLines("../../Questionaires/VragenlijstActief.txt"));
+            cmbVragenLijsten.ItemsSource = listIngeladenActieveVragenlijsten;
+
+        }
+
+        private void btnVoegVragenLijstToe_Click(object sender, RoutedEventArgs e)
+        {
+            if (cmbVragenLijsten.SelectedIndex != -1)
+            {
+                listGekozenVragenlijsten.Add(cmbVragenLijsten.SelectedItem.ToString());
+                lbQuestionsDisplay.ItemsSource = null;
+                lbQuestionsDisplay.ItemsSource = listGekozenVragenlijsten;
+
             }
         }
     }

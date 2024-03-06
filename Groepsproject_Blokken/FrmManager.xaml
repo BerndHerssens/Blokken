@@ -335,6 +335,26 @@
                             </Style>
                         </Button.Resources>
                     </Button>
+                    <Button x:Name="btnDeleteQuestionnaire"
+                            Content="SELECTIE VAN ACTIEVE LIJST VERWIJDEREN"
+                            Background="#fea702"
+                            FontFamily="{StaticResource BlokkenFont}"
+                            Grid.Row="4"
+                            Grid.Column="2"
+                            HorizontalAlignment="Center"
+                            Height="25"
+                            Width="260"
+                            Margin="0,26,0,26"
+                            
+                            FontWeight="Bold"
+                            Click="btnDeleteQuestionnaire_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius"
+                                        Value="15" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
                     <Button x:Name="btnReturnQuestionnaireSelection"
                             Content="TERUG"
                             Background="#fea702"

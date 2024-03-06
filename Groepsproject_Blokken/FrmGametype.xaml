@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="FrmGametype"
         Height="720" Width="1280" MinHeight="720" MinWidth="1280"
-        WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+        WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded">
     <Window.Triggers>
         <EventTrigger RoutedEvent="Button.Click" SourceName="btnSingle">
             <BeginStoryboard>
@@ -185,11 +185,32 @@ AutoReverse="False"/>
             <Image x:Name="imgVolume" Source="Assets/Icon High.png" Width="50" Height="50" HorizontalAlignment="Right" Stretch="UniformToFill"></Image>
 
         </StackPanel>
+        
         <StackPanel Grid.Row="1" Grid.Column="2">
-            <ComboBox Name="cmbVragenLijsten" />
+            <ComboBox x:Name="cmbVragenLijsten"/>
             <Button x:Name="btnVoegVragenLijstToe"
-                    Content="Voeg vragenlijst toe"
-                    Margin="0,5,0,0" />
+                    Margin="3"
+                    Content="Add Vragenlijst"
+                    Width="200"
+                    Height="60"
+                    FontSize="30"
+                    Background="#fea702"
+                    Foreground="Black"
+                    FontFamily="{StaticResource BlokkenFont}"
+                    Click="btnVoegVragenLijstToe_Click">
+            </Button>
+            <GroupBox Header="ACTIEVE VRAGENLIJST"
+                      Grid.Row="0"
+                      Grid.Column="5"
+                      Grid.RowSpan="5"
+                      Width="225"
+                      FontFamily="{StaticResource BlokkenFont}"
+                      Foreground="White">
+                <ListBox x:Name="lbQuestionsDisplay"
+                         ToolTip="CTRL + linker-CLICK om te deselecteren"
+                         Height="350"
+                         Width="225" />
+            </GroupBox>
         </StackPanel>
     </Grid>
 </Window>
