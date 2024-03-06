@@ -336,6 +336,21 @@
     <Resource Include="Assets\Icon Low.png" />
     <Resource Include="Assets\Icon Mid.png" />
     <Resource Include="Assets\Icon Mute.png" />
+    <Content Include="Assets\Sounds\Air Horn.wav" />
+    <Content Include="Assets\Sounds\Ben Crabbe kan er niet meer tegen.wav" />
+    <Content Include="Assets\Sounds\Blokken Afdruk.wav" />
+    <Content Include="Assets\Sounds\Blokken LineCleared.wav" />
+    <Content Include="Assets\Sounds\Blokken ValgeluidjeSeconde.wav" />
+    <Content Include="Assets\Sounds\Boma.wav" />
+    <Content Include="Assets\Sounds\Friends.wav" />
+    <Content Include="Assets\Sounds\Kelder Gert.wav" />
+    <Content Include="Assets\Sounds\Mario Kart Race Start.wav" />
+    <Content Include="Assets\Sounds\Ok Let%27s Go.wav" />
+    <Content Include="Assets\Sounds\Plop.wav" />
+    <Content Include="Assets\Sounds\Random.wav" />
+    <Content Include="Assets\Sounds\Ready for Eddy.wav" />
+    <Content Include="Assets\Sounds\Stop De Tijd.wav" />
+    <Content Include="Assets\Sounds\Windows 95.wav" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
