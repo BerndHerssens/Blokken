@@ -7,6 +7,17 @@
         mc:Ignorable="d"
         Title="FrmSinglePlayerQuiz" Height="720" Width="1280" MinHeight="720" MinWidth="1280"
         WindowStartupLocation="CenterScreen">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="(Window.Opacity)"
+                        From="0.0" To="1.0" Duration="0:0:1"
+                        AutoReverse="False"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
 
     <Grid>
         <Grid.Background>

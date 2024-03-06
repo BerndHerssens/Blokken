@@ -181,6 +181,7 @@ namespace Groepsproject_Blokken
                 button.Background = Brushes.OrangeRed;
                 button.BorderThickness = new Thickness(0);
                 score -= 50;
+                lblTimerEnScore.Content = "Score: " + score.ToString() + " " + "Timer: " + tellerTimer;
                 //txtScore.Text = (Convert.ToInt32(txtScore.Text) - 50).ToString();
 
                 ShowCorrectAnswer(new List<Button> { btnAntwoord1, btnAntwoord2, btnAntwoord3, btnAntwoord4 });
