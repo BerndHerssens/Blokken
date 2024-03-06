@@ -39,6 +39,8 @@ namespace Groepsproject_Blokken
             new BitmapImage(new Uri("Assets/Tetris/Block-T.png", UriKind.Relative)),
             new BitmapImage(new Uri("Assets/Tetris/Block-Z.png", UriKind.Relative))
         };
+        bool correctAnswerClicked = false;
+        bool blockPlaced = true;
         private readonly Image[,] arrImageControls;
         private GameState gameState = new GameState();
         public Player ingelogdePlayerSPQuiz;
@@ -62,7 +64,7 @@ namespace Groepsproject_Blokken
 
         private BrushConverter bc = new BrushConverter();
         private List<Question> tempLijstVragen = new List<Question>();
-        private List<Question> finalLijstVragen = new List<Question>();
+        public List<Question> finalLijstVragen = new List<Question>();
         private Random random = new Random();
         private Question nieuweVraag = new Question();
         private GameLogSP eenGame = new GameLogSP();
@@ -225,6 +227,7 @@ namespace Groepsproject_Blokken
                 button.BorderThickness = new Thickness(0);
                 score += 50;
                 lblTimerEnScore.Content = "Score: " + score.ToString() + " " + "Timer: " + tellerTimer;
+                correctAnswerClicked = true;
                 //txtScore.Text = (Convert.ToInt32(txtScore.Text) + 50).ToString();
             }
             else
@@ -255,13 +258,16 @@ namespace Groepsproject_Blokken
             btnAntwoord4.Click -= btnAntwoord4_Click;
         }
 
-        private void Delay()
+        private async void Delay()
         {
+            await GameLoop();
             _delayTimer = new System.Timers.Timer(5000); // 5 seconds delay
             _delayTimer.Elapsed += (s, args) =>
             {
-                Dispatcher.Invoke(() =>
+                Dispatcher.Invoke(async () =>
                 {
+                    correctAnswerClicked = false;
+                    await GameLoop();
                     RandomQuestionPicker();
                     btnAntwoord1.MouseEnter += btnAntwoord1_MouseEnter;
                     btnAntwoord1.MouseLeave += btnAntwoord1_MouseLeave;
@@ -398,14 +404,18 @@ namespace Groepsproject_Blokken
         private async Task GameLoop()
         {
             Draw(gameState);
-            while (!gameState.GameOver && !gameState.Pause)
+            while (!gameState.GameOver && correctAnswerClicked == true)
             {
                 int delay = 1000;
                 await Task.Delay(delay);
                 gameState.MoveBlockDown();
                 Draw(gameState);
             }
-            grdGameOver.Visibility = Visibility.Visible;
+            if (gameState.GameOver)
+            {
+                grdGameOver.Visibility = Visibility.Visible;
+                txtFinalScore.Text = score.ToString();
+            }
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

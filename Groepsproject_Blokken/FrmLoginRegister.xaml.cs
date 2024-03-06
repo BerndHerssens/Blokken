@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -71,10 +73,18 @@ namespace Groepsproject_Blokken
 
         private void btnDoorgaanAlsGast_Click(object sender, RoutedEventArgs e)
         {
+            List<Question> tempLijstVragen = new List<Question>();
             FrmSinglePlayerQuiz frmQuizWindow = new FrmSinglePlayerQuiz();
+            using (StreamReader r = new StreamReader("../../Questionaires/Actua2023"))
+            {
+                JsonSerializerOptions options = new JsonSerializerOptions();
+                tempLijstVragen.Clear();
+                string json = r.ReadToEnd(); // Tekst inlezen in een string
+                tempLijstVragen = JsonSerializer.Deserialize<List<Question>>(json);
+            }
+            frmQuizWindow.finalLijstVragen = tempLijstVragen;
             this.Hide();
             frmQuizWindow.ShowDialog();
-
         }
 
         private void btnAanmelden_MouseEnter(object sender, MouseEventArgs e)
