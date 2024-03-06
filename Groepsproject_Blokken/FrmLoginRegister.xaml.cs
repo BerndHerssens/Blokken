@@ -50,7 +50,7 @@ namespace Groepsproject_Blokken
         private void btnAanmelden_Click(object sender, RoutedEventArgs e)
         {
             //inlogsysteem voor failsafe/hardcoded tempAdmin/Manager/Speler (TIJDELIJK)
-            LoginAlsTempGebruiker();
+            //LoginAlsTempGebruiker();
 
             //eerste attempt om een login systeem te maken voor met json/db
             VindIngelogdeGebruiker();
