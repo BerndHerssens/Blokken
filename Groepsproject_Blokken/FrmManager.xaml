@@ -5,86 +5,263 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Groepsproject_Blokken"
         mc:Ignorable="d"
-        Title="FrmManager" Loaded="Window_Loaded" Height="585" Width="1000" WindowStartupLocation="CenterScreen">
+        Title="FrmManager"
+        Loaded="Window_Loaded"
+        Height="585"
+        Width="1000"
+        WindowStartupLocation="CenterScreen">
     <Window.DataContext>
-        <local:Question/>
+        <local:Question />
     </Window.DataContext>
     <Grid>
         <TabControl>
             <TabItem Header="Vragenlijsten maken/wijzigen/verwijderen">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                     <Grid.Background>
-                        <ImageBrush ImageSource="Assets/Blokken achtergrond Hi Res.jpg"/>
+                        <ImageBrush ImageSource="Assets/Blokken achtergrond Hi Res.jpg" />
                     </Grid.Background>
-                    <Label Content="Vraag:" FontFamily="{StaticResource BlokkenFont}" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White"/>
-                    <TextBox x:Name="txtQuestion" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="175" Margin="25" Height="25"/>
-                    <Label x:Name="lblQuestionDataInfo" Grid.Row="0" Grid.Column="2" Content="Hier komt datainfo" FontFamily="{StaticResource BlokkenFont}" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Red"/>
-                    <Label Content="Correct antwoord:" FontFamily="{StaticResource BlokkenFont}" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White"/>
-                    <TextBox x:Name="txtCorrectAnswer" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Width="175" Margin="25" Height="25"/>
-                    <Label x:Name="lblCorrectAnswerDataInfo" Grid.Row="1" Grid.Column="2" Content="Hier komt datainfo" FontFamily="{StaticResource BlokkenFont}" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Red"/>
-                    <Label Content="Fout antwoord 1:" FontFamily="{StaticResource BlokkenFont}" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White"/>
-                    <TextBox x:Name="txtWrongAnswer1" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Width="175" Margin="25"/>
-                    <Label x:Name="lblWrongAnswer1DataInfo" Grid.Row="2" Grid.Column="2" Content="Hier komt datainfo" FontFamily="{StaticResource BlokkenFont}" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Red"/>
-                    <Label Content="Fout antwoord 2:" FontFamily="{StaticResource BlokkenFont}" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White"/>
-                    <TextBox x:Name="txtWrongAnswer2" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Width="175" Margin="25" Height="25"/>
-                    <Label x:Name="lblWrongAnswer2DataInfo" Grid.Row="3" Grid.Column="2" Content="Hier komt datainfo" FontFamily="{StaticResource BlokkenFont}" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Red"/>
-                    <Label Content="Fout antwoord 3:" FontFamily="{StaticResource BlokkenFont}" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White"/>
-                    <TextBox x:Name="txtWrongAnswer3" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Width="175" Margin="25" Height="25"/>
-                    <Label x:Name="lblWrongAnswer3DataInfo" Grid.Row="4" Grid.Column="2" Content="Hier komt datainfo" FontFamily="{StaticResource BlokkenFont}" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="Red"/>
-                    <Button x:Name="btnAddToList" Content="VRAAG AAN LIJST TOEVOEGEN" Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Grid.Row="2" Grid.Column="4" HorizontalAlignment="Left" Height="25" Width="200" Margin="25" Click="btnAddToList_Click" FontWeight="Bold">
+                    <Label Content="Vraag:"
+                           FontFamily="{StaticResource BlokkenFont}"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Foreground="White" />
+                    <TextBox x:Name="txtQuestion"
+                             Grid.Row="0"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Width="175"
+                             Margin="25"
+                             Height="25" />
+                    <Label x:Name="lblQuestionDataInfo"
+                           Grid.Row="0"
+                           Grid.Column="2"
+                           Content="Hier komt datainfo"
+                           FontFamily="{StaticResource BlokkenFont}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Foreground="Red" />
+                    <Label Content="Correct antwoord:"
+                           FontFamily="{StaticResource BlokkenFont}"
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Foreground="White" />
+                    <TextBox x:Name="txtCorrectAnswer"
+                             Grid.Row="1"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Width="175"
+                             Margin="25"
+                             Height="25" />
+                    <Label x:Name="lblCorrectAnswerDataInfo"
+                           Grid.Row="1"
+                           Grid.Column="2"
+                           Content="Hier komt datainfo"
+                           FontFamily="{StaticResource BlokkenFont}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Foreground="Red" />
+                    <Label Content="Fout antwoord 1:"
+                           FontFamily="{StaticResource BlokkenFont}"
+                           Grid.Row="2"
+                           Grid.Column="0"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Foreground="White" />
+                    <TextBox x:Name="txtWrongAnswer1"
+                             Grid.Row="2"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Width="175"
+                             Margin="25" />
+                    <Label x:Name="lblWrongAnswer1DataInfo"
+                           Grid.Row="2"
+                           Grid.Column="2"
+                           Content="Hier komt datainfo"
+                           FontFamily="{StaticResource BlokkenFont}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Foreground="Red" />
+                    <Label Content="Fout antwoord 2:"
+                           FontFamily="{StaticResource BlokkenFont}"
+                           Grid.Row="3"
+                           Grid.Column="0"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Foreground="White" />
+                    <TextBox x:Name="txtWrongAnswer2"
+                             Grid.Row="3"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Width="175"
+                             Margin="25"
+                             Height="25" />
+                    <Label x:Name="lblWrongAnswer2DataInfo"
+                           Grid.Row="3"
+                           Grid.Column="2"
+                           Content="Hier komt datainfo"
+                           FontFamily="{StaticResource BlokkenFont}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Foreground="Red" />
+                    <Label Content="Fout antwoord 3:"
+                           FontFamily="{StaticResource BlokkenFont}"
+                           Grid.Row="4"
+                           Grid.Column="0"
+                           HorizontalAlignment="Right"
+                           VerticalAlignment="Center"
+                           Foreground="White" />
+                    <TextBox x:Name="txtWrongAnswer3"
+                             Grid.Row="4"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Width="175"
+                             Margin="25"
+                             Height="25" />
+                    <Label x:Name="lblWrongAnswer3DataInfo"
+                           Grid.Row="4"
+                           Grid.Column="2"
+                           Content="Hier komt datainfo"
+                           FontFamily="{StaticResource BlokkenFont}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Foreground="Red" />
+                    <Button x:Name="btnAddToList"
+                            Content="VRAAG AAN LIJST TOEVOEGEN"
+                            Background="#fea702"
+                            FontFamily="{StaticResource BlokkenFont}"
+                            Grid.Row="2"
+                            Grid.Column="4"
+                            HorizontalAlignment="Left"
+                            Height="25"
+                            Width="200"
+                            Margin="25"
+                            Click="btnAddToList_Click"
+                            FontWeight="Bold">
                         <Button.Resources>
                             <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="15"/>
+                                <Setter Property="CornerRadius"
+                                        Value="15" />
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button x:Name="btnDeleteQuestion" Content="SELECTIE VERWIJDEREN" Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Visibility="Hidden" Grid.Row="3" Grid.Column="4" HorizontalAlignment="Left" Height="25" Width="200" Margin="25" Click="btnDeleteQuestion_Click"  FontWeight="Bold">
+                    <Button x:Name="btnDeleteQuestion"
+                            Content="SELECTIE VERWIJDEREN"
+                            Background="#fea702"
+                            FontFamily="{StaticResource BlokkenFont}"
+                            Visibility="Hidden"
+                            Grid.Row="3"
+                            Grid.Column="4"
+                            HorizontalAlignment="Left"
+                            Height="25"
+                            Width="200"
+                            Margin="25"
+                            Click="btnDeleteQuestion_Click"
+                            FontWeight="Bold">
                         <Button.Resources>
                             <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="15"/>
+                                <Setter Property="CornerRadius"
+                                        Value="15" />
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <GroupBox Header="VRAGENLIJST" Grid.Row="0" Grid.Column="5" Grid.RowSpan="5" Width="225" FontFamily="{StaticResource BlokkenFont}" Foreground="White">
-                        <ListBox x:Name="lbQuestions" SelectionChanged="lbQuestions_SelectionChanged" ToolTip="CTRL + linker-CLICK om te deselecteren" Height="350" Width="225"/>
+                    <GroupBox Header="VRAGENLIJST"
+                              Grid.Row="0"
+                              Grid.Column="5"
+                              Grid.RowSpan="5"
+                              Width="225"
+                              FontFamily="{StaticResource BlokkenFont}"
+                              Foreground="White">
+                        <ListBox x:Name="lbQuestions"
+                                 SelectionChanged="lbQuestions_SelectionChanged"
+                                 ToolTip="CTRL + linker-CLICK om te deselecteren"
+                                 Height="350"
+                                 Width="225" />
                     </GroupBox>
-                    <TextBox x:Name="txtFileName" Text="Filenaam" Foreground="LightSlateGray" Grid.Row="5" Grid.Column="5" Height="25" Width="225" Margin="5" GotFocus="txtFileName_GotFocus"/>
-                    <Button x:Name="btnSaveList" Content="VRAGENLIJST OPSLAAN" Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Grid.Row="6" Grid.Column="5" HorizontalAlignment="Left" Height="25" Width="200" Margin="10" Click="btnSaveList_Click" FontWeight="Bold">
+                    <TextBox x:Name="txtFileName"
+                             Text="Filenaam"
+                             Foreground="LightSlateGray"
+                             Grid.Row="5"
+                             Grid.Column="5"
+                             Height="25"
+                             Width="225"
+                             Margin="5"
+                             GotFocus="txtFileName_GotFocus" />
+                    <Button x:Name="btnSaveList"
+                            Content="VRAGENLIJST OPSLAAN"
+                            Background="#fea702"
+                            FontFamily="{StaticResource BlokkenFont}"
+                            Grid.Row="6"
+                            Grid.Column="5"
+                            HorizontalAlignment="Left"
+                            Height="25"
+                            Width="200"
+                            Margin="10"
+                            Click="btnSaveList_Click"
+                            FontWeight="Bold">
                         <Button.Resources>
                             <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="15"/>
+                                <Setter Property="CornerRadius"
+                                        Value="15" />
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button x:Name="btnLoadList" Content="VRAGENLIJST INLADEN" Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Grid.Row="7" Grid.Column="5" HorizontalAlignment="Left" Height="25" Width="200" Margin="10" Click="btnLoadList_Click"  FontWeight="Bold">
+                    <Button x:Name="btnLoadList"
+                            Content="VRAGENLIJST INLADEN"
+                            Background="#fea702"
+                            FontFamily="{StaticResource BlokkenFont}"
+                            Grid.Row="7"
+                            Grid.Column="5"
+                            HorizontalAlignment="Left"
+                            Height="25"
+                            Width="200"
+                            Margin="10"
+                            Click="btnLoadList_Click"
+                            FontWeight="Bold">
                         <Button.Resources>
                             <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="15"/>
+                                <Setter Property="CornerRadius"
+                                        Value="15" />
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button x:Name="btnReturn" Content="TERUG" Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Height="25" Width="200" Margin="10,10,10,10" FontWeight="Bold" Click="btnReturn_Click">
+                    <Button x:Name="btnReturn"
+                            Content="TERUG"
+                            Background="#fea702"
+                            FontFamily="{StaticResource BlokkenFont}"
+                            Grid.Row="7"
+                            Grid.Column="1"
+                            HorizontalAlignment="Left"
+                            Height="25"
+                            Width="200"
+                            Margin="10,10,10,10"
+                            FontWeight="Bold"
+                            Click="btnReturn_Click">
                         <Button.Resources>
                             <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="15"/>
+                                <Setter Property="CornerRadius"
+                                        Value="15" />
                             </Style>
                         </Button.Resources>
                     </Button>
@@ -93,9 +270,10 @@
             <TabItem Header="Actieve vragenlijst selectie">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition  />
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="66*" />
+                        <ColumnDefinition Width="281*" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="347*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition />
@@ -108,32 +286,90 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.Background>
-                        <ImageBrush ImageSource="Assets/Blokken achtergrond Hi Res.jpg"/>
+                        <ImageBrush ImageSource="Assets/Blokken achtergrond Hi Res.jpg" />
                     </Grid.Background>
-                    <GroupBox Header="ALLE VRAGENLIJSTEN" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="6" Width="225" FontFamily="{StaticResource BlokkenFont}" Foreground="White">
-                        <ListBox x:Name="lbAllQuestionnaires" ToolTip="CTRL + linker-CLICK om te deselecteren" Height="385" Width="225"/>
+                    <GroupBox Header="ALLE VRAGENLIJSTEN"
+                              Grid.Row="0"
+                              Grid.Column="0"
+                              Grid.ColumnSpan="2"
+                              Grid.RowSpan="6"
+                              Width="225"
+                              FontFamily="{StaticResource BlokkenFont}"
+                              Foreground="White"
+                              Margin="61,0,61,0">
+                        <ListBox x:Name="lbAllQuestionnaires"
+                                 ToolTip="CTRL + linker-CLICK om te deselecteren"
+                                 Height="385"
+                                 Width="225" />
                     </GroupBox>
-                    <GroupBox Header="ACTIEVE VRAGENLIJST" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" Grid.RowSpan="6" Width="225" FontFamily="{StaticResource BlokkenFont}" Foreground="White">
-                        <ListBox x:Name="lbActiveQuestionnaires" SelectionChanged="lbQuestions_SelectionChanged" ToolTip="CTRL + linker-CLICK om te deselecteren" Height="385" Width="225"/>
+                    <GroupBox Header="ACTIEVE VRAGENLIJST"
+                              Grid.Row="0"
+                              Grid.Column="3"
+                              Grid.RowSpan="6"
+                              Width="225"
+                              FontFamily="{StaticResource BlokkenFont}"
+                              Foreground="White"
+                              Margin="61,0,61,0">
+                        <ListBox x:Name="lbActiveQuestionnaires"
+                                 SelectionChanged="lbQuestions_SelectionChanged"
+                                 ToolTip="CTRL + linker-CLICK om te deselecteren"
+                                 Height="385"
+                                 Width="225" />
                     </GroupBox>
-                    <Button x:Name="btnAddQuestionnaire" Content="SELECTIE AAN ACTIEVE LIJST TOEVOEGEN" Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Height="25" Width="250" Margin="25" Click="btnAddQuestionnaire_Click" FontWeight="Bold">
+                    <Button x:Name="btnAddQuestionnaire"
+                            Content="SELECTIE AAN ACTIEVE LIJST TOEVOEGEN"
+                            Background="#fea702"
+                            FontFamily="{StaticResource BlokkenFont}"
+                            Grid.Row="3"
+                            Grid.Column="2"
+                            HorizontalAlignment="Center"
+                            Height="25"
+                            Width="250"
+                            Margin="0,26,0,26"
+                            Click="btnAddQuestionnaire_Click"
+                            FontWeight="Bold">
                         <Button.Resources>
                             <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="15"/>
+                                <Setter Property="CornerRadius"
+                                        Value="15" />
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button x:Name="btnReturnQuestionnaireSelection" Content="TERUG" Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Grid.Row="7" Grid.Column="0" HorizontalAlignment="Center" Height="25" Width="200" Margin="10,10,10,10" FontWeight="Bold" Click="btnReturnQuestionnaireSelection_Click">
+                    <Button x:Name="btnReturnQuestionnaireSelection"
+                            Content="TERUG"
+                            Background="#fea702"
+                            FontFamily="{StaticResource BlokkenFont}"
+                            Grid.Row="7"
+                            Grid.Column="1"
+                            HorizontalAlignment="Left"
+                            Height="25"
+                            Width="200"
+                            Margin="8,26,0,26"
+                            FontWeight="Bold"
+                            Click="btnReturnQuestionnaireSelection_Click">
                         <Button.Resources>
                             <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="15"/>
+                                <Setter Property="CornerRadius"
+                                        Value="15" />
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button x:Name="btnSaveQuestionnaireSelection" Content="ACTIEVE VRAGENLIJSTEN OPSLAAN" Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Grid.Row="7" Grid.Column="2" HorizontalAlignment="Center" Height="25" Width="225" Margin="10,10,10,10" FontWeight="Bold" Click="btnSaveQuestionnaireSelection_Click">
+                    <Button x:Name="btnSaveQuestionnaireSelection"
+                            Content="ACTIEVE VRAGENLIJSTEN OPSLAAN"
+                            Background="#fea702"
+                            FontFamily="{StaticResource BlokkenFont}"
+                            Grid.Row="7"
+                            Grid.Column="3"
+                            HorizontalAlignment="Center"
+                            Height="25"
+                            Width="225"
+                            Margin="0,26,0,26"
+                            FontWeight="Bold"
+                            Click="btnSaveQuestionnaireSelection_Click">
                         <Button.Resources>
                             <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="15"/>
+                                <Setter Property="CornerRadius"
+                                        Value="15" />
                             </Style>
                         </Button.Resources>
                     </Button>

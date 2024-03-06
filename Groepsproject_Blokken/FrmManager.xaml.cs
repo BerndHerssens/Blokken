@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Windows;
@@ -69,9 +70,11 @@ namespace Groepsproject_Blokken
                     WegSchrijven(tempquestions, txtFileName.Text);
                     tempquestions.Clear();
                     fileIsLoaded = false;
+                    OpslagenInVragenLijstAlles(txtFileName.Text);
                     RefreshFields();
                     System.Windows.MessageBox.Show("Vragenlijst succesvol opgeslagen!", "Vragen opgeslagen", MessageBoxButton.OK, MessageBoxImage.Information);
                     txtFileName.IsEnabled = true;
+                    LijstAlleVragenOpvullen();
                 }
             }
             catch
@@ -105,7 +108,7 @@ namespace Groepsproject_Blokken
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.Application.Restart();
-            System.Windows.Application.Current.Shutdown();
+
         }
         public void WegSchrijven(List<Question> eenList, string fileName)
         {
@@ -179,17 +182,46 @@ namespace Groepsproject_Blokken
 
         private void btnAddQuestionnaire_Click(object sender, RoutedEventArgs e)
         {
-
+            var item = lbAllQuestionnaires.SelectedItem;
+            lbActiveQuestionnaires.Items.Add(item);
         }
 
         private void btnReturnQuestionnaireSelection_Click(object sender, RoutedEventArgs e)
         {
-
+            System.Windows.Forms.Application.Restart();
         }
 
         private void btnSaveQuestionnaireSelection_Click(object sender, RoutedEventArgs e)
         {
-
+            ActieveVragenLijstOpslagen();
+        }
+        private void OpslagenInVragenLijstAlles(string vraagTopic)
+        {
+            string temp = "";
+            using (StreamReader r = new StreamReader("../../Questionaires/VragenlijstAlles.txt"))
+            {
+                temp = r.ReadToEnd();
+            }
+            using (StreamWriter w = new StreamWriter("../../Questionaires/VragenlijstAlles.txt"))
+            {
+                w.Write(temp + Environment.NewLine + vraagTopic);
+            }
+        }
+        private void LijstAlleVragenOpvullen()
+        {
+            string[] tempp = File.ReadAllLines("../../Questionaires/VragenlijstAlles.txt");
+            lbActiveQuestionnaires.ItemsSource = null;
+            lbAllQuestionnaires.ItemsSource = tempp;
+        }
+        private void ActieveVragenLijstOpslagen()
+        {
+            using (StreamWriter wr = new StreamWriter("../../Questionaires/VragenlijstActief.txt"))
+            {
+                foreach (var item in lbActiveQuestionnaires.Items)
+                {
+                    wr.WriteLine(item.ToString());
+                }
+            }
         }
     }
 }

@@ -185,5 +185,11 @@ AutoReverse="False"/>
             <Image x:Name="imgVolume" Source="Assets/Icon High.png" Width="50" Height="50" HorizontalAlignment="Right" Stretch="UniformToFill"></Image>
 
         </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            <ComboBox Name="cmbVragenLijsten" />
+            <Button x:Name="btnVoegVragenLijstToe"
+                    Content="Voeg vragenlijst toe"
+                    Margin="0,5,0,0" />
+        </StackPanel>
     </Grid>
 </Window>

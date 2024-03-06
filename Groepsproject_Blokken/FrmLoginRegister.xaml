@@ -56,10 +56,10 @@
                      GotFocus="txtPassword_GotFocus" />
 
         <Button Name="btnAanmelden"
-                Grid.Row="3"
+                Grid.Row="4"
                 Grid.Column="1"
+                Grid.RowSpan="2"
                 Grid.ColumnSpan="2"
-                Grid.RowSpan="6"
                 Content="AANMELDEN"
                 Width="100"
                 Background="#fea702"
@@ -70,7 +70,7 @@
                 Click="btnAanmelden_Click"
                 MouseEnter="btnAanmelden_MouseEnter"
                 MouseLeave="btnAanmelden_MouseLeave"
-                IsDefault="True" Height="19" Margin="58,0,58,157" VerticalAlignment="Bottom">
+                IsDefault="True">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius"
