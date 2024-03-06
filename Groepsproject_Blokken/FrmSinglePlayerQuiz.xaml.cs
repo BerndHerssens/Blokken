@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
 namespace Groepsproject_Blokken
@@ -14,6 +17,30 @@ namespace Groepsproject_Blokken
     /// </summary>
     public partial class FrmSinglePlayerQuiz : Window
     {
+        private readonly ImageSource[] arrTilesImages = new ImageSource[]
+           {
+            new BitmapImage(new Uri("Assets/Tetris/TileEmpty.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tetris/TileCyan.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tetris/TileBlue.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tetris/TileOrange.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tetris/TileYellow.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tetris/TileGreen.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tetris/TilePurple.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tetris/TileRed.png", UriKind.Relative))
+           };
+        private readonly ImageSource[] arrBlockImages = new ImageSource[]
+        {
+            new BitmapImage(new Uri("Assets/Tetris/Block-Empty.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tetris/Block-I.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tetris/Block-J.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tetris/Block-L.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tetris/Block-O.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tetris/Block-S.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tetris/Block-T.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/Tetris/Block-Z.png", UriKind.Relative))
+        };
+        private readonly Image[,] arrImageControls;
+        private GameState gameState = new GameState();
         public Player ingelogdePlayerSPQuiz;
         public FrmSinglePlayerQuiz()
         {
@@ -25,6 +52,7 @@ namespace Groepsproject_Blokken
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += timer_Tick;
             timer.Start();
+            arrImageControls = SetupGameCanvas(gameState.GameGrid);
         }
 
         public MediaPlayer backgroundMusicPlayer = new MediaPlayer();
@@ -281,10 +309,124 @@ namespace Groepsproject_Blokken
                     this.Close();
                     System.Windows.Forms.Application.Restart();
                 }
-
-
-
             }
+        }
+        private Image[,] SetupGameCanvas(GameGrid gameGrid)
+        {
+            Image[,] imageControls = new Image[gameGrid.Rows, gameGrid.Columns];
+            double cellsize = 55;
+
+            for (int row = 0; row < gameGrid.Rows; row++)
+            {
+                for (int column = 0; column < gameGrid.Columns; column++)
+                {
+                    Image imageControl = new Image
+                    {
+                        Width = cellsize,
+                        Height = cellsize
+                    };
+                    Canvas.SetTop(imageControl, (row - 2) * cellsize + 10);
+                    Canvas.SetLeft(imageControl, column * cellsize);
+                    GameCanvas.Children.Add(imageControl);
+                    imageControls[row, column] = imageControl;
+                }
+            }
+            return imageControls;
+        }
+        private void DrawGrid(GameGrid gameGrid)
+        {
+            for (int row = 0; row < gameGrid.Rows; ++row)
+            {
+                for (int column = 0; column < gameGrid.Columns; column++)
+                {
+                    int id = gameGrid[row, column];
+                    arrImageControls[row, column].Opacity = 1;
+                    arrImageControls[row, column].Source = arrTilesImages[id];
+                }
+            }
+        }
+
+        private void DrawBlock(Block block)
+        {
+            foreach (Position position in block.TilePositions())
+            {
+                arrImageControls[position.Row, position.Column].Opacity = 1;
+                arrImageControls[position.Row, position.Column].Source = arrTilesImages[block.ID];
+            }
+        }
+
+        private void DrawNextBlock(BlockQueue blockQueue)
+        {
+            Block nextBlock = blockQueue.NextBlock;
+        }
+        private void Draw(GameState gameState)
+        {
+            DrawGrid(gameState.GameGrid);
+            DrawBlock(gameState.CurrentBlock);
+            DrawNextBlock(gameState.BlockQueue);
+        }
+
+        private async void GameCanvas_Loaded(object sender, RoutedEventArgs e)
+        {
+            await GameLoop();
+            Draw(gameState);
+        }
+
+        private async Task GameLoop()
+        {
+            Draw(gameState);
+            while (!gameState.GameOver && !gameState.Pause)
+            {
+                int delay = 1000;
+                await Task.Delay(delay);
+                gameState.MoveBlockDown();
+                Draw(gameState);
+            }
+            grdGameOver.Visibility = Visibility.Visible;
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (gameState.GameOver)
+            {
+                return;
+            }
+            switch (e.Key)
+            {
+                case Key.Left:
+                    gameState.MoveBlockLeft();
+                    break;
+                case Key.Right:
+                    gameState.MoveBlockRight();
+                    break;
+                case Key.Down:
+                    gameState.MoveBlockDown();
+                    break;
+                case Key.J:
+                    gameState.RotateBlockClockWise();
+                    break;
+                case Key.F:
+                    gameState.RotateBlockCounterClockwise();
+                    break;
+                case Key.Tab:
+                    gameState.HoldBlock();
+                    break;
+                case Key.Space:
+                    gameState.DropBlock();
+                    break;
+                case Key.P:
+                    gameState.Pause = true;
+                    break;
+                default:
+                    return;
+            }
+            Draw(gameState);
+        }
+        private async void btnPlayAgain_Click(object sender, RoutedEventArgs e)
+        {
+            gameState = new GameState();
+            grdGameOver.Visibility = Visibility.Hidden;
+            await GameLoop();
         }
     }
 }

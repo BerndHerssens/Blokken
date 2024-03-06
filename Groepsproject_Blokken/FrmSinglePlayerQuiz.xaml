@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Groepsproject_Blokken"
         mc:Ignorable="d"
         Title="FrmSinglePlayerQuiz" Height="720" Width="1280" MinHeight="720" MinWidth="1280"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown">
     <Window.Triggers>
         <EventTrigger RoutedEvent="Window.Loaded">
             <BeginStoryboard>
@@ -41,6 +41,9 @@
         <!--<Rectangle Grid.Column="4" Grid.RowSpan="3" Stroke="#fea702" Height="{Binding ActualHeight, ElementName=BerndCrabbeIdleAnimation}" Width="auto" Opacity="0.8" Fill="#fea702"></Rectangle>-->
         
         <Label Grid.RowSpan="3" Grid.Column="4" x:Name="lblTimerEnScore" HorizontalAlignment="Right" VerticalAlignment="Stretch" Content="Score: 0 Timer: 120" FontFamily="{StaticResource BlokkenFont}" Background="#fea702" Width="{Binding ActualWidth, ElementName=BerndCrabbeIdleAnimation}" Opacity="0.8" HorizontalContentAlignment="Center" VerticalContentAlignment ="Bottom" FontWeight="Bold"></Label>
+        <Viewbox Grid.Row="1" Grid.Column="1" Margin="0,0,0,20" Grid.RowSpan="5">
+            <Canvas x:Name="GameCanvas" Width="550" Height="1100" Background="#101010" ClipToBounds="True" Loaded="GameCanvas_Loaded" Visibility="Visible"/>
+        </Viewbox>
         <StackPanel Orientation="Vertical" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -112,6 +115,12 @@ Value="80" />
                 </EventTrigger>
             </MediaElement.Triggers>
         </MediaElement>
-
+        <Grid x:Name="grdGameOver" Background="#CC000000" Grid.RowSpan="5" Grid.ColumnSpan="5" Visibility="Hidden">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Game Over" FontSize="48" TextAlignment="Center" Foreground="White"/>
+                <TextBlock x:Name="txtFinalScore" Text="Score: " FontSize="32" TextAlignment="Center" Foreground="White"/>
+                <Button x:Name="btnPlayAgain" Content="Opnieuw spelen" Background="LightGreen" Margin="0,20,0,0" Padding="5" Click="btnPlayAgain_Click"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
