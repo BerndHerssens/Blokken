@@ -81,16 +81,8 @@ namespace Groepsproject_Blokken
             gametype.ShowDialog();
         }
 
-        public void InlezenVragen() //Todo lijst actieve vragenlijsten overdragen
+        public void InlezenVragen()
         {
-            //using (StreamReader r = new StreamReader("../../Questionaires/Actua2023"))
-            //{
-            //    JsonSerializerOptions options = new JsonSerializerOptions();
-            //    lijstVragen.Clear();            // Lijst leegmaken
-            //    string json = r.ReadToEnd(); // Tekst inlezen in een string
-            //    lijstVragen = JsonSerializer.Deserialize<List<Question>>(json);
-            //}
-
             foreach (string path in gekozenVragenLijsten)
             {
                 using (StreamReader r = new StreamReader("../../Questionaires/" + path))
@@ -323,6 +315,22 @@ namespace Groepsproject_Blokken
                     eenGame.Date = DateTime.Now;
                     eenGame.Score = Convert.ToInt32(gameState.Score);
                     eenGame.GameNumber = eenGame.GetHashCode();
+                    if (ingelogdePlayerSPQuiz.SPHighscore < gameState.Score || ingelogdePlayerSPQuiz.SPHighscore == null) // Als de gamestate score hoger is of null (eerste keer spelen)
+                    {
+                        ingelogdePlayerSPQuiz.SPHighscore = gameState.Score;
+                    }
+                    //if (CheckAnswerIfPrimeWord()) //TODO: Primeword geraden -> uncommented wanneer bernd deeltje erbijstaat
+                    //{
+                    //    if (ingelogdePlayerSPQuiz.SPGamesWon == null)
+                    //    {
+                    //        ingelogdePlayerSPQuiz.SPGamesWon = 1;
+                    //    }
+                    //    else 
+                    //    {
+                    //        ingelogdePlayerSPQuiz.SPGamesWon++;
+                    //    }
+                    //}
+                    DataManager.UpdatePlayer(ingelogdePlayerSPQuiz);
                     DataManager.InsertGameLogSP(eenGame);
                     MainWindow mainwindow = new MainWindow();
                     mainwindow.ingelogdePlayerLoginscreen = ingelogdePlayerSPQuiz;
