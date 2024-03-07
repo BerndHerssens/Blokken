@@ -8,7 +8,7 @@
         Title="FrmManager"
         Loaded="Window_Loaded"
         Height="585"
-        Width="1000"
+        Width="1100"
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <local:Question />
@@ -46,6 +46,7 @@
                            VerticalAlignment="Center"
                            Foreground="White" />
                     <TextBox x:Name="txtQuestion"
+                             Text="{Binding TheQuestion, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                              Grid.Row="0"
                              Grid.Column="1"
                              HorizontalAlignment="Left"
@@ -55,11 +56,12 @@
                     <Label x:Name="lblQuestionDataInfo"
                            Grid.Row="0"
                            Grid.Column="2"
-                           Content="Hier komt datainfo"
+                           Content="{Binding (Validation.Errors)[0].ErrorContent, ElementName=txtQuestion}"
                            FontFamily="{StaticResource BlokkenFont}"
+                           Background="#fea702"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
-                           Foreground="Red" />
+                           Foreground="Red" FontWeight="Bold" />
                     <Label Content="Correct antwoord:"
                            FontFamily="{StaticResource BlokkenFont}"
                            Grid.Row="1"
@@ -68,6 +70,7 @@
                            VerticalAlignment="Center"
                            Foreground="White" />
                     <TextBox x:Name="txtCorrectAnswer"
+                             Text="{Binding CorrectAnswer, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                              Grid.Row="1"
                              Grid.Column="1"
                              HorizontalAlignment="Left"
@@ -77,11 +80,12 @@
                     <Label x:Name="lblCorrectAnswerDataInfo"
                            Grid.Row="1"
                            Grid.Column="2"
-                           Content="Hier komt datainfo"
+                           Content="{Binding (Validation.Errors)[0].ErrorContent, ElementName=txtCorrectAnswer}"
                            FontFamily="{StaticResource BlokkenFont}"
+                           Background="#fea702"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
-                           Foreground="Red" />
+                           Foreground="Red" FontWeight="Bold" />
                     <Label Content="Fout antwoord 1:"
                            FontFamily="{StaticResource BlokkenFont}"
                            Grid.Row="2"
@@ -90,6 +94,7 @@
                            VerticalAlignment="Center"
                            Foreground="White" />
                     <TextBox x:Name="txtWrongAnswer1"
+                             Text="{Binding WrongAnswerOne, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                              Grid.Row="2"
                              Grid.Column="1"
                              HorizontalAlignment="Left"
@@ -98,11 +103,12 @@
                     <Label x:Name="lblWrongAnswer1DataInfo"
                            Grid.Row="2"
                            Grid.Column="2"
-                           Content="Hier komt datainfo"
+                           Content="{Binding (Validation.Errors)[0].ErrorContent, ElementName=txtWrongAnswer1}"
                            FontFamily="{StaticResource BlokkenFont}"
+                           Background="#fea702"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
-                           Foreground="Red" />
+                           Foreground="Red" FontWeight="Bold" />
                     <Label Content="Fout antwoord 2:"
                            FontFamily="{StaticResource BlokkenFont}"
                            Grid.Row="3"
@@ -111,6 +117,7 @@
                            VerticalAlignment="Center"
                            Foreground="White" />
                     <TextBox x:Name="txtWrongAnswer2"
+                             Text="{Binding WrongAnswerTwo, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                              Grid.Row="3"
                              Grid.Column="1"
                              HorizontalAlignment="Left"
@@ -120,11 +127,12 @@
                     <Label x:Name="lblWrongAnswer2DataInfo"
                            Grid.Row="3"
                            Grid.Column="2"
-                           Content="Hier komt datainfo"
+                           Content="{Binding (Validation.Errors)[0].ErrorContent, ElementName=txtWrongAnswer2}"
                            FontFamily="{StaticResource BlokkenFont}"
+                           Background="#fea702"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
-                           Foreground="Red" />
+                           Foreground="Red" FontWeight="Bold" />
                     <Label Content="Fout antwoord 3:"
                            FontFamily="{StaticResource BlokkenFont}"
                            Grid.Row="4"
@@ -133,6 +141,7 @@
                            VerticalAlignment="Center"
                            Foreground="White" />
                     <TextBox x:Name="txtWrongAnswer3"
+                             Text="{Binding WrongAnswerThree, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
                              Grid.Row="4"
                              Grid.Column="1"
                              HorizontalAlignment="Left"
@@ -142,11 +151,12 @@
                     <Label x:Name="lblWrongAnswer3DataInfo"
                            Grid.Row="4"
                            Grid.Column="2"
-                           Content="Hier komt datainfo"
+                           Content="{Binding (Validation.Errors)[0].ErrorContent, ElementName=txtWrongAnswer3}"
                            FontFamily="{StaticResource BlokkenFont}"
+                           Background="#fea702"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
-                           Foreground="Red" />
+                           Foreground="Red" FontWeight="Bold" />
                     <Button x:Name="btnAddToList"
                             Content="VRAAG AAN LIJST TOEVOEGEN"
                             Background="#fea702"

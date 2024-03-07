@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -7,7 +9,7 @@ using System.Windows.Threading;
 //TODO: (nog) niks
 namespace Groepsproject_Blokken
 {
-    public class Question
+    public class Question : INotifyPropertyChanged, IDataErrorInfo
     {
         //Attributen
         private string _question;
@@ -19,6 +21,9 @@ namespace Groepsproject_Blokken
         private DispatcherTimer _timer;
         private static int _questioncounter = 0;
         private int _questionID;
+
+        
+
         //Constr
         [JsonConstructor]
         public Question()
@@ -49,27 +54,27 @@ namespace Groepsproject_Blokken
         public string TheQuestion
         {
             get { return _question; }
-            set { _question = value; }
+            set { OnPropertyChanged(ref _question, value); }
         }
         public string CorrectAnswer
         {
             get { return _correctAnswer; }
-            set { _correctAnswer = value; }
+            set { OnPropertyChanged(ref _correctAnswer, value); }
         }
         public string WrongAnswerOne
         {
             get { return _wrongAnswerOne; }
-            set { _wrongAnswerOne = value; }
+            set { OnPropertyChanged(ref _wrongAnswerOne, value); }
         }
         public string WrongAnswerTwo
         {
             get { return _wrongAnswerTwo; }
-            set { _wrongAnswerTwo = value; }
+            set { OnPropertyChanged(ref _wrongAnswerTwo, value); }
         }
         public string WrongAnswerThree
         {
             get { return _wrongAnswerThree; }
-            set { _wrongAnswerThree = value; }
+            set { OnPropertyChanged(ref _wrongAnswerThree, value); }
         }
 
         [System.Text.Json.Serialization.JsonIgnore]
@@ -84,6 +89,70 @@ namespace Groepsproject_Blokken
             get { return _timer; }
             set { _timer = value; }
         }
+        //Validatie
+        public event PropertyChangedEventHandler PropertyChanged;
+        public string Error => throw new NotImplementedException();
+
+        public string this[string columnName] 
+        {
+            get
+            {
+                string result = null;
+                if (columnName == "TheQuestion")
+                {
+                    if (string.IsNullOrEmpty(TheQuestion))
+                    {
+                        result = "Geef een vraag in";
+                    }
+                }
+                if (columnName == "CorrectAnswer")
+                {
+                    if (string.IsNullOrEmpty(CorrectAnswer))
+                    {
+                        result = "Geef een correct antwoord in";
+                    }
+                }
+                if (columnName == "WrongAnswerOne")
+                {
+                    if (string.IsNullOrEmpty(WrongAnswerOne))
+                    {
+                        result = "Gelieve een fout antwoord in te voeren";
+                    }
+                }
+                if (columnName == "WrongAnswerTwo")
+                {
+                    if (string.IsNullOrEmpty(WrongAnswerTwo))
+                    {
+                        result = "Gelieve een verkeerd antwoord in te voeren";
+                    }
+                }
+                if (columnName == "WrongAnswerThree")
+                {
+                    if (string.IsNullOrEmpty(WrongAnswerThree))
+                    {
+                        result = "Gelieve een verkeerd antwoord in te voeren";
+                    }
+                }
+                return result;
+            }
+        }
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        protected virtual bool OnPropertyChanged<T>(ref T backingField, T value, [CallerMemberName] string propertyName = "")
+        {
+            bool isChanged = true;
+            if (EqualityComparer<T>.Default.Equals(backingField, value))
+            {
+                isChanged = false;
+            }
+
+            backingField = value;
+            OnPropertyChanged(propertyName);
+            return isChanged;
+        }
+
         //Methodes Timer
         public void StartTimer() //Settings van timer instellen dan -> start de timer - Dit kon mss in constructor (?)
         {
