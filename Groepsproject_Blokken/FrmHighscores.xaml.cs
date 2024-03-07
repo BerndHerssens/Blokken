@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media.Imaging;
 
@@ -20,20 +21,24 @@ namespace Groepsproject_Blokken
         {
             InitializeComponent();
         }
-        List<Player> Players = new List<Player>();
+        
 
-        private void btnReturn_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow window = new MainWindow();
-            window.ingelogdePlayerLoginscreen = ingelogdePlayerMainWindow;
-            this.Close();
-            window.ShowDialog();
-        }
+        public List<Player> Players { get ; set; }
+
+        //private void btnReturn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainWindow window = new MainWindow();
+        //    window.ingelogdePlayerLoginscreen = ingelogdePlayerMainWindow;
+        //    this.Close();
+        //    window.ShowDialog();
+        //}
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             CleanList();
         }
+
+
 
         private void CleanList()
         {
@@ -49,6 +54,7 @@ namespace Groepsproject_Blokken
             }
 
             lstHighscores.ItemsSource = Players;
+            
         }
 
         private void sliderVolume_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
@@ -86,6 +92,19 @@ namespace Groepsproject_Blokken
             }
         }
 
-
+        private void btnReturn_Click_1(object sender, RoutedEventArgs e)
+        {
+            BerndCrabbeTerug.Completed += (s, args) =>
+            {
+                MainWindow window = new MainWindow();
+                window.ingelogdePlayerLoginscreen = ingelogdePlayerMainWindow;
+                this.Close();
+                window.ShowDialog();
+            };
+            BerndCrabbeTerug.Begin();
+            StackPanelButtonsWeg2.Begin();
+            BlokkenLogoTerug.Begin();
+            
+        }
     }
 }

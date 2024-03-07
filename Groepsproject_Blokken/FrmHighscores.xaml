@@ -64,17 +64,21 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <Image x:Name="BerndCrabbe" HorizontalAlignment="Left" VerticalAlignment="Bottom" Source="Assets/BerndCrabbe NoBackGround.png"  Stretch="Uniform" Grid.ColumnSpan="2" Margin="50,0,0,0" Width="427">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image x:Name="BerndCrabbe" Grid.RowSpan ="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Source="Assets/BerndCrabbe NoBackGround.png"  Stretch="Uniform" Grid.ColumnSpan="2" Margin="50,0,0,0" Width="427">
             <Image.RenderTransform>
                 <TranslateTransform/>
             </Image.RenderTransform>
 
             <Image.Triggers>
-                <EventTrigger RoutedEvent="Button.Click">
+                <EventTrigger RoutedEvent="Window.Loaded">
                     <BeginStoryboard>
                         <Storyboard x:Name="BerndCrabbeWeg">
                             <DoubleAnimation Storyboard.TargetName="BerndCrabbe" Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.X)"
-                            From="0" To="-400" Duration="0:0:2" DecelerationRatio="0.8"
+                            From="0" To="-400" Duration="0:0:2" AccelerationRatio="0.8"
                             AutoReverse="False"/>
                             <DoubleAnimation Storyboard.TargetName="BerndCrabbe" Storyboard.TargetProperty="(Image.Opacity)"
 From="1" To="0" Duration="0:0:2" AccelerationRatio="0.8"
@@ -82,6 +86,17 @@ AutoReverse="False"/>
                         </Storyboard>
                     </BeginStoryboard>
 
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard x:Name="BerndCrabbeTerug">
+                            <DoubleAnimation Storyboard.TargetName="BerndCrabbe" Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.X)"
+                            From="-400" To="0" Duration="0:0:2" DecelerationRatio="0.8"
+                            AutoReverse="False"/>
+                            <DoubleAnimation Storyboard.TargetName="BerndCrabbe" Storyboard.TargetProperty="(Image.Opacity)" From="0" To="1" Duration="0:0:2" AccelerationRatio="0.8"
+AutoReverse="False"/>
+                        </Storyboard>
+                    </BeginStoryboard>
                 </EventTrigger>
             </Image.Triggers>
         </Image>
@@ -91,20 +106,29 @@ AutoReverse="False"/>
             </Image.RenderTransform>
 
             <Image.Triggers>
-                <EventTrigger RoutedEvent="Window.Unloaded">
+                <EventTrigger RoutedEvent="Window.Loaded">
                     <BeginStoryboard>
                         <Storyboard>
                             <DoubleAnimation Storyboard.TargetName="BlokkenLogo" Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.Y)"
-                            From="0" To="-200" Duration="0:0:2" DecelerationRatio="0.9"
+                            From="0" To="-105" Duration="0:0:2" DecelerationRatio="0.9"
                             AutoReverse="False"/>
                         </Storyboard>
                     </BeginStoryboard>
 
                 </EventTrigger>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard x:Name="BlokkenLogoTerug">
+                            <DoubleAnimation Storyboard.TargetName="BlokkenLogo" Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.Y)"
+                            From="-105" To="0" Duration="0:0:2" AccelerationRatio="0.9"
+                            AutoReverse="False"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
             </Image.Triggers>
 
         </Image>
-        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Name="StackPanel">
+        <StackPanel Orientation="Vertical" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Name="StackPanel" Margin="0,0,0,20">
             <StackPanel.Triggers>
                 <EventTrigger RoutedEvent="Window.Loaded">
                     <BeginStoryboard>
@@ -127,30 +151,7 @@ AutoReverse="False"/>
             </StackPanel.Triggers>
 
 
-            <Button x:Name="btnSingle"
-        Margin="3"
-        Content="Finalespel"
-        Width="200"
-        Height="60"
-        FontSize="30"
-        Background="#fea702"
-        Foreground="Black"
-        FontFamily="{StaticResource BlokkenFont}"
-        
-        >
-            </Button>
-            <Button x:Name="btnVS"
-        Margin="3"
-        Content="Versus"
-        Width="200"
-        Height="60"
-        FontSize="30"
-        Background="#fea702"
-        Foreground="Black"
-        FontFamily="{StaticResource BlokkenFont}"
-        
-        >
-            </Button>
+            
             <Button x:Name="btnReturn"
         Margin="3"
         Content="Return"
@@ -159,29 +160,68 @@ AutoReverse="False"/>
         FontSize="30"
         Background="#fea702"
         Foreground="Black"
-        FontFamily="{StaticResource BlokkenFont}"
+        FontFamily="{StaticResource BlokkenFont}" Click="btnReturn_Click_1"
         
         >
             </Button>
         </StackPanel>
-        <StackPanel Name="StackPanelVolume" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="300" Height="50"  Background="#fea702"  Orientation="Horizontal" MouseEnter="sliderVolume_MouseEnter" MouseLeave="sliderVolume_MouseLeave" Opacity="0.3">
+        <StackPanel Name="StackPanelVolume" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="300" Height="50"  Background="#fea702"  Orientation="Horizontal" MouseEnter="sliderVolume_MouseEnter" MouseLeave="sliderVolume_MouseLeave" Opacity="0.3">
             <Slider x:Name="sliderVolume" Grid.Column="2" HorizontalAlignment="Left" Width="210" Height="50" ValueChanged="sliderVolume_ValueChanged" Maximum="100" Minimum="0" Value="99" Margin="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
             <Image x:Name="imgVolume" Source="Assets/Icon High.png" Width="50" Height="50" HorizontalAlignment="Right" Stretch="UniformToFill"></Image>
 
         </StackPanel>
 
-        <ListBox x:Name="lstHighscores" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="600" Height="500" Background="#fea702" BorderBrush="Black" BorderThickness="5" FontFamily="{StaticResource BlokkenFont}" FontSize="30" Foreground="Black" Opacity="0.8" AlternationCount="100">
-
+        <ListBox Grid.RowSpan="2" x:Name="lstHighscores" Grid.ColumnSpan="2" HorizontalAlignment="Center" Background="#fea702" VerticalAlignment="Bottom" Width="600" Height="600" BorderBrush="#0D0080" BorderThickness="8" FontFamily="{StaticResource BlokkenFont}" FontSize="30" Foreground="Black" Opacity="0.8" AlternationCount="2" Margin="0,0,0,20" >
+            <ListBox.Triggers>
+                <EventTrigger RoutedEvent="Window.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="lstHighscores" Storyboard.TargetProperty="Opacity"
+                From="0" To="0.8" Duration="0:0:2" AccelerationRatio="0.9"
+                AutoReverse="False"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard x:Name="StackPanelButtonsWeg2">
+                            <DoubleAnimation Storyboard.TargetName="lstHighscores" Storyboard.TargetProperty="Opacity"
+From="0.8" To="0" Duration="0:0:1" DecelerationRatio="0.9"
+AutoReverse="False"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </ListBox.Triggers>
+            <ListBox.Resources>
+                <Style TargetType="Border">
+                    
+                    <Setter Property="CornerRadius" Value="50"/>
+                    
+                </Style>
+            </ListBox.Resources>
             <ListBox.ItemTemplate>
-
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Path=Position}" Width="auto" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <TextBlock Text="{Binding Path=Name}" Width="auto" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <Image Source="{Binding Path=ProfilePicture}" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <TextBlock Text="{Binding Path=SPHighscore}" Width="auto" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <StackPanel Name="StackPanelItemListBox" Width="550">
+                        
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="330"/>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="150"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Name="lblIndex" Content="{Binding Path=Position}" Width="auto" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                            <Label Name="lblNaam" Content="{Binding Path=Name}" Width="auto" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                            <Image Source="{Binding Path=ProfilePicture}" Width="auto" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" Stretch="UniformToFill"/>
+                            <Label Name="lblHighscore" Content="{Binding Path=SPHighscore}" Width="auto" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3" VerticalContentAlignment="Center" FontWeight="Bold"/>
+                        </Grid>
+
                     </StackPanel>
+                    
+                    
+
                 </DataTemplate>
+                
             </ListBox.ItemTemplate>
         </ListBox>
 
