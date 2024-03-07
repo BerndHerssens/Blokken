@@ -28,7 +28,7 @@ namespace Groepsproject_Blokken
             get { return _hint; }
             set { _hint = value; }
         }
-        //TODO: deze zal in de main window moeten
+        //TODO: Deze zal in de main window moeten
         public bool CheckAnswerIfPrimeWord(string answer)
         {
             try //added a try catch, in case the answer would be not validated before it gets here
@@ -55,10 +55,18 @@ namespace Groepsproject_Blokken
                     string[,] wordsThatAreParted; //TODO: deze moet je in de mainwindow alleen zetten
                     var teller = 0;
 
-                    while (!readobject.EndOfStream)//here i just need the lenght of the list, so i need to increase "teller"
+                    while (!readobject.EndOfStream)
                     {
-                        teller++;
                         readobject.ReadLine();
+                        if (readobject.ToString() == null || readobject.ToString() == "") //this is when txt1 is empty
+                        {
+                            File.Copy("../../PrimeWords/List2.txt", "../../PrimeWords/List1.txt");
+                            System.IO.File.WriteAllText("../../PrimeWords/file2.txt", string.Empty);
+                        }
+                        else //here i just need the lenght of the list, so i need to increase "teller"
+                        {
+                            teller++;
+                        }
                     }
                     temperaryLines = new string[teller]; //now that i have teller, i can make my length
                     for (int i = 0; i < teller; i++)
@@ -83,6 +91,7 @@ namespace Groepsproject_Blokken
             }
             catch { }
         }
+        //dit is gewoon placeholder code
         public void RandomPrimeWordConstruction()
         {
             string[,] wordsThatAreParted; //TODO: deze moeten weg, we spreken de algemene aan
@@ -107,11 +116,12 @@ namespace Groepsproject_Blokken
                 }
                 j++;
             }
-            //TODO: hier moet er nog een writer komen voor naar txt1
             WriteAwayToTxtOne(writeAwayString);
             WriteAwayToTxtTwo(myPrimeWord);
+            PrimeWordCuttingAndShowing();
         }
-        public void WriteAwayToTxtTwo(PrimeWord wegschrijvenWord) //ik heb de Primeword nodig
+        //dit is gewoon placeholder code
+        private void WriteAwayToTxtTwo(PrimeWord wegschrijvenWord) //ik heb de Primeword nodig
         {
             var filepath = "../../PrimeWords/List2.txt";
             string toWriteAway = "";
@@ -124,12 +134,15 @@ namespace Groepsproject_Blokken
             using (StreamWriter writer = new StreamWriter(filepath))
             {
                 for (int i = 0; i < toWriteAway.Length; i++) //we write away first the lines that we aleady can read
-                { writer.WriteLine(toWriteAway[i]); }
+                {
+                    writer.WriteLine(toWriteAway[i]);
+                }
                 temperaryLines = wegschrijvenWord.Primeword + ";" + wegschrijvenWord.Hint;
                 writer.WriteLine(temperaryLines); //we write away the new used primeword
             }
         }
-        public void WriteAwayToTxtOne(string[,] writeAwayString) //overschrijven List1 maar dan zonder de gekozen Primeword
+        //dit is gewoon placeholder code
+        private void WriteAwayToTxtOne(string[,] writeAwayString) //overschrijven List1 maar dan zonder de gekozen Primeword
         {
             var filepath = "../../PrimeWords/List1.txt";
             using (StreamWriter writer = new StreamWriter(filepath))
@@ -139,6 +152,33 @@ namespace Groepsproject_Blokken
                     writer.WriteLine(writeAwayString[i, 0] + ";" + writeAwayString[i, 1]);
                 }
             }
+        }
+        //dit is gewoon placeholder code
+        //laten we eens een methode maken om eenPrimeword to snippen en letter per letter te tonen
+        public void PrimeWordCuttingAndShowing()
+        {
+            PrimeWord myPrimeWord = new PrimeWord(); //hier moet er een deel in de code ervoor of erbuiten of degelijke maar niet hier, deze gaat dus ook weg
+            Random myRandom = new Random();
+            char[] wordForDisplay = "________".ToCharArray(); //dit is wat we tonen op het scherm
+            char[] versnipperdPrimeWord = new char[8]; //dit is wat we gaan onthouden en bijhouden voor ermee te werken
+            versnipperdPrimeWord = myPrimeWord.Primeword.ToCharArray();
+            int randomInt;
+            bool reroll = true;
+            randomInt = myRandom.Next(0, 8);
+            while (reroll)
+            {
+                if (!(versnipperdPrimeWord[randomInt] == '_'))
+                {
+                    reroll = false;
+                    wordForDisplay[randomInt] = versnipperdPrimeWord[randomInt];
+                    versnipperdPrimeWord[randomInt] = '_';
+                }
+                else
+                {
+                    randomInt = myRandom.Next(0, 8);
+                }
+            }
+            //als we dan uit de loop komen, dan is er een versnipperd woord in een array, en een array voor te showen waar er maar
         }
     }
 }
