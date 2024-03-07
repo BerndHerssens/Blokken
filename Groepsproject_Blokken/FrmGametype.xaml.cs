@@ -21,7 +21,8 @@ namespace Groepsproject_Blokken
             LaadTXTinCMB();
         }
         List<string> listIngeladenActieveVragenlijsten; //Txt's
-        List<string> listGekozenVragenlijsten = new List<string>(); //Leeg -> dit gaan we de selectie van de gebruiker inladen
+        List<string> listGekozenVragenlijsten = new List<string>(); //*Leeg -> dit gaan we de selectie van de gebruiker inladen
+
 
         private void btnSingle_Click(object sender, RoutedEventArgs e)
         {
@@ -29,7 +30,16 @@ namespace Groepsproject_Blokken
             {
                 FrmSinglePlayerQuiz windowSP = new FrmSinglePlayerQuiz();
                 windowSP.ingelogdePlayerSPQuiz = ingelogdePlayerMainWindow;
-                windowSP.gekozenVragenLijsten = listGekozenVragenlijsten;
+                if (listGekozenVragenlijsten.Count == 0)
+                {
+                    MessageBox.Show("Alle vragen werden geladen omdat u geen topics heeft geselecteerd, succes!", "Melding", MessageBoxButton.OK, MessageBoxImage.Information);
+                    windowSP.gekozenVragenLijsten = listIngeladenActieveVragenlijsten; // Laad alles in als niks geselecteerd is
+                }
+                else
+                {
+                    windowSP.gekozenVragenLijsten = listGekozenVragenlijsten;      // Als het niet null is, laden we  in wat er geselecteerd is.
+                }
+
                 this.Close();
                 windowSP.ShowDialog();
             };
