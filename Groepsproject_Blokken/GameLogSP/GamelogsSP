@@ -68,5 +68,19 @@
     "PlayerName": "Illyave",
     "Score": 0,
     "Date": "2024-03-06T16:05:05.6889533+01:00"
+  },
+  {
+    "ScoreID": 0,
+    "GameNumber": 46595510,
+    "PlayerName": "Gast",
+    "Score": 100,
+    "Date": "2024-03-07T09:09:54.5081702+01:00"
+  },
+  {
+    "ScoreID": 0,
+    "GameNumber": 12164329,
+    "PlayerName": "Gast",
+    "Score": 0,
+    "Date": "2024-03-07T09:16:12.6603048+01:00"
   }
 ]

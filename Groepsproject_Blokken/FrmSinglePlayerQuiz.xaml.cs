@@ -228,6 +228,7 @@ namespace Groepsproject_Blokken
                 score += 50;
                 lblTimerEnScore.Content = "Score: " + score.ToString() + " " + "Timer: " + tellerTimer;
                 correctAnswerClicked = true;
+                gameState.BlockIsPlaced = false;
                 //txtScore.Text = (Convert.ToInt32(txtScore.Text) + 50).ToString();
             }
             else
@@ -266,22 +267,24 @@ namespace Groepsproject_Blokken
             {
                 Dispatcher.Invoke(async () =>
                 {
-                    correctAnswerClicked = false;
+                    if (gameState.BlockIsPlaced == true)
+                    {
+                        correctAnswerClicked = false;
+                        RandomQuestionPicker();
+                        btnAntwoord1.MouseEnter += btnAntwoord1_MouseEnter;
+                        btnAntwoord1.MouseLeave += btnAntwoord1_MouseLeave;
+                        btnAntwoord1.Click += btnAntwoord1_Click;
+                        btnAntwoord2.MouseEnter += btnAntwoord2_MouseEnter;
+                        btnAntwoord2.MouseLeave += btnAntwoord2_MouseLeave;
+                        btnAntwoord2.Click += btnAntwoord2_Click;
+                        btnAntwoord3.MouseEnter += btnAntwoord3_MouseEnter;
+                        btnAntwoord3.MouseLeave += btnAntwoord3_MouseLeave;
+                        btnAntwoord3.Click += btnAntwoord3_Click;
+                        btnAntwoord4.MouseEnter += btnAntwoord4_MouseEnter;
+                        btnAntwoord4.MouseLeave += btnAntwoord4_MouseLeave;
+                        btnAntwoord4.Click += btnAntwoord4_Click;
+                    }
                     await GameLoop();
-                    RandomQuestionPicker();
-                    btnAntwoord1.MouseEnter += btnAntwoord1_MouseEnter;
-                    btnAntwoord1.MouseLeave += btnAntwoord1_MouseLeave;
-                    btnAntwoord1.Click += btnAntwoord1_Click;
-                    btnAntwoord2.MouseEnter += btnAntwoord2_MouseEnter;
-                    btnAntwoord2.MouseLeave += btnAntwoord2_MouseLeave;
-                    btnAntwoord2.Click += btnAntwoord2_Click;
-                    btnAntwoord3.MouseEnter += btnAntwoord3_MouseEnter;
-                    btnAntwoord3.MouseLeave += btnAntwoord3_MouseLeave;
-                    btnAntwoord3.Click += btnAntwoord3_Click;
-                    btnAntwoord4.MouseEnter += btnAntwoord4_MouseEnter;
-                    btnAntwoord4.MouseLeave += btnAntwoord4_MouseLeave;
-                    btnAntwoord4.Click += btnAntwoord4_Click;
-
                 });
             };
             _delayTimer.AutoReset = false;
@@ -360,6 +363,7 @@ namespace Groepsproject_Blokken
                     imageControls[row, column] = imageControl;
                 }
             }
+            gameState.BlockIsPlaced = true;
             return imageControls;
         }
         private void DrawGrid(GameGrid gameGrid)
@@ -404,8 +408,9 @@ namespace Groepsproject_Blokken
         private async Task GameLoop()
         {
             Draw(gameState);
-            while (!gameState.GameOver && correctAnswerClicked == true)
+            while (!gameState.GameOver && correctAnswerClicked == true && gameState.BlockIsPlaced == false)
             {
+                gameState.BlockIsPlaced = false;
                 int delay = 1000;
                 await Task.Delay(delay);
                 gameState.MoveBlockDown();

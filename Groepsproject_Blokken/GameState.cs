@@ -34,6 +34,7 @@ namespace Groepsproject_Blokken
         public bool CanHold { get; private set; }
         public bool GameOver { get; private set; }
         public bool Pause { get; set; }
+        public bool BlockIsPlaced { get; set; }
         public int Score { get; private set; }
 
         public GameState()
@@ -128,6 +129,7 @@ namespace Groepsproject_Blokken
             else
             {
                 CurrentBlock = BlockQueue.GetAndUpdate();
+                BlockIsPlaced = true;
                 CanHold = true;
             }
         }
