@@ -396,7 +396,233 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Primeword aanmaken/wijzigen/verwijderen">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="Assets/Blokken achtergrond Hi Res.jpg" />
+                    </Grid.Background>
+                    <GroupBox Header="Primewords"
+                              Grid.Row="0"
+                              Grid.Column="0"
+                              Grid.RowSpan="6"
+                              Width="225"
+                              FontFamily="{StaticResource BlokkenFont}"
+                              Foreground="White"
+                              Margin="61,0,61,0">
+                        <ListBox x:Name="lbPrimeworddisp"
+                                 SelectionChanged="lbQuestions_SelectionChanged"
+                                 ToolTip="CTRL + linker-CLICK om te deselecteren"
+                                 Height="385"
+                                 Width="225" />
+                    </GroupBox>
+                    <Button x:Name="btnPrimewordPlaceHolder"
+                            Content="Placeholder button"
+                            Background="#fea702"
+                            FontFamily="{StaticResource BlokkenFont}"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            Height="25"
+                            Width="225"
+                            Margin="0,26,0,26"
+                            FontWeight="Bold">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius"
+                                        Value="15" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button x:Name="btnPrimeWordPlaceholdertwee"
+                            Content="Placeholder button"
+                            Background="#fea702"
+                            FontFamily="{StaticResource BlokkenFont}"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            Height="25"
+                            Width="225"
+                            Margin="0,26,0,26"
+                            FontWeight="Bold">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius"
+                                        Value="15" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button x:Name="btnReturnDrie"
+                            Content="TERUG"
+                            Background="#fea702"
+                            FontFamily="{StaticResource BlokkenFont}"
+                            Grid.Row="7"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            Height="25"
+                            Width="200"
+                            Margin="8,26,0,26"
+                            FontWeight="Bold"
+                            Click="btnReturnQuestionnaireSelection_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius"
+                                        Value="15" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Grid>
             </TabItem>
+            <TabItem Header="Beheer Players">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="Assets/Blokken achtergrond Hi Res.jpg" />
+                    </Grid.Background>
+                    <GroupBox Header="Playerbase"
+                              Grid.Row="0"
+                              Grid.Column="0"
+                              Grid.RowSpan="6"
+                              Width="225"
+                              FontFamily="{StaticResource BlokkenFont}"
+                              Foreground="White"
+                              Margin="61,0,61,0">
+                        <ListBox x:Name="lbPlayerdisp"
+                                 ToolTip="CTRL + linker-CLICK om te deselecteren"
+                                 Height="385"
+                                 Width="225" />
+                    </GroupBox>
+                    <Button x:Name="btnDeletePlayer"
+                            Content="Delete Player"
+                            Background="#fea702"
+                            FontFamily="{StaticResource BlokkenFont}"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            Height="25"
+                            Width="225"
+                            Margin="0,26,0,26"
+                            FontWeight="Bold"
+                            Click="btnDeletePlayer_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius"
+                                        Value="15" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button x:Name="btnResetWW"
+                            Content="Reset het wachtwoord"
+                            Background="#fea702"
+                            FontFamily="{StaticResource BlokkenFont}"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            Height="25"
+                            Width="225"
+                            Margin="0,26,0,26"
+                            FontWeight="Bold"
+                            Click="btnResetWW_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius"
+                                        Value="15" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button x:Name="btnResetSP"
+                            Content="Reset SP statistics"
+                            Background="#fea702"
+                            FontFamily="{StaticResource BlokkenFont}"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            Height="25"
+                            Width="225"
+                            Margin="0,26,0,26"
+                            FontWeight="Bold"
+                            Click="btnResetSP_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius"
+                                        Value="15" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button x:Name="btnResetVS"
+                            Content="Reset VS statistics"
+                            Background="#fea702"
+                            FontFamily="{StaticResource BlokkenFont}"
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            Height="25"
+                            Width="225"
+                            Margin="0,26,0,26"
+                            FontWeight="Bold"
+                            Click="btnResetVS_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius"
+                                        Value="15" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button x:Name="btnReturnVier"
+                            Content="TERUG"
+                            Background="#fea702"
+                            FontFamily="{StaticResource BlokkenFont}"
+                            Grid.Row="7"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            Height="25"
+                            Width="200"
+                            Margin="8,26,0,26"
+                            FontWeight="Bold"
+                            Click="btnReturnQuestionnaireSelection_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius"
+                                        Value="15" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Grid>
+            </TabItem>
+
         </TabControl>
     </Grid>
 </Window>

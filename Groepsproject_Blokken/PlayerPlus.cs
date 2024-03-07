@@ -137,6 +137,10 @@ namespace Groepsproject_Blokken
             }
             return resultaat;
         }
+        public override string ToString()
+        {
+            return this.Name;
+        }
 
     }
 }

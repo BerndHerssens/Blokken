@@ -25,18 +25,6 @@
   },
   {
     "SpelerID": 0,
-    "Name": "test1",
-    "Password": "test1",
-    "ProfilePicture": "pack://application:,,,/Profielfotos/default.jpg",
-    "SPHighscore": null,
-    "SPGamesPlayed": null,
-    "SPGamesWon": null,
-    "VSHighscore": null,
-    "VSGamesPlayed": null,
-    "VSGamesWon": null
-  },
-  {
-    "SpelerID": 0,
     "Name": "Gilles",
     "Password": "Gilles",
     "ProfilePicture": "file:///C:/Users/gille/Downloads/gilles_profiel.png",

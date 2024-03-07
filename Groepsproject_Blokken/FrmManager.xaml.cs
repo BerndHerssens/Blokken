@@ -20,6 +20,8 @@ namespace Groepsproject_Blokken
         bool fileIsLoaded = false;
         List<string> listAlleVragenlijsten;
         List<string> listActieveVragenlijsten;
+        List<Player> listPlayers = new List<Player>();
+        Player geselecteerdePlayer = new Player();
         public FrmManager()
         {
             InitializeComponent();
@@ -28,6 +30,7 @@ namespace Groepsproject_Blokken
         {
             LaadTxtsInListboxen();
             VulAlleVragenListBoxenIn();
+            RefreshPlayers();
         }
         private void btnAddToList_Click(object sender, RoutedEventArgs e)
         {
@@ -255,6 +258,61 @@ namespace Groepsproject_Blokken
                 }
                 VulAlleVragenListBoxenIn();
             }
+        }
+
+        private void btnDeletePlayer_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbPlayerdisp.SelectedIndex != -1)
+            {
+                geselecteerdePlayer = lbPlayerdisp.SelectedItem as Player;
+                DataManager.DeletePlayer(geselecteerdePlayer);
+                RefreshPlayers();
+            }
+        }
+
+        private void btnResetWW_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbPlayerdisp.SelectedIndex != -1)
+            {
+                geselecteerdePlayer = lbPlayerdisp.SelectedItem as Player;
+                geselecteerdePlayer.Password = "default";
+                DataManager.UpdatePlayer(geselecteerdePlayer);
+                RefreshPlayers();
+
+            }
+        }
+
+        private void btnResetSP_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbPlayerdisp.SelectedIndex != -1)
+            {
+                geselecteerdePlayer = lbPlayerdisp.SelectedItem as Player;
+                geselecteerdePlayer.SPGamesPlayed = 0;
+                geselecteerdePlayer.SPGamesWon = 0;
+                DataManager.UpdatePlayer(geselecteerdePlayer);
+                RefreshPlayers();
+
+
+            }
+        }
+
+        private void btnResetVS_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbPlayerdisp.SelectedIndex != -1)
+            {
+                geselecteerdePlayer = lbPlayerdisp.SelectedItem as Player;
+                geselecteerdePlayer.VSGamesPlayed = 0;
+                geselecteerdePlayer.VSGamesWon = 0;
+                DataManager.UpdatePlayer(geselecteerdePlayer);
+                RefreshPlayers();
+
+            }
+        }
+        private void RefreshPlayers()
+        {
+            listPlayers = DataManager.GetAllPlayers();
+            lbPlayerdisp.ItemsSource = null;
+            lbPlayerdisp.ItemsSource = listPlayers;
         }
     }
 }

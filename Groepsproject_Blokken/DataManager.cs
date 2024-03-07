@@ -319,10 +319,11 @@ namespace Groepsproject_Blokken
             List<GameLogVS> listGameLogVS = GetAllGameLogVS();
             foreach (GameLogVS gameLogVS in listGameLogVS)
             {
-                if (gameLogVS == aGameLogVS)
+                if (gameLogVS.GameID == aGameLogVS.GameID)
                 {
                     listGameLogVS.Remove(gameLogVS);
                     deleteSucceeded = true;
+                    break;
                 }
             }
             JsonSerializerOptions options = new JsonSerializerOptions();
@@ -339,10 +340,11 @@ namespace Groepsproject_Blokken
             List<GameLogSP> listGameLogSP = GetAllGameLogSP();
             foreach (GameLogSP gameLogSP in listGameLogSP)
             {
-                if (gameLogSP == aGameLogSP)
+                if (gameLogSP.GameNumber == aGameLogSP.GameNumber)
                 {
                     listGameLogSP.Remove(gameLogSP);
                     deleteSucceeded = true;
+                    break;
                 }
             }
             JsonSerializerOptions options = new JsonSerializerOptions();
@@ -358,10 +360,12 @@ namespace Groepsproject_Blokken
             List<Player> players = GetAllPlayers();
             foreach (Player player in players)
             {
-                if (player == aPlayer)
+                if (player.Name == aPlayer.Name)
                 {
                     players.Remove(player);
                     deleteSucceeded = true;
+                    break;
+
                 }
             }
             JsonSerializerOptions options = new JsonSerializerOptions();
@@ -377,10 +381,11 @@ namespace Groepsproject_Blokken
             List<Manager> managers = GetAllManagers();
             foreach (Manager manager in managers)
             {
-                if (manager == aManager)
+                if (manager.Name == aManager.Name)
                 {
                     managers.Remove(manager);
                     deleteSucceeded = true;
+                    break;
                 }
             }
             JsonSerializerOptions options = new JsonSerializerOptions();
