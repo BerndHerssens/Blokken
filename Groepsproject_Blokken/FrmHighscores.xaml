@@ -176,7 +176,7 @@ AutoReverse="False"/>
 
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplatedParent.(ItemsControl.AlternationIndex)}" Width="auto" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding Path=Position}" Width="auto" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <TextBlock Text="{Binding Path=Name}" Width="auto" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <Image Source="{Binding Path=ProfilePicture}" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <TextBlock Text="{Binding Path=SPHighscore}" Width="auto" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>

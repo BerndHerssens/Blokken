@@ -75,6 +75,9 @@ namespace Groepsproject_Blokken
         [System.Text.Json.Serialization.JsonIgnore]
         public string Error => throw new System.Exception();
 
+        [System.Text.Json.Serialization.JsonIgnore]
+        public int Position { get; internal set; }
+
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

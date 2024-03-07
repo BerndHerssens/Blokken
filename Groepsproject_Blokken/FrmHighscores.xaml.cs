@@ -37,12 +37,18 @@ namespace Groepsproject_Blokken
 
         private void CleanList()
         {
-
             Players = DataManager.GetAllPlayers();
             Players = Players.OrderBy(p => p.SPHighscore).ToList();
             Players = Players.Take(10).ToList();
-            lstHighscores.ItemsSource = Players;
 
+            
+            int index = 1;
+            foreach (var player in Players)
+            {
+                player.Position = index++;
+            }
+
+            lstHighscores.ItemsSource = Players;
         }
 
         private void sliderVolume_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
