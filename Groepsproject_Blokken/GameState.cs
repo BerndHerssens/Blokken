@@ -35,7 +35,7 @@ namespace Groepsproject_Blokken
         public bool GameOver { get; private set; }
         public bool Pause { get; set; }
         public bool BlockIsPlaced { get; set; }
-        public int Score { get; private set; }
+        public int Score { get; set; }
 
         public GameState()
         {

@@ -69,9 +69,8 @@ namespace Groepsproject_Blokken
         private Question nieuweVraag = new Question();
         private GameLogSP eenGame = new GameLogSP();
         private System.Timers.Timer _delayTimer;
-        private int tellerTimer = 60;
+        private int tellerTimer = 120;
         private DispatcherTimer timer;
-        private int score = 0;
         public List<string> gekozenVragenLijsten = new List<string>();
         string json = "";
 
@@ -225,8 +224,8 @@ namespace Groepsproject_Blokken
             {
                 button.Background = Brushes.Green;
                 button.BorderThickness = new Thickness(0);
-                score += 50;
-                lblTimerEnScore.Content = "Score: " + score.ToString() + " " + "Timer: " + tellerTimer;
+                gameState.Score += 50;
+                lblTimerEnScore.Content = "Score: " + gameState.Score.ToString() + " " + "Timer: " + tellerTimer;
                 correctAnswerClicked = true;
                 gameState.BlockIsPlaced = false;
                 //txtScore.Text = (Convert.ToInt32(txtScore.Text) + 50).ToString();
@@ -235,8 +234,8 @@ namespace Groepsproject_Blokken
             {
                 button.Background = Brushes.OrangeRed;
                 button.BorderThickness = new Thickness(0);
-                score -= 50;
-                lblTimerEnScore.Content = "Score: " + score.ToString() + " " + "Timer: " + tellerTimer;
+                gameState.Score -= 50;
+                lblTimerEnScore.Content = "Score: " + gameState.Score.ToString() + " " + "Timer: " + tellerTimer;
                 //txtScore.Text = (Convert.ToInt32(txtScore.Text) - 50).ToString();
 
                 ShowCorrectAnswer(new List<Button> { btnAntwoord1, btnAntwoord2, btnAntwoord3, btnAntwoord4 });
@@ -262,7 +261,7 @@ namespace Groepsproject_Blokken
         private async void Delay()
         {
             await GameLoop();
-            _delayTimer = new System.Timers.Timer(5000); // 5 seconds delay
+            _delayTimer = new System.Timers.Timer(100); // 5 seconds delay
             _delayTimer.Elapsed += (s, args) =>
             {
                 Dispatcher.Invoke(async () =>
@@ -310,11 +309,11 @@ namespace Groepsproject_Blokken
         void timer_Tick(object sender, EventArgs e)
         {
             tellerTimer--;
-            lblTimerEnScore.Content = "Score: " + score.ToString() + " " + "Timer: " + tellerTimer;
+            lblTimerEnScore.Content = "Score: " + gameState.Score.ToString() + " " + "Timer: " + tellerTimer;
             if (tellerTimer <= 0)
             {
                 backgroundMusicPlayer.Stop();
-                MessageBox.Show("Game Over! Uw score was: " + score, "Game Over!", MessageBoxButton.OK, MessageBoxImage.Stop);
+                MessageBox.Show("Game Over! Uw score was: " + gameState.Score, "Game Over!", MessageBoxButton.OK, MessageBoxImage.Stop);
                 timer.Stop();
 
                 if (ingelogdePlayerSPQuiz != null)
@@ -322,7 +321,7 @@ namespace Groepsproject_Blokken
                     eenGame = new GameLogSP();
                     eenGame.PlayerName = ingelogdePlayerSPQuiz.Name;
                     eenGame.Date = DateTime.Now;
-                    eenGame.Score = Convert.ToInt32(score);
+                    eenGame.Score = Convert.ToInt32(gameState.Score);
                     eenGame.GameNumber = eenGame.GetHashCode();
                     DataManager.InsertGameLogSP(eenGame);
                     MainWindow mainwindow = new MainWindow();
@@ -335,7 +334,7 @@ namespace Groepsproject_Blokken
                     eenGame = new GameLogSP();
                     eenGame.PlayerName = "Gast";
                     eenGame.Date = DateTime.Now;
-                    eenGame.Score = Convert.ToInt32(score);
+                    eenGame.Score = Convert.ToInt32(gameState.Score);
                     eenGame.GameNumber = eenGame.GetHashCode();
                     DataManager.InsertGameLogSP(eenGame);
                     this.Close();
@@ -411,7 +410,7 @@ namespace Groepsproject_Blokken
             while (!gameState.GameOver && correctAnswerClicked == true && gameState.BlockIsPlaced == false)
             {
                 gameState.BlockIsPlaced = false;
-                int delay = 1000;
+                int delay = 950;
                 await Task.Delay(delay);
                 gameState.MoveBlockDown();
                 Draw(gameState);
@@ -419,7 +418,7 @@ namespace Groepsproject_Blokken
             if (gameState.GameOver)
             {
                 grdGameOver.Visibility = Visibility.Visible;
-                txtFinalScore.Text = score.ToString();
+                txtFinalScore.Text = gameState.Score.ToString();
             }
         }
 
@@ -432,28 +431,46 @@ namespace Groepsproject_Blokken
             switch (e.Key)
             {
                 case Key.Left:
-                    gameState.MoveBlockLeft();
+                    if (correctAnswerClicked == true)
+                    {
+                        gameState.MoveBlockLeft();
+                    }
                     break;
                 case Key.Right:
-                    gameState.MoveBlockRight();
+                    if (correctAnswerClicked == true)
+                    {
+                        gameState.MoveBlockRight();
+                    }
                     break;
                 case Key.Down:
-                    gameState.MoveBlockDown();
+                    if (correctAnswerClicked == true)
+                    {
+                        gameState.MoveBlockDown();
+                    }
                     break;
                 case Key.J:
-                    gameState.RotateBlockClockWise();
+                    if (gameState.BlockIsPlaced == true)
+                    {
+                        gameState.RotateBlockClockWise();
+                    }
                     break;
                 case Key.F:
-                    gameState.RotateBlockCounterClockwise();
+                    if (correctAnswerClicked == true)
+                    {
+                        gameState.RotateBlockCounterClockwise();
+                    }
                     break;
                 case Key.Tab:
-                    gameState.HoldBlock();
+                    //gameState.HoldBlock();
                     break;
                 case Key.Space:
-                    gameState.DropBlock();
+                    if (correctAnswerClicked == false)
+                    {
+                        gameState.DropBlock();
+                    }
                     break;
                 case Key.P:
-                    gameState.Pause = true;
+                    //gameState.Pause = true;
                     break;
                 default:
                     return;
