@@ -21,10 +21,7 @@ namespace Groepsproject_Blokken
         string[] temperaryLines;
         string[,] wordsThatAreParted;
         int teller = 0;
-        //deze is voor in de game vensters
-        char[] wordForDisplay = "________".ToCharArray(); //dit is wat we tonen op het scherm
-        char[] versnipperdPrimeWord = new char[8]; //dit is het myPrimeWord.Primeword waar we mee gaan werken
-        //myPrimeword.Hint is je hint dat je kan tonen
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -33,9 +30,9 @@ namespace Groepsproject_Blokken
                 ReadAndFillPrimeWordList();
                 RandomPrimeWordConstruction();
             }
-            catch 
+            catch
             {
-            
+
             }
         }
         List<string> listIngeladenActieveVragenlijsten; //Txt's
@@ -45,6 +42,7 @@ namespace Groepsproject_Blokken
             BerndCrabbeWeg.Completed += (s, args) =>
             {
                 FrmSinglePlayerQuiz windowSP = new FrmSinglePlayerQuiz();
+                windowSP.gekozenPrimeword = myPrimeWord;
                 windowSP.ingelogdePlayerSPQuiz = ingelogdePlayerMainWindow;
                 if (listGekozenVragenlijsten.Count == 0)
                 {
@@ -197,7 +195,7 @@ namespace Groepsproject_Blokken
         public void RandomPrimeWordConstruction()
         {
             Random myRandom = new Random();
-            
+
             var randomNumberToPickAndRemove = myRandom.Next(0, teller);
             myPrimeWord = new PrimeWord((wordsThatAreParted[randomNumberToPickAndRemove, 0]), (wordsThatAreParted[randomNumberToPickAndRemove, 1])); //here we have our random prime word with the random Hint
             string[,] writeAwayString = new string[teller - 1, 2]; //TODO: this one we can move to main, so we can get it for the writing for the new TXT
@@ -265,25 +263,6 @@ namespace Groepsproject_Blokken
         }
         //dit is de methode om een primeword te verwerken die zou moeten opgeroepen worden elke X seconden, en dan een letter meer zou moeten terug geven
         //deze verwerken de 2 objecten boven aan de page
-        public void PrimeWordCuttingAndShowing()
-        {
-            Random myRandom = new Random();
-            int randomInt;
-            bool reroll = true;
-            randomInt = myRandom.Next(0, 8);
-            while (reroll)
-            {
-                if (!(versnipperdPrimeWord[randomInt] == '_'))
-                {
-                    reroll = false;
-                    wordForDisplay[randomInt] = versnipperdPrimeWord[randomInt];
-                    versnipperdPrimeWord[randomInt] = '_';
-                }
-                else
-                {
-                    randomInt = myRandom.Next(0, 8);
-                }
-            }
-        }
+
     }
 }

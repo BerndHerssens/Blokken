@@ -21,5 +21,19 @@ namespace GroepsProject_Blokken.Tests
             //Assert
             Assert.That(iets, Is.True);
         }
+
+        [Test]
+        public void PrimeWordTestTwee()
+        {
+            //Arrange
+            PrimeWord eenPrimeword = new PrimeWord();
+            eenPrimeword.Primeword = "Brocolli";
+            eenPrimeword.Hint = "Groente";
+            //Act
+            PrimeWord.PrimeWordCuttingAndShowing(eenPrimeword);
+
+            //Assert
+
+        }
     }
 }

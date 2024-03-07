@@ -44,6 +44,11 @@ namespace Groepsproject_Blokken
         private readonly Image[,] arrImageControls;
         private GameState gameState = new GameState();
         public Player ingelogdePlayerSPQuiz;
+        public PrimeWord gekozenPrimeword = new PrimeWord();
+        //deze is voor in de game vensters
+        char[] wordForDisplay = "________".ToCharArray(); //dit is wat we tonen op het scherm
+        char[] versnipperdPrimeWord = new char[8]; //dit is het myPrimeWord.Primeword waar we mee gaan werken
+        //myPrimeword.Hint is je hint dat je kan tonen
         public FrmSinglePlayerQuiz()
         {
             InitializeComponent();
@@ -55,10 +60,12 @@ namespace Groepsproject_Blokken
             PlaybackMusic();
             InlezenVragen();
             RandomQuestionPicker();
-            timer = new DispatcherTimer();
+            timer = new DispatcherTimer(DispatcherPriority.Render);
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += timer_Tick;
             timer.Start();
+            lblHint.Content = gekozenPrimeword.Hint;
+            versnipperdPrimeWord = gekozenPrimeword.Primeword.ToCharArray();
         }
         public MediaPlayer backgroundMusicPlayer = new MediaPlayer();
 
@@ -319,7 +326,7 @@ namespace Groepsproject_Blokken
                     {
                         ingelogdePlayerSPQuiz.SPHighscore = gameState.Score;
                     }
-                    //if (CheckAnswerIfPrimeWord()) //TODO: Primeword geraden -> uncommented wanneer bernd deeltje erbijstaat
+                    //if (CheckAnswerIfPrimeWord()) //TODO: Primeword geraden -> uncommented wanneer bernd deeltje erbijstaat -> popup input + bool of methode uitvoeren die hier
                     //{
                     //    if (ingelogdePlayerSPQuiz.SPGamesWon == null)
                     //    {
@@ -348,6 +355,10 @@ namespace Groepsproject_Blokken
                     this.Close();
                     System.Windows.Forms.Application.Restart();
                 }
+            }
+            if (tellerTimer == 119 || tellerTimer == 96 || tellerTimer == 72 || tellerTimer == 48 || tellerTimer == 24 || tellerTimer == 1)
+            {
+                PrimeWordCuttingAndShowing();
             }
         }
         private Image[,] SetupGameCanvas(GameGrid gameGrid)
@@ -491,7 +502,32 @@ namespace Groepsproject_Blokken
             grdGameOver.Visibility = Visibility.Hidden;
             await GameLoop();
         }
+        public void PrimeWordCuttingAndShowing()
+        {
+            lblPrimeword.Text = "";
 
+            Random myRandom = new Random();
+            int randomInt;
+            bool reroll = true;
+            randomInt = myRandom.Next(0, 8);
+            while (reroll)
+            {
+                if (!(versnipperdPrimeWord[randomInt] == '_'))
+                {
+                    reroll = false;
+                    wordForDisplay[randomInt] = versnipperdPrimeWord[randomInt];
+                    versnipperdPrimeWord[randomInt] = '_';
+                    foreach (char letter in wordForDisplay)
+                    {
+                        lblPrimeword.Text += letter.ToString().ToUpper() + " ";
+                    }
+                }
+                else
+                {
+                    randomInt = myRandom.Next(0, 8);
+                }
+            }
+        }
 
     }
 }

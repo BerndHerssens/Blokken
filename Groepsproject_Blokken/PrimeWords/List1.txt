@@ -1,7 +1,6 @@
 ijslolly;koude lekkernij
 crucifix;christendom
 babymelk;natuurlijk
-gezwicht;hij is ...
 golfclub;sport instrument
 hobbykok;thuiskok
 huilbaby;nachtmerrie
@@ -13,20 +12,15 @@ jerrycan;container
 juffrouw;algemeen eerste liefde
 katzwijm;flauwte
 koplicht;Navigatiedeel van schepen
-kilobyte;Unit
 luxaflex;jaloezieën
 lunchbox;eten
 lobbying;uitoefenen van invloed
 lymfevat;menselijke drainagesysteem
-leukocyt;afweersysteem
-mycelium;hyfen
 mycoloog;doctoraat
 malvezij;drank
 maquette;model
-nachtbus;vervoersdienst
 oxymoron;stijlfiguur
 officium;politiek-juridische term
-playoffs;eindronde
 quoteren;evenredig verdelen
 recyclen;hergebruiken
 showbizz;een industrie

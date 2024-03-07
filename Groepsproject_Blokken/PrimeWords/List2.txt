@@ -1,3 +1,9 @@
 meetlint;meter voor omtrek
 lymfocyte;cel
 kerfbijl;werktuig
+kilobyte;Unit
+playoffs;eindronde
+nachtbus;vervoersdienst
+leukocyt;afweersysteem
+gezwicht;hij is ...
+mycelium;hyfen

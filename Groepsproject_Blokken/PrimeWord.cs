@@ -1,7 +1,5 @@
 
 using System;
-using System.IO;
-using System.Windows;
 
 namespace Groepsproject_Blokken
 {
@@ -28,7 +26,7 @@ namespace Groepsproject_Blokken
             get { return _hint; }
             set { _hint = value; }
         }
-        
+
         public bool CheckAnswerIfPrimeWord(string answer)
         {
             try //added a try catch, in case the answer would be not validated before it gets here
@@ -42,7 +40,7 @@ namespace Groepsproject_Blokken
             }
             catch { return false; }
         }
-        
+
         //public void ReadAndFillPrimeWordList() //i want to make a method that will fill in a 2d array of (prime)words, read from a txt
         //{
         //    try
@@ -155,30 +153,30 @@ namespace Groepsproject_Blokken
         //}
         ////dit is gewoon placeholder code
         ////laten we eens een methode maken om eenPrimeword to snippen en letter per letter te tonen
-        //public void PrimeWordCuttingAndShowing()
-        //{
-        //    PrimeWord myPrimeWord = new PrimeWord(); //hier moet er een deel in de code ervoor of erbuiten of degelijke maar niet hier, deze gaat dus ook weg
-        //    Random myRandom = new Random();
-        //    char[] wordForDisplay = "________".ToCharArray(); //dit is wat we tonen op het scherm
-        //    char[] versnipperdPrimeWord = new char[8]; //dit is wat we gaan onthouden en bijhouden voor ermee te werken
-        //    versnipperdPrimeWord = myPrimeWord.Primeword.ToCharArray();
-        //    int randomInt;
-        //    bool reroll = true;
-        //    randomInt = myRandom.Next(0, 8);
-        //    while (reroll)
-        //    {
-        //        if (!(versnipperdPrimeWord[randomInt] == '_'))
-        //        {
-        //            reroll = false;
-        //            wordForDisplay[randomInt] = versnipperdPrimeWord[randomInt];
-        //            versnipperdPrimeWord[randomInt] = '_';
-        //        }
-        //        else
-        //        {
-        //            randomInt = myRandom.Next(0, 8);
-        //        }
-        //    }
-        //    //als we dan uit de loop komen, dan is er een versnipperd woord in een array, en een array voor te showen waar er maar
-        //}
+        public static void PrimeWordCuttingAndShowing(PrimeWord primeWord)
+        {
+            PrimeWord myPrimeWord = primeWord; //hier moet er een deel in de code ervoor of erbuiten of degelijke maar niet hier, deze gaat dus ook weg
+            Random myRandom = new Random();
+            char[] wordForDisplay = "________".ToCharArray(); //dit is wat we tonen op het scherm
+            char[] versnipperdPrimeWord = new char[8]; //dit is wat we gaan onthouden en bijhouden voor ermee te werken
+            versnipperdPrimeWord = myPrimeWord.Primeword.ToCharArray();
+            int randomInt;
+            bool reroll = true;
+            randomInt = myRandom.Next(0, 8);
+            while (reroll)
+            {
+                if (!(versnipperdPrimeWord[randomInt] == '_'))
+                {
+                    reroll = false;
+                    wordForDisplay[randomInt] = versnipperdPrimeWord[randomInt];
+                    versnipperdPrimeWord[randomInt] = '_';
+                }
+                else
+                {
+                    randomInt = myRandom.Next(0, 8);
+                }
+            }
+            //als we dan uit de loop komen, dan is er een versnipperd woord in een array, en een array voor te showen waar er maar
+        }
     }
 }

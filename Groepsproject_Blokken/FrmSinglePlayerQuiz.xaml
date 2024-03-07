@@ -122,5 +122,11 @@ Value="80" />
                 <Button x:Name="btnPlayAgain" Content="Opnieuw spelen" Background="LightGreen" Margin="0,20,0,0" Padding="5" Click="btnPlayAgain_Click"/>
             </StackPanel>
         </Grid>
+        
+        <!--TODO DIT BETER PLAATSEN-->
+        <Label x:Name="lblHint" Content="Hint" Foreground="AntiqueWhite" />
+        <TextBlock x:Name="lblPrimeword"  Foreground="AntiqueWhite" Grid.Row="1"/>
+        <!--TODO DIT BETER PLAATSEN-->
+        
     </Grid>
 </Window>
