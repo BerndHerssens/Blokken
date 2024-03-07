@@ -3,24 +3,187 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Groepsproject_Blokken"
+        xmlns:local="clr-namespace:Groepsproject_Blokken" xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase" d:DataContext="{d:DesignInstance Type=local:Player}"
         mc:Ignorable="d"
         Title="FrmHighscores"
         Height="720" Width="1280" MinHeight="720" MinWidth="1280"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+
+    <Window.Resources>
+
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderThickness="8" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" CornerRadius="25" BorderBrush="#fea702">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsMouseOver" Value="true">
+
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation To="230"  Storyboard.TargetProperty="Width" Duration="0:0:0.3" />
+                                            <DoubleAnimation To="90"  Storyboard.TargetProperty="Height" Duration="0:0:0.3" />
+                                            <ColorAnimation To="#0D0080" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" Duration="0:0:0.3"/>
+                                            <ColorAnimation To="WhiteSmoke" Storyboard.TargetProperty="Foreground.(SolidColorBrush.Color)" Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation To="200"  Storyboard.TargetProperty="Width" Duration="0:0:0.3" />
+                                            <DoubleAnimation To="60"  Storyboard.TargetProperty="Height" Duration="0:0:0.3" />
+                                            <ColorAnimation To="#fea702" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" Duration="0:0:0.3"/>
+                                            <ColorAnimation To="Black" Storyboard.TargetProperty="Foreground.(SolidColorBrush.Color)" Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
     <Grid>
-        <Button x:Name="btnReturn"
-                Content="Return"
-                Width="200"
-                Height="60"
-                FontSize="30"
-                Click="btnReturn_Click">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius"
-                            Value="40" />
-                </Style>
-            </Button.Resources>
-        </Button>
+        <Grid.Background>
+            <ImageBrush ImageSource="Assets/Blokken achtergrond Hi Res.jpg" Stretch="UniformToFill"/>
+
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="BerndCrabbe" HorizontalAlignment="Left" VerticalAlignment="Bottom" Source="Assets/BerndCrabbe NoBackGround.png"  Stretch="Uniform" Grid.ColumnSpan="2" Margin="50,0,0,0" Width="427">
+            <Image.RenderTransform>
+                <TranslateTransform/>
+            </Image.RenderTransform>
+
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard x:Name="BerndCrabbeWeg">
+                            <DoubleAnimation Storyboard.TargetName="BerndCrabbe" Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.X)"
+                            From="0" To="-400" Duration="0:0:2" DecelerationRatio="0.8"
+                            AutoReverse="False"/>
+                            <DoubleAnimation Storyboard.TargetName="BerndCrabbe" Storyboard.TargetProperty="(Image.Opacity)"
+From="1" To="0" Duration="0:0:2" AccelerationRatio="0.8"
+AutoReverse="False"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+
+                </EventTrigger>
+            </Image.Triggers>
+        </Image>
+        <Image x:Name="BlokkenLogo" Grid.Column="1" Source="/Assets/BlokkenLogo2.png" VerticalAlignment="Top" Stretch="Uniform" Grid.ColumnSpan="2">
+            <Image.RenderTransform>
+                <TranslateTransform/>
+            </Image.RenderTransform>
+
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="Window.Unloaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="BlokkenLogo" Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.Y)"
+                            From="0" To="-200" Duration="0:0:2" DecelerationRatio="0.9"
+                            AutoReverse="False"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+
+                </EventTrigger>
+            </Image.Triggers>
+
+        </Image>
+        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Name="StackPanel">
+            <StackPanel.Triggers>
+                <EventTrigger RoutedEvent="Window.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="StackPanel" Storyboard.TargetProperty="Opacity"
+                From="0" To="1" Duration="0:0:1" DecelerationRatio="0.9"
+                AutoReverse="False"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard x:Name="StackPanelButtonsWeg">
+                            <DoubleAnimation Storyboard.TargetName="StackPanel" Storyboard.TargetProperty="Opacity"
+From="1" To="0" Duration="0:0:1" DecelerationRatio="0.9"
+AutoReverse="False"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </StackPanel.Triggers>
+
+
+            <Button x:Name="btnSingle"
+        Margin="3"
+        Content="Finalespel"
+        Width="200"
+        Height="60"
+        FontSize="30"
+        Background="#fea702"
+        Foreground="Black"
+        FontFamily="{StaticResource BlokkenFont}"
+        
+        >
+            </Button>
+            <Button x:Name="btnVS"
+        Margin="3"
+        Content="Versus"
+        Width="200"
+        Height="60"
+        FontSize="30"
+        Background="#fea702"
+        Foreground="Black"
+        FontFamily="{StaticResource BlokkenFont}"
+        
+        >
+            </Button>
+            <Button x:Name="btnReturn"
+        Margin="3"
+        Content="Return"
+        Width="200"
+        Height="60"
+        FontSize="30"
+        Background="#fea702"
+        Foreground="Black"
+        FontFamily="{StaticResource BlokkenFont}"
+        
+        >
+            </Button>
+        </StackPanel>
+        <StackPanel Name="StackPanelVolume" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="300" Height="50"  Background="#fea702"  Orientation="Horizontal" MouseEnter="sliderVolume_MouseEnter" MouseLeave="sliderVolume_MouseLeave" Opacity="0.3">
+            <Slider x:Name="sliderVolume" Grid.Column="2" HorizontalAlignment="Left" Width="210" Height="50" ValueChanged="sliderVolume_ValueChanged" Maximum="100" Minimum="0" Value="99" Margin="15" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <Image x:Name="imgVolume" Source="Assets/Icon High.png" Width="50" Height="50" HorizontalAlignment="Right" Stretch="UniformToFill"></Image>
+
+        </StackPanel>
+
+        <ListBox x:Name="lstHighscores" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="600" Height="500" Background="#fea702" BorderBrush="Black" BorderThickness="5" FontFamily="{StaticResource BlokkenFont}" FontSize="30" Foreground="Black" Opacity="0.8" AlternationCount="100">
+
+            <ListBox.ItemTemplate>
+
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplatedParent.(ItemsControl.AlternationIndex)}" Width="auto" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding Path=Name}" Width="auto" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Image Source="{Binding Path=ProfilePicture}" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding Path=SPHighscore}" Width="auto" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
     </Grid>
 </Window>
