@@ -1,1 +1,3 @@
 meetlint;meter voor omtrek
+lymfocyte;cel
+kerfbijl;werktuig

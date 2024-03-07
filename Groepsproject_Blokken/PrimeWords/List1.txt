@@ -13,9 +13,7 @@ jerrycan;container
 juffrouw;algemeen eerste liefde
 katzwijm;flauwte
 koplicht;Navigatiedeel van schepen
-kerfbijl;werktuig
 kilobyte;Unit
-lymfocyte;cel
 luxaflex;jaloezieën
 lunchbox;eten
 lobbying;uitoefenen van invloed
