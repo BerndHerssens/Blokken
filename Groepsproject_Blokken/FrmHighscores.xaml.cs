@@ -96,7 +96,7 @@ namespace Groepsproject_Blokken
         {
             BerndCrabbeTerug.Completed += (s, args) =>
             {
-                MainWindow window = new MainWindow();
+                FrmTitleScreen window = new FrmTitleScreen();
                 window.ingelogdePlayerLoginscreen = ingelogdePlayerMainWindow;
                 this.Close();
                 window.ShowDialog();

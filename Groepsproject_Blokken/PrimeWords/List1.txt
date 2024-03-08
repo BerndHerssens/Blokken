@@ -6,9 +6,7 @@ hobbykok;thuiskok
 huilbaby;nachtmerrie
 hectisch;chaos
 jazzclub;culturele plaats
-joystick;bewegings controller
 juryteam;Panel
-jerrycan;container
 juffrouw;algemeen eerste liefde
 katzwijm;flauwte
 koplicht;Navigatiedeel van schepen

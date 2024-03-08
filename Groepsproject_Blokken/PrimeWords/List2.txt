@@ -7,3 +7,5 @@ nachtbus;vervoersdienst
 leukocyt;afweersysteem
 gezwicht;hij is ...
 mycelium;hyfen
+joystick;bewegings controller
+jerrycan;container
