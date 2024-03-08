@@ -9,3 +9,6 @@ gezwicht;hij is ...
 mycelium;hyfen
 joystick;bewegings controller
 jerrycan;container
+ijslolly;koude lekkernij
+nachtmerrie;
+Navigatiedeel van schepen;

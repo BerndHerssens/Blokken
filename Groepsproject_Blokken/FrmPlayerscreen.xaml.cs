@@ -31,6 +31,7 @@ namespace Groepsproject_Blokken
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             MainWindow window = new MainWindow();
+            window.ingelogdePlayerLoginscreen = ingelogdePlayerMainWindow;
             this.Close();
             window.ShowDialog();
         }

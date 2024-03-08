@@ -1,24 +1,21 @@
-ijslolly;koude lekkernij
-crucifix;christendom
-babymelk;natuurlijk
-golfclub;sport instrument
-hobbykok;thuiskok
-huilbaby;nachtmerrie
-hectisch;chaos
-jazzclub;culturele plaats
-juryteam;Panel
-juffrouw;algemeen eerste liefde
-katzwijm;flauwte
-koplicht;Navigatiedeel van schepen
-luxaflex;jaloezieën
-lunchbox;eten
-lobbying;uitoefenen van invloed
-lymfevat;menselijke drainagesysteem
-mycoloog;doctoraat
-malvezij;drank
-maquette;model
-oxymoron;stijlfiguur
-officium;politiek-juridische term
-quoteren;evenredig verdelen
-recyclen;hergebruiken
-showbizz;een industrie
+christendom;
+natuurlijk;
+sport instrument;
+thuiskok;
+chaos;
+culturele plaats;
+Panel;
+algemeen eerste liefde;
+flauwte;
+jaloezieën;
+eten;
+uitoefenen van invloed;
+menselijke drainagesysteem;
+doctoraat;
+drank;
+model;
+stijlfiguur;
+politiek-juridische term;
+evenredig verdelen;
+hergebruiken;
+een industrie;

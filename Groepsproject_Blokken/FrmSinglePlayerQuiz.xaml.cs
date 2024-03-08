@@ -210,8 +210,6 @@ namespace Groepsproject_Blokken
             btnAntwoord2.Background = (Brush)bc.ConvertFrom("#fea702");
             btnAntwoord3.Background = (Brush)bc.ConvertFrom("#fea702");
             btnAntwoord4.Background = (Brush)bc.ConvertFrom("#fea702");
-
-
         }
 
         //Looped door de buttons en laat het correcte antwoord zien (gebruiken wanneer niemand het juist heeft)
