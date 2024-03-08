@@ -54,5 +54,25 @@
                 </Style>
             </Button.Resources>
         </Button>
+        <Button x:Name="btnReturn"
+                Content="TERUG"
+                Background="#fea702"
+                FontFamily="{StaticResource BlokkenFont}"
+                Grid.Row="4"
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                Height="25"
+                Width="150"
+                Margin="25"
+               
+                FontWeight="Bold"
+                Click="btnReturn_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius"
+                            Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>

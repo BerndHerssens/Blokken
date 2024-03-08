@@ -116,8 +116,6 @@ namespace Groepsproject_Blokken
             FrmLoginRegister frmLoginRegister = new FrmLoginRegister();
             this.Close();
             frmLoginRegister.ShowDialog();
-
-
         }
         public void WegSchrijven(List<Question> eenList, string fileName)
         {
@@ -199,8 +197,9 @@ namespace Groepsproject_Blokken
 
         private void btnReturnQuestionnaireSelection_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Forms.Application.Restart();
-            System.Windows.Application.Current.Shutdown();
+            FrmLoginRegister frmLoginRegister = new FrmLoginRegister();
+            this.Close();
+            frmLoginRegister.ShowDialog();
         }
 
         private void btnSaveQuestionnaireSelection_Click(object sender, RoutedEventArgs e)

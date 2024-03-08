@@ -64,13 +64,12 @@ namespace Groepsproject_Blokken
             FrmPlayerRegister frmPlayerRegister = new FrmPlayerRegister();
             frmPlayerRegister.lstPlayers = playerList;
             frmPlayerRegister.lstManagers = managerList;
-            this.Hide();
+            this.Close();
             if (frmPlayerRegister.ShowDialog() == true)
             {
                 playerList = frmPlayerRegister.lstPlayers;
                 managerList = frmPlayerRegister.lstManagers;
             }
-            this.ShowDialog();
         }
 
         private void btnDoorgaanAlsGast_Click(object sender, RoutedEventArgs e)

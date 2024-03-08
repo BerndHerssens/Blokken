@@ -18,6 +18,7 @@ namespace Groepsproject_Blokken
         BitmapImage defaultProfile = new BitmapImage(new Uri(@"../../Profielfotos/default.jpg", UriKind.RelativeOrAbsolute));
         string profilePath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\Profielfotos"); //Path voor de initdirectory te laten werken
         string fileName = ""; // variabele om de naam van de file in op te slagen
+        Player player = new Player();
 
 
         OpenFileDialog dialogChoosePicture = new OpenFileDialog
@@ -35,6 +36,7 @@ namespace Groepsproject_Blokken
             txtProfilePicturePreview.Source = defaultProfile;
             txtProfilePictureSource.Text = defaultProfile.UriSource.ToString();
             dialogChoosePicture.InitialDirectory = System.IO.Path.GetFullPath(profilePath);
+            player.ProfilePicture = @"../../Profielfotos/default.jpg";
         }
 
         private void btnSelectProfilePic_Click(object sender, RoutedEventArgs e)
@@ -49,6 +51,8 @@ namespace Groepsproject_Blokken
                     txtProfilePicturePreview.Source = defaultProfile;
                     fileName = Path.GetFileName(dialogChoosePicture.FileName); //opslagen filename
                     File.Copy(dialogChoosePicture.FileName, @"../../Profielfotos/" + fileName, true); // kopieer de lokale file naar onze profielfotosmap, als de foto al bestaat, gewoon overschrijven 
+                    player.ProfilePicture = @"../../Profielfotos/" + fileName;
+
                 }
                 else
                 {
@@ -60,7 +64,6 @@ namespace Groepsproject_Blokken
         private void btnCreatePlayer_Click(object sender, RoutedEventArgs e)
         {
             bool playerBestaat = false;
-            Player player = new Player();
             if (!(string.IsNullOrEmpty(txtUsername.Text) && string.IsNullOrEmpty(txtPassword.Text) && string.IsNullOrEmpty(txtConfirmPassword.Text)))
             {
                 if (txtPassword.Text == txtConfirmPassword.Text)
@@ -85,7 +88,6 @@ namespace Groepsproject_Blokken
                     if (playerBestaat == false)
                     {
                         player.Password = txtPassword.Text;
-                        player.ProfilePicture = @"../../Profielfotos/" + fileName;
                         if (DataManager.InsertPlayer(player) == true)
                         {
                             System.Windows.Forms.MessageBox.Show("Speler succesvol aangemaakt!", "Speler registreren", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -108,6 +110,13 @@ namespace Groepsproject_Blokken
             {
                 System.Windows.Forms.MessageBox.Show("U heeft niet alle benodigde velden (correct) ingevuld.", "Onvolledig formulier", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+            FrmLoginRegister frmLoginRegister = new FrmLoginRegister();
+            this.Close();
+            frmLoginRegister.ShowDialog();
         }
     }
 }

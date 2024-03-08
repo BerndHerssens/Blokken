@@ -1,16 +1,3 @@
 meetlint;meter voor omtrek
 lymfocyte;cel
 kerfbijl;werktuig
-kilobyte;Unit
-playoffs;eindronde
-nachtbus;vervoersdienst
-leukocyt;afweersysteem
-gezwicht;hij is ...
-mycelium;hyfen
-joystick;bewegings controller
-jerrycan;container
-ijslolly;koude lekkernij
-nachtmerrie;
-Navigatiedeel van schepen;
-uitoefenen van invloed;
-algemeen eerste liefde;
