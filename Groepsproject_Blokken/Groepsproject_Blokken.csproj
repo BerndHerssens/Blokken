@@ -297,6 +297,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Assets\BerndCrabbe NoBackGround.png" />
+    <Resource Include="Assets\Blokken Background VS.png" />
     <Content Include="Assets\Blokken PlaceHolderLoop.wav" />
     <Resource Include="Assets\BlokkenLogo2.png" />
     <Content Include="Assets\Fonts\FontsFree-Net-Geogtq-Sb.ttf">

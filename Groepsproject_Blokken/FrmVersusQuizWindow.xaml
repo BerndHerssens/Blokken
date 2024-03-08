@@ -9,18 +9,120 @@
         Height="720" Width="1280" MinHeight="720" MinWidth="1280"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="btnReturn"
-                Content="Return"
-                Width="200"
-                Height="60"
-                FontSize="30"
-                Click="btnReturn_Click">
-            <Button.Resources>
+        <Grid.Background>
+            <ImageBrush ImageSource="Assets/Blokken Background VS.png"></ImageBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="213*"/>
+            <ColumnDefinition Width="242*"/>
+            <ColumnDefinition Width="369*"/>
+            <ColumnDefinition Width="250*"/>
+            <ColumnDefinition Width="205*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="130*"/>
+            <RowDefinition Height="421*"/>
+            <RowDefinition Height="153*"/>
+        </Grid.RowDefinitions>
+        <Image x:Name="imgSpeler1" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+        <Image x:Name="imgSpeler2" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="32*"/>
+                <ColumnDefinition Width="49*"/>
+                <ColumnDefinition Width="33*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70*"/>
+                <RowDefinition Height="83*"/>
+
+            </Grid.RowDefinitions>
+
+            <Label x:Name="lblScoreSpeler1" Content="Speler1Score" Grid.Column="1"  Background="#0D0080" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="{StaticResource BlokkenFont}" FontWeight="Bold"/>
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="128*"/>
+                <ColumnDefinition Width="199*"/>
+                <ColumnDefinition Width="129*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70*"/>
+                <RowDefinition Height="83*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="lblScoreSpeler2" Content="Speler2Score" Grid.Column="1"  Background="#0D0080" Foreground="WhiteSmoke" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="{StaticResource BlokkenFont}" FontWeight="Bold"/>
+
+        </Grid>
+
+
+
+        <Label x:Name="lblVraag" Content="Vraag" Background="#fea702" Opacity="0.8" Grid.Column="1" Grid.ColumnSpan="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="15,15,15,15" FontFamily="{StaticResource BlokkenFont}" BorderBrush="#0D0080" BorderThickness="8">
+            <Label.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius"
-                            Value="40" />
+                    <Setter Property="CornerRadius" Value="25" />
                 </Style>
-            </Button.Resources>
-        </Button>
+            </Label.Resources>
+        </Label>
+
+        <Grid x:Name="Overlay" Grid.ColumnSpan="5" Grid.RowSpan="3" Background="Black" Opacity="0.9" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="214*"/>
+                <ColumnDefinition Width="426*"/>
+                <ColumnDefinition Width="435*"/>
+                <ColumnDefinition Width="205*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="130*"/>
+                <RowDefinition Height="210.5*"/>
+                <RowDefinition Height="210.5*"/>
+                <RowDefinition Height="153*"/>
+            </Grid.RowDefinitions>
+            <Button Name="btnAntwoord1" Content="Antwoord1" Click="btnAntwoord1_Click" Grid.Column="1" Grid.Row="1"  Background="#fea702" FontFamily="{StaticResource BlokkenFont}" MinHeight="60" Margin="30" MouseEnter="btnAntwoord1_MouseEnter" MouseLeave="btnAntwoord1_MouseLeave" Opacity="0.9" >
+
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius"
+                Value="80" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Name="btnAntwoord2" Content="Antwoord2" Click="btnAntwoord2_Click" Grid.Column="2" Grid.Row="1"  Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Margin="30" MouseEnter="btnAntwoord2_MouseEnter" MouseLeave="btnAntwoord2_MouseLeave" Opacity="0.9">
+
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius"
+Value="80" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Name="btnAntwoord3" Content="Antwoord3" Click="btnAntwoord3_Click" Grid.Column="1" Grid.Row="2"  Background="#fea702" FontFamily="{StaticResource BlokkenFont}" MinHeight="60" Margin="30" MouseEnter="btnAntwoord3_MouseEnter" MouseLeave="btnAntwoord3_MouseLeave" Opacity="0.9" >
+
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius"
+Value="80" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Name="btnAntwoord4" Content="Antwoord4" Click="btnAntwoord4_Click" Grid.Column="2" Grid.Row="2"  Background="#fea702" FontFamily="{StaticResource BlokkenFont}" Margin="30" MouseEnter="btnAntwoord4_MouseEnter" MouseLeave="btnAntwoord4_MouseLeave" Opacity="0.9">
+
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius"
+Value="80" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Label x:Name="lblVraag2" Content="Vraag" Background="#fea702" Opacity="0.8" Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="15,15,15,15" FontFamily="{StaticResource BlokkenFont}" BorderBrush="#0D0080" BorderThickness="8">
+                <Label.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="25" />
+                    </Style>
+                </Label.Resources>
+            </Label>
+        </Grid>
+
     </Grid>
 </Window>
