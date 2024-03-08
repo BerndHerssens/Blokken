@@ -43,8 +43,9 @@ namespace Groepsproject_Blokken
         private void CleanList()
         {
             Players = DataManager.GetAllPlayers();
-            Players = Players.OrderBy(p => p.SPHighscore).ToList();
+            Players = Players.OrderByDescending(p => p.SPHighscore).ToList();
             Players = Players.Take(10).ToList();
+           
 
             
             int index = 1;
@@ -54,6 +55,7 @@ namespace Groepsproject_Blokken
             }
 
             lstHighscores.ItemsSource = Players;
+            
             
         }
 

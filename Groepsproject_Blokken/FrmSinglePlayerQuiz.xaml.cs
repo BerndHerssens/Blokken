@@ -515,7 +515,7 @@ namespace Groepsproject_Blokken
             Random myRandom = new Random();
             int randomInt;
             bool reroll = true;
-            randomInt = myRandom.Next(0, 8);
+            randomInt = myRandom.Next(0, versnipperdPrimeWord.Length);
             while (reroll)
             {
                 if (!(versnipperdPrimeWord[randomInt] == '_'))
