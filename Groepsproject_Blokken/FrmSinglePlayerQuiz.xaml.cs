@@ -19,36 +19,49 @@ namespace Groepsproject_Blokken
     {
         private readonly ImageSource[] arrTilesImages = new ImageSource[]
            {
-            new BitmapImage(new Uri("Assets/Tetris/TileEmpty.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/Tetris/TileCyan.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/Tetris/TileBlue.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/Tetris/TileOrange.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/Tetris/TileYellow.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/Tetris/TileGreen.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/Tetris/TilePurple.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/Tetris/TileRed.png", UriKind.Relative))
+        new BitmapImage(new Uri("Assets/Tetris/TileEmpty.png", UriKind.Relative)),
+        new BitmapImage(new Uri("Assets/Tetris/TileCyan.png", UriKind.Relative)),
+        new BitmapImage(new Uri("Assets/Tetris/TileBlue.png", UriKind.Relative)),
+        new BitmapImage(new Uri("Assets/Tetris/TileOrange.png", UriKind.Relative)),
+        new BitmapImage(new Uri("Assets/Tetris/TileYellow.png", UriKind.Relative)),
+        new BitmapImage(new Uri("Assets/Tetris/TileGreen.png", UriKind.Relative)),
+        new BitmapImage(new Uri("Assets/Tetris/TilePurple.png", UriKind.Relative)),
+        new BitmapImage(new Uri("Assets/Tetris/TileRed.png", UriKind.Relative))
            };
         private readonly ImageSource[] arrBlockImages = new ImageSource[]
         {
-            new BitmapImage(new Uri("Assets/Tetris/Block-Empty.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/Tetris/Block-I.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/Tetris/Block-J.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/Tetris/Block-L.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/Tetris/Block-O.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/Tetris/Block-S.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/Tetris/Block-T.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/Tetris/Block-Z.png", UriKind.Relative))
+        new BitmapImage(new Uri("Assets/Tetris/Block-Empty.png", UriKind.Relative)),
+        new BitmapImage(new Uri("Assets/Tetris/Block-I.png", UriKind.Relative)),
+        new BitmapImage(new Uri("Assets/Tetris/Block-J.png", UriKind.Relative)),
+        new BitmapImage(new Uri("Assets/Tetris/Block-L.png", UriKind.Relative)),
+        new BitmapImage(new Uri("Assets/Tetris/Block-O.png", UriKind.Relative)),
+        new BitmapImage(new Uri("Assets/Tetris/Block-S.png", UriKind.Relative)),
+        new BitmapImage(new Uri("Assets/Tetris/Block-T.png", UriKind.Relative)),
+        new BitmapImage(new Uri("Assets/Tetris/Block-Z.png", UriKind.Relative))
         };
         bool correctAnswerClicked = false;
         bool blockPlaced = true;
         private readonly Image[,] arrImageControls;
         private GameState gameState = new GameState();
-        public Player ingelogdePlayerSPQuiz;
+        public Player ingelogdePlayer;
         public PrimeWord gekozenPrimeword = new PrimeWord();
         //deze is voor in de game vensters
         char[] wordForDisplay = "________".ToCharArray(); //dit is wat we tonen op het scherm
         char[] versnipperdPrimeWord = new char[8]; //dit is het myPrimeWord.Primeword waar we mee gaan werken
-        //myPrimeword.Hint is je hint dat je kan tonen
+                                                   //myPrimeword.Hint is je hint dat je kan tonen
+        public MediaPlayer backgroundMusicPlayer = new MediaPlayer();
+
+        private BrushConverter bc = new BrushConverter();
+        private List<Question> tempLijstVragen = new List<Question>();
+        public List<Question> finalLijstVragen = new List<Question>();
+        private Random random = new Random();
+        private Question nieuweVraag = new Question();
+        private GameLogSP eenGame = new GameLogSP();
+        private System.Timers.Timer _delayTimer;
+        private int tellerTimer = 120;
+        private DispatcherTimer timer;
+        public List<string> gekozenVragenLijsten = new List<string>();
+        string json = "";
         public FrmSinglePlayerQuiz()
         {
             InitializeComponent();
@@ -64,22 +77,17 @@ namespace Groepsproject_Blokken
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += timer_Tick;
             timer.Start();
-            lblHint.Content = gekozenPrimeword.Hint;
-            versnipperdPrimeWord = gekozenPrimeword.Primeword.ToCharArray();
+            if (ingelogdePlayer == null)
+            {
+                lblHint.Content = "Demo";
+                versnipperdPrimeWord = "ingekort".ToCharArray();
+            }
+            else
+            {
+                lblHint.Content = gekozenPrimeword.Hint;
+                versnipperdPrimeWord = gekozenPrimeword.Primeword.ToCharArray();
+            }
         }
-        public MediaPlayer backgroundMusicPlayer = new MediaPlayer();
-
-        private BrushConverter bc = new BrushConverter();
-        private List<Question> tempLijstVragen = new List<Question>();
-        public List<Question> finalLijstVragen = new List<Question>();
-        private Random random = new Random();
-        private Question nieuweVraag = new Question();
-        private GameLogSP eenGame = new GameLogSP();
-        private System.Timers.Timer _delayTimer;
-        private int tellerTimer = 120;
-        private DispatcherTimer timer;
-        public List<string> gekozenVragenLijsten = new List<string>();
-        string json = "";
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
@@ -315,16 +323,16 @@ namespace Groepsproject_Blokken
                 MessageBox.Show("Game Over! Uw score was: " + gameState.Score, "Game Over!", MessageBoxButton.OK, MessageBoxImage.Stop);
                 timer.Stop();
 
-                if (ingelogdePlayerSPQuiz != null)
+                if (ingelogdePlayer != null)
                 {
                     eenGame = new GameLogSP();
-                    eenGame.PlayerName = ingelogdePlayerSPQuiz.Name;
+                    eenGame.PlayerName = ingelogdePlayer.Name;
                     eenGame.Date = DateTime.Now;
                     eenGame.Score = Convert.ToInt32(gameState.Score);
                     eenGame.GameNumber = eenGame.GetHashCode();
-                    if (ingelogdePlayerSPQuiz.SPHighscore < gameState.Score || ingelogdePlayerSPQuiz.SPHighscore == null) // Als de gamestate score hoger is of null (eerste keer spelen)
+                    if (ingelogdePlayer.SPHighscore < gameState.Score || ingelogdePlayer.SPHighscore == null) // Als de gamestate score hoger is of null (eerste keer spelen)
                     {
-                        ingelogdePlayerSPQuiz.SPHighscore = gameState.Score;
+                        ingelogdePlayer.SPHighscore = gameState.Score;
                     }
                     //if (CheckAnswerIfPrimeWord()) //TODO: Primeword geraden -> uncommented wanneer bernd deeltje erbijstaat -> popup input + bool of methode uitvoeren die hier
                     //{
@@ -337,10 +345,10 @@ namespace Groepsproject_Blokken
                     //        ingelogdePlayerSPQuiz.SPGamesWon++;
                     //    }
                     //}
-                    DataManager.UpdatePlayer(ingelogdePlayerSPQuiz);
+                    DataManager.UpdatePlayer(ingelogdePlayer);
                     DataManager.InsertGameLogSP(eenGame);
                     MainWindow mainwindow = new MainWindow();
-                    mainwindow.ingelogdePlayerLoginscreen = ingelogdePlayerSPQuiz;
+                    mainwindow.ingelogdePlayerLoginscreen = ingelogdePlayer;
                     this.Close();
                     mainwindow.ShowDialog();
                 }

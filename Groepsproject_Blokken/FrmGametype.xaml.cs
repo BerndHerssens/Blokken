@@ -43,7 +43,7 @@ namespace Groepsproject_Blokken
             {
                 FrmSinglePlayerQuiz windowSP = new FrmSinglePlayerQuiz();
                 windowSP.gekozenPrimeword = myPrimeWord;
-                windowSP.ingelogdePlayerSPQuiz = ingelogdePlayerMainWindow;
+                windowSP.ingelogdePlayer = ingelogdePlayerMainWindow;
                 if (listGekozenVragenlijsten.Count == 0)
                 {
                     MessageBox.Show("Alle vragen werden geladen omdat u geen topics heeft geselecteerd, succes!", "Melding", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -85,9 +85,6 @@ namespace Groepsproject_Blokken
                 window.ShowDialog();
             };
             StackPanelButtonsWeg.Begin();
-
-
-
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
