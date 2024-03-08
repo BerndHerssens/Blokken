@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
@@ -15,6 +16,10 @@ namespace Groepsproject_Blokken
         public List<Player> lstPlayers = new List<Player>();
         public List<Manager> lstManagers = new List<Manager>();
         BitmapImage defaultProfile = new BitmapImage(new Uri(@"../../Profielfotos/default.jpg", UriKind.RelativeOrAbsolute));
+        string profilePath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\Profielfotos"); //Path voor de initdirectory te laten werken
+        string fileName = ""; // variabele om de naam van de file in op te slagen
+
+
         OpenFileDialog dialogChoosePicture = new OpenFileDialog
         {
             DefaultExt = "",
@@ -29,6 +34,7 @@ namespace Groepsproject_Blokken
         {
             txtProfilePicturePreview.Source = defaultProfile;
             txtProfilePictureSource.Text = defaultProfile.UriSource.ToString();
+            dialogChoosePicture.InitialDirectory = System.IO.Path.GetFullPath(profilePath);
         }
 
         private void btnSelectProfilePic_Click(object sender, RoutedEventArgs e)
@@ -37,9 +43,12 @@ namespace Groepsproject_Blokken
             {
                 if (dialogChoosePicture.FileName.Contains(".jpg") || dialogChoosePicture.FileName.Contains(".jpeg") || dialogChoosePicture.FileName.Contains(".png"))
                 {
+                    fileName = "";
                     txtProfilePictureSource.Text = dialogChoosePicture.FileName;
                     defaultProfile = new BitmapImage(new Uri(dialogChoosePicture.FileName, UriKind.RelativeOrAbsolute));
                     txtProfilePicturePreview.Source = defaultProfile;
+                    fileName = Path.GetFileName(dialogChoosePicture.FileName); //opslagen filename
+                    File.Copy(dialogChoosePicture.FileName, @"../../Profielfotos/" + fileName, true); // kopieer de lokale file naar onze profielfotosmap, als de foto al bestaat, gewoon overschrijven 
                 }
                 else
                 {
@@ -76,7 +85,7 @@ namespace Groepsproject_Blokken
                     if (playerBestaat == false)
                     {
                         player.Password = txtPassword.Text;
-                        player.ProfilePicture = txtProfilePicturePreview.Source.ToString();
+                        player.ProfilePicture = @"../../Profielfotos/" + fileName;
                         if (DataManager.InsertPlayer(player) == true)
                         {
                             System.Windows.Forms.MessageBox.Show("Speler succesvol aangemaakt!", "Speler registreren", MessageBoxButtons.OK, MessageBoxIcon.Information);

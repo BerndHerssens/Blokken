@@ -9,146 +9,228 @@
         Height="720" Width="1280" MinHeight="720" MinWidth="1280"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderThickness="8"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="25"
+                                BorderBrush="#fea702">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsMouseOver"
+                                     Value="true">
+
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation To="230"
+                                                             Storyboard.TargetProperty="Width"
+                                                             Duration="0:0:0.3" />
+                                            <DoubleAnimation To="90"
+                                                             Storyboard.TargetProperty="Height"
+                                                             Duration="0:0:0.3" />
+                                            <ColorAnimation To="#0D0080"
+                                                            Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                            Duration="0:0:0.3" />
+                                            <ColorAnimation To="WhiteSmoke"
+                                                            Storyboard.TargetProperty="Foreground.(SolidColorBrush.Color)"
+                                                            Duration="0:0:0.3" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation To="200"
+                                                             Storyboard.TargetProperty="Width"
+                                                             Duration="0:0:0.3" />
+                                            <DoubleAnimation To="60"
+                                                             Storyboard.TargetProperty="Height"
+                                                             Duration="0:0:0.3" />
+                                            <ColorAnimation To="#fea702"
+                                                            Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                            Duration="0:0:0.3" />
+                                            <ColorAnimation To="Black"
+                                                            Storyboard.TargetProperty="Foreground.(SolidColorBrush.Color)"
+                                                            Duration="0:0:0.3" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
+       <Grid.Background>
+            <ImageBrush ImageSource="/Assets/Blokken achtergrond Hi Res.jpg"
+                        Stretch="UniformToFill" />
+        </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+           <RowDefinition Height="8*" />
+            <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Image x:Name="txtProfilePicturePreview"
-               Grid.Row="0"
-               Grid.Column="2"
-               Width="390"
-               Height="300"
-               HorizontalAlignment="Left"
-               VerticalAlignment="Top"
-               IsEnabled="False"
-               Grid.RowSpan="4"
-               Grid.ColumnSpan="2" />
-
-        <StackPanel Grid.Row="0"
-                    Grid.RowSpan="4"
-                    Grid.Column="1"
-                    HorizontalAlignment="Left">
-            <Label Content="0"
-                   FontSize="20"
-                   x:Name="lblNaamDisp" />
-            <Label Content="0"
-                   FontSize="20"
-                   x:Name="lblHighscoreSPDisp" />
-            <Label Content="0"
-                   FontSize="20"
-                   x:Name="lblHighscoreVSDisp" />
-            <Label Content="0"
-                   FontSize="20"
-                   Name="lblGamesGespeeldSPDisp" />
-            <Label Content="0"
-                   FontSize="20"
-                   x:Name="lblGamesGespeeldVSDisp" />
-            <Label Content="0"
-                   FontSize="20"
-                   Name="lblWinrateSPDisp" />
-            <Label Content="0"
-                   FontSize="20"
-                   x:Name="lblWinrateVSDisp" />
-
-
+           </Grid.ColumnDefinitions>
+        <StackPanel x:Name="spProfilePicturePreview"
+                    Grid.Row="0"
+                    Grid.Column="2">
+            <Image x:Name="imgProfilePic"/>
         </StackPanel>
+            
+        
+
+       
         <StackPanel Grid.Row="0"
-                    Grid.RowSpan="4"
-                    HorizontalAlignment="Right">
+                    Background="#fea702"
+                    Opacity="0.8"
+                    >
             <Label Content="Naam:"
                    FontSize="20" 
-                   x:Name="lblNaam"/>
+                   x:Name="lblNaam"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource BlokkenFont}" />
             <Label Content="Highscore SP:"
                    FontSize="20" 
-                   x:Name="lblHighscoreSP"/>
+                   x:Name="lblHighscoreSP"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource BlokkenFont}" />
             <Label Content="Highscore VS:"
                    FontSize="20" 
-                   x:Name="lblHighscoreVS"/>
+                   x:Name="lblHighscoreVS"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource BlokkenFont}" />
             <Label Content="Games gespeeld SP:"
                    FontSize="20" 
-                   x:Name="lblGamesGespeeldSP"/>
+                   x:Name="lblGamesGespeeldSP"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource BlokkenFont}" />
             <Label Content="Games gespeeld VS:"
                    FontSize="20" 
-                   x:Name="lblGamesGespeeldVS"/>
+                   x:Name="lblGamesGespeeldVS"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource BlokkenFont}" />
             <Label Content="Winrate SP:"
                    FontSize="20"
-                   x:Name="lblWinrateSP" />
+                   x:Name="lblWinrateSP"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource BlokkenFont}" />
             <Label Content="Winrate VS:"
                    FontSize="20"
-                   x:Name="lblWinrateVS" />
+                   x:Name="lblWinrateVS"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource BlokkenFont}" />           
+        </StackPanel>
+        <StackPanel Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalAlignment="Right">
+            <Label Content="NAAM"
+                   FontSize="20"
+                   x:Name="lblNaamDisp"
+                   Opacity="1"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource BlokkenFont}" />
+            <Label Content="0"
+                   FontSize="20"
+                   x:Name="lblHighscoreSPDisp"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource BlokkenFont}" />
+            <Label Content="0"
+                   FontSize="20"
+                   x:Name="lblHighscoreVSDisp"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource BlokkenFont}" />
+            <Label Content="0"
+                   FontSize="20"
+                   Name="lblGamesGespeeldSPDisp"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource BlokkenFont}" />
+            <Label Content="0"
+                   FontSize="20"
+                   x:Name="lblGamesGespeeldVSDisp"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource BlokkenFont}" />
+            <Label Content="0"
+                   FontSize="20"
+                   Name="lblWinrateSPDisp"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource BlokkenFont}" />
+            <Label Content="0"
+                   FontSize="20"
+                   x:Name="lblWinrateVSDisp"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource BlokkenFont}" />
 
 
         </StackPanel>
         <!--Dit zijn de labels-->
-        <StackPanel Grid.Row="4"
-                    Orientation="Horizontal"
-                    Grid.ColumnSpan="4">
+        <StackPanel Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Orientation="Horizontal">
             <Button x:Name="btnReturn"
                     Content="Return"
                     Width="200"
                     Height="60"
                     FontSize="25"
-                    Margin="8"
-                    Click="btnReturn_Click">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius"
-                                Value="40" />
-                    </Style>
-                </Button.Resources>
+                    Margin="0,0,0,2"
+                    Click="btnReturn_Click"
+                    Background="#fea702"
+                    Foreground="Black"
+                    FontFamily="{StaticResource BlokkenFont}">
+                
             </Button>
             <Button x:Name="btnWijzigWW"
                     Content="WW Wijzigen"
                     Width="200"
                     Height="60"
                     FontSize="25"
-                    Margin="0,0,8,0"
-                    Click="btnWijzigWW_Click">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius"
-                                Value="40" />
-                    </Style>
-                </Button.Resources>
+                    Margin="0,0,0,5"
+                    Click="btnWijzigWW_Click"
+                    Background="#fea702"
+                    Foreground="Black"
+                    FontFamily="{StaticResource BlokkenFont}">
+               
             </Button>
             <Button x:Name="btnWijzigPFP"
                     Content="PFP Wijzigen"
                     Width="200"
                     Height="60"
                     FontSize="25"
-                    Margin="0,0,8,0"
-                    Click="btnWijzigPFP_Click">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius"
-                                Value="40" />
-                    </Style>
-                </Button.Resources>
+                    Margin="0,0,0,5"
+                    Click="btnWijzigPFP_Click"
+                    Background="#fea702"
+                    Foreground="Black"
+                    FontFamily="{StaticResource BlokkenFont}">
+             
             </Button>
             <Button x:Name="btnShare"
                     Content="Share"
                     Width="150"
                     Height="60"
                     FontSize="25"
-                    Click="btnShare_Click">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius"
-                                Value="40" />
-                    </Style>
-                </Button.Resources>
+                    Click="btnShare_Click"
+                    Background="#fea702"
+                    Foreground="Black"
+                    FontFamily="{StaticResource BlokkenFont}">
+                
             </Button>
         </StackPanel>
+        
         <!--Dit zijn buttons-->
         <Grid x:Name="InputBox"
               Visibility="Collapsed"

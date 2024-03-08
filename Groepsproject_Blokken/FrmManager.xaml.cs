@@ -113,8 +113,9 @@ namespace Groepsproject_Blokken
         }
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Forms.Application.Restart();
-            System.Windows.Application.Current.Shutdown();
+            FrmLoginRegister frmLoginRegister = new FrmLoginRegister();
+            this.Close();
+            frmLoginRegister.ShowDialog();
 
 
         }

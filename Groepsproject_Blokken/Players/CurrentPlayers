@@ -1,18 +1,6 @@
 [
   {
     "SpelerID": 0,
-    "Name": "Illyav",
-    "Password": "123",
-    "ProfilePicture": "niks.png",
-    "SPHighscore": null,
-    "SPGamesPlayed": null,
-    "SPGamesWon": null,
-    "VSHighscore": null,
-    "VSGamesPlayed": null,
-    "VSGamesWon": null
-  },
-  {
-    "SpelerID": 0,
     "Name": "Bernd",
     "Password": "Bernd",
     "ProfilePicture": "pack://application:,,,/Profielfotos/default.jpg",
@@ -28,18 +16,6 @@
     "Name": "Gilles",
     "Password": "Gilles",
     "ProfilePicture": "file:///C:/Users/gille/Downloads/gilles_profiel.png",
-    "SPHighscore": null,
-    "SPGamesPlayed": null,
-    "SPGamesWon": null,
-    "VSHighscore": null,
-    "VSGamesPlayed": null,
-    "VSGamesWon": null
-  },
-  {
-    "SpelerID": 0,
-    "Name": "Hans",
-    "Password": "Hans123",
-    "ProfilePicture": "file:///C:/Users/gille/Downloads/default.jpg",
     "SPHighscore": null,
     "SPGamesPlayed": null,
     "SPGamesWon": null,
@@ -65,6 +41,18 @@
     "Password": "12",
     "ProfilePicture": "C:\\Users\\Gebruiker\\Desktop\\FMY_P5-WUAQzA3q.jpg",
     "SPHighscore": 300,
+    "SPGamesPlayed": null,
+    "SPGamesWon": null,
+    "VSHighscore": null,
+    "VSGamesPlayed": null,
+    "VSGamesWon": null
+  },
+  {
+    "SpelerID": 0,
+    "Name": "Illyatest",
+    "Password": "1",
+    "ProfilePicture": "../../Profielfotos/FMY_P5-WUAQzA3q.jpg",
+    "SPHighscore": null,
     "SPGamesPlayed": null,
     "SPGamesWon": null,
     "VSHighscore": null,

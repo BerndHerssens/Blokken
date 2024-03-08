@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 
@@ -16,6 +18,10 @@ namespace Groepsproject_Blokken
             DefaultExt = "",
             Filter = "JPG files (*.jpg)|*.jpg|JPEG files(*.jpeg)|*.jpeg|PNG files (*.png)|*.png|All files (*.*)|*.*"
         };
+        BitmapImage bmp = new BitmapImage();
+        string profilePath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\Profielfotos");
+        string fileName = "";
+
         public FrmPlayerscreen()
         {
             InitializeComponent();
@@ -25,6 +31,19 @@ namespace Groepsproject_Blokken
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             SpelerGegevensInladen();
+            //Memory forcen de image in te laden 
+            MemoryStream ms = new MemoryStream();
+            FileStream stream = new FileStream(ingelogdePlayerMainWindow.ProfilePicture, FileMode.Open, FileAccess.Read);
+            ms.SetLength(stream.Length);
+            stream.Read(ms.GetBuffer(), 0, (int)stream.Length);
+            ms.Flush();
+            stream.Close();
+            Image i = new Image();
+            bmp.BeginInit();
+            bmp.StreamSource = ms;
+            bmp.EndInit();
+            imgProfilePic.Source = bmp;
+            imgProfilePic.Stretch = System.Windows.Media.Stretch.UniformToFill;
         }
 
 
@@ -48,7 +67,11 @@ namespace Groepsproject_Blokken
                 if (dialogChoosePicture.FileName.Contains(".jpg") || dialogChoosePicture.FileName.Contains(".jpeg") || dialogChoosePicture.FileName.Contains(".png"))
                 {
                     ingelogdePlayerMainWindow.ProfilePicture = dialogChoosePicture.FileName;
-                    txtProfilePicturePreview.Source = new BitmapImage(new Uri(dialogChoosePicture.FileName, UriKind.RelativeOrAbsolute));
+                    imgProfilePic.Source = new BitmapImage(new Uri(dialogChoosePicture.FileName, UriKind.RelativeOrAbsolute));
+                    fileName = Path.GetFileName(dialogChoosePicture.FileName);
+                    //Kopieren van de nieuwe pfp + gelijkstellen
+                    File.Copy(dialogChoosePicture.FileName, @"../../Profielfotos/" + fileName, true);
+                    ingelogdePlayerMainWindow.ProfilePicture = @"../../Profielfotos/" + fileName;
                     DataManager.UpdatePlayer(ingelogdePlayerMainWindow);
                 }
                 else
@@ -114,8 +137,7 @@ namespace Groepsproject_Blokken
 
             lblWinrateSPDisp.Content = ingelogdePlayerMainWindow.CalculateSPWinRate();
             lblWinrateVSDisp.Content = ingelogdePlayerMainWindow.CalculateVSWinRate();
-            //Todo: profielfoto
-            txtProfilePicturePreview.Source = new BitmapImage(new Uri(ingelogdePlayerMainWindow.ProfilePicture, UriKind.RelativeOrAbsolute));
+
         }
     }
 }
