@@ -22,7 +22,7 @@ namespace Groepsproject_Blokken
         private static int _questioncounter = 0;
         private int _questionID;
 
-        
+
 
         //Constr
         [JsonConstructor]
@@ -93,7 +93,7 @@ namespace Groepsproject_Blokken
         public event PropertyChangedEventHandler PropertyChanged;
         public string Error => throw new NotImplementedException();
 
-        public string this[string columnName] 
+        public string this[string columnName]
         {
             get
             {
@@ -102,35 +102,35 @@ namespace Groepsproject_Blokken
                 {
                     if (string.IsNullOrEmpty(TheQuestion))
                     {
-                        result = "Geef een vraag in";
+                        result = "Geef een vraag in.";
                     }
                 }
                 if (columnName == "CorrectAnswer")
                 {
                     if (string.IsNullOrEmpty(CorrectAnswer))
                     {
-                        result = "Geef een correct antwoord in";
+                        result = "Geef een correct antwoord in.";
                     }
                 }
                 if (columnName == "WrongAnswerOne")
                 {
                     if (string.IsNullOrEmpty(WrongAnswerOne))
                     {
-                        result = "Gelieve een fout antwoord in te voeren";
+                        result = "Gelieve een fout antwoord in te voeren.";
                     }
                 }
                 if (columnName == "WrongAnswerTwo")
                 {
                     if (string.IsNullOrEmpty(WrongAnswerTwo))
                     {
-                        result = "Gelieve een verkeerd antwoord in te voeren";
+                        result = "Gelieve een fout antwoord in te voeren.";
                     }
                 }
                 if (columnName == "WrongAnswerThree")
                 {
                     if (string.IsNullOrEmpty(WrongAnswerThree))
                     {
-                        result = "Gelieve een verkeerd antwoord in te voeren";
+                        result = "Gelieve een fout antwoord in te voeren.";
                     }
                 }
                 return result;

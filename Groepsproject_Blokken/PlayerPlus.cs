@@ -52,21 +52,21 @@ namespace Groepsproject_Blokken
                 {
                     if (string.IsNullOrEmpty(NameValidation))
                     {
-                        result = "Geef een naam in";
+                        result = "Geef een naam in.";
                     }
                 }
                 if (columnName == "PasswordValidation")
                 {
                     if (string.IsNullOrEmpty(PasswordValidation))
                     {
-                        result = "Geef een paswoord in";
+                        result = "Geef een paswoord in.";
                     }
                 }
                 if (columnName == "PasswordConfirmValidation")
                 {
                     if (string.IsNullOrEmpty(PasswordConfirmValidation))
                     {
-                        result = "Gelieve uw paswoord te bevestigen";
+                        result = "Gelieve uw paswoord te bevestigen.";
                     }
                 }
                 return result;

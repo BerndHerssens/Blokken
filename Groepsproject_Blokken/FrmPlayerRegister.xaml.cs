@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Forms;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Groepsproject_Blokken
 {
@@ -20,7 +11,9 @@ namespace Groepsproject_Blokken
     /// </summary>
     public partial class FrmPlayerRegister : Window
     {
+
         public List<Player> lstPlayers = new List<Player>();
+        public List<Manager> lstManagers = new List<Manager>();
         BitmapImage defaultProfile = new BitmapImage(new Uri(@"../../Profielfotos/default.jpg", UriKind.RelativeOrAbsolute));
         OpenFileDialog dialogChoosePicture = new OpenFileDialog
         {
@@ -57,24 +50,44 @@ namespace Groepsproject_Blokken
 
         private void btnCreatePlayer_Click(object sender, RoutedEventArgs e)
         {
+            bool playerBestaat = false;
             Player player = new Player();
             if (!(string.IsNullOrEmpty(txtUsername.Text) && string.IsNullOrEmpty(txtPassword.Text) && string.IsNullOrEmpty(txtConfirmPassword.Text)))
             {
                 if (txtPassword.Text == txtConfirmPassword.Text)
                 {
                     player.Name = txtUsername.Text;
-                    player.Password = txtPassword.Text;
-                    player.ProfilePicture = txtProfilePicturePreview.Source.ToString();
-                    if (DataManager.InsertPlayer(player) == true)
+                    foreach (Player loggedPlayer in lstPlayers)
                     {
-                        System.Windows.Forms.MessageBox.Show("Speler succesvol aangemaakt!", "Speler registreren", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        lstPlayers.Add(player);
-                        this.DialogResult = true;
-                        return;
+                        if (loggedPlayer.Equals(player))
+                        {
+                            playerBestaat = true;
+                            System.Windows.Forms.MessageBox.Show("Deze gebruikersnaam is al in gebruik, kies een andere gebruikersnaam", "Speler registreren", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        foreach (Manager loggedManager in lstManagers)
+                        {
+                            if (loggedManager.Name == player.Name)
+                            {
+                                playerBestaat = true;
+                                System.Windows.Forms.MessageBox.Show("Deze gebruikersnaam is al in gebruik, kies een andere gebruikersnaam", "Speler registreren", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
                     }
-                    else
+                    if (playerBestaat == false)
                     {
-                        System.Windows.Forms.MessageBox.Show("De speler werd niet aangemaakt", "Speler registreren", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        player.Password = txtPassword.Text;
+                        player.ProfilePicture = txtProfilePicturePreview.Source.ToString();
+                        if (DataManager.InsertPlayer(player) == true)
+                        {
+                            System.Windows.Forms.MessageBox.Show("Speler succesvol aangemaakt!", "Speler registreren", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            lstPlayers.Add(player);
+                            this.DialogResult = true;
+                            return;
+                        }
+                        else
+                        {
+                            System.Windows.Forms.MessageBox.Show("De speler werd niet aangemaakt", "Speler registreren", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                 }
                 else
