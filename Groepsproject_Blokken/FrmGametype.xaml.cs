@@ -192,24 +192,29 @@ namespace Groepsproject_Blokken
         public void RandomPrimeWordConstruction()
         {
             Random myRandom = new Random();
-
             var randomNumberToPickAndRemove = myRandom.Next(0, teller);
             myPrimeWord = new PrimeWord((wordsThatAreParted[randomNumberToPickAndRemove, 0]), (wordsThatAreParted[randomNumberToPickAndRemove, 1])); //here we have our random prime word with the random Hint
             string[,] writeAwayString = new string[teller - 1, 2]; //TODO: this one we can move to main, so we can get it for the writing for the new TXT
             for (int i = 0, j = 0; i < teller; i++) //ik wil hier een 2d string opvullen zonder het gekozen woord
             {
-                if (i == randomNumberToPickAndRemove)
-                    continue;
-
-                for (int k = 0, u = 0; k < wordsThatAreParted.GetLength(1); k++)
+                if (myPrimeWord.Primeword.ToString() == wordsThatAreParted[i, 0])
                 {
-                    if (k == randomNumberToPickAndRemove)
+                    if (myPrimeWord.Hint.ToString() == wordsThatAreParted[i, 1])
+                    {
                         continue;
-
-                    writeAwayString[j, u] = wordsThatAreParted[i, k];
-                    u++;
+                    }
                 }
-                j++;
+                else
+                {
+                    for (int k = 0, u = 0; k < wordsThatAreParted.GetLength(1); k++)
+                    {
+                        {
+                            writeAwayString[j, u] = wordsThatAreParted[i, k];
+                            u++;
+                        }
+                    }
+                    j++;
+                }
             }
             WriteAwayToTxtOne(writeAwayString);
             WriteAwayToTxtTwo(myPrimeWord);

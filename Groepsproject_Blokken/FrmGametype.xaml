@@ -187,7 +187,8 @@ AutoReverse="False"/>
         </StackPanel>
         
         <StackPanel Grid.Row="1" Grid.Column="2">
-            <ComboBox x:Name="cmbVragenLijsten"/>
+            <Label Content="Kies hier de vragenlijsten die u wilt gebruiken." Foreground="White" HorizontalAlignment="Center" FontSize="20" />
+            <ComboBox x:Name="cmbVragenLijsten" Margin="15"/>
             <Button x:Name="btnVoegVragenLijstToe"
                     Margin="3"
                     Content="Add Vragenlijst"
