@@ -91,6 +91,7 @@ namespace Groepsproject_Blokken
         }
         //Validatie
         public event PropertyChangedEventHandler PropertyChanged;
+        [System.Text.Json.Serialization.JsonIgnore]
         public string Error => throw new NotImplementedException();
 
         public string this[string columnName]
