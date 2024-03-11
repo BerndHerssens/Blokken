@@ -115,7 +115,7 @@ Value="80" />
                 </EventTrigger>
             </MediaElement.Triggers>
         </MediaElement>
-        <Grid x:Name="grdGameOver" Background="#CC000000" Grid.RowSpan="5" Grid.ColumnSpan="5" Visibility="Visible">
+        <Grid x:Name="grdGameOver" Background="#CC000000" Grid.RowSpan="5" Grid.ColumnSpan="5" Visibility="Hidden">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Text="Game Over" FontSize="48" TextAlignment="Center" Foreground="White"/>
                 <TextBlock x:Name="txtFinalScore" Text="Score: " FontSize="32" TextAlignment="Center" Foreground="White"/>

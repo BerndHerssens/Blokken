@@ -45,8 +45,6 @@ namespace Groepsproject_Blokken
             imgProfilePic.Source = bmp;
             imgProfilePic.Stretch = System.Windows.Media.Stretch.UniformToFill;
         }
-
-
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             MainWindow window = new MainWindow();
@@ -114,31 +112,20 @@ namespace Groepsproject_Blokken
             lblNaamDisp.Content = ingelogdePlayerMainWindow.Name;
             lblGamesGespeeldSPDisp.Content = "0";
             lblGamesGespeeldVSDisp.Content = "0";
-            lblGamesGespeeldSPDisp.Content = "0";
-            lblGamesGespeeldVSDisp.Content = "0";
+            lblWinrateSPDisp.Content = "0%";
+            lblWinrateVSDisp.Content = "0%";
             if (ingelogdePlayerMainWindow.SPGamesPlayed != null)
             {
                 lblGamesGespeeldSPDisp.Content = ingelogdePlayerMainWindow.SPGamesPlayed;
+                lblWinrateSPDisp.Content = ingelogdePlayerMainWindow.CalculateSPWinRate();
+                lblHighscoreSPDisp.Content = ingelogdePlayerMainWindow.SPHighscore;
             }
-
             if (ingelogdePlayerMainWindow.VSGamesPlayed != null)
             {
                 lblGamesGespeeldVSDisp.Content = ingelogdePlayerMainWindow.VSGamesPlayed;
-            }
-
-            if (ingelogdePlayerMainWindow.SPHighscore != null)
-            {
-                lblHighscoreSPDisp.Content = ingelogdePlayerMainWindow.SPHighscore;
-
-            }
-            if (ingelogdePlayerMainWindow.VSHighscore != null)
-            {
                 lblHighscoreVSDisp.Content = ingelogdePlayerMainWindow.VSHighscore;
+                lblWinrateVSDisp.Content = ingelogdePlayerMainWindow.CalculateVSWinRate();
             }
-
-            lblWinrateSPDisp.Content = ingelogdePlayerMainWindow.CalculateSPWinRate();
-            lblWinrateVSDisp.Content = ingelogdePlayerMainWindow.CalculateVSWinRate();
-
         }
     }
 }

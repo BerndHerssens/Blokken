@@ -16,9 +16,9 @@
     "Name": "Illyave",
     "Password": "12",
     "ProfilePicture": "../../Profielfotos/FMY_P5-WUAQzA3q.jpg",
-    "SPHighscore": null,
-    "SPGamesPlayed": null,
-    "SPGamesWon": null,
+    "SPHighscore": 350,
+    "SPGamesPlayed": 1,
+    "SPGamesWon": 1,
     "VSHighscore": null,
     "VSGamesPlayed": null,
     "VSGamesWon": null

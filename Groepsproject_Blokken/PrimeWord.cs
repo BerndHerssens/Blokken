@@ -31,7 +31,7 @@ namespace Groepsproject_Blokken
         {
             try //added a try catch, in case the answer would be not validated before it gets here
             {
-                if (answer == Primeword)
+                if (answer.ToLower() == Primeword)
                 {
                     return true;
                 }

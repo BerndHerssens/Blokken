@@ -97,7 +97,10 @@ namespace Groepsproject_Blokken
         //Als je beide values tegelijk wilt met text erbij
         public string CalculateWinRates() //Geeft beide winrates
         {
-            var WinrateSPVS = "Winrate in SP: " + SPGamesWon / SPGamesPlayed * 100 + " %" + Environment.NewLine + "Winrate in VS: " + VSGamesWon / VSGamesPlayed + " %";
+            double WinrateSp = (double)((double)SPGamesWon / SPGamesPlayed * 100);
+            double WinrateVs = (double)((double)VSGamesWon / VSGamesPlayed * 100);
+
+            string WinrateSPVS = "Winrate in SP: " + WinrateSp.ToString("0.00") + " %" + Environment.NewLine + "Winrate in VS: " + WinrateVs.ToString("0,00") + " %";
             if (this.SPGamesPlayed == null || this.VSGamesPlayed == null)  //Als een van deze null zijn dan geven we N/A mee met deze functie
             {
                 WinrateSPVS = "N/A";
@@ -108,7 +111,8 @@ namespace Groepsproject_Blokken
         // Als je het in een txtvak wilt gooien en je het wilt opsplitsen :)
         public string CalculateSPWinRate() //Zelfde logica dan bij functie CalculateWinRates();
         {
-            var WinrateSP = Convert.ToString(SPGamesWon / SPGamesPlayed * 100) + "%";
+            double Winrate = (double)((double)SPGamesWon / SPGamesPlayed * 100);
+            string WinrateSP = Winrate.ToString("0.00") + "%";
             if (this.SPGamesPlayed == null)
             {
                 WinrateSP = "No games played yet!";
@@ -117,7 +121,8 @@ namespace Groepsproject_Blokken
         }
         public string CalculateVSWinRate()
         {
-            var WinrateVS = Convert.ToString(VSGamesWon / VSGamesPlayed * 100) + "%";
+            double Winrate = (double)((double)VSGamesWon / VSGamesPlayed * 100);
+            string WinrateVS = Winrate.ToString("0.00") + "%";
             if (this.VSGamesPlayed == null)
             {
                 WinrateVS = "No games played yet!";

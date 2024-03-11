@@ -69,7 +69,6 @@ namespace Groepsproject_Blokken
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
             PlaybackMusic();
             InlezenVragen();
             RandomQuestionPicker();
@@ -77,16 +76,8 @@ namespace Groepsproject_Blokken
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += timer_Tick;
             timer.Start();
-            if (ingelogdePlayer == null)
-            {
-                lblHint.Content = "Demo";
-                versnipperdPrimeWord = "ingekort".ToCharArray();
-            }
-            else
-            {
-                lblHint.Content = gekozenPrimeword.Hint;
-                versnipperdPrimeWord = gekozenPrimeword.Primeword.ToCharArray();
-            }
+            lblHint.Content = gekozenPrimeword.Hint;
+            versnipperdPrimeWord = gekozenPrimeword.Primeword.ToCharArray();
         }
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
@@ -313,54 +304,23 @@ namespace Groepsproject_Blokken
 
         void timer_Tick(object sender, EventArgs e)
         {
+
             tellerTimer--;
             lblTimerEnScore.Content = "Score: " + gameState.Score.ToString() + " " + "Timer: " + tellerTimer;
-            if (tellerTimer <= 0)
+            if (tellerTimer <= 0)          //Stoppen de muziek en laat primeword box zien
             {
                 backgroundMusicPlayer.Stop();
-                MessageBox.Show("Game Over! Uw score was: " + gameState.Score, "Game Over!", MessageBoxButton.OK, MessageBoxImage.Stop);
+                grdGameOver.Visibility = System.Windows.Visibility.Visible;  // Laat primeword window zien , hide button als het gast (null) is
+                if (ingelogdePlayer == null)
+                {
+                    btnPlayAgain.IsEnabled = false;
+                    btnPlayAgain.Visibility = System.Windows.Visibility.Hidden;
+                }
                 timer.Stop();
+                txtFinalScore.Text += gameState.Score.ToString();
+                //TODO : Kunnen we de tetris field hier pauzeren?
 
-                if (ingelogdePlayer != null)
-                {
-                    eenGame = new GameLogSP();
-                    eenGame.PlayerName = ingelogdePlayer.Name;
-                    eenGame.Date = DateTime.Now;
-                    eenGame.Score = Convert.ToInt32(gameState.Score);
-                    eenGame.GameNumber = eenGame.GetHashCode();
-                    if (ingelogdePlayer.SPHighscore < gameState.Score || ingelogdePlayer.SPHighscore == null) // Als de gamestate score hoger is of null (eerste keer spelen)
-                    {
-                        ingelogdePlayer.SPHighscore = gameState.Score;
-                    }
-                    //if (CheckAnswerIfPrimeWord()) //TODO: Primeword geraden -> uncommented wanneer bernd deeltje erbijstaat -> popup input + bool of methode uitvoeren die hier
-                    //{
-                    //    if (ingelogdePlayerSPQuiz.SPGamesWon == null)
-                    //    {
-                    //        ingelogdePlayerSPQuiz.SPGamesWon = 1;
-                    //    }
-                    //    else 
-                    //    {
-                    //        ingelogdePlayerSPQuiz.SPGamesWon++;
-                    //    }
-                    //}
-                    DataManager.UpdatePlayer(ingelogdePlayer);
-                    DataManager.InsertGameLogSP(eenGame);
-                    MainWindow mainwindow = new MainWindow();
-                    mainwindow.ingelogdePlayerLoginscreen = ingelogdePlayer;
-                    this.Close();
-                    mainwindow.ShowDialog();
-                }
-                else
-                {
-                    eenGame = new GameLogSP();
-                    eenGame.PlayerName = "Gast";
-                    eenGame.Date = DateTime.Now;
-                    eenGame.Score = Convert.ToInt32(gameState.Score);
-                    eenGame.GameNumber = eenGame.GetHashCode();
-                    DataManager.InsertGameLogSP(eenGame);
-                    this.Close();
-                    System.Windows.Forms.Application.Restart();
-                }
+
             }
             if (tellerTimer == 119 || tellerTimer == 96 || tellerTimer == 72 || tellerTimer == 48 || tellerTimer == 24 || tellerTimer == 1)
             {
@@ -502,11 +462,12 @@ namespace Groepsproject_Blokken
             }
             Draw(gameState);
         }
-        private async void btnPlayAgain_Click(object sender, RoutedEventArgs e)
+        private void btnPlayAgain_Click(object sender, RoutedEventArgs e)
         {
-            gameState = new GameState();
-            grdGameOver.Visibility = Visibility.Hidden;
-            await GameLoop();
+            MainWindow mainwindow = new MainWindow();
+            mainwindow.ingelogdePlayerLoginscreen = ingelogdePlayer;
+            this.Close();
+            mainwindow.ShowDialog();
         }
         public void PrimeWordCuttingAndShowing()
         {
@@ -542,6 +503,79 @@ namespace Groepsproject_Blokken
 
         private void btnPrimewordGuess_Click(object sender, RoutedEventArgs e)
         {
+            btnPrimewordGuess.IsEnabled = false;
+            bool gast = false;                                                                                  // Nodig voor later (wordt uitgelegd), dit reset het ook elke keer en we hebben het nergens anders nodig dus maak het hier gewoon aan.
+            if (ingelogdePlayer != null)                                                                        // Als het geen gast is dan gaan we de properties invullen en schrijven
+            {
+                eenGame = new GameLogSP();
+                eenGame.PlayerName = ingelogdePlayer.Name;
+                eenGame.Date = DateTime.Now;
+                eenGame.Score = Convert.ToInt32(gameState.Score);
+                eenGame.GameNumber = eenGame.GetHashCode();
+
+            }
+            else                                                                                                //Voor demo/gast
+            {
+                eenGame = new GameLogSP();
+                eenGame.PlayerName = "Gast";
+                eenGame.Date = DateTime.Now;
+                eenGame.Score = Convert.ToInt32(gameState.Score);
+                eenGame.GameNumber = eenGame.GetHashCode();
+                gast = true;
+            }
+            gekozenPrimeword.CheckAnswerIfPrimeWord(txtPrimeword.Text);                                         //Voeren Bernd zn functie uit
+            if (gekozenPrimeword.CheckAnswerIfPrimeWord(txtPrimeword.Text) == true)                             //Als het correct is dan kijken we naar...
+            {
+                if (gast == false)
+                {
+                    if (ingelogdePlayer.SPGamesPlayed == null)                                                      // Null = eerste keer dat hij speelt, dus kan niet +1 doen. We zetten het gelijk aan 1, zn eerste spel gespeeld en gewonnen en geven bonuspunten
+                    {
+                        ingelogdePlayer.SPGamesWon = 1;
+                        ingelogdePlayer.SPGamesPlayed = 1;
+                        eenGame.Score += 200;
+                    }
+                    else                                                                                            // Niet de eerste keer dus beide properties hebben een al een int value, we doen ++ bij beide omdat die wint en geven ook bonuspunten
+                    {
+                        ingelogdePlayer.SPGamesWon++;
+                        ingelogdePlayer.SPGamesPlayed++;
+                        eenGame.Score += 200;
+                    }
+                }
+                MessageBox.Show("Dat is correct! U krijgt 200 punten erbij, uw totaal score bedraagt : " + eenGame.Score.ToString() + "!", "Gefeliciteerd!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                txtFinalScore.Text = eenGame.Score.ToString();
+            }
+            else                                                                                                // Het is niet correct dan gaan we..
+            {
+                if (gast == false)
+                {
+                    if (ingelogdePlayer.SPGamesPlayed == null)                                                      // Eerste keer dat hij speelt dus geen int values in de properties als het null is, games played naar 1 maar niet gewonnen dus null -> 0
+                    {
+                        ingelogdePlayer.SPGamesWon = 0;
+                        ingelogdePlayer.SPGamesPlayed = 1;
+                    }
+                    else                                                                                            // Niet eerste keer, gewoon +1 bij game count!
+                    {
+                        ingelogdePlayer.SPGamesPlayed++;
+                    }
+                }
+                MessageBox.Show("Helaas! Het antwoord was " + gekozenPrimeword.Primeword + ", uw totaal score bedraagt : " + eenGame.Score.ToString() + "!", "Goed geprobeerd!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            if (gast == false)                                                                                  // Als het geen gast is dan updaten we de ingelogde player, ik maak hier een bool voor aan ipv Player.Name != Gast, zodat iemand met de acc naam Gast het systeem niet kan omzeilen
+            {
+                if (ingelogdePlayer.SPHighscore < gameState.Score || ingelogdePlayer.SPHighscore == null)       // Als de gamestate score hoger is of null (eerste keer spelen)
+                {
+                    ingelogdePlayer.SPHighscore = gameState.Score;
+                }
+                DataManager.UpdatePlayer(ingelogdePlayer);
+                DataManager.InsertGameLogSP(eenGame);
+            }
+            else                                                                                                //Als het een gast is dat schrijven we alleen de log, geen account voor de demo, we restarten de demo, optie geven om hier opnieuw te spelen niet nodig.
+            {
+                DataManager.InsertGameLogSP(eenGame);
+                this.Close();
+                System.Windows.Forms.Application.Restart();
+            }
 
         }
     }
