@@ -84,6 +84,7 @@ namespace Groepsproject_Blokken
         private void btnShare_Click(object sender, RoutedEventArgs e)
         {
             //Todo met tycho
+            //ExcelWordStatic.PrintStatusSpeler(ingelogdePlayerMainWindow);
         }
 
 

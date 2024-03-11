@@ -133,6 +133,7 @@
     <Compile Include="Block.cs" />
     <Compile Include="BlockQueue.cs" />
     <Compile Include="DataManager.cs" />
+    <Compile Include="ExcelWordStatic.cs" />
     <Compile Include="FrmPlayerRegister.xaml.cs">
       <DependentUpon>FrmPlayerRegister.xaml</DependentUpon>
     </Compile>
@@ -373,6 +374,7 @@
     <Folder Include="Managers\" />
     <Folder Include="Players\" />
     <Folder Include="PrimeWords\" />
+    <Folder Include="Printouts\" />
     <Folder Include="Questionaires\" />
   </ItemGroup>
   <ItemGroup>

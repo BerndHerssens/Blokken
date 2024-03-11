@@ -537,7 +537,7 @@ namespace Groepsproject_Blokken
 
         private void btnShare_Click(object sender, RoutedEventArgs e)
         {
-
+            //ExcelWordStatic.PrintHighScore(ingelogdePlayer, gameState.Score); //print deze uit
         }
 
         private void btnPrimewordGuess_Click(object sender, RoutedEventArgs e)

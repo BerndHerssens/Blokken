@@ -4,12 +4,12 @@
     "Name": "Berndje",
     "Password": "123",
     "ProfilePicture": "../../Profielfotos/default.jpg",
-    "SPHighscore": null,
-    "SPGamesPlayed": null,
-    "SPGamesWon": null,
-    "VSHighscore": null,
-    "VSGamesPlayed": null,
-    "VSGamesWon": null
+    "SPHighscore": 3,
+    "SPGamesPlayed": 4,
+    "SPGamesWon": 2,
+    "VSHighscore": 2,
+    "VSGamesPlayed": 17,
+    "VSGamesWon": 5
   },
   {
     "SpelerID": 0,

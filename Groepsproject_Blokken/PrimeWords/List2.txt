@@ -1,3 +1,13 @@
 meetlint;meter voor omtrek
 lymfocyte;cel
 kerfbijl;werktuig
+lobbying;uitoefenen van invloed
+jerrycan;container
+lymfevat;menselijke drainagesysteem
+juryteam;Panel
+mycelium;hyfen
+nachtbus;vervoersdienst
+recyclen;hergebruiken
+showbizz;een industrie
+joystick;bewegings controller
+crucifix;christendom
