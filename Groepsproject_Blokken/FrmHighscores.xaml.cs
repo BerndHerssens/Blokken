@@ -36,7 +36,7 @@ namespace Groepsproject_Blokken
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             CleanList();
-            ExcelWordStatic.PrintExcel(Players);
+            //ExcelWordStatic.PrintExcel(Players);
         }
 
 
