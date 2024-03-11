@@ -86,5 +86,101 @@
     "WrongAnswerTwo": "Kroati\u00EB",
     "WrongAnswerThree": "Servi\u00EB",
     "QuestionID": 13
+  },
+  {
+    "TheQuestion": "In januari 2023 mag Donald Trump mag eindelijk weer op Facebook en Twitter. Maar intussen had hij al een nieuwe \u2018thuis\u2019 gevonden. Hoe heet zijn eigen socialemediasite?",
+    "CorrectAnswer": "Truth Social",
+    "WrongAnswerOne": "Maga News",
+    "WrongAnswerTwo": "The Real News",
+    "WrongAnswerThree": "True News",
+    "QuestionID": 14
+  },
+  {
+    "TheQuestion": "De eurozone werd in 2023 nog een stukje groter: Kroati\u00EB kwam erbij. Met welke munt betaalden ze daar vroeger hun gevulde paprika\u2019s?",
+    "CorrectAnswer": "Kuna",
+    "WrongAnswerOne": "Tolar",
+    "WrongAnswerTwo": "Koruna",
+    "WrongAnswerThree": "Tula",
+    "QuestionID": 15
+  },
+  {
+    "TheQuestion": "In 2023 is China is niet langer het land met de meeste inwoners. Welke natie haalde China in?",
+    "CorrectAnswer": "India",
+    "WrongAnswerOne": "Indonesi\u00EB",
+    "WrongAnswerTwo": "Brazili\u00EB",
+    "WrongAnswerThree": "Japan",
+    "QuestionID": 16
+  },
+  {
+    "TheQuestion": "In april 2023 overleed ontwerpster Mary Quant op 93-jarige leeftijd. Welk kledingstuk hebben we aan haar te danken?",
+    "CorrectAnswer": "Hotpants",
+    "WrongAnswerOne": "String",
+    "WrongAnswerTwo": "Nylonkousen",
+    "WrongAnswerThree": "Push-up Bra",
+    "QuestionID": 17
+  },
+  {
+    "TheQuestion": "Wagner-baas Jevgeni Prigozjin begon aan zijn opmars naar het Kremlin, maar stopte er enkele uren later al mee. Enkele weken later stierf hij, toen zijn vliegtuig neergehaald werd. Maar wat was zijn job voor hij Wagner oprichtte?",
+    "CorrectAnswer": "Poetin\u0027s kok",
+    "WrongAnswerOne": "Poetin\u0027s tolk",
+    "WrongAnswerTwo": "KGB Spion",
+    "WrongAnswerThree": "Poetin\u0027s chauffeur",
+    "QuestionID": 18
+  },
+  {
+    "TheQuestion": "In juli 2023 gingen we massaal in roze outfits of in lange grijze jassen naar de cinema. Barbie en Oppenheimer konden qua inhoud niet m\u00E9\u00E9r van elkaar verschillen, net daarom was het zo\u2019n hype. Maar welke producer schreef de muziek voor \u2018Barbie\u2019?",
+    "CorrectAnswer": "Mark Ronson",
+    "WrongAnswerOne": "Jack Antonoff",
+    "WrongAnswerTwo": "Linda Perry",
+    "WrongAnswerThree": "Sia",
+    "QuestionID": 19
+  },
+  {
+    "TheQuestion": "In juli 2023: Wout van Aert stapte uit de Tour, maar deed dat om vader te worden. Hoe heet het kind?",
+    "CorrectAnswer": "Georges",
+    "WrongAnswerOne": "Jerome",
+    "WrongAnswerTwo": "Mathis",
+    "WrongAnswerThree": "L\u00E9on",
+    "QuestionID": 20
+  },
+  {
+    "TheQuestion": "Welke voetballer, die deel uitmaakte van het beroemde \u0027Busby Babes\u0027 team van Manchester United en later een belangrijke rol speelde in het Engelse nationale elftal, staat bekend om zijn iconische spel en wordt vaak beschouwd als een van de grootste voetballers uit het Verenigd Koninkrijk? In oktober 2023 moesten we afscheid nemen van deze legende.",
+    "CorrectAnswer": "Bobby Charlton",
+    "WrongAnswerOne": "Denis Law",
+    "WrongAnswerTwo": "Peter Schmeichel",
+    "WrongAnswerThree": "Alex Stepney",
+    "QuestionID": 21
+  },
+  {
+    "TheQuestion": "Begin dit jaar is de VS in de ban van een spionageluchtballon die boven allerlei militaire installaties vliegt en daarna zelfs uit de lucht wordt geschoten. Waar kwam de ballon vandaan?",
+    "CorrectAnswer": "China",
+    "WrongAnswerOne": "Rusland",
+    "WrongAnswerTwo": "Noord-Korea",
+    "WrongAnswerThree": "Verenigde Staten",
+    "QuestionID": 22
+  },
+  {
+    "TheQuestion": "In maart 2023 vertrekt d\u00E9 weerman van de VRT: Frank Deboosere. Welk nieuw gezicht volgt hem op? ",
+    "CorrectAnswer": "Jacotte Brokken",
+    "WrongAnswerOne": "Jacotte Hagedoren",
+    "WrongAnswerTwo": "Jacotte Verbruggen",
+    "WrongAnswerThree": "Jacotte Cracotte",
+    "QuestionID": 23
+  },
+  {
+    "TheQuestion": "Loreen wint voor Zweden het Eurovisiesongfestival, maar met welk nummer?",
+    "CorrectAnswer": "Tattoo",
+    "WrongAnswerOne": "Euphoria",
+    "WrongAnswerTwo": "Erop of eronder",
+    "WrongAnswerThree": "I\u0027m in it with you",
+    "QuestionID": 24
+  },
+  {
+    "TheQuestion": "t",
+    "CorrectAnswer": "tt",
+    "WrongAnswerOne": "tt",
+    "WrongAnswerTwo": "tt",
+    "WrongAnswerThree": "ttt",
+    "QuestionID": 25
   }
 ]

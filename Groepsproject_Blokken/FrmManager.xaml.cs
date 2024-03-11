@@ -22,6 +22,7 @@ namespace Groepsproject_Blokken
         List<string> listActieveVragenlijsten;
         List<Player> listPlayers = new List<Player>();
         Player geselecteerdePlayer = new Player();
+        bool updateAanList = false; //Nodig voor mn txtallevragenlijsten , omdat we dezelfde knop gebruiken om op te slagen en up te daten,  gaat hij bij elke update de vragenlijst opnieuw overschrijven
         public FrmManager()
         {
             InitializeComponent();
@@ -81,6 +82,8 @@ namespace Groepsproject_Blokken
                     System.Windows.MessageBox.Show("Vragenlijst succesvol opgeslagen!", "Vragen opgeslagen", MessageBoxButton.OK, MessageBoxImage.Information);
                     txtFileName.IsEnabled = true;
                     VulAlleVragenListBoxenIn();
+                    LaadTxtsInListboxen();
+                    updateAanList = false;
                 }
             }
             catch
@@ -107,8 +110,9 @@ namespace Groepsproject_Blokken
                 InlezenVragen(openFileDialog.FileName);
                 fileIsLoaded = true;
                 RefreshFields();
-                txtFileName.Text = openFileDialog.FileName.ToString();
+                txtFileName.Text = openFileDialog.SafeFileName.ToString();
                 txtFileName.IsEnabled = false;
+                updateAanList = true;
             }
         }
         private void btnReturn_Click(object sender, RoutedEventArgs e)
@@ -208,24 +212,25 @@ namespace Groepsproject_Blokken
         }
         private void OpslagenInVragenLijstAlles(string vraagTopic)
         {
-            string temp = "";
-            using (StreamReader r = new StreamReader("../../Questionaires/VragenlijstAlles.txt"))
+            if (updateAanList == false)
             {
-                temp = r.ReadToEnd();
-            }
-            using (StreamWriter w = new StreamWriter("../../Questionaires/VragenlijstAlles.txt"))
-            {
-                w.Write(temp + Environment.NewLine + vraagTopic);
+                string temp = "";
+                using (StreamReader r = new StreamReader("../../Questionaires/VragenlijstAlles.txt"))
+                {
+                    temp = r.ReadToEnd();
+                }
+                using (StreamWriter w = new StreamWriter("../../Questionaires/VragenlijstAlles.txt"))
+                {
+                    w.Write(temp + Environment.NewLine + vraagTopic);
+                }
             }
         }
         private void VulAlleVragenListBoxenIn()
         {
-
             lbAllQuestionnaires.ItemsSource = null;
             lbAllQuestionnaires.ItemsSource = listAlleVragenlijsten;
             lbActiveQuestionnaires.ItemsSource = null;
             lbActiveQuestionnaires.ItemsSource = listActieveVragenlijsten;
-
         }
         private void LaadTxtsInListboxen()
         {
