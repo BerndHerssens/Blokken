@@ -76,7 +76,6 @@ namespace Groepsproject_Blokken
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-
             StackPanelButtonsWeg.Completed += (s, args) =>
             {
                 FrmTitleScreen window = new FrmTitleScreen();
@@ -85,6 +84,8 @@ namespace Groepsproject_Blokken
                 window.ShowDialog();
             };
             StackPanelButtonsWeg.Begin();
+            StackPanelVragenlijstenWeg.Begin();
+
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -148,13 +149,13 @@ namespace Groepsproject_Blokken
             var filepath = "../../PrimeWords/List1.txt";
             try
             {
-                StreamReader readobject = new StreamReader(filepath);               
+                StreamReader readobject = new StreamReader(filepath);
                 while (!readobject.EndOfStream)
                 {
                     readobject.ReadLine();
-                    if (readobject.ToString() == "\r\n" || readobject.ToString() == "") //this is when txt1 is empty
+                    if (readobject.ToString() == null || readobject.ToString() == "") //this is when txt1 is empty
                     {
-                        File.Copy("../../PrimeWords/List2.txt", "../../PrimeWords/List1.txt", true);
+                        File.Copy("../../PrimeWords/List2.txt", "../../PrimeWords/List1.txt");
                         System.IO.File.WriteAllText("../../PrimeWords/file2.txt", string.Empty);
                     }
                     else //here i just need the lenght of the list, so i need to increase "teller"
@@ -163,12 +164,6 @@ namespace Groepsproject_Blokken
                     }
                 }
                 readobject.Close();
-                if ( teller == 0 ) 
-                {
-                    File.Copy("../../PrimeWords/List2.txt", "../../PrimeWords/List1.txt", true);
-                    System.IO.File.WriteAllText("../../PrimeWords/List2.txt", string.Empty);
-                }
-                
                 StreamReader readobject2 = new StreamReader(filepath);
                 while (!readobject2.EndOfStream)
                 {

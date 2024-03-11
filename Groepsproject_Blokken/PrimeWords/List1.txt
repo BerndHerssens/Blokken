@@ -31,4 +31,3 @@ koplicht;Navigatiedeel van schepen
 luxaflex;jaloezieën
 hectisch;chaos
 juryteam;Panel
-lobbying;uitoefenen van invloed
