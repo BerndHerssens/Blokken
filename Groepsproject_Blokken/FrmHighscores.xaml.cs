@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Media.Imaging;
 
 namespace Groepsproject_Blokken
@@ -21,34 +18,34 @@ namespace Groepsproject_Blokken
         {
             InitializeComponent();
         }
-        
 
-        public List<Player> Players { get ; set; }
 
-        //private void btnReturn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MainWindow window = new MainWindow();
-        //    window.ingelogdePlayerLoginscreen = ingelogdePlayerMainWindow;
-        //    this.Close();
-        //    window.ShowDialog();
-        //}
+        public List<Player> Players { get; set; }
+
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             CleanList();
             //ExcelWordStatic.PrintExcel(Players);
+            AlleImagesLaden();
         }
 
-
+        private void AlleImagesLaden() //Deze methode zorgt ervoor dat hij in playerplus deze images inlaad uit onze lokale map zodat iedereen elkaars pfp kan zien!
+        {
+            foreach (Player player in Players)
+            {
+                player.ImageInladenMetMemoryStream();
+            }
+        }
 
         private void CleanList()
         {
             Players = DataManager.GetAllPlayers();
             Players = Players.OrderByDescending(p => p.SPHighscore).ToList();
             Players = Players.Take(10).ToList();
-           
 
-            
+
+
             int index = 1;
             foreach (var player in Players)
             {
@@ -56,8 +53,8 @@ namespace Groepsproject_Blokken
             }
 
             lstHighscores.ItemsSource = Players;
-            
-            
+
+
         }
 
         private void sliderVolume_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
@@ -107,7 +104,7 @@ namespace Groepsproject_Blokken
             BerndCrabbeTerug.Begin();
             StackPanelButtonsWeg2.Begin();
             BlokkenLogoTerug.Begin();
-            
+
         }
     }
 }

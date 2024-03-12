@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Runtime.CompilerServices;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 //Todo nog niks :)
 namespace Groepsproject_Blokken
 {
@@ -10,6 +13,15 @@ namespace Groepsproject_Blokken
         private string _nameValidation;
         private string _passwordValidation;
         private string _passwordConfirmValidation;
+        private BitmapImage _bmp;
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        public BitmapImage BMP
+        {
+            get { return _bmp; }
+            set { _bmp = value; }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         [System.Text.Json.Serialization.JsonIgnore]
@@ -148,6 +160,21 @@ namespace Groepsproject_Blokken
         public override string ToString()
         {
             return this.Name;
+        }
+        public void ImageInladenMetMemoryStream() // De BMP property inladen met memorystream
+        {
+            BMP = new BitmapImage();
+            MemoryStream ms = new MemoryStream();
+            FileStream stream = new FileStream(this.ProfilePicture, FileMode.Open, FileAccess.Read);
+            ms.SetLength(stream.Length);
+            stream.Read(ms.GetBuffer(), 0, (int)stream.Length);
+            ms.Flush();
+            stream.Close();
+            Image i = new Image();
+            BMP.BeginInit();
+            BMP.StreamSource = ms;
+            BMP.EndInit();
+
         }
 
     }

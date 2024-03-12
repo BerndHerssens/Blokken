@@ -212,7 +212,7 @@ AutoReverse="False"/>
                             </Grid.ColumnDefinitions>
                             <Label Name="lblIndex" Content="{Binding Path=Position}" Width="auto" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" VerticalContentAlignment="Center" FontWeight="Bold"/>
                             <Label Name="lblNaam" Content="{Binding Path=Name}" Width="auto" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" VerticalContentAlignment="Center" FontWeight="Bold"/>
-                            <Image Source="{Binding Path=ProfilePicture}" Width="auto" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" Stretch="UniformToFill"/>
+                            <Image Source="{Binding Path=BMP}" Width="auto" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" Stretch="UniformToFill"/>
                             <Label Name="lblHighscore" Content="{Binding Path=SPHighscore}" Width="auto" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3" VerticalContentAlignment="Center" FontWeight="Bold"/>
                         </Grid>
 
