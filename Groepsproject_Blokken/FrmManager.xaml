@@ -9,7 +9,8 @@
         Loaded="Window_Loaded"
         Height="585"
         Width="1100"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing">
     <Window.DataContext>
         <local:Question />
     </Window.DataContext>
@@ -428,7 +429,7 @@
                     <Grid.Background>
                         <ImageBrush ImageSource="Assets/Blokken achtergrond Hi Res.jpg" />
                     </Grid.Background>
-                    <GroupBox Header="Primewords"
+                    <GroupBox Header="Primewords List 1"
                               Grid.Row="0"
                               Grid.Column="0"
                               Grid.RowSpan="6"
@@ -436,23 +437,41 @@
                               FontFamily="{StaticResource BlokkenFont}"
                               Foreground="White"
                               Margin="61,0,61,0">
-                        <ListBox x:Name="lbPrimeworddisp"
-                                 SelectionChanged="lbQuestions_SelectionChanged"
+                        <ListBox x:Name="lbPrimeworddispay"
+                                 SelectionChanged="lbPrimeworddispay_SelectionChanged"
                                  ToolTip="CTRL + linker-CLICK om te deselecteren"
                                  Height="385"
                                  Width="225" />
                     </GroupBox>
-                    <Button x:Name="btnPrimewordPlaceHolder"
-                            Content="Placeholder button"
+                    <GroupBox Header="Primewords List 2"
+                     Grid.Row="0"
+                     Grid.Column="1"
+                     Grid.RowSpan="6"
+                     Width="225"
+                     FontFamily="{StaticResource BlokkenFont}"
+                     Foreground="White"
+                     Margin="61,0,61,0">
+                    <ListBox x:Name="lbPrimeworddisplay2"
+                     SelectionChanged="lbPrimeworddisplay2_SelectionChanged"
+                     ToolTip="CTRL + linker-CLICK om te deselecteren"
+                     Height="385"
+                     Width="225" />
+                    </GroupBox>
+                    <StackPanel 
+                        Grid.Row="0" 
+                        Grid.Column="2"
+                        Grid.RowSpan="6">
+                    <Button x:Name="btnPrimewordToevoegen"
+                            Content="Primeword Toevoegen"
                             Background="#fea702"
                             FontFamily="{StaticResource BlokkenFont}"
                             Grid.Row="0"
-                            Grid.Column="1"
+                            Grid.Column="2"
                             HorizontalAlignment="Center"
                             Height="25"
                             Width="225"
-                            Margin="0,26,0,26"
-                            FontWeight="Bold">
+                            Margin="0,20,0,20"
+                            FontWeight="Bold" Click="btnPrimewordToevoegen_Click">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius"
@@ -460,17 +479,17 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button x:Name="btnPrimeWordPlaceholdertwee"
-                            Content="Placeholder button"
+                    <Button x:Name="btnPrimeWordVerwijderen"
+                            Content="Primeword verwijderen"
                             Background="#fea702"
                             FontFamily="{StaticResource BlokkenFont}"
-                            Grid.Row="1"
-                            Grid.Column="1"
+                            Grid.Row="0"
+                            Grid.Column="2"
                             HorizontalAlignment="Center"
                             Height="25"
                             Width="225"
-                            Margin="0,26,0,26"
-                            FontWeight="Bold">
+                            Margin="0,20,0,20"
+                            FontWeight="Bold" Click="btnPrimeWordVerwijderen_Click">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius"
@@ -478,13 +497,38 @@
                             </Style>
                         </Button.Resources>
                     </Button>
+                        <Button x:Name="btnPrimewordVeranderen"
+                         Content="Primeword Veranderen"
+                         Background="#fea702"
+                         FontFamily="{StaticResource BlokkenFont}"
+                         Grid.Row="0"
+                         Grid.Column="2"
+                         HorizontalAlignment="Center"
+                         Height="25"
+                         Width="225"
+                         Margin="0,20,0,20"
+                         FontWeight="Bold" Click="btnPrimewordVeranderen_Click">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius"
+                    Value="15" />
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                        <GroupBox Header="Primeword " FontFamily="{StaticResource BlokkenFont}" Foreground="White" Width="100" HorizontalAlignment="Left">
+                            <TextBox x:Name="txtPrimewordCrud" HorizontalAlignment="Left" Height="20" Width="90"/>
+                        </GroupBox>
+                        <GroupBox Header="Hint " FontFamily="{StaticResource BlokkenFont}" Foreground="White" Width="100" HorizontalAlignment="Left">
+                            <TextBox x:Name="txtHintCrud" HorizontalAlignment="Left" Height="20" Width=" 90"/>
+                        </GroupBox>
+                    </StackPanel>
                     <Button x:Name="btnReturnDrie"
                             Content="TERUG"
                             Background="#fea702"
                             FontFamily="{StaticResource BlokkenFont}"
                             Grid.Row="7"
                             Grid.Column="0"
-                            HorizontalAlignment="Left"
+                            HorizontalAlignment="Center"
                             Height="25"
                             Width="200"
                             Margin="8,26,0,26"
@@ -494,6 +538,24 @@
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius"
                                         Value="15" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button x:Name="btnPrimewordAllesResetten"
+        Content="Lijsten Resetten"
+        Background="#fea702"
+        FontFamily="{StaticResource BlokkenFont}"
+        Grid.Row="7"
+        Grid.Column="1"
+        HorizontalAlignment="Center"
+        Height="25"
+        Width="225"
+        Margin="0,20,0,20"
+        FontWeight="Bold" Click="btnPrimewordAllesResetten_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius"
+                    Value="15" />
                             </Style>
                         </Button.Resources>
                     </Button>

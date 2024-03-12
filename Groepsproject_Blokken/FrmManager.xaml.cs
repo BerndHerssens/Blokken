@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 //Todo: Met front end de lijst displayen en zorgen dat we deze kunnen crudden
 namespace Groepsproject_Blokken
 {
@@ -23,6 +24,13 @@ namespace Groepsproject_Blokken
         List<Player> listPlayers = new List<Player>();
         Player geselecteerdePlayer = new Player();
         bool updateAanList = false; //Nodig voor mn txtallevragenlijsten , omdat we dezelfde knop gebruiken om op te slagen en up te daten,  gaat hij bij elke update de vragenlijst opnieuw overschrijven
+        List<string> listPrimewordsLst1;
+        List<string> listPrimewordsLst2;
+        string filepath1 = "../../PrimeWords/List1.txt";
+        string filepath2 = "../../PrimeWords/List2.txt";
+        string[] splittedString;
+        string primewordString;
+        string hintString;
         public FrmManager()
         {
             InitializeComponent();
@@ -32,6 +40,7 @@ namespace Groepsproject_Blokken
             LaadTxtsInListboxen();
             VulAlleVragenListBoxenIn();
             RefreshPlayers();
+            LaadAllePrimeWords();
         }
         private void btnAddToList_Click(object sender, RoutedEventArgs e)
         {
@@ -296,8 +305,6 @@ namespace Groepsproject_Blokken
                 geselecteerdePlayer.SPGamesWon = 0;
                 DataManager.UpdatePlayer(geselecteerdePlayer);
                 RefreshPlayers();
-
-
             }
         }
 
@@ -310,7 +317,6 @@ namespace Groepsproject_Blokken
                 geselecteerdePlayer.VSGamesWon = 0;
                 DataManager.UpdatePlayer(geselecteerdePlayer);
                 RefreshPlayers();
-
             }
         }
         private void RefreshPlayers()
@@ -318,6 +324,107 @@ namespace Groepsproject_Blokken
             listPlayers = DataManager.GetAllPlayers();
             lbPlayerdisp.ItemsSource = null;
             lbPlayerdisp.ItemsSource = listPlayers;
+        }
+
+        private void lbPrimeworddispay_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            if (lbPrimeworddispay.SelectedIndex != -1)
+            {
+                lbPrimeworddisplay2.SelectedIndex = -1;
+                splittedString = lbPrimeworddispay.SelectedIndex.ToString().Split(';');
+                txtPrimewordCrud.Text = splittedString[0];
+                txtHintCrud.Text = splittedString[1];
+            }
+            else
+            {
+                txtHintCrud.Text = "";
+                txtPrimewordCrud.Text = "";
+            }
+        }
+
+        private void lbPrimeworddisplay2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lbPrimeworddisplay2.SelectedIndex != -1)
+            {
+                lbPrimeworddispay.SelectedIndex = -1;
+                splittedString = lbPrimeworddispay.SelectedIndex.ToString().Split(';');
+                txtPrimewordCrud.Text = splittedString[0];
+                txtHintCrud.Text = splittedString[1];
+            }
+            else
+            {
+                txtHintCrud.Text = "";
+                txtPrimewordCrud.Text = "";
+            }
+        }
+
+        private void btnPrimewordToevoegen_Click(object sender, RoutedEventArgs e)
+        {   
+            lbPrimeworddispay.Items.Add(txtPrimewordCrud.Text + ";" + txtHintCrud.Text);            
+        }
+
+        private void btnPrimeWordVerwijderen_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbPrimeworddispay.SelectedIndex != -1)
+            {
+                listPrimewordsLst1.Remove(txtPrimewordCrud.Text);
+            }
+            else if (lbPrimeworddisplay2.SelectedIndex != -1)
+            {
+                listPrimewordsLst2.Remove(txtPrimewordCrud.Text);
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Select a Primeword to delete first", "Warning");
+            }
+        }
+
+        private void btnPrimewordVeranderen_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnPrimewordAllesResetten_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var woorden in listPrimewordsLst2)
+            {
+                listPrimewordsLst1.Add(woorden + Environment.NewLine);
+            }          
+            using (StreamWriter schrijver1 = new StreamWriter(filepath1))
+            {
+                for (int i = 0; i < listPrimewordsLst1.Count; i++) 
+                {
+                    schrijver1.WriteLine(listPrimewordsLst1[i]);
+                }
+            }
+            System.IO.File.WriteAllText("../../PrimeWords/file2.txt", string.Empty);
+            listPrimewordsLst2.Clear();
+        }
+        private void LaadAllePrimeWords()
+        {
+            try 
+            {
+                listPrimewordsLst1 = new List<string>(File.ReadAllLines(filepath1));
+                listPrimewordsLst2 = new List<string>(File.ReadAllLines(filepath2));
+                lbPrimeworddispay.ItemsSource = null;
+                lbPrimeworddispay.ItemsSource = listPrimewordsLst1;
+                lbPrimeworddisplay2.ItemsSource = null;
+                lbPrimeworddisplay2.ItemsSource = listPrimewordsLst2;              
+            }
+            catch 
+            {
+                System.Windows.MessageBox.Show("Files not found. Please check the file directory", "Error");
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            WegschrijvenPrimeWordLists();
+        }
+        private void WegschrijvenPrimeWordLists()
+        {
+
         }
     }
 }
