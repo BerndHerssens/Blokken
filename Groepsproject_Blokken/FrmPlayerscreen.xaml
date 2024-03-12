@@ -433,12 +433,12 @@ AutoReverse="False"/>
                         <Button x:Name="YesButton"
                                 Margin="5"
                                 Content="Wijzig"
-                                Background="{x:Null}"
+                                Style="{x:Null}"
                                 Click="YesButton_Click" />
                         <Button x:Name="NoButton"
                                 Margin="5"
                                 Content="Annuleer"
-                                Background="{x:Null}"
+                                Style="{x:Null}"
                                 Click="NoButton_Click" />
                     </StackPanel>
                 </StackPanel>
