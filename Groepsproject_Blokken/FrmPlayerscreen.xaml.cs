@@ -40,15 +40,24 @@ namespace Groepsproject_Blokken
             bmp.BeginInit();
             bmp.StreamSource = ms;
             bmp.EndInit();
-            imgProfilePic.Source = bmp;
+            imgProfilePic.ImageSource = bmp;
             imgProfilePic.Stretch = System.Windows.Media.Stretch.UniformToFill;
         }
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow window = new MainWindow();
-            window.ingelogdePlayerLoginscreen = ingelogdePlayerMainWindow;
-            this.Close();
-            window.ShowDialog();
+
+            BerndCrabbeTerug.Completed += (s, args) =>
+            {
+                FrmTitleScreen window = new FrmTitleScreen();
+                window.ingelogdePlayerLoginscreen = ingelogdePlayerMainWindow;
+                this.Close();
+                window.ShowDialog();
+            };
+            BerndCrabbeTerug.Begin();
+            StackPanelButtonsWeg.Begin();
+            BlokkenLogoTerug.Begin();
+            LinkseBorderTerug.Begin();
+            RechtseBorderTerug.Begin();
         }
 
         private void btnWijzigWW_Click(object sender, RoutedEventArgs e)
@@ -63,7 +72,7 @@ namespace Groepsproject_Blokken
                 if (dialogChoosePicture.FileName.Contains(".jpg") || dialogChoosePicture.FileName.Contains(".jpeg") || dialogChoosePicture.FileName.Contains(".png"))
                 {
                     ingelogdePlayerMainWindow.ProfilePicture = dialogChoosePicture.FileName;
-                    imgProfilePic.Source = new BitmapImage(new Uri(dialogChoosePicture.FileName, UriKind.RelativeOrAbsolute));
+                    imgProfilePic.ImageSource = new BitmapImage(new Uri(dialogChoosePicture.FileName, UriKind.RelativeOrAbsolute));
                     fileName = Path.GetFileName(dialogChoosePicture.FileName);
                     //Kopieren van de nieuwe pfp + gelijkstellen
                     File.Copy(dialogChoosePicture.FileName, @"../../Profielfotos/" + fileName, true);
@@ -123,6 +132,41 @@ namespace Groepsproject_Blokken
                 lblGamesGespeeldVSDisp.Content = ingelogdePlayerMainWindow.VSGamesPlayed;
                 lblHighscoreVSDisp.Content = ingelogdePlayerMainWindow.VSHighscore;
                 lblWinrateVSDisp.Content = ingelogdePlayerMainWindow.CalculateVSWinRate();
+            }
+        }
+
+        private void sliderVolume_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            sliderVolume.Opacity = 1;
+            StackPanelVolume.Opacity = 1;
+        }
+
+        private void sliderVolume_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            sliderVolume.Opacity = 0.8;
+            StackPanelVolume.Opacity = 0.4;
+        }
+
+        private void sliderVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (imgVolume != null)
+            {
+                if (sliderVolume.Value == 0)
+                {
+                    imgVolume.Source = new BitmapImage(new Uri("Assets/Icon Mute.png", UriKind.Relative));
+                }
+                else if (sliderVolume.Value > 0 && sliderVolume.Value <= 33)
+                {
+                    imgVolume.Source = new BitmapImage(new Uri("Assets/Icon Low.png", UriKind.Relative));
+                }
+                else if (sliderVolume.Value > 33 && sliderVolume.Value <= 66)
+                {
+                    imgVolume.Source = new BitmapImage(new Uri("Assets/Icon Mid.png", UriKind.Relative));
+                }
+                else if (sliderVolume.Value > 66)
+                {
+                    imgVolume.Source = new BitmapImage(new Uri("Assets/Icon High.png", UriKind.Relative));
+                }
             }
         }
     }
