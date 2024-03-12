@@ -10,4 +10,3 @@ showbizz;een industrie
 officium;politiek-juridische term
 lymfevat;menselijke drainagesysteem
 koplicht;Navigatiedeel van schepen
-hectisch;chaos

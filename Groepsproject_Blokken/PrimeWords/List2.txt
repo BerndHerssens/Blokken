@@ -20,3 +20,4 @@ playoffs;eindronde
 babymelk;natuurlijk
 crucifix;christendom
 joystick;bewegings controller
+hectisch;chaos
