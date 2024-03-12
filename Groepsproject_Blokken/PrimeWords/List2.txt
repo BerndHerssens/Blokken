@@ -1,2 +1,14 @@
 lunchbox;eten
 lobbying;uitoefenen van invloed
+lymfocyte;cel
+malvezij;drank
+jazzclub;culturele plaats
+ijslolly;koude lekkernij
+hobbykok;thuiskok
+maquette;model
+juryteam;Panel
+leukocyt;afweersysteem
+jerrycan;container
+kerfbijl;werktuig
+luxaflex;jaloezieën
+mycelium;hyfen

@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Groepsproject_Blokken
 {
     /// <summary>
     /// Interaction logic for FrmGametype.xaml
     /// </summary>
-    public partial class FrmGametype : Window
+    public partial class FrmGametype : System.Windows.Window
     {
         public Player ingelogdePlayerMainWindow = new Player();
         public FrmGametype()
@@ -67,7 +68,20 @@ namespace Groepsproject_Blokken
             StackPanelButtonsWeg.Completed += (s, args) =>
             {
                 FrmVersusQuizWindow windowVS = new FrmVersusQuizWindow();
-                windowVS.ingelogdePlayerMainWindow = ingelogdePlayerMainWindow;
+                FrmLoginRegister frmLoginRegister = new FrmLoginRegister();
+                frmLoginRegister.isLoginMultiplayer = true;
+                frmLoginRegister.ShowDialog();
+                windowVS.ingelogdePlayer2 = frmLoginRegister.ingelogdePlayer;
+                windowVS.ingelogdePlayer1 = ingelogdePlayerMainWindow;
+                if (listGekozenVragenlijsten.Count == 0)
+                {
+                    MessageBox.Show("Alle vragen werden geladen omdat u geen topics heeft geselecteerd, succes!", "Melding", MessageBoxButton.OK, MessageBoxImage.Information);
+                    windowVS.gekozenVragenLijsten = listIngeladenActieveVragenlijsten; // Laad alles in als niks geselecteerd is
+                }
+                else
+                {
+                    windowVS.gekozenVragenLijsten = listGekozenVragenlijsten;      // Als het niet null is, laden we  in wat er geselecteerd is.
+                }
                 this.Close();
                 windowVS.ShowDialog();
             };

@@ -1,19 +1,10 @@
 nachtbus;vervoersdienst
 meetlint;meter voor omtrek
-lymfocyte;cel
-kerfbijl;werktuig
 oxymoron;stijlfiguur
 mycoloog;doctoraat
-maquette;model
-jerrycan;container
 juffrouw;algemeen eerste liefde
-hobbykok;thuiskok
-malvezij;drank
 babymelk;natuurlijk
-ijslolly;koude lekkernij
-jazzclub;culturele plaats
 crucifix;christendom
-leukocyt;afweersysteem
 gezwicht;hij is ...
 recyclen;hergebruiken
 quoteren;evenredig verdelen
@@ -24,10 +15,7 @@ kilobyte;Unit
 golfclub;sport instrument
 showbizz;een industrie
 officium;politiek-juridische term
-mycelium;hyfen
 lymfevat;menselijke drainagesysteem
 katzwijm;flauwte
 koplicht;Navigatiedeel van schepen
-luxaflex;jaloezieën
 hectisch;chaos
-juryteam;Panel

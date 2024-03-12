@@ -22,12 +22,13 @@ namespace Groepsproject_Blokken
         List<Player> playerList = new List<Player>();
         List<Manager> managerList = new List<Manager>();
         List<Admin> adminList = new List<Admin>();
-        Player ingelogdePlayer = new Player();
+        public Player ingelogdePlayer = new Player();
         Manager ingelogdeManager = new Manager();
         Admin ingelogdeAdmin = new Admin();
         bool adminGevonden = false;
         bool managerGevonden = false;
         bool playerGevonden = false;
+        public bool isLoginMultiplayer = false;
         //TIJDELIJKE INLOGS/FAILSAFES DIE HARDCODED STAAN, DEZE ZOUDE WEG MOGEN LATER OF WE KUNNEN ZE LATEN STAAN INCASE IETS BREEKT
         Admin tempAdmin = new Admin();
         Manager tempManager = new Manager();
@@ -183,10 +184,16 @@ namespace Groepsproject_Blokken
                     {
                         ingelogdePlayer = DataManager.GetLoggedInPlayer(txtUsername.Text, txtPassword.Password);
                         playerGevonden = true;
-                        MainWindow mainwindow = new MainWindow();
-                        mainwindow.ingelogdePlayerLoginscreen = ingelogdePlayer;
-                        this.Close();
-                        mainwindow.ShowDialog();
+                        if (isLoginMultiplayer == false)
+                        {
+                            MainWindow mainwindow = new MainWindow();
+                            mainwindow.ingelogdePlayerLoginscreen = ingelogdePlayer;
+                            this.Close();
+                            mainwindow.ShowDialog();
+                        } else
+                        {
+                            this.Hide();
+                        }
                     }
                 }
             }

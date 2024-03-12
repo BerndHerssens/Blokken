@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="FrmVersusQuizWindow"
         Height="720" Width="1280" MinHeight="720" MinWidth="1280"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" KeyDown="Window_KeyDown">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Assets/Blokken Background VS.png"></ImageBrush>
@@ -24,6 +24,9 @@
             <RowDefinition Height="421*"/>
             <RowDefinition Height="153*"/>
         </Grid.RowDefinitions>
+        <Viewbox Grid.Row="1" Grid.Column="2" Margin="0,0,0,20" Grid.RowSpan="5">
+            <Canvas x:Name="GameCanvas" Width="550" Height="1100" Background="#101010" ClipToBounds="True" Loaded="GameCanvas_Loaded" Visibility="Visible"/>
+        </Viewbox>
         <Image x:Name="imgSpeler1" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
         <Image x:Name="imgSpeler2" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
 
