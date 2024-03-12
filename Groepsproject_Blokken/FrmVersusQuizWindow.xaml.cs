@@ -76,6 +76,7 @@ namespace Groepsproject_Blokken
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             InlezenVragen();
+            ProfilePicturesInladen();
             RandomQuestionPicker();
             EnableDisableAnswers();
             //TODO: profielfotos inladen spelers
@@ -83,6 +84,13 @@ namespace Groepsproject_Blokken
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += timer_Tick;
             timer.Start();
+        }
+        public void ProfilePicturesInladen()
+        {
+            ingelogdePlayer1.ImageInladenMetMemoryStream();
+            ingelogdePlayer2.ImageInladenMetMemoryStream();
+            imgSpeler1.Source = ingelogdePlayer1.BMP;
+            imgSpeler2.Source = ingelogdePlayer2.BMP;
         }
         public void InlezenVragen()
         {
@@ -143,7 +151,6 @@ namespace Groepsproject_Blokken
                 lblScoreSpeler2.Content = "Score P2: " + gameState.ScorePlayerTwo.ToString();
                 correctAnswerClicked = true;
                 gameState.BlockIsPlaced = false;
-                Overlay.Visibility = Visibility.Hidden;
                 //txtScore.Text = (Convert.ToInt32(txtScore.Text) + 50).ToString();
             }
             else
@@ -163,6 +170,7 @@ namespace Groepsproject_Blokken
 
                 ShowCorrectAnswer(new List<Button> { btnAntwoord1, btnAntwoord2, btnAntwoord3, btnAntwoord4 });
             }
+            Overlay.Visibility = Visibility.Collapsed;
         }
 
         public void EnableDisableAnswers()
@@ -292,6 +300,8 @@ namespace Groepsproject_Blokken
                     {
                         correctAnswerClicked = false;
                         buzzerPressed = false;
+                        buzzerPlayer1 = false;
+                        buzzerPlayer2 = false;
                         EnableDisableAnswers();
                         RandomQuestionPicker();
                         btnAntwoord1.MouseEnter += btnAntwoord1_MouseEnter;
@@ -316,8 +326,7 @@ namespace Groepsproject_Blokken
 
         private void Media_Ended(object sender, EventArgs e)
         {
-            backgroundMusicPlayer.Position = TimeSpan.Zero;
-            backgroundMusicPlayer.Play();
+
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -325,41 +334,9 @@ namespace Groepsproject_Blokken
             tellerTimer--;
             lblScoreSpeler1.Content = "Score P1: " + gameState.ScorePlayerOne.ToString();
             lblScoreSpeler2.Content = "Score P2: " + gameState.ScorePlayerTwo.ToString();
-            if (tellerTimer <= 0)
-            {
-                backgroundMusicPlayer.Stop();
-                MessageBox.Show("Game Over! Uw score was: " + gameState.Score, "Game Over!", MessageBoxButton.OK, MessageBoxImage.Stop);
-                timer.Stop();
-
-                if (ingelogdePlayer1 != null)
-                {
-                    eenGame = new GameLogSP();
-                    eenGame.PlayerName = ingelogdePlayer1.Name;
-                    eenGame.Date = DateTime.Now;
-                    eenGame.Score = Convert.ToInt32(gameState.Score);
-                    eenGame.GameNumber = eenGame.GetHashCode();
-                    if (ingelogdePlayer1.SPHighscore < gameState.Score || ingelogdePlayer1.SPHighscore == null) // Als de gamestate score hoger is of null (eerste keer spelen)
-                    {
-                        ingelogdePlayer1.SPHighscore = gameState.Score;
-                    }
-                    DataManager.UpdatePlayer(ingelogdePlayer1);
-                    DataManager.InsertGameLogSP(eenGame);
-                    MainWindow mainwindow = new MainWindow();
-                    mainwindow.ingelogdePlayerLoginscreen = ingelogdePlayer1;
-                    this.Close();
-                    mainwindow.ShowDialog();
-                }
-                else
-                {
-                    eenGame = new GameLogSP();
-                    eenGame.PlayerName = "Gast";
-                    eenGame.Date = DateTime.Now;
-                    eenGame.Score = Convert.ToInt32(gameState.Score);
-                    eenGame.GameNumber = eenGame.GetHashCode();
-                    DataManager.InsertGameLogSP(eenGame);
-                    this.Close();
-                    System.Windows.Forms.Application.Restart();
-                }
+            if (finalLijstVragen.Count == 0) 
+            { 
+                //einde spel komt hier
             }
         }
         private Image[,] SetupGameCanvas(GameGrid gameGrid)

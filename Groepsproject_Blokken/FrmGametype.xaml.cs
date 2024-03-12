@@ -70,6 +70,7 @@ namespace Groepsproject_Blokken
                 FrmVersusQuizWindow windowVS = new FrmVersusQuizWindow();
                 FrmLoginRegister frmLoginRegister = new FrmLoginRegister();
                 frmLoginRegister.isLoginMultiplayer = true;
+                frmLoginRegister.btnDoorgaanAlsGast.IsEnabled = false;
                 frmLoginRegister.ShowDialog();
                 windowVS.ingelogdePlayer2 = frmLoginRegister.ingelogdePlayer;
                 windowVS.ingelogdePlayer1 = ingelogdePlayerMainWindow;

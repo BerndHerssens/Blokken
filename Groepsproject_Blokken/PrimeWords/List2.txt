@@ -12,3 +12,11 @@ jerrycan;container
 kerfbijl;werktuig
 luxaflex;jaloezieën
 mycelium;hyfen
+golfclub;sport instrument
+huilbaby;nachtmerrie
+katzwijm;flauwte
+juffrouw;algemeen eerste liefde
+playoffs;eindronde
+babymelk;natuurlijk
+crucifix;christendom
+joystick;bewegings controller

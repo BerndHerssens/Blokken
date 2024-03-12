@@ -2,20 +2,12 @@ nachtbus;vervoersdienst
 meetlint;meter voor omtrek
 oxymoron;stijlfiguur
 mycoloog;doctoraat
-juffrouw;algemeen eerste liefde
-babymelk;natuurlijk
-crucifix;christendom
 gezwicht;hij is ...
 recyclen;hergebruiken
 quoteren;evenredig verdelen
-playoffs;eindronde
-huilbaby;nachtmerrie
-joystick;bewegings controller
 kilobyte;Unit
-golfclub;sport instrument
 showbizz;een industrie
 officium;politiek-juridische term
 lymfevat;menselijke drainagesysteem
-katzwijm;flauwte
 koplicht;Navigatiedeel van schepen
 hectisch;chaos
