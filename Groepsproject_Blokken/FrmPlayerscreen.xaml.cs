@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 
@@ -38,7 +37,6 @@ namespace Groepsproject_Blokken
             stream.Read(ms.GetBuffer(), 0, (int)stream.Length);
             ms.Flush();
             stream.Close();
-            Image i = new Image();
             bmp.BeginInit();
             bmp.StreamSource = ms;
             bmp.EndInit();

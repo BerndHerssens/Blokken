@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
-using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 //Todo nog niks :)
 namespace Groepsproject_Blokken
@@ -170,11 +169,9 @@ namespace Groepsproject_Blokken
             stream.Read(ms.GetBuffer(), 0, (int)stream.Length);
             ms.Flush();
             stream.Close();
-            Image i = new Image();
             BMP.BeginInit();
             BMP.StreamSource = ms;
             BMP.EndInit();
-
         }
 
     }
