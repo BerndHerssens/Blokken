@@ -50,6 +50,7 @@ namespace Groepsproject_Blokken
         char[] wordForDisplay = "--------".ToCharArray(); //dit is wat we tonen op het scherm
         char[] versnipperdPrimeWord = new char[8]; //dit is het myPrimeWord.Primeword waar we mee gaan werken
                                                    //myPrimeword.Hint is je hint dat je kan tonen
+        public MediaPlayer blokkenTick = new MediaPlayer();
         public MediaPlayer backgroundMusicPlayer = new MediaPlayer();
         public MediaPlayer marioKartPlayer = new MediaPlayer();
         private BrushConverter bc = new BrushConverter();
@@ -419,6 +420,7 @@ namespace Groepsproject_Blokken
 
         private async Task GameLoop()
         {
+            string soundeffectFilePath = "../../Assets/Sounds/Blokken ValgeluidjeSeconde.wav";
             Draw(gameState);
             while (!gameState.GameOver && correctAnswerClicked == true && gameState.BlockIsPlaced == false)
             {
@@ -426,6 +428,12 @@ namespace Groepsproject_Blokken
                 int delay = 950;
                 await Task.Delay(delay);
                 gameState.MoveBlockDown();
+                if (!string.IsNullOrEmpty(soundeffectFilePath))
+                {
+                    blokkenTick.Open(new Uri(soundeffectFilePath, UriKind.Relative));
+                    blokkenTick.Volume = 0.5;
+                    blokkenTick.Play();
+                }
                 Draw(gameState);
             }
             if (gameState.GameOver)

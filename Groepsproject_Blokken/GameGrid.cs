@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace Groepsproject_Blokken
 {
     internal class GameGrid
     {
+        MediaPlayer lineClearedSound = new MediaPlayer();
         private readonly int[,] _grid;
         public int Rows { get; }
         public int Columns { get; }
@@ -83,12 +85,19 @@ namespace Groepsproject_Blokken
         }
         public int ClearFullRows()
         {
+            string soundeffectFilePath = "../../Assets/Sounds/Blokken LineCleared.wav";
             int cleared = 0;
             for (int row = Rows - 1; row >= 0; row--)
             {
                 if (IsRowFull(row))
                 {
                     ClearRow(row);
+                    if (!string.IsNullOrEmpty(soundeffectFilePath))
+                    {
+                        lineClearedSound.Open(new Uri(soundeffectFilePath, UriKind.Relative));
+                        lineClearedSound.Volume = 0.5;
+                        lineClearedSound.Play();
+                    }
                     cleared++;
                 }
                 else if (cleared > 0)
