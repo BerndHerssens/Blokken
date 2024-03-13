@@ -46,7 +46,7 @@
             <Viewbox>
             <Canvas x:Name="GameCanvas" Width="550" Height="1100" Background="#101010" ClipToBounds="True" Loaded="GameCanvas_Loaded" Visibility="Visible"/>
         </Viewbox>
-            <Label x:Name="lblPrimeword"  Foreground="AntiqueWhite" Grid.Row="1" FontSize="38" FontFamily="{StaticResource BlokkenFont}" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+            <Label x:Name="lblPrimeword"  Foreground="AntiqueWhite" Grid.Row="1" FontSize="30" FontFamily="{StaticResource BlokkenFont}" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
         </StackPanel>
         
             <Grid Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="2">

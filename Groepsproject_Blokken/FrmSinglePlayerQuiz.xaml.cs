@@ -46,7 +46,7 @@ namespace Groepsproject_Blokken
         public Player ingelogdePlayer;
         public PrimeWord gekozenPrimeword = new PrimeWord();
         //deze is voor in de game vensters
-        char[] wordForDisplay = "________".ToCharArray(); //dit is wat we tonen op het scherm
+        char[] wordForDisplay = "--------".ToCharArray(); //dit is wat we tonen op het scherm
         char[] versnipperdPrimeWord = new char[8]; //dit is het myPrimeWord.Primeword waar we mee gaan werken
                                                    //myPrimeword.Hint is je hint dat je kan tonen
         public MediaPlayer backgroundMusicPlayer = new MediaPlayer();
@@ -70,7 +70,7 @@ namespace Groepsproject_Blokken
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             MarioKartAftellingGeluidje();
-            await Task.Delay(4000); 
+            await Task.Delay(4000);
             btnAntwoord1.Visibility = Visibility.Visible;
             btnAntwoord2.Visibility = Visibility.Visible;
             btnAntwoord3.Visibility = Visibility.Visible;
@@ -242,11 +242,11 @@ namespace Groepsproject_Blokken
                 //txtScore.Text = (Convert.ToInt32(txtScore.Text) - 50).ToString();
 
                 ShowCorrectAnswer(new List<Button> { btnAntwoord1, btnAntwoord2, btnAntwoord3, btnAntwoord4 });
-                
-                
+
+
             }
-          
-            
+
+
         }
 
         private void ClickEvent()
@@ -268,7 +268,7 @@ namespace Groepsproject_Blokken
         private async void Delay()
         {
             await GameLoop();
-            _delayTimer = new System.Timers.Timer(10); 
+            _delayTimer = new System.Timers.Timer(10);
             _delayTimer.Elapsed += (s, args) =>
             {
                 Dispatcher.Invoke(async () =>
@@ -314,11 +314,12 @@ namespace Groepsproject_Blokken
         }
 
         public void MarioKartAftellingGeluidje()
-        { string marioKartGeluidje = "../../Assets/Sounds/Mario Kart Race Start.wav";
-                   if (!string.IsNullOrEmpty(marioKartGeluidje))
+        {
+            string marioKartGeluidje = "../../Assets/Sounds/Mario Kart Race Start.wav";
+            if (!string.IsNullOrEmpty(marioKartGeluidje))
             {
-                
-        marioKartPlayer.Open(new Uri(marioKartGeluidje, UriKind.Relative));
+
+                marioKartPlayer.Open(new Uri(marioKartGeluidje, UriKind.Relative));
                 marioKartPlayer.Volume = 0.15;
                 marioKartPlayer.Play();
             }
@@ -501,11 +502,11 @@ namespace Groepsproject_Blokken
             randomInt = myRandom.Next(0, versnipperdPrimeWord.Length);
             while (reroll)
             {
-                if (!(versnipperdPrimeWord[randomInt] == '_'))
+                if (!(versnipperdPrimeWord[randomInt] == '-'))
                 {
                     reroll = false;
                     wordForDisplay[randomInt] = versnipperdPrimeWord[randomInt];
-                    versnipperdPrimeWord[randomInt] = '_';
+                    versnipperdPrimeWord[randomInt] = '-';
                     foreach (char letter in wordForDisplay)
                     {
                         lblPrimeword.Content += letter.ToString().ToUpper() + " ";
