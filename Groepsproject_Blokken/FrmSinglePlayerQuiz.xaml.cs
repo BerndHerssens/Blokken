@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Media;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
@@ -232,6 +233,9 @@ namespace Groepsproject_Blokken
                 correctAnswerClicked = true;
                 gameState.BlockIsPlaced = false;
                 //txtScore.Text = (Convert.ToInt32(txtScore.Text) + 50).ToString();
+                //Geluid Cedric beginnen.
+                SoundPlayer spl = new SoundPlayer();
+
             }
             else
             {
@@ -276,6 +280,7 @@ namespace Groepsproject_Blokken
                     if (gameState.BlockIsPlaced == true)
                     {
                         correctAnswerClicked = false;
+                        //geluidfile
                         RandomQuestionPicker();
                         btnAntwoord1.MouseEnter += btnAntwoord1_MouseEnter;
                         btnAntwoord1.MouseLeave += btnAntwoord1_MouseLeave;

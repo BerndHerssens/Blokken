@@ -128,9 +128,18 @@ Value="80" />
                 <TextBlock Text="Game Over" FontSize="48" TextAlignment="Center" Foreground="White"/>
                 <TextBlock x:Name="txtFinalScore" Text="Score: " FontSize="32" TextAlignment="Center" Foreground="White"/>
                 <TextBox x:Name="txtPrimeword" Margin="0,20,0,0" Padding="5"/>
-                <Button x:Name="btnPrimewordGuess" Content="Primeword raden" Background="LightGreen" Margin="0,20,0,0" Padding="5" Click="btnPrimewordGuess_Click"/>
-                <Button x:Name="btnPlayAgain" Content="Opnieuw spelen" Background="LightGreen" Margin="0,20,0,0" Padding="5" Click="btnPlayAgain_Click"/>
-                <Button x:Name="btnShare" Content="Share" Background="LightGreen" Margin="0,20,0,0" Padding="5" Click="btnShare_Click"/>
+                <Button x:Name="btnPrimewordGuess"
+                        Content="Primeword raden"
+                        Background="#fea702"
+                        Margin="0,20,0,0" Padding="5" Click="btnPrimewordGuess_Click"/>
+                <Button x:Name="btnPlayAgain"
+                        Content="Opnieuw spelen"
+                        Background="#fea702"
+                        Margin="0,20,0,0" Padding="5" Click="btnPlayAgain_Click"/>
+                <Button x:Name="btnShare"
+                        Content="Share"
+                        Background="#fea702"
+                        Margin="0,20,0,0" Padding="5" Click="btnShare_Click"/>
             </StackPanel>
         </Grid>
         
