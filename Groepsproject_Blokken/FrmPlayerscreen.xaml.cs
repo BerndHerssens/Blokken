@@ -119,8 +119,8 @@ namespace Groepsproject_Blokken
             lblNaamDisp.Content = ingelogdePlayerMainWindow.Name;
             lblGamesGespeeldSPDisp.Content = "0";
             lblGamesGespeeldVSDisp.Content = "0";
-            lblWinrateSPDisp.Content = "0%";
-            lblWinrateVSDisp.Content = "0%";
+            lblWinrateSPDisp.Content = "0.00%";
+            lblWinrateVSDisp.Content = "0.00%";
             if (ingelogdePlayerMainWindow.SPGamesPlayed != null)
             {
                 lblGamesGespeeldSPDisp.Content = ingelogdePlayerMainWindow.SPGamesPlayed;

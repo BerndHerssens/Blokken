@@ -107,7 +107,7 @@
                     </BeginStoryboard>
 
                 </EventTrigger>
-                <EventTrigger RoutedEvent="Window.Unloaded">
+                <EventTrigger RoutedEvent="ScrollBar.Scroll">
                     <BeginStoryboard>
                         <Storyboard x:Name="BlokkenLogoTerug">
                             <DoubleAnimation Storyboard.TargetName="BlokkenLogo" Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.Y)"
@@ -141,7 +141,7 @@ AutoReverse="False"/>
                     </BeginStoryboard>
 
                 </EventTrigger>
-                <EventTrigger RoutedEvent="Window.Unloaded">
+                <EventTrigger RoutedEvent="ScrollBar.Scroll">
                     <BeginStoryboard>
                         <Storyboard x:Name="RechtseBorderTerug">
                             <DoubleAnimation Storyboard.TargetName="RechtseBorder" Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.X)"
@@ -182,7 +182,7 @@ AutoReverse="False"/>
                     </BeginStoryboard>
 
                 </EventTrigger>
-                <EventTrigger RoutedEvent="Window.Unloaded">
+                <EventTrigger RoutedEvent="ScrollBar.Scroll">
                     <BeginStoryboard>
                         <Storyboard x:Name="LinkseBorderTerug">
                             <DoubleAnimation Storyboard.TargetName="LinkseBorder" Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.X)"
@@ -317,7 +317,7 @@ AutoReverse="False"/>
                     </BeginStoryboard>
 
                 </EventTrigger>
-                <EventTrigger RoutedEvent="Window.Unloaded">
+                <EventTrigger RoutedEvent="ScrollBar.Scroll">
                     <BeginStoryboard>
                         <Storyboard x:Name="BerndCrabbeTerug">
                             <DoubleAnimation Storyboard.TargetName="BerndCrabbe" Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.X)"
@@ -346,7 +346,7 @@ AutoReverse="False"/>
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
-                <EventTrigger RoutedEvent="Window.Unloaded">
+                <EventTrigger RoutedEvent="ScrollBar.Scroll">
                     <BeginStoryboard>
                         <Storyboard x:Name="StackPanelButtonsWeg">
                             <DoubleAnimation Storyboard.TargetName="StackPanel" Storyboard.TargetProperty="Opacity"

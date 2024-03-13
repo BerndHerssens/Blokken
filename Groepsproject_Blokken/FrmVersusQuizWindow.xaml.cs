@@ -336,7 +336,7 @@ namespace Groepsproject_Blokken
             tellerTimer--;
             lblScoreSpeler1.Content = "Score P1: " + gameState.ScorePlayerOne.ToString();
             lblScoreSpeler2.Content = "Score P2: " + gameState.ScorePlayerTwo.ToString();
-            if (teller == 10)
+            if (teller == 10 && blockPlaced == true)
             {
                 timer.Stop();
                 backgroundMusicPlayer.Stop();
@@ -351,7 +351,7 @@ namespace Groepsproject_Blokken
                 {
 
                     gespeeldeGame.Winner = ingelogdePlayer1.Name;
-                    txtFinalScore.Text = "De winnaar is" + ingelogdePlayer2 + "met een score van " + gameState.ScorePlayerTwo + "!";
+                    txtFinalScore.Text = "De winnaar is " + ingelogdePlayer1 + " met een score van " + gameState.ScorePlayerOne + "!";
                     if (ingelogdePlayer1.VSGamesPlayed == null)
                     {
                         ingelogdePlayer1.VSGamesWon = 1;
@@ -403,7 +403,7 @@ namespace Groepsproject_Blokken
                 else
                 {
                     gespeeldeGame.Winner = ingelogdePlayer2.Name;
-                    txtFinalScore.Text = "De winnaar is" + ingelogdePlayer2 + "met een score van " + gameState.ScorePlayerTwo + "!";
+                    txtFinalScore.Text = "De winnaar is " + ingelogdePlayer2 + " met een score van " + gameState.ScorePlayerTwo + "!";
                     if (ingelogdePlayer1.VSGamesPlayed == null)
                     {
                         ingelogdePlayer1.VSGamesPlayed = 1;
@@ -424,11 +424,11 @@ namespace Groepsproject_Blokken
                     }
                 }
                 //HighscoreVScheck
-                if (ingelogdePlayer1.VSHighscore == null || ingelogdePlayer1.VSHighscore > gameState.ScorePlayerOne)
+                if (ingelogdePlayer1.VSHighscore == null || ingelogdePlayer1.VSHighscore < gameState.ScorePlayerOne)
                 {
                     ingelogdePlayer1.VSHighscore = gameState.ScorePlayerOne;
                 }
-                if (ingelogdePlayer2.VSHighscore == null || ingelogdePlayer2.VSHighscore > gameState.ScorePlayerTwo)
+                if (ingelogdePlayer2.VSHighscore == null || ingelogdePlayer2.VSHighscore < gameState.ScorePlayerTwo)
                 {
                     ingelogdePlayer2.VSHighscore = gameState.ScorePlayerTwo;
                 }
@@ -598,7 +598,7 @@ namespace Groepsproject_Blokken
                     }
                     break;
                 case Key.NumPad7:
-                    if (gameState.BlockIsPlaced == true && buzzerPlayer2 == true)
+                    if (correctAnswerClicked == true && buzzerPlayer2 == true)
                     {
                         gameState.RotateBlockClockWise();
                     }

@@ -105,40 +105,34 @@ namespace Groepsproject_Blokken
             OnPropertyChanged(propertyName);
             return isChanged;
         }
-        //Als je beide values tegelijk wilt met text erbij
-        public string CalculateWinRates() //Geeft beide winrates
-        {
-            double WinrateSp = (double)((double)SPGamesWon / SPGamesPlayed * 100);
-            double WinrateVs = (double)((double)VSGamesWon / VSGamesPlayed * 100);
 
-            string WinrateSPVS = "Winrate in SP: " + WinrateSp.ToString("0.00") + " %" + Environment.NewLine + "Winrate in VS: " + WinrateVs.ToString("0,00") + " %";
-            if (this.SPGamesPlayed == null || this.VSGamesPlayed == null)  //Als een van deze null zijn dan geven we N/A mee met deze functie
-            {
-                WinrateSPVS = "N/A";
-            }
-
-            return WinrateSPVS; //Gooit regel 10 indien het niet null is, regel 13 als een van de twee null is.
-        }
-        // Als je het in een txtvak wilt gooien en je het wilt opsplitsen :)
         public string CalculateSPWinRate() //Zelfde logica dan bij functie CalculateWinRates();
         {
-            double Winrate = (double)((double)SPGamesWon / SPGamesPlayed * 100);
-            string WinrateSP = Winrate.ToString("0.00") + "%";
+            double winrate = 0.00;
+            if (SPGamesWon != null)
+            {
+                winrate = (double)((double)SPGamesWon / SPGamesPlayed * 100);
+            }
+            string winrateSP = winrate.ToString("0.00") + "%";
             if (this.SPGamesPlayed == null)
             {
-                WinrateSP = "No games played yet!";
+                winrateSP = "No games played yet!";
             }
-            return WinrateSP;
+            return winrateSP;
         }
         public string CalculateVSWinRate()
         {
-            double Winrate = (double)((double)VSGamesWon / VSGamesPlayed * 100);
-            string WinrateVS = Winrate.ToString("0.00") + "%";
+            double winrate = 0.00;
+            if (VSGamesWon != null)
+            {
+                winrate = (double)((double)VSGamesWon / VSGamesPlayed * 100);
+            }
+            string winrateVS = winrate.ToString("0.00") + "%";
             if (this.VSGamesPlayed == null)
             {
-                WinrateVS = "No games played yet!";
+                winrateVS = "No games played yet!";
             }
-            return WinrateVS;
+            return winrateVS;
         }
         public override bool Equals(object obj)
         {

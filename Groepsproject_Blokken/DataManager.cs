@@ -205,14 +205,18 @@ namespace Groepsproject_Blokken
         //1 record toevoegen: Gamelogs, Players, Manager
         public static bool InsertGameLogVS(GameLogVS aGameLogVS)
         {
+            List<GameLogVS> listGameLogVS = new List<GameLogVS>();
             bool insertSucceeded = false;
-            List<GameLogVS> listGameLogVS = GetAllGameLogVS();
+            if (System.IO.File.Exists("../../GameLogVS/GamelogsVS"))
+            {
+                listGameLogVS = GetAllGameLogVS();
+            } 
             listGameLogVS.Add(aGameLogVS);
             JsonSerializerOptions options = new JsonSerializerOptions();
             options.IncludeFields = false;
             options.WriteIndented = true;
             string json = JsonSerializer.Serialize(listGameLogVS, options);
-            File.WriteAllText("../../GamesLogVS/GamelogsVS", json);
+            File.WriteAllText("../../GameLogVS/GamelogsVS", json);
             insertSucceeded = true;
             return insertSucceeded;
         }
