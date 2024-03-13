@@ -4,7 +4,6 @@ using System.IO;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Groepsproject_Blokken
 {
@@ -39,9 +38,7 @@ namespace Groepsproject_Blokken
         }
         List<string> listIngeladenActieveVragenlijsten; //Txt's
         List<string> listGekozenVragenlijsten = new List<string>(); //*Leeg -> dit gaan we de selectie van de gebruiker inladen
-
         public MediaPlayer backgroundMusicPlayer { get; set; }
-
         private void btnSingle_Click(object sender, RoutedEventArgs e)
         {
             BerndCrabbeWeg.Completed += (s, args) =>
@@ -67,7 +64,6 @@ namespace Groepsproject_Blokken
             BerndCrabbeWeg.Begin();
 
         }
-
         private void btnVS_Click(object sender, RoutedEventArgs e)
         {
             StackPanelButtonsWeg.Completed += (s, args) =>
@@ -94,7 +90,6 @@ namespace Groepsproject_Blokken
             };
             StackPanelButtonsWeg.Begin();
         }
-
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             StackPanelButtonsWeg.Completed += (s, args) =>
@@ -110,7 +105,6 @@ namespace Groepsproject_Blokken
             StackPanelVragenlijstenWeg.Begin();
 
         }
-
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
 
@@ -120,13 +114,11 @@ namespace Groepsproject_Blokken
             sliderVolume.Opacity = 1;
             StackPanelVolume.Opacity = 1;
         }
-
         private void sliderVolume_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
             sliderVolume.Opacity = 0.8;
             StackPanelVolume.Opacity = 0.4;
         }
-
         private void sliderVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (sliderVolume != null && backgroundMusicPlayer != null)
@@ -158,7 +150,6 @@ namespace Groepsproject_Blokken
             cmbVragenLijsten.ItemsSource = listIngeladenActieveVragenlijsten;
 
         }
-
         private void btnVoegVragenLijstToe_Click(object sender, RoutedEventArgs e)
         {
             if (cmbVragenLijsten.SelectedIndex != -1)
@@ -175,18 +166,29 @@ namespace Groepsproject_Blokken
             try
             {
                 StreamReader readobject = new StreamReader(filepath);
-                while (!readobject.EndOfStream)
+                if (!readobject.EndOfStream)
                 {
-                    readobject.ReadLine();
-                    if (readobject.ToString() == null || readobject.ToString() == "") //this is when txt1 is empty
+                    while (!readobject.EndOfStream)
                     {
-                        File.Copy("../../PrimeWords/List2.txt", "../../PrimeWords/List1.txt");
-                        System.IO.File.WriteAllText("../../PrimeWords/file2.txt", string.Empty);
-                    }
-                    else //here i just need the lenght of the list, so i need to increase "teller"
-                    {
+                        readobject.ReadLine();
+                        //if (readobject.ToString() == null || readobject.ToString() == "") //this is when txt1 is empty
+                        //{
+                        //    File.Copy("../../PrimeWords/List2.txt", "../../PrimeWords/List1.txt");
+                        //    System.IO.File.WriteAllText("../../PrimeWords/file2.txt", string.Empty);
+                        //}
+                        //else //here i just need the lenght of the list, so i need to increase "teller"
+                        //{
                         teller++;
+                        //}
                     }
+                }
+                else
+                {
+                    readobject.Close();
+                    File.Delete("../../PrimeWords/List1.txt");
+                    File.Copy("../../PrimeWords/List2.txt", "../../PrimeWords/List1.txt");
+                    System.IO.File.WriteAllText("../../PrimeWords/List2.txt", string.Empty);
+
                 }
                 readobject.Close();
                 StreamReader readobject2 = new StreamReader(filepath);
