@@ -38,6 +38,7 @@ namespace Groepsproject_Blokken
         public int Score { get; set; }
         public int ScorePlayerOne { get; set; }
         public int ScorePlayerTwo { get; set; }
+        public bool RowIsCleared { get; set; }
 
         public GameState()
         {
@@ -122,7 +123,12 @@ namespace Groepsproject_Blokken
                 GameGrid[position.Row, position.Column] = CurrentBlock.ID;
             }
 
-            Score += GameGrid.ClearFullRows() * 100;
+            int rowsCleared = GameGrid.ClearFullRows();
+            if (rowsCleared > 0)
+            {
+                Score += rowsCleared * 100;
+                RowIsCleared = true;
+            }
 
             if (IsGameOver())
             {

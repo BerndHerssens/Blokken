@@ -359,6 +359,7 @@ namespace Groepsproject_Blokken
                     imageControls[row, column] = imageControl;
                 }
             }
+            gameState.RowIsCleared = false;
             gameState.BlockIsPlaced = true;
             return imageControls;
         }
@@ -410,6 +411,18 @@ namespace Groepsproject_Blokken
                 int delay = 950;
                 await Task.Delay(delay);
                 gameState.MoveBlockDown();
+                if (gameState.RowIsCleared == true)
+                {
+                    if (buzzerPlayer1 == true)
+                    {
+                        gameState.ScorePlayerOne += gameState.Score;
+                    }
+                    else if (buzzerPlayer2 == true)
+                    {
+                        gameState.ScorePlayerTwo += gameState.Score;
+                    }
+                    gameState.Score = 0;
+                }
                 Draw(gameState);
             }
             //if (gameState.GameOver)
