@@ -72,7 +72,7 @@ namespace Groepsproject_Blokken
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             MarioKartAftellingGeluidje();
-            await Task.Delay(4000);
+            await Task.Delay(3000);
             btnAntwoord1.Visibility = Visibility.Visible;
             btnAntwoord2.Visibility = Visibility.Visible;
             btnAntwoord3.Visibility = Visibility.Visible;
@@ -304,7 +304,7 @@ namespace Groepsproject_Blokken
         }
         public void PlaybackMusic()
         {
-            string backgroundMusicFilePath = "../../Assets/Blokken PlaceHolderLoop.wav";
+            string backgroundMusicFilePath = "../../Assets/Sounds/AchterGrondMuziek SinglePlayer.wav";
             if (!string.IsNullOrEmpty(backgroundMusicFilePath))
             {
                 backgroundMusicPlayer.Open(new Uri(backgroundMusicFilePath, UriKind.Relative));

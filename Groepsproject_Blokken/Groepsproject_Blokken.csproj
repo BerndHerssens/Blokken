@@ -338,6 +338,8 @@
     <Resource Include="Assets\Icon Low.png" />
     <Resource Include="Assets\Icon Mid.png" />
     <Resource Include="Assets\Icon Mute.png" />
+    <Content Include="Assets\IntroGeneriek Blokken.mp4" />
+    <Content Include="Assets\Sounds\AchterGrondMuziek SinglePlayer.wav" />
     <Content Include="Assets\Sounds\Air Horn.wav" />
     <Content Include="Assets\Sounds\Ben Crabbe kan er niet meer tegen.wav" />
     <Content Include="Assets\Sounds\Blokken Afdruk.wav" />
