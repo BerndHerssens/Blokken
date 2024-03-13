@@ -497,29 +497,11 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                        <Button x:Name="btnPrimewordVeranderen"
-                         Content="Primeword Veranderen"
-                         Background="#fea702"
-                         FontFamily="{StaticResource BlokkenFont}"
-                         Grid.Row="0"
-                         Grid.Column="2"
-                         HorizontalAlignment="Center"
-                         Height="25"
-                         Width="225"
-                         Margin="0,20,0,20"
-                         FontWeight="Bold" Click="btnPrimewordVeranderen_Click">
-                            <Button.Resources>
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius"
-                    Value="15" />
-                                </Style>
-                            </Button.Resources>
-                        </Button>
                         <GroupBox Header="Primeword " FontFamily="{StaticResource BlokkenFont}" Foreground="White" Width="100" HorizontalAlignment="Left">
                             <TextBox x:Name="txtPrimewordCrud" HorizontalAlignment="Left" Height="20" Width="90"/>
                         </GroupBox>
-                        <GroupBox Header="Hint " FontFamily="{StaticResource BlokkenFont}" Foreground="White" Width="100" HorizontalAlignment="Left">
-                            <TextBox x:Name="txtHintCrud" HorizontalAlignment="Left" Height="20" Width=" 90"/>
+                        <GroupBox Header="Hint " FontFamily="{StaticResource BlokkenFont}" Foreground="White" Width="220" HorizontalAlignment="Left">
+                            <TextBox x:Name="txtHintCrud" HorizontalAlignment="Left" Height="20" Width=" 210"/>
                         </GroupBox>
                     </StackPanel>
                     <Button x:Name="btnReturnDrie"

@@ -1,7 +1,6 @@
 nachtbus;vervoersdienst
 meetlint;meter voor omtrek
 oxymoron;stijlfiguur
-mycoloog;doctoraat
 gezwicht;hij is ...
 recyclen;hergebruiken
 quoteren;evenredig verdelen

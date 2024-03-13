@@ -1,6 +1,5 @@
 lunchbox;eten
 lobbying;uitoefenen van invloed
-lymfocyte;cel
 malvezij;drank
 jazzclub;culturele plaats
 ijslolly;koude lekkernij
