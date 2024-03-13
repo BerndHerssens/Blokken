@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Groepsproject_Blokken
@@ -20,6 +21,7 @@ namespace Groepsproject_Blokken
         BitmapImage bmp = new BitmapImage();
         string profilePath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\Profielfotos");
         string fileName = "";
+        public MediaPlayer backgroundMusicPlayer { get; set; }
 
         public FrmPlayerscreen()
         {
@@ -50,6 +52,8 @@ namespace Groepsproject_Blokken
             {
                 FrmTitleScreen window = new FrmTitleScreen();
                 window.ingelogdePlayerLoginscreen = ingelogdePlayerMainWindow;
+                window.backgroundMusicPlayer = backgroundMusicPlayer;
+                window.sliderVolume.Value = backgroundMusicPlayer.Volume * 100;
                 this.Close();
                 window.ShowDialog();
             };
@@ -149,6 +153,8 @@ namespace Groepsproject_Blokken
 
         private void sliderVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            if (sliderVolume != null && backgroundMusicPlayer != null)
+            { backgroundMusicPlayer.Volume = sliderVolume.Value / 100; }
             if (imgVolume != null)
             {
                 if (sliderVolume.Value == 0)

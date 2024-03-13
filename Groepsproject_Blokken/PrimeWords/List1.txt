@@ -1,8 +1,0 @@
-nachtbus;vervoersdienst
-oxymoron;stijlfiguur
-gezwicht;hij is ...
-recyclen;hergebruiken
-kilobyte;Unit
-showbizz;een industrie
-officium;politiek-juridische term
-lymfevat;menselijke drainagesysteem

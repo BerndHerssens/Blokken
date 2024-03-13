@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -38,6 +39,9 @@ namespace Groepsproject_Blokken
         }
         List<string> listIngeladenActieveVragenlijsten; //Txt's
         List<string> listGekozenVragenlijsten = new List<string>(); //*Leeg -> dit gaan we de selectie van de gebruiker inladen
+
+        public MediaPlayer backgroundMusicPlayer { get; set; }
+
         private void btnSingle_Click(object sender, RoutedEventArgs e)
         {
             BerndCrabbeWeg.Completed += (s, args) =>
@@ -45,6 +49,7 @@ namespace Groepsproject_Blokken
                 FrmSinglePlayerQuiz windowSP = new FrmSinglePlayerQuiz();
                 windowSP.gekozenPrimeword = myPrimeWord;
                 windowSP.ingelogdePlayer = ingelogdePlayerMainWindow;
+                backgroundMusicPlayer.Stop();
                 if (listGekozenVragenlijsten.Count == 0)
                 {
                     MessageBox.Show("Alle vragen werden geladen omdat u geen topics heeft geselecteerd, succes!", "Melding", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -71,6 +76,7 @@ namespace Groepsproject_Blokken
                 FrmLoginRegister frmLoginRegister = new FrmLoginRegister();
                 frmLoginRegister.isLoginMultiplayer = true;
                 frmLoginRegister.btnDoorgaanAlsGast.IsEnabled = false;
+                backgroundMusicPlayer.Stop();
                 frmLoginRegister.ShowDialog();
                 windowVS.ingelogdePlayer2 = frmLoginRegister.ingelogdePlayer;
                 windowVS.ingelogdePlayer1 = ingelogdePlayerMainWindow;
@@ -95,6 +101,8 @@ namespace Groepsproject_Blokken
             {
                 FrmTitleScreen window = new FrmTitleScreen();
                 window.ingelogdePlayerLoginscreen = ingelogdePlayerMainWindow;
+                window.backgroundMusicPlayer = backgroundMusicPlayer;
+                window.sliderVolume.Value = backgroundMusicPlayer.Volume * 100;
                 this.Close();
                 window.ShowDialog();
             };
@@ -121,6 +129,8 @@ namespace Groepsproject_Blokken
 
         private void sliderVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            if (sliderVolume != null && backgroundMusicPlayer != null)
+            { backgroundMusicPlayer.Volume = sliderVolume.Value / 100; }
             if (imgVolume != null)
             {
                 if (sliderVolume.Value == 0)

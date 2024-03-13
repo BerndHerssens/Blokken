@@ -20,6 +20,9 @@ namespace Groepsproject_Blokken
     public partial class FrmTitleScreen : Window
     {
         public Player ingelogdePlayerLoginscreen = new Player();
+
+        public MediaPlayer backgroundMusicPlayer { get; set; }
+
         public FrmTitleScreen()
         {
             InitializeComponent();
@@ -30,7 +33,9 @@ namespace Groepsproject_Blokken
             StackPanelButtonsWeg.Completed += (s, args) =>
             {
                 FrmGametype chooseGame = new FrmGametype();
+                chooseGame.backgroundMusicPlayer = backgroundMusicPlayer;
                 chooseGame.ingelogdePlayerMainWindow = ingelogdePlayerLoginscreen;
+                chooseGame.sliderVolume.Value = backgroundMusicPlayer.Volume * 100;
                 this.Close();
                 chooseGame.ShowDialog();
             };
@@ -42,6 +47,8 @@ namespace Groepsproject_Blokken
         {
             FrmHighscores frmHighscores = new FrmHighscores();
             frmHighscores.ingelogdePlayerMainWindow = ingelogdePlayerLoginscreen;
+            frmHighscores.backgroundMusicPlayer = backgroundMusicPlayer;
+            frmHighscores.sliderVolume.Value = backgroundMusicPlayer.Volume * 100;
             this.Close();
             frmHighscores.ShowDialog();
 
@@ -51,14 +58,18 @@ namespace Groepsproject_Blokken
         {
             FrmPlayerscreen frmPlayerscreen = new FrmPlayerscreen();
             frmPlayerscreen.ingelogdePlayerMainWindow = ingelogdePlayerLoginscreen;
+            frmPlayerscreen.backgroundMusicPlayer = backgroundMusicPlayer;
+            frmPlayerscreen.sliderVolume.Value = backgroundMusicPlayer.Volume * 100;
             this.Close();
             frmPlayerscreen.ShowDialog();
         }
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Forms.Application.Restart();
-            System.Windows.Application.Current.Shutdown();
+            FrmLoginRegister frmLoginRegister = new FrmLoginRegister();
+            backgroundMusicPlayer.Stop();
+            this.Close();
+            frmLoginRegister.ShowDialog();
         }
 
         private void sliderVolume_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
@@ -75,6 +86,8 @@ namespace Groepsproject_Blokken
 
         private void sliderVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            if (sliderVolume != null && backgroundMusicPlayer != null)
+            { backgroundMusicPlayer.Volume = sliderVolume.Value / 100; }
             if (imgVolume != null)
             {
                 if (sliderVolume.Value == 0)

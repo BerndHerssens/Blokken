@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Groepsproject_Blokken
@@ -12,7 +13,7 @@ namespace Groepsproject_Blokken
     public partial class FrmHighscores : Window
     {
         public Player ingelogdePlayerMainWindow = new Player();
-
+        public MediaPlayer backgroundMusicPlayer { get; set; }
 
         public FrmHighscores()
         {
@@ -71,6 +72,8 @@ namespace Groepsproject_Blokken
 
         private void sliderVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            if (sliderVolume != null && backgroundMusicPlayer != null)
+            { backgroundMusicPlayer.Volume = sliderVolume.Value / 100; }
             if (imgVolume != null)
             {
                 if (sliderVolume.Value == 0)
@@ -98,6 +101,8 @@ namespace Groepsproject_Blokken
             {
                 FrmTitleScreen window = new FrmTitleScreen();
                 window.ingelogdePlayerLoginscreen = ingelogdePlayerMainWindow;
+                window.backgroundMusicPlayer = backgroundMusicPlayer;
+                window.sliderVolume.Value = backgroundMusicPlayer.Volume * 100;
                 this.Close();
                 window.ShowDialog();
             };

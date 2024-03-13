@@ -23,3 +23,11 @@ hectisch;chaos
 koplicht;Navigatiedeel van schepen
 meetlint;meter voor omtrek
 quoteren;evenredig verdelen
+lymfevat;menselijke drainagesysteem
+officium;politiek-juridische term
+recyclen;hergebruiken
+oxymoron;stijlfiguur
+nachtbus;vervoersdienst
+showbizz;een industrie
+gezwicht;hij is ...
+kilobyte;Unit
