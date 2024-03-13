@@ -50,7 +50,7 @@ namespace Groepsproject_Blokken
         char[] versnipperdPrimeWord = new char[8]; //dit is het myPrimeWord.Primeword waar we mee gaan werken
                                                    //myPrimeword.Hint is je hint dat je kan tonen
         public MediaPlayer backgroundMusicPlayer = new MediaPlayer();
-
+        public MediaPlayer marioKartPlayer = new MediaPlayer();
         private BrushConverter bc = new BrushConverter();
         private List<Question> tempLijstVragen = new List<Question>();
         public List<Question> finalLijstVragen = new List<Question>();
@@ -67,8 +67,15 @@ namespace Groepsproject_Blokken
             InitializeComponent();
             arrImageControls = SetupGameCanvas(gameState.GameGrid);
         }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            MarioKartAftellingGeluidje();
+            await Task.Delay(4000); 
+            btnAntwoord1.Visibility = Visibility.Visible;
+            btnAntwoord2.Visibility = Visibility.Visible;
+            btnAntwoord3.Visibility = Visibility.Visible;
+            btnAntwoord4.Visibility = Visibility.Visible;
+            lblHint.Visibility = Visibility.Visible;
             PlaybackMusic();
             InlezenVragen();
             RandomQuestionPicker();
@@ -214,7 +221,7 @@ namespace Groepsproject_Blokken
                 }
             }
         }
-        private void CheckAnswer(Button button)
+        private async void CheckAnswer(Button button)
         {
             if ((string)button.Content == nieuweVraag.CorrectAnswer)
             {
@@ -235,7 +242,11 @@ namespace Groepsproject_Blokken
                 //txtScore.Text = (Convert.ToInt32(txtScore.Text) - 50).ToString();
 
                 ShowCorrectAnswer(new List<Button> { btnAntwoord1, btnAntwoord2, btnAntwoord3, btnAntwoord4 });
+                
+                
             }
+          
+            
         }
 
         private void ClickEvent()
@@ -257,7 +268,7 @@ namespace Groepsproject_Blokken
         private async void Delay()
         {
             await GameLoop();
-            _delayTimer = new System.Timers.Timer(100); // 5 seconds delay
+            _delayTimer = new System.Timers.Timer(10); 
             _delayTimer.Elapsed += (s, args) =>
             {
                 Dispatcher.Invoke(async () =>
@@ -300,6 +311,17 @@ namespace Groepsproject_Blokken
         {
             backgroundMusicPlayer.Position = TimeSpan.Zero;
             backgroundMusicPlayer.Play();
+        }
+
+        public void MarioKartAftellingGeluidje()
+        { string marioKartGeluidje = "../../Assets/Sounds/Mario Kart Race Start.wav";
+                   if (!string.IsNullOrEmpty(marioKartGeluidje))
+            {
+                
+        marioKartPlayer.Open(new Uri(marioKartGeluidje, UriKind.Relative));
+                marioKartPlayer.Volume = 0.15;
+                marioKartPlayer.Play();
+            }
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -471,7 +493,7 @@ namespace Groepsproject_Blokken
         }
         public void PrimeWordCuttingAndShowing()
         {
-            lblPrimeword.Text = "";
+            lblPrimeword.Content = "";
 
             Random myRandom = new Random();
             int randomInt;
@@ -486,7 +508,7 @@ namespace Groepsproject_Blokken
                     versnipperdPrimeWord[randomInt] = '_';
                     foreach (char letter in wordForDisplay)
                     {
-                        lblPrimeword.Text += letter.ToString().ToUpper() + " ";
+                        lblPrimeword.Content += letter.ToString().ToUpper() + " ";
                     }
                 }
                 else

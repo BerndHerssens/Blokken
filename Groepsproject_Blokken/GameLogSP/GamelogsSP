@@ -145,5 +145,12 @@
     "PlayerName": "splGilles",
     "Score": 0,
     "Date": "2024-03-12T13:41:52.2568693+01:00"
+  },
+  {
+    "ScoreID": 0,
+    "GameNumber": 64549801,
+    "PlayerName": "Gast",
+    "Score": 50,
+    "Date": "2024-03-13T09:52:42.7562945+01:00"
   }
 ]
