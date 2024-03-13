@@ -1,9 +1,7 @@
 nachtbus;vervoersdienst
-meetlint;meter voor omtrek
 oxymoron;stijlfiguur
 gezwicht;hij is ...
 recyclen;hergebruiken
-quoteren;evenredig verdelen
 kilobyte;Unit
 showbizz;een industrie
 officium;politiek-juridische term

@@ -207,10 +207,10 @@ namespace Groepsproject_Blokken
         {
             List<GameLogVS> listGameLogVS = new List<GameLogVS>();
             bool insertSucceeded = false;
-            if (System.IO.File.Exists("../../GameLogVS/GamelogsVS"))
+
             {
                 listGameLogVS = GetAllGameLogVS();
-            } 
+            }
             listGameLogVS.Add(aGameLogVS);
             JsonSerializerOptions options = new JsonSerializerOptions();
             options.IncludeFields = false;
@@ -222,9 +222,13 @@ namespace Groepsproject_Blokken
         }
         public static bool InsertGameLogSP(GameLogSP aGameLogSP)
         {
+            List<GameLogSP> listGameLogSP = new List<GameLogSP>();
             bool insertSucceeded = false;
+            if (System.IO.File.Exists("../../GameLogSP/GamelogsSP"))
+            {
+                listGameLogSP = GetAllGameLogSP();
+            }
 
-            List<GameLogSP> listGameLogSP = GetAllGameLogSP();
             listGameLogSP.Add(aGameLogSP);
             JsonSerializerOptions options = new JsonSerializerOptions();
             options.IncludeFields = false;
@@ -237,11 +241,12 @@ namespace Groepsproject_Blokken
         }
         public static bool InsertPlayer(Player aPlayer)
         {
-
+            List<Player> players = new List<Player>();
             bool insertSucceeded = false;
-
-
-            List<Player> players = GetAllPlayers();
+            if (System.IO.File.Exists("../../Players/CurrentPlayers"))
+            {
+                players = GetAllPlayers();
+            }
             players.Add(aPlayer);
             JsonSerializerOptions options = new JsonSerializerOptions();
             options.IncludeFields = false;
@@ -253,9 +258,14 @@ namespace Groepsproject_Blokken
         }
         public static bool InsertManager(Manager aManager)
         {
+            List<Manager> managers = new List<Manager>();
 
             bool insertSucceeded = false;
-            List<Manager> managers = GetAllManagers();
+            if (System.IO.File.Exists("../../Managers/CurrentManagers"))
+            {
+                managers = GetAllManagers();
+            }
+
             managers.Add(aManager);
             JsonSerializerOptions options = new JsonSerializerOptions();
             options.IncludeFields = false;

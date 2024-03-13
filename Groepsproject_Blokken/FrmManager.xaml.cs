@@ -31,6 +31,7 @@ namespace Groepsproject_Blokken
         string stringSubString;
         string primewordString;
         string hintString;
+        string profilePath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "..\\..\\Questionaires");
         public FrmManager()
         {
             InitializeComponent();
@@ -110,6 +111,7 @@ namespace Groepsproject_Blokken
         {
             openFileDialog = new OpenFileDialog()
             {
+                InitialDirectory = System.IO.Path.GetFullPath(profilePath),
                 DefaultExt = "",
                 Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*"
             };
@@ -351,7 +353,7 @@ namespace Groepsproject_Blokken
                 stringSubString = "";
                 lbPrimeworddispay.SelectedIndex = -1;
                 stringSubString = lbPrimeworddisplay2.SelectedItem.ToString();
-                txtPrimewordCrud.Text = stringSubString.Substring(0,8);
+                txtPrimewordCrud.Text = stringSubString.Substring(0, 8);
                 txtHintCrud.Text = stringSubString.Substring(9);
             }
             else
@@ -387,7 +389,7 @@ namespace Groepsproject_Blokken
         {
             if (lbPrimeworddispay.SelectedIndex != -1)
             {
-                listPrimewordsLst1.Remove(txtPrimewordCrud.Text+";"+txtHintCrud.Text);
+                listPrimewordsLst1.Remove(txtPrimewordCrud.Text + ";" + txtHintCrud.Text);
                 lbPrimeworddispay.ItemsSource = null;
                 lbPrimeworddispay.ItemsSource = listPrimewordsLst1;
             }
@@ -401,7 +403,7 @@ namespace Groepsproject_Blokken
             {
                 System.Windows.MessageBox.Show("Select a Primeword to delete first", "Warning");
             }
-        }     
+        }
 
         private void btnPrimewordAllesResetten_Click(object sender, RoutedEventArgs e)
         {
@@ -422,7 +424,7 @@ namespace Groepsproject_Blokken
         private void LaadAllePrimeWords()
         {
             try
-            {              
+            {
                 listPrimewordsLst1 = new List<string>(File.ReadAllLines(filepath1));
                 listPrimewordsLst2 = new List<string>(File.ReadAllLines(filepath2));
                 lbPrimeworddispay.ItemsSource = null;
@@ -443,8 +445,8 @@ namespace Groepsproject_Blokken
         private void WegschrijvenPrimeWordLists()
         {
             using (StreamWriter streamWriter = new StreamWriter(filepath1)) //schrijven voor file 1
-            { 
-            for (int i = 0; i < listPrimewordsLst1.Count; i++) 
+            {
+                for (int i = 0; i < listPrimewordsLst1.Count; i++)
                 {
                     streamWriter.WriteLine(listPrimewordsLst1[i]);
                 }

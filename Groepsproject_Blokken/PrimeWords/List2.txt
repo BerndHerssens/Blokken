@@ -21,3 +21,5 @@ crucifix;christendom
 joystick;bewegings controller
 hectisch;chaos
 koplicht;Navigatiedeel van schepen
+meetlint;meter voor omtrek
+quoteren;evenredig verdelen
