@@ -54,6 +54,7 @@ namespace Groepsproject_Blokken
         char[] versnipperdPrimeWord = new char[8]; //dit is het myPrimeWord.Primeword waar we mee gaan werken
                                                    //myPrimeword.Hint is je hint dat je kan tonen
         public MediaPlayer backgroundMusicPlayer = new MediaPlayer();
+        public MediaPlayer blokkenTick = new MediaPlayer();
 
         private BrushConverter bc = new BrushConverter();
         private List<Question> tempLijstVragen = new List<Question>();
@@ -504,6 +505,7 @@ namespace Groepsproject_Blokken
 
         private async Task GameLoop()
         {
+            string soundeffectFilePath = "../../Assets/Sounds/Blokken ValgeluidjeSeconde.wav";
             Draw(gameState);
             while (!gameState.GameOver && correctAnswerClicked == true && gameState.BlockIsPlaced == false)
             {
@@ -511,6 +513,12 @@ namespace Groepsproject_Blokken
                 int delay = 950;
                 await Task.Delay(delay);
                 gameState.MoveBlockDown();
+                if (!string.IsNullOrEmpty(soundeffectFilePath))
+                {
+                    blokkenTick.Open(new Uri(soundeffectFilePath, UriKind.Relative));
+                    blokkenTick.Volume = 0.5;
+                    blokkenTick.Play();
+                }
                 if (gameState.RowIsCleared == true)
                 {
                     if (buzzerPlayer1 == true)
@@ -541,37 +549,37 @@ namespace Groepsproject_Blokken
             switch (e.Key)
             {
                 case Key.Q:
-                    if (correctAnswerClicked == true && buzzerPlayer1 == true)
+                    if (correctAnswerClicked == true && buzzerPlayer1 == true && teller != 10)
                     {
                         gameState.MoveBlockLeft();
                     }
                     break;
                 case Key.D:
-                    if (correctAnswerClicked == true && buzzerPlayer1 == true)
+                    if (correctAnswerClicked == true && buzzerPlayer1 == true && teller != 10)
                     {
                         gameState.MoveBlockRight();
                     }
                     break;
                 case Key.X:
-                    if (correctAnswerClicked == true && buzzerPlayer1 == true)
+                    if (correctAnswerClicked == true && buzzerPlayer1 == true && teller != 10)
                     {
                         gameState.MoveBlockDown();
                     }
                     break;
                 case Key.A:
-                    if (gameState.BlockIsPlaced == true && buzzerPlayer1 == true)
+                    if (gameState.BlockIsPlaced == true && buzzerPlayer1 == true && teller != 10)
                     {
                         gameState.RotateBlockClockWise();
                     }
                     break;
                 case Key.E:
-                    if (correctAnswerClicked == true && buzzerPlayer1 == true)
+                    if (correctAnswerClicked == true && buzzerPlayer1 == true && teller != 10)
                     {
                         gameState.RotateBlockCounterClockwise();
                     }
                     break;
                 case Key.Z:
-                    if (buzzerPressed == false)
+                    if (buzzerPressed == false && teller != 10)
                     {
                         buzzerPressed = true;
                         buzzerPlayer1 = true;
@@ -580,37 +588,37 @@ namespace Groepsproject_Blokken
                     }
                     break;
                 case Key.NumPad4:
-                    if (correctAnswerClicked == true && buzzerPlayer2 == true)
+                    if (correctAnswerClicked == true && buzzerPlayer2 == true && teller != 10)
                     {
                         gameState.MoveBlockLeft();
                     }
                     break;
                 case Key.NumPad6:
-                    if (correctAnswerClicked == true && buzzerPlayer2 == true)
+                    if (correctAnswerClicked == true && buzzerPlayer2 == true && teller != 10)
                     {
                         gameState.MoveBlockRight();
                     }
                     break;
                 case Key.NumPad2:
-                    if (correctAnswerClicked == true && buzzerPlayer2 == true)
+                    if (correctAnswerClicked == true && buzzerPlayer2 == true && teller != 10)
                     {
                         gameState.MoveBlockDown();
                     }
                     break;
                 case Key.NumPad7:
-                    if (correctAnswerClicked == true && buzzerPlayer2 == true)
+                    if (correctAnswerClicked == true && buzzerPlayer2 == true && teller != 10)
                     {
                         gameState.RotateBlockClockWise();
                     }
                     break;
                 case Key.NumPad9:
-                    if (correctAnswerClicked == true && buzzerPlayer2 == true)
+                    if (correctAnswerClicked == true && buzzerPlayer2 == true && teller != 10)
                     {
                         gameState.RotateBlockCounterClockwise();
                     }
                     break;
                 case Key.NumPad8:
-                    if (buzzerPressed == false)
+                    if (buzzerPressed == false && teller != 10)
                     {
                         buzzerPressed = true;
                         buzzerPlayer2 = true;
