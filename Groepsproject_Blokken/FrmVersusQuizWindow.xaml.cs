@@ -45,7 +45,7 @@ namespace Groepsproject_Blokken
         bool buzzerPlayer1 = false;
         bool buzzerPlayer2 = false;
         private readonly Image[,] arrImageControls;
-        private  GameState gameState = new GameState();
+        private GameState gameState = new GameState();
         public Player ingelogdePlayer1;
         public Player ingelogdePlayer2;
         public PrimeWord gekozenPrimeword = new PrimeWord();
@@ -67,6 +67,7 @@ namespace Groepsproject_Blokken
         public List<string> gekozenVragenLijsten = new List<string>();
         string json = "";
         public Player ingelogdePlayerMainWindow = new Player();
+        int teller = 0;
         public FrmVersusQuizWindow()
         {
             InitializeComponent();
@@ -122,6 +123,7 @@ namespace Groepsproject_Blokken
             btnAntwoord2.Background = (Brush)bc.ConvertFrom("#fea702");
             btnAntwoord3.Background = (Brush)bc.ConvertFrom("#fea702");
             btnAntwoord4.Background = (Brush)bc.ConvertFrom("#fea702");
+            teller++;
         }
         public void ShowCorrectAnswer(List<Button> lijstButtons)
         {
@@ -334,9 +336,107 @@ namespace Groepsproject_Blokken
             tellerTimer--;
             lblScoreSpeler1.Content = "Score P1: " + gameState.ScorePlayerOne.ToString();
             lblScoreSpeler2.Content = "Score P2: " + gameState.ScorePlayerTwo.ToString();
-            if (finalLijstVragen.Count == 0) 
-            { 
-                //einde spel komt hier
+            if (teller == 10)
+            {
+                timer.Stop();
+                backgroundMusicPlayer.Stop();
+                grdGameOver.Visibility = System.Windows.Visibility.Visible;
+                GameLogVS gespeeldeGame = new GameLogVS();
+                gespeeldeGame.Player1Name = ingelogdePlayer1.Name;
+                gespeeldeGame.Player2Name = ingelogdePlayer2.Name;
+                gespeeldeGame.Player1Score = gameState.ScorePlayerOne;
+                gespeeldeGame.Player2Score = gameState.ScorePlayerTwo;
+                //Speler 1 wint
+                if (gameState.ScorePlayerOne > gameState.ScorePlayerTwo)
+                {
+
+                    gespeeldeGame.Winner = ingelogdePlayer1.Name;
+                    txtFinalScore.Text = "De winnaar is" + ingelogdePlayer2 + "met een score van " + gameState.ScorePlayerTwo + "!";
+                    if (ingelogdePlayer1.VSGamesPlayed == null)
+                    {
+                        ingelogdePlayer1.VSGamesWon = 1;
+                        ingelogdePlayer1.VSGamesPlayed = 1;
+                    }
+                    else
+                    {
+                        ingelogdePlayer1.VSGamesWon++;
+                        ingelogdePlayer1.VSGamesPlayed++;
+                    }
+                    if (ingelogdePlayer2.VSGamesPlayed == null)
+                    {
+                        ingelogdePlayer2.VSGamesPlayed = 1;
+                    }
+                    else
+                    {
+                        ingelogdePlayer2.VSGamesPlayed++;
+                    }
+
+                }
+                //Gelijkspel.
+                else if (gameState.ScorePlayerOne == gameState.ScorePlayerTwo)
+                {
+                    gespeeldeGame.Winner = ingelogdePlayer1.Name + " & " + ingelogdePlayer2.Name;
+                    txtFinalScore.Text = "Gelijkspel! Jullie zijn beide winnaar met een score van " + gameState.ScorePlayerTwo + "!";
+                    if (ingelogdePlayer1.VSGamesPlayed == null)
+                    {
+                        ingelogdePlayer1.VSGamesWon = 1;
+                        ingelogdePlayer1.VSGamesPlayed = 1;
+                    }
+                    else
+                    {
+                        ingelogdePlayer1.VSGamesWon++;
+                        ingelogdePlayer1.VSGamesPlayed++;
+                    }
+                    if (ingelogdePlayer2.VSGamesPlayed == null)
+                    {
+                        ingelogdePlayer2.VSGamesWon = 1;
+                        ingelogdePlayer2.VSGamesPlayed = 1;
+                    }
+                    else
+                    {
+                        ingelogdePlayer2.VSGamesWon++;
+                        ingelogdePlayer2.VSGamesPlayed++;
+                    }
+
+                }
+                //Speler2 wint
+                else
+                {
+                    gespeeldeGame.Winner = ingelogdePlayer2.Name;
+                    txtFinalScore.Text = "De winnaar is" + ingelogdePlayer2 + "met een score van " + gameState.ScorePlayerTwo + "!";
+                    if (ingelogdePlayer1.VSGamesPlayed == null)
+                    {
+                        ingelogdePlayer1.VSGamesPlayed = 1;
+                    }
+                    else
+                    {
+                        ingelogdePlayer1.VSGamesPlayed++;
+                    }
+                    if (ingelogdePlayer2.VSGamesPlayed == null)
+                    {
+                        ingelogdePlayer2.VSGamesPlayed = 1;
+                        ingelogdePlayer2.VSGamesWon = 1;
+                    }
+                    else
+                    {
+                        ingelogdePlayer2.VSGamesPlayed++;
+                        ingelogdePlayer2.VSGamesWon++;
+                    }
+                }
+                //HighscoreVScheck
+                if (ingelogdePlayer1.VSHighscore == null || ingelogdePlayer1.VSHighscore > gameState.ScorePlayerOne)
+                {
+                    ingelogdePlayer1.VSHighscore = gameState.ScorePlayerOne;
+                }
+                if (ingelogdePlayer2.VSHighscore == null || ingelogdePlayer2.VSHighscore > gameState.ScorePlayerTwo)
+                {
+                    ingelogdePlayer2.VSHighscore = gameState.ScorePlayerTwo;
+                }
+
+                //Wegschrijven/updaten
+                DataManager.InsertGameLogVS(gespeeldeGame);
+                DataManager.UpdatePlayer(ingelogdePlayer2);
+                DataManager.UpdatePlayer(ingelogdePlayer1);
             }
         }
         private Image[,] SetupGameCanvas(GameGrid gameGrid)
@@ -535,12 +635,15 @@ namespace Groepsproject_Blokken
             }
             Draw(gameState);
         }
-        //private void btnReturn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    FrmGametype gametype = new FrmGametype();
-        //    this.Close();
-        //    gametype.ShowDialog();
-        //}
+
+        private void btnPlayAgain_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainwindow = new MainWindow();
+            mainwindow.ingelogdePlayerLoginscreen = ingelogdePlayer1;
+            this.Close();
+            mainwindow.ShowDialog();
+        }
+
 
     }
 }

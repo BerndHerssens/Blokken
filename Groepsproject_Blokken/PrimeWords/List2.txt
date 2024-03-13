@@ -21,3 +21,4 @@ babymelk;natuurlijk
 crucifix;christendom
 joystick;bewegings controller
 hectisch;chaos
+koplicht;Navigatiedeel van schepen

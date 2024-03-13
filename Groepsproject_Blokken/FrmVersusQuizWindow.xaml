@@ -73,8 +73,8 @@
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Text="Game Over" FontSize="48" TextAlignment="Center" Foreground="White"/>
                 <TextBlock x:Name="txtFinalScore" Text="Score: " FontSize="32" TextAlignment="Center" Foreground="White"/>
-                <Button x:Name="btnPlayAgain" Content="Opnieuw spelen" Background="LightGreen" Margin="0,20,0,0" Padding="5"/>
-                <Button x:Name="btnShare" Content="Share" Background="LightGreen" Margin="0,20,0,0" Padding="5"/>
+                <Button x:Name="btnPlayAgain" Content="Opnieuw spelen" Background="LightGreen" Margin="0,20,0,0" Padding="5" Click="btnPlayAgain_Click"/>
+                <!--<Button x:Name="btnShare" Content="Share" Background="LightGreen" Margin="0,20,0,0" Padding="5"/>-->
             </StackPanel>
         </Grid>
         <Grid x:Name="Overlay" Grid.ColumnSpan="5" Grid.RowSpan="3" Background="Black" Opacity="0.9" Visibility="Collapsed">

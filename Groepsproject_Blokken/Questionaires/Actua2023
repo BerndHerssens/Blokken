@@ -174,13 +174,5 @@
     "WrongAnswerTwo": "Erop of eronder",
     "WrongAnswerThree": "I\u0027m in it with you",
     "QuestionID": 24
-  },
-  {
-    "TheQuestion": "t",
-    "CorrectAnswer": "tt",
-    "WrongAnswerOne": "tt",
-    "WrongAnswerTwo": "tt",
-    "WrongAnswerThree": "ttt",
-    "QuestionID": 25
   }
 ]

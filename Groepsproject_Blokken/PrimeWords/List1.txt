@@ -9,4 +9,3 @@ kilobyte;Unit
 showbizz;een industrie
 officium;politiek-juridische term
 lymfevat;menselijke drainagesysteem
-koplicht;Navigatiedeel van schepen
