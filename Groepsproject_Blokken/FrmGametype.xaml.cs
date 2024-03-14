@@ -181,6 +181,7 @@ namespace Groepsproject_Blokken
                         teller++;
                         //}
                     }
+                    readobject.Close();
                 }
                 else
                 {
@@ -188,9 +189,19 @@ namespace Groepsproject_Blokken
                     File.Delete("../../PrimeWords/List1.txt");
                     File.Copy("../../PrimeWords/List2.txt", "../../PrimeWords/List1.txt");
                     System.IO.File.WriteAllText("../../PrimeWords/List2.txt", string.Empty);
+                    StreamReader readObjectNaLegeList = new StreamReader(filepath);
+                    if (!readObjectNaLegeList.EndOfStream)
+                    {
+                        while (!readObjectNaLegeList.EndOfStream)
+                        {
+                            readObjectNaLegeList.ReadLine();
+                            teller++;
+                        }
+                        readObjectNaLegeList.Close();
+                    }
 
                 }
-                readobject.Close();
+
                 StreamReader readobject2 = new StreamReader(filepath);
                 while (!readobject2.EndOfStream)
                 {
