@@ -23,6 +23,8 @@ namespace Groepsproject_Blokken
             if (!string.IsNullOrEmpty(backgroundMusicFilePath))
             {
                 backgroundMusicPlayer.Open(new Uri(backgroundMusicFilePath, UriKind.Relative));
+                backgroundMusicPlayer.Volume = 0.2;
+                sliderVolume.Value = backgroundMusicPlayer.Volume * 100;
                 backgroundMusicPlayer.MediaEnded += new EventHandler(Media_Ended);
 
                 backgroundMusicPlayer.Play();

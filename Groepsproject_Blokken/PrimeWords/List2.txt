@@ -5,3 +5,10 @@ showbizz;een industrie
 juffrouw;algemeen eerste liefde
 golfclub;sport instrument
 ijslolly;koude lekkernij
+malvezij;drank
+playoffs;eindronde
+kilobyte;Unit
+joystick;bewegings controller
+gezwicht;hij is ...
+katzwijm;flauwte
+lunchbox;eten

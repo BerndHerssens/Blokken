@@ -1,6 +1,4 @@
-lunchbox;eten
 lobbying;uitoefenen van invloed
-malvezij;drank
 jazzclub;culturele plaats
 hobbykok;thuiskok
 maquette;model
@@ -11,10 +9,7 @@ kerfbijl;werktuig
 luxaflex;jaloezieën
 mycelium;hyfen
 huilbaby;nachtmerrie
-katzwijm;flauwte
-playoffs;eindronde
 babymelk;natuurlijk
-joystick;bewegings controller
 hectisch;chaos
 koplicht;Navigatiedeel van schepen
 quoteren;evenredig verdelen
@@ -22,5 +17,3 @@ lymfevat;menselijke drainagesysteem
 recyclen;hergebruiken
 oxymoron;stijlfiguur
 nachtbus;vervoersdienst
-gezwicht;hij is ...
-kilobyte;Unit

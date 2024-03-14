@@ -39,6 +39,7 @@ namespace Groepsproject_Blokken
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Intro.Source = new Uri("../../Assets/IntroGeneriek Blokken.mp4", UriKind.Relative);
+            Intro.Volume = 0.4;
             Intro.Play();
             Intro.MediaEnded += Intro_MediaEnded;
         }
