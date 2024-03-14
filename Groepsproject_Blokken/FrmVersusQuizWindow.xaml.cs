@@ -591,13 +591,13 @@ namespace Groepsproject_Blokken
                 case Key.A:
                     if (gameState.BlockIsPlaced == true && buzzerPlayer1 == true && teller != 10)
                     {
-                        gameState.RotateBlockClockWise();
+                        gameState.RotateBlockCounterClockwise();
                     }
                     break;
                 case Key.E:
                     if (correctAnswerClicked == true && buzzerPlayer1 == true && teller != 10)
                     {
-                        gameState.RotateBlockCounterClockwise();
+                        gameState.RotateBlockClockWise();
                     }
                     break;
                 case Key.Z:
@@ -642,13 +642,13 @@ namespace Groepsproject_Blokken
                 case Key.NumPad7:
                     if (correctAnswerClicked == true && buzzerPlayer2 == true && teller != 10)
                     {
-                        gameState.RotateBlockClockWise();
+                        gameState.RotateBlockCounterClockwise();
                     }
                     break;
                 case Key.NumPad9:
                     if (correctAnswerClicked == true && buzzerPlayer2 == true && teller != 10)
                     {
-                        gameState.RotateBlockCounterClockwise();
+                        gameState.RotateBlockClockWise();
                     }
                     break;
                 case Key.NumPad8:

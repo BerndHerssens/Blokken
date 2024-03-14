@@ -481,13 +481,13 @@ namespace Groepsproject_Blokken
                 case Key.J:
                     if (gameState.BlockIsPlaced == true)
                     {
-                        gameState.RotateBlockClockWise();
+                        gameState.RotateBlockCounterClockwise();
                     }
                     break;
                 case Key.F:
                     if (correctAnswerClicked == true)
                     {
-                        gameState.RotateBlockCounterClockwise();
+                        gameState.RotateBlockClockWise();
                     }
                     break;
                 case Key.Tab:
