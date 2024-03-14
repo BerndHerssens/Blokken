@@ -73,13 +73,16 @@ namespace Groepsproject_Blokken
         {
             if (dialogChoosePicture.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (dialogChoosePicture.FileName.Contains(".jpg") || dialogChoosePicture.FileName.Contains(".jpeg") || dialogChoosePicture.FileName.Contains(".png"))
+                if (dialogChoosePicture.FileName.Contains(".jpg") || dialogChoosePicture.FileName.Contains(".jpeg") || dialogChoosePicture.FileName.Contains(".png") || dialogChoosePicture.FileName.Contains(".PNG") || dialogChoosePicture.FileName.Contains(".JPG") || dialogChoosePicture.FileName.Contains(".JPEG"))
                 {
                     ingelogdePlayerMainWindow.ProfilePicture = dialogChoosePicture.FileName;
                     imgProfilePic.ImageSource = new BitmapImage(new Uri(dialogChoosePicture.FileName, UriKind.RelativeOrAbsolute));
                     fileName = Path.GetFileName(dialogChoosePicture.FileName);
                     //Kopieren van de nieuwe pfp + gelijkstellen
-                    File.Copy(dialogChoosePicture.FileName, @"../../Profielfotos/" + fileName, true);
+                    if (!dialogChoosePicture.FileName.Contains("Groepsproject_Blokken\\Profielfotos"))
+                    {
+                        File.Copy(dialogChoosePicture.FileName, @"../../Profielfotos/" + fileName, true);
+                    }
                     ingelogdePlayerMainWindow.ProfilePicture = @"../../Profielfotos/" + fileName;
                     DataManager.UpdatePlayer(ingelogdePlayerMainWindow);
                 }

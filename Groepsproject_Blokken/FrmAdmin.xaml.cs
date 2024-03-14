@@ -51,12 +51,12 @@ namespace Groepsproject_Blokken
                     }
                     else
                     {
+                        manager.Password = txtPassword.Text;
                         if (DataManager.InsertManager(manager) == true)
                         {
                             MessageBox.Show("Manager succesvol aangemaakt!", "Manager aangemaakt", MessageBoxButton.OK, MessageBoxImage.Information);
                         }
                     }
-                    manager.Password = txtPassword.Text;
 
                 }
                 else

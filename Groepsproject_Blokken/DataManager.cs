@@ -435,7 +435,7 @@ namespace Groepsproject_Blokken
 
 
 
-        ////Haalt de ingelogde gebruiker op
+        //Haalt de ingelogde gebruiker op
         //public static Player GetLoggedInPlayer(string naam, string wachtwoord)
         //{
 

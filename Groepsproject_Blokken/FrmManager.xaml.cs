@@ -371,18 +371,18 @@ namespace Groepsproject_Blokken
                 {
                     if (!(txtPrimewordCrud.Text.Contains(" ")))
                     {
-                        if (!(txtPrimewordCrud.Text.Count() == 8))
+                        if ((txtPrimewordCrud.Text.Count() == 8))
                         {
-                            lbPrimeworddispay.Items.Add(txtPrimewordCrud.Text + ";" + txtHintCrud.Text);
                             listPrimewordsLst1.Add(txtPrimewordCrud.Text + ";" + txtHintCrud.Text);
+                            ListboxPrimewordsRefresh();
                         }
-                        else throw new Exception("The Primeword needs to be exact 8 characters.");
+                        else System.Windows.MessageBox.Show("Het primeword moet 8 karakters lang zijn.", "Primeword validatie");
                     }
-                    else throw new Exception("The Primeword cannot contain an empty space.");
+                    else System.Windows.MessageBox.Show("Het primeword mag niet leeg zijn.", "Primeword validatie");
                 }
-                else throw new Exception("The Hint needs to be filled in.");
+                else System.Windows.MessageBox.Show("De hint moet een waarde bevatten.", "Primeword validatie");
             }
-            else throw new Exception("The Primeword needs to be filled in.");
+            else System.Windows.MessageBox.Show("Het primeword moet een waarde bevatten.", "Primeword validatie");
         }
 
         private void btnPrimeWordVerwijderen_Click(object sender, RoutedEventArgs e)
@@ -390,14 +390,12 @@ namespace Groepsproject_Blokken
             if (lbPrimeworddispay.SelectedIndex != -1)
             {
                 listPrimewordsLst1.Remove(txtPrimewordCrud.Text + ";" + txtHintCrud.Text);
-                lbPrimeworddispay.ItemsSource = null;
-                lbPrimeworddispay.ItemsSource = listPrimewordsLst1;
+                ListboxPrimewordsRefresh();
             }
             else if (lbPrimeworddisplay2.SelectedIndex != -1)
             {
                 listPrimewordsLst2.Remove(txtPrimewordCrud.Text + ";" + txtHintCrud.Text);
-                lbPrimeworddisplay2.ItemsSource = null;
-                lbPrimeworddisplay2.ItemsSource = listPrimewordsLst2;
+                ListboxPrimewordsRefresh();
             }
             else
             {
@@ -420,6 +418,13 @@ namespace Groepsproject_Blokken
             }
             System.IO.File.WriteAllText("../../PrimeWords/file2.txt", string.Empty);
             listPrimewordsLst2.Clear();
+        }
+        private void ListboxPrimewordsRefresh()
+        {
+            lbPrimeworddispay.ItemsSource = null;
+            lbPrimeworddispay.ItemsSource = listPrimewordsLst1;
+            lbPrimeworddisplay2.ItemsSource = null;
+            lbPrimeworddisplay2.ItemsSource = listPrimewordsLst2;
         }
         private void LaadAllePrimeWords()
         {
