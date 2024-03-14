@@ -437,6 +437,14 @@ namespace Groepsproject_Blokken
                 }
                 Draw(gameState);
             }
+            if (correctAnswerClicked == false)
+            {
+                if (hansMode == true || ingelogdePlayer == null)
+                {
+                    await Task.Delay(2000);
+                }
+                Draw(gameState);
+            }
             if (gameState.GameOver)
             {
                 grdGameOver.Visibility = Visibility.Visible;
