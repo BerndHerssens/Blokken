@@ -1,3 +1,7 @@
 crucifix;christendom
 meetlint;meter voor omtrek
 officium;politiek-juridische term
+showbizz;een industrie
+juffrouw;algemeen eerste liefde
+golfclub;sport instrument
+ijslolly;koude lekkernij

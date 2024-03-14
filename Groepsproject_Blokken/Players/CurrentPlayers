@@ -20,7 +20,7 @@
     "SPGamesPlayed": 1,
     "SPGamesWon": 1,
     "VSHighscore": 200,
-    "VSGamesPlayed": 6,
+    "VSGamesPlayed": 7,
     "VSGamesWon": 5
   },
   {
@@ -31,8 +31,8 @@
     "SPHighscore": null,
     "SPGamesPlayed": null,
     "SPGamesWon": null,
-    "VSHighscore": -250,
-    "VSGamesPlayed": 1,
+    "VSHighscore": 0,
+    "VSGamesPlayed": 2,
     "VSGamesWon": null
   },
   {

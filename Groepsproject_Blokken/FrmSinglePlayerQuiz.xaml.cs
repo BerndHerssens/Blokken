@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
@@ -65,6 +66,9 @@ namespace Groepsproject_Blokken
         public List<string> gekozenVragenLijsten = new List<string>();
         string json = "";
         public bool hansMode = false;
+
+        public RepeatBehavior RepeatBehavior { get; private set; }
+
         public FrmSinglePlayerQuiz()
         {
             InitializeComponent();
@@ -72,8 +76,27 @@ namespace Groepsproject_Blokken
         }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            BerndCrabbeIdleAnimation.LoadedBehavior = MediaState.Manual;
+            if (hansMode == true)
+            {
+                
+                BerndCrabbeIdleAnimation.Source = new Uri("../../Assets/Hansimation.mp4", UriKind.Relative);
+
+               
+               
+
+            }
+            else
+            {
+               
+                BerndCrabbeIdleAnimation.Source = new Uri("../../Assets/Bernd Crabbe Idle Animation Loop.mp4", UriKind.Relative);
+                
+
+            }
+            BerndCrabbeIdleAnimation.Play();
+            BerndCrabbeIdleAnimation.MediaEnded += Media_Ended2;
             MarioKartAftellingGeluidje();
-            await Task.Delay(3000);
+            await Task.Delay(3500);
             btnAntwoord1.Visibility = Visibility.Visible;
             btnAntwoord2.Visibility = Visibility.Visible;
             btnAntwoord3.Visibility = Visibility.Visible;
@@ -88,6 +111,13 @@ namespace Groepsproject_Blokken
             timer.Start();
             lblHint.Content = gekozenPrimeword.Hint;
             versnipperdPrimeWord = gekozenPrimeword.Primeword.ToCharArray();
+            
+        }
+
+        private void Media_Ended2(object sender, RoutedEventArgs e)
+        {
+            BerndCrabbeIdleAnimation.Position = TimeSpan.Zero;
+            BerndCrabbeIdleAnimation.Play();
         }
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
