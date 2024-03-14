@@ -53,6 +53,8 @@ namespace Groepsproject_Blokken
         char[] wordForDisplay = "________".ToCharArray(); //dit is wat we tonen op het scherm
         char[] versnipperdPrimeWord = new char[8]; //dit is het myPrimeWord.Primeword waar we mee gaan werken
                                                    //myPrimeword.Hint is je hint dat je kan tonen
+
+        public MediaPlayer buzzerSound = new MediaPlayer();
         public MediaPlayer backgroundMusicPlayer = new MediaPlayer();
         public MediaPlayer blokkenTick = new MediaPlayer();
 
@@ -546,6 +548,7 @@ namespace Groepsproject_Blokken
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
+            string buzzerSoundPath = "../../Assets/Sounds/Blokken Afdruk.wav";
             if (gameState.GameOver)
             {
                 return;
@@ -590,6 +593,12 @@ namespace Groepsproject_Blokken
                         Overlay.Visibility = Visibility.Visible;
                         brdImgSpeler1.BorderBrush = (Brush)bc.ConvertFrom("#fea702");
                         brdImgSpeler1.BorderThickness = new Thickness(5);
+                        if (!string.IsNullOrEmpty(buzzerSoundPath))
+                        {
+                            buzzerSound.Open(new Uri(buzzerSoundPath, UriKind.Relative));
+                            buzzerSound.Volume = 0.5;
+                            buzzerSound.Play();
+                        }
                         EnableDisableAnswers();
                     }
                     break;
@@ -631,6 +640,12 @@ namespace Groepsproject_Blokken
                         Overlay.Visibility = Visibility.Visible;
                         brdImgSpeler2.BorderBrush = (Brush)bc.ConvertFrom("#fea702");
                         brdImgSpeler2.BorderThickness = new Thickness(5);
+                        if (!string.IsNullOrEmpty(buzzerSoundPath))
+                        {
+                            buzzerSound.Open(new Uri(buzzerSoundPath, UriKind.Relative));
+                            buzzerSound.Volume = 0.5;
+                            buzzerSound.Play();
+                        }
                         EnableDisableAnswers();
                     }
                     break;

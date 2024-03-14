@@ -19,9 +19,9 @@
     "SPHighscore": 350,
     "SPGamesPlayed": 1,
     "SPGamesWon": 1,
-    "VSHighscore": 50,
-    "VSGamesPlayed": 4,
-    "VSGamesWon": 3
+    "VSHighscore": 200,
+    "VSGamesPlayed": 5,
+    "VSGamesWon": 4
   },
   {
     "SpelerID": 0,
@@ -44,7 +44,7 @@
     "SPGamesPlayed": 2,
     "SPGamesWon": 1,
     "VSHighscore": 250,
-    "VSGamesPlayed": 4,
+    "VSGamesPlayed": 5,
     "VSGamesWon": null
   }
 ]
