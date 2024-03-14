@@ -129,7 +129,7 @@
   },
   {
     "QuestionID": 19,
-    "TheQuestion": "Wat is de offici\u00EBle naam van een hashtag?",
+    "TheQuestion": "Wat is de offici\u00EBle benaming van een hashtag?",
     "CorrectAnswer": "Octothorp",
     "WrongAnswerOne": "Signothorp",
     "WrongAnswerTwo": "Quadrupole",
@@ -147,8 +147,8 @@
     "QuestionID": 21,
     "TheQuestion": "Wat is het kleinste land ter wereld?",
     "CorrectAnswer": "Vaticaanstad",
-    "WrongAnswerOne": "Luxenbourg",
-    "WrongAnswerTwo": "Noor Korea",
+    "WrongAnswerOne": "Luxemburg",
+    "WrongAnswerTwo": "Noord Korea",
     "WrongAnswerThree": "Vietnam"
   },
   {

@@ -1,8 +1,8 @@
 [
   {
     "QuestionID": 2,
-    "TheQuestion": "Who sang this? \u0022And in the naked light, I saw ten thousand people, maybe more\u0022",
-    "CorrectAnswer": "\u0022The Sound of Silence\u201D by Simon \u0026 Garfunkel",
+    "TheQuestion": "Who sang this? \u0022Check out my right girl, but don't touch my radio\u0022",
+    "CorrectAnswer": "\u0022Pump It Up\u201D by Danzel",
     "WrongAnswerOne": "\u0022Imagine\u0022 by John Lennon",
     "WrongAnswerTwo": "\u0022Blowin\u0027 in the Wind\u201D by Bob Dylan",
     "WrongAnswerThree": "\u201CHallelujah\u201D by Leonard Cohen"

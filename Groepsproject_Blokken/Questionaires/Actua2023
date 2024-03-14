@@ -10,21 +10,21 @@
   {
     "TheQuestion": "Welk land trad vanaf 01/01/2023 toe tot de eurozone en de Schengenzone?",
     "CorrectAnswer": "Kroati\u00EB",
-    "WrongAnswerOne": "Ukra\u00EFne",
+    "WrongAnswerOne": "Oekra\u00EFne",
     "WrongAnswerTwo": "Nederland",
     "WrongAnswerThree": "Turkij\u00EB",
     "QuestionID": 2
   },
   {
     "TheQuestion": "Om welke reden werd een jong stel in Iran veroordeeld tot 10 jaar cel?",
-    "CorrectAnswer": "Het online zetten van een dans video",
+    "CorrectAnswer": "Het online zetten van een dansvideo",
     "WrongAnswerOne": "Een seks-schandaal",
     "WrongAnswerTwo": "Rascistische opmerkingen geroepen",
-    "WrongAnswerThree": "Wegens zelf abortus",
+    "WrongAnswerThree": "Wegens een abortus",
     "QuestionID": 3
   },
   {
-    "TheQuestion": "Welke bekende Amerikaanse bank wordt in maart 2023 failliet verklaard?",
+    "TheQuestion": "Welke bekende Amerikaanse bank werd in maart 2023 failliet verklaard?",
     "CorrectAnswer": "Silicon Valley Bank",
     "WrongAnswerOne": "National Bank",
     "WrongAnswerTwo": "JPMorgan Chase",
@@ -44,7 +44,7 @@
     "CorrectAnswer": "Finland",
     "WrongAnswerOne": "Kroati\u00EB",
     "WrongAnswerTwo": "Ijsland",
-    "WrongAnswerThree": "Ukra\u00EFne",
+    "WrongAnswerThree": "Oekra\u00EFne",
     "QuestionID": 6
   },
   {
@@ -52,11 +52,11 @@
     "CorrectAnswer": "Hij vroeg een jongetje om aan zijn tong te zuigen",
     "WrongAnswerOne": "Hij ging schaars gekleed naar een gebed",
     "WrongAnswerTwo": "Hij sprak een verkeerd politiek getinte mening",
-    "WrongAnswerThree": "Hij had een relatie met een vertegenwoordige",
+    "WrongAnswerThree": "Hij had een relatie met een vertegenwoordiger",
     "QuestionID": 7
   },
   {
-    "TheQuestion": "Na demonstraties wordt in Frankrijk de pensioenleeftijd toch verhoogd. Naar welke leeftijd?",
+    "TheQuestion": "Na demonstraties werd in Frankrijk de pensioenleeftijd toch verhoogd. Naar welke leeftijd?",
     "CorrectAnswer": "64",
     "WrongAnswerOne": "65",
     "WrongAnswerTwo": "66",
@@ -64,7 +64,7 @@
     "QuestionID": 8
   },
   {
-    "TheQuestion": "Welke voormalig Europees president wordt veroordeeld voor corruptie?",
+    "TheQuestion": "Welke voormalige Europese president werd veroordeeld voor corruptie?",
     "CorrectAnswer": "De Franse ex-president Nicolas Sarkozy",
     "WrongAnswerOne": "Roberta Metsola",
     "WrongAnswerTwo": "Charles Michel",
@@ -72,7 +72,7 @@
     "QuestionID": 9
   },
   {
-    "TheQuestion": "Van welke tegenstander verliest Inter Milaan de finale van de UEFA Champions League 2023?",
+    "TheQuestion": "Van welke tegenstander verloor Inter Milaan de finale van de UEFA Champions League 2023?",
     "CorrectAnswer": "Manchester City",
     "WrongAnswerOne": "Barcelona",
     "WrongAnswerTwo": "Porto",
@@ -104,7 +104,7 @@
     "QuestionID": 15
   },
   {
-    "TheQuestion": "Welk land is sinds 2023 de meest bevolkte land?",
+    "TheQuestion": "Welk land is sinds 2023 het meest bevolkte land?",
     "CorrectAnswer": "India",
     "WrongAnswerOne": "Indonesi\u00EB",
     "WrongAnswerTwo": "Brazili\u00EB",
@@ -112,7 +112,7 @@
     "QuestionID": 16
   },
   {
-    "TheQuestion": "Welk kledingstuk had Mary Quant ontworpen?",
+    "TheQuestion": "Welk kledingstuk heeft Mary Quant ontworpen?",
     "CorrectAnswer": "Hotpants",
     "WrongAnswerOne": "String",
     "WrongAnswerTwo": "Nylonkousen",
@@ -152,7 +152,7 @@
     "QuestionID": 21
   },
   {
-    "TheQuestion": "Waar kwam de ballon vandaan die boven VS Millitaire basses hing?",
+    "TheQuestion": "Waar kwam de ballon vandaan die boven VS Militaire bases hing?",
     "CorrectAnswer": "China",
     "WrongAnswerOne": "Rusland",
     "WrongAnswerTwo": "Noord-Korea",
@@ -168,7 +168,7 @@
     "QuestionID": 23
   },
   {
-    "TheQuestion": "Loreen wint het Eurovisiesongfestival met welk nummer?",
+    "TheQuestion": "Loreen won het Eurovisiesongfestival in 2023 met welk nummer?",
     "CorrectAnswer": "Tattoo",
     "WrongAnswerOne": "Euphoria",
     "WrongAnswerTwo": "Erop of eronder",

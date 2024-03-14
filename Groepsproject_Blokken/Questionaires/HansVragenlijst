@@ -1,6 +1,6 @@
 [
   {
-    "TheQuestion": "Wat was de naam van het bedrijf bij Illya\u0027s eerste project-voorstelling ?",
+    "TheQuestion": "Wat was de naam van het bedrijf bij Illya\u0027s eerste projectvoorstelling ?",
     "CorrectAnswer": "Vehicom",
     "WrongAnswerOne": "Vehibikes",
     "WrongAnswerTwo": "Vehicum",
@@ -11,7 +11,7 @@
     "TheQuestion": "Wat is de naam van Illya\u0027s hond?",
     "CorrectAnswer": "Zorro",
     "WrongAnswerOne": "Lassie",
-    "WrongAnswerTwo": "Bieke",
+    "WrongAnswerTwo": "Kai",
     "WrongAnswerThree": "Fluffy",
     "QuestionID": 4
   },
@@ -35,7 +35,7 @@
     "TheQuestion": "Wat voor soort muziek van Cedric staat niet op spotify?",
     "CorrectAnswer": "Vlaamse rap",
     "WrongAnswerOne": "Duitse poprock",
-    "WrongAnswerTwo": "Zweede schlager",
+    "WrongAnswerTwo": "Zweedse schlager",
     "WrongAnswerThree": "Italiaanse house",
     "QuestionID": 7
   },
@@ -76,7 +76,7 @@
     "CorrectAnswer": "Lochristi",
     "WrongAnswerOne": "Gent",
     "WrongAnswerTwo": "Brussel",
-    "WrongAnswerThree": "De kartonnen doos onder de brug",
+    "WrongAnswerThree": "In een kartonnen doos",
     "QuestionID": 12
   },
   {
@@ -91,7 +91,7 @@
     "TheQuestion": "Wie is Robin zijn aartsvijand?",
     "CorrectAnswer": "Bernd",
     "WrongAnswerOne": "Said",
-    "WrongAnswerTwo": "zijn hond",
+    "WrongAnswerTwo": "Zijn hond",
     "WrongAnswerThree": "Iedereen",
     "QuestionID": 14
   },
@@ -147,7 +147,7 @@
     "TheQuestion": "Welke vorm heeft Tycho zijn tattoo?",
     "CorrectAnswer": "Vos",
     "WrongAnswerOne": "Vis",
-    "WrongAnswerTwo": "een anime character",
+    "WrongAnswerTwo": "Een anime character",
     "WrongAnswerThree": "Vogel",
     "QuestionID": 21
   },
@@ -155,7 +155,7 @@
     "TheQuestion": "Waaraan is Tycho verslaafd?",
     "CorrectAnswer": "Gacha games",
     "WrongAnswerOne": "Snoepjes",
-    "WrongAnswerTwo": "Sterke mannen in strakke businesspakken",
+    "WrongAnswerTwo": "Sterke mannen in strakke pakken",
     "WrongAnswerThree": "Ijsberen",
     "QuestionID": 22
   },
@@ -185,7 +185,7 @@
   },
   {
     "TheQuestion": "Hoeveel planten heeft Bernd zijn vrouw?",
-    "CorrectAnswer": "\u002B80",
+    "CorrectAnswer": "80\u002B",
     "WrongAnswerOne": "70",
     "WrongAnswerTwo": "60",
     "WrongAnswerThree": "50",
@@ -232,11 +232,11 @@
     "QuestionID": 31
   },
   {
-    "TheQuestion": "Welke voetbal ploeg stimuleert Abdul?",
+    "TheQuestion": "Voor welke voetbalploeg supportert Abdul?",
     "CorrectAnswer": "Barcelona",
     "WrongAnswerOne": "Real Madrid",
     "WrongAnswerTwo": "Liverpool",
-    "WrongAnswerThree": "Byren",
+    "WrongAnswerThree": "Bayern Munich",
     "QuestionID": 32
   },
   {
@@ -250,7 +250,7 @@
   {
     "TheQuestion": "Welk feit over Gilles is niet waar?",
     "CorrectAnswer": "Hij speelt gitaar, piano en saxofoon",
-    "WrongAnswerOne": "Hij was vice-Europees karatekampioen in zijn leeftijdscategorie",
+    "WrongAnswerOne": "Hij was vice-Europees karatekampioen",
     "WrongAnswerTwo": "Hij heeft koningin Mathilde ge\u00EFnterviewd",
     "WrongAnswerThree": "Hij bezit een collectie retrogames en consoles",
     "QuestionID": 34
@@ -265,7 +265,7 @@
   },
   {
     "TheQuestion": "Hoe breed is Bart zijn nek?",
-    "CorrectAnswer": "Een kleine pitta met mayo en samurai zonder tomaten",
+    "CorrectAnswer": "Een kleine pitta met mayo",
     "WrongAnswerOne": "Omtrek van een molensteen",
     "WrongAnswerTwo": "Lengte van een 30cm salami",
     "WrongAnswerThree": "Dikte van een winterband van een volkswagen",
@@ -278,5 +278,13 @@
     "WrongAnswerTwo": "Gaming",
     "WrongAnswerThree": "Mensen pesten",
     "QuestionID": 37
+  },
+  {
+    "TheQuestion": "Wie maakt de meest onverwachte grappen?",
+    "CorrectAnswer": "Cedric",
+    "WrongAnswerOne": "Bernd",
+    "WrongAnswerTwo": "Abdul",
+    "WrongAnswerThree": "Robin",
+    "QuestionID": 38
   }
 ]

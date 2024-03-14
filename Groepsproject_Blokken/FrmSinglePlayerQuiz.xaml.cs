@@ -51,6 +51,7 @@ namespace Groepsproject_Blokken
         char[] wordForDisplay = "--------".ToCharArray(); //dit is wat we tonen op het scherm
         char[] versnipperdPrimeWord = new char[8]; //dit is het myPrimeWord.Primeword waar we mee gaan werken
                                                    //myPrimeword.Hint is je hint dat je kan tonen
+        public MediaPlayer stopDeTijd = new MediaPlayer();
         public MediaPlayer blokkenTick = new MediaPlayer();
         public MediaPlayer backgroundMusicPlayer = new MediaPlayer();
         public MediaPlayer marioKartPlayer = new MediaPlayer();
@@ -66,6 +67,7 @@ namespace Groepsproject_Blokken
         public List<string> gekozenVragenLijsten = new List<string>();
         string json = "";
         public bool hansMode = false;
+        public bool gameOver = false;
 
         public RepeatBehavior RepeatBehavior { get; private set; }
 
@@ -369,7 +371,13 @@ namespace Groepsproject_Blokken
             lblTimerEnScore.Content = "Score: " + gameState.Score.ToString() + " " + "Timer: " + tellerTimer;
             if (tellerTimer <= 0)          //Stoppen de muziek en laat primeword box zien
             {
+                gameOver = true;
                 backgroundMusicPlayer.Stop();
+                if (hansMode == true)
+                {
+                    stopDeTijd.Open(new Uri(@"../../Assets/Sounds/Stop De Tijd.wav", UriKind.Relative));
+                    stopDeTijd.Play();
+                }
                 grdGameOver.Visibility = System.Windows.Visibility.Visible;  // Laat primeword window zien , hide button als het gast (null) is
                 if (ingelogdePlayer == null)
                 {
@@ -491,31 +499,31 @@ namespace Groepsproject_Blokken
             switch (e.Key)
             {
                 case Key.Left:
-                    if (correctAnswerClicked == true)
+                    if (correctAnswerClicked == true && gameOver == false)
                     {
                         gameState.MoveBlockLeft();
                     }
                     break;
                 case Key.Right:
-                    if (correctAnswerClicked == true)
+                    if (correctAnswerClicked == true && gameOver == false)
                     {
                         gameState.MoveBlockRight();
                     }
                     break;
                 case Key.Down:
-                    if (correctAnswerClicked == true)
+                    if (correctAnswerClicked == true && gameOver == false)
                     {
                         gameState.MoveBlockDown();
                     }
                     break;
                 case Key.J:
-                    if (gameState.BlockIsPlaced == true)
+                    if (gameState.BlockIsPlaced == true && gameOver == false)
                     {
                         gameState.RotateBlockCounterClockwise();
                     }
                     break;
                 case Key.F:
-                    if (correctAnswerClicked == true)
+                    if (correctAnswerClicked == true && gameOver == false)
                     {
                         gameState.RotateBlockClockWise();
                     }
@@ -524,7 +532,7 @@ namespace Groepsproject_Blokken
                     //gameState.HoldBlock();
                     break;
                 case Key.Space:
-                    if (correctAnswerClicked == false)
+                    if (correctAnswerClicked == false && gameOver == false)
                     {
                         gameState.DropBlock();
                     }
@@ -544,8 +552,6 @@ namespace Groepsproject_Blokken
             mainwindow.ingelogdePlayerLoginscreen = ingelogdePlayer;
             this.Close();
             mainwindow.ShowDialog();
-
-
         }
         public void PrimeWordCuttingAndShowing()
         {
@@ -659,10 +665,7 @@ namespace Groepsproject_Blokken
             }
         }
     }
-}                                   //Voeren Bernd zn functie uit
-
-// Als het geen gast is dan updaten we de ingelogde player, ik maak hier een bool voor aan ipv Player.Name != Gast, zodat iemand met de acc naam Gast het systeem niet kan omzeilen
-
+}                                   
 
 
 

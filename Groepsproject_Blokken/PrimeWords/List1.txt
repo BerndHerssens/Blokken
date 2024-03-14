@@ -1,19 +1,11 @@
 lobbying;uitoefenen van invloed
-jazzclub;culturele plaats
-hobbykok;thuiskok
-maquette;model
 juryteam;Panel
-leukocyt;afweersysteem
-jerrycan;container
 kerfbijl;werktuig
 luxaflex;jaloezieën
 mycelium;hyfen
-huilbaby;nachtmerrie
 babymelk;natuurlijk
 hectisch;chaos
 koplicht;Navigatiedeel van schepen
 quoteren;evenredig verdelen
 lymfevat;menselijke drainagesysteem
-recyclen;hergebruiken
-oxymoron;stijlfiguur
 nachtbus;vervoersdienst

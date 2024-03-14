@@ -55,7 +55,7 @@ namespace Groepsproject_Blokken
         char[] wordForDisplay = "________".ToCharArray(); //dit is wat we tonen op het scherm
         char[] versnipperdPrimeWord = new char[8]; //dit is het myPrimeWord.Primeword waar we mee gaan werken
                                                    //myPrimeword.Hint is je hint dat je kan tonen
-
+        public MediaPlayer stopDeTijd = new MediaPlayer();
         public MediaPlayer buzzerSound = new MediaPlayer();
         public MediaPlayer backgroundMusicPlayer = new MediaPlayer();
         public MediaPlayer audioCue = new MediaPlayer();
@@ -358,10 +358,12 @@ namespace Groepsproject_Blokken
             tellerTimer--;
             lblScoreSpeler1.Content = gameState.ScorePlayerOne.ToString();
             lblScoreSpeler2.Content = gameState.ScorePlayerTwo.ToString();
-            if (teller == 10 && blockPlaced == true)
+            if (teller == 15 && blockPlaced == true)
             {
                 timer.Stop();
                 backgroundMusicPlayer.Stop();
+                stopDeTijd.Open(new Uri(@"../../Assets/Sounds/Stop De Tijd.wav", UriKind.Relative));
+                stopDeTijd.Play();
                 grdGameOver.Visibility = System.Windows.Visibility.Visible;
                 GameLogVS gespeeldeGame = new GameLogVS();
                 gespeeldeGame.Player1Name = ingelogdePlayer1.Name;
@@ -371,7 +373,6 @@ namespace Groepsproject_Blokken
                 //Speler 1 wint
                 if (gameState.ScorePlayerOne > gameState.ScorePlayerTwo)
                 {
-
                     gespeeldeGame.Winner = ingelogdePlayer1.Name;
                     txtFinalScore.Text = "De winnaar is " + ingelogdePlayer1 + " met een score van " + gameState.ScorePlayerOne + "!";
                     if (ingelogdePlayer1.VSGamesPlayed == null)
@@ -456,6 +457,7 @@ namespace Groepsproject_Blokken
                 }
 
                 //Wegschrijven/updaten
+                gespeeldeGame.Date = DateTime.Now;
                 DataManager.InsertGameLogVS(gespeeldeGame);
                 DataManager.UpdatePlayer(ingelogdePlayer2);
                 DataManager.UpdatePlayer(ingelogdePlayer1);
@@ -554,11 +556,6 @@ namespace Groepsproject_Blokken
                 }
                 Draw(gameState);
             }
-            //if (gameState.GameOver)
-            //{
-            //    grdGameOver.Visibility = Visibility.Visible;
-            //    txtFinalScore.Text = gameState.Score.ToString();
-            //}
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -727,5 +724,10 @@ namespace Groepsproject_Blokken
 
         }
 
+        private void btnShare_Click(object sender, RoutedEventArgs e)
+        {
+            //ExcelWordStatic.PrintHighScore(ingelogdePlayer1, gameState.ScorePlayerOne); //print deze uit
+            //ExcelWordStatic.PrintHighScore(ingelogdePlayer2, gameState.ScorePlayerTwo); //print deze uit
+        }
     }
 }

@@ -152,7 +152,7 @@ namespace Groepsproject_Blokken
                     tempLijstVragen = JsonSerializer.Deserialize<List<Question>>(json);
                 }
                 frmQuizWindow.finalLijstVragen = tempLijstVragen;
-                frmQuizWindow.gekozenPrimeword = new PrimeWord("ingekort", "demo");
+                frmQuizWindow.gekozenPrimeword = new PrimeWord("medaille", "iets dat Hans verdient");
                 frmQuizWindow.hansMode = true;
                 this.Close();
                 frmQuizWindow.ShowDialog();

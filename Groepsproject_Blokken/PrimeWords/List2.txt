@@ -12,3 +12,11 @@ joystick;bewegings controller
 gezwicht;hij is ...
 katzwijm;flauwte
 lunchbox;eten
+jerrycan;container
+oxymoron;stijlfiguur
+maquette;model
+recyclen;hergebruiken
+huilbaby;nachtmerrie
+hobbykok;thuiskok
+jazzclub;culturele plaats
+leukocyt;afweersysteem

@@ -187,5 +187,19 @@
     "PlayerName": "splGilles",
     "Score": 1000,
     "Date": "2024-03-14T16:55:42.64794+01:00"
+  },
+  {
+    "ScoreID": 0,
+    "GameNumber": 44403789,
+    "PlayerName": "splGilles",
+    "Score": 1150,
+    "Date": "2024-03-14T18:11:43.2614488+01:00"
+  },
+  {
+    "ScoreID": 0,
+    "GameNumber": 50714607,
+    "PlayerName": "splGilles",
+    "Score": 950,
+    "Date": "2024-03-14T18:18:15.2932161+01:00"
   }
 ]
