@@ -40,9 +40,9 @@
     "Name": "splGilles",
     "Password": "123",
     "ProfilePicture": "../../Profielfotos/gilles_profiel.png",
-    "SPHighscore": 450,
-    "SPGamesPlayed": 2,
-    "SPGamesWon": 1,
+    "SPHighscore": 1000,
+    "SPGamesPlayed": 3,
+    "SPGamesWon": 2,
     "VSHighscore": 250,
     "VSGamesPlayed": 5,
     "VSGamesWon": null

@@ -220,6 +220,7 @@ namespace Groepsproject_Blokken
         private void btnSaveQuestionnaireSelection_Click(object sender, RoutedEventArgs e)
         {
             ActieveVragenLijstOpslagen();
+            System.Windows.MessageBox.Show("Uw vragenlijst is opgeslagen.", "Actie validatie", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         private void OpslagenInVragenLijstAlles(string vraagTopic)
         {
@@ -293,8 +294,8 @@ namespace Groepsproject_Blokken
                 geselecteerdePlayer = lbPlayerdisp.SelectedItem as Player;
                 geselecteerdePlayer.Password = "default";
                 DataManager.UpdatePlayer(geselecteerdePlayer);
+                System.Windows.MessageBox.Show($"Het wachtwoord van speler {geselecteerdePlayer.Name} werd veranderd naar 'default'.", "Actie validatie", MessageBoxButton.OK, MessageBoxImage.Information);
                 RefreshPlayers();
-
             }
         }
 
@@ -306,6 +307,7 @@ namespace Groepsproject_Blokken
                 geselecteerdePlayer.SPGamesPlayed = 0;
                 geselecteerdePlayer.SPGamesWon = 0;
                 DataManager.UpdatePlayer(geselecteerdePlayer);
+                System.Windows.MessageBox.Show($"De singleplayer statistieken van {geselecteerdePlayer.Name} werden gereset naar 0.", "Actie validatie", MessageBoxButton.OK, MessageBoxImage.Information);
                 RefreshPlayers();
             }
         }
@@ -318,6 +320,7 @@ namespace Groepsproject_Blokken
                 geselecteerdePlayer.VSGamesPlayed = 0;
                 geselecteerdePlayer.VSGamesWon = 0;
                 DataManager.UpdatePlayer(geselecteerdePlayer);
+                System.Windows.MessageBox.Show($"De multiplayer statistieken van {geselecteerdePlayer.Name} werden gereset naar 0.", "Actie validatie", MessageBoxButton.OK, MessageBoxImage.Information);
                 RefreshPlayers();
             }
         }
@@ -374,15 +377,16 @@ namespace Groepsproject_Blokken
                         if ((txtPrimewordCrud.Text.Count() == 8))
                         {
                             listPrimewordsLst1.Add(txtPrimewordCrud.Text + ";" + txtHintCrud.Text);
+                            System.Windows.MessageBox.Show("Uw primeword is toegevoegd." + Environment.NewLine + "Bij het sluiten wordt alles opgeslagen.", "Actie validatie", MessageBoxButton.OK, MessageBoxImage.Information);
                             ListboxPrimewordsRefresh();
                         }
-                        else System.Windows.MessageBox.Show("Het primeword moet 8 karakters lang zijn.", "Primeword validatie");
+                        else System.Windows.MessageBox.Show("Het primeword moet 8 karakters lang zijn.", "Primeword validatie", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
-                    else System.Windows.MessageBox.Show("Het primeword mag niet leeg zijn.", "Primeword validatie");
+                    else System.Windows.MessageBox.Show("Het primeword mag niet leeg zijn.", "Primeword validatie", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
-                else System.Windows.MessageBox.Show("De hint moet een waarde bevatten.", "Primeword validatie");
+                else System.Windows.MessageBox.Show("De hint moet een waarde bevatten.", "Primeword validatie", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-            else System.Windows.MessageBox.Show("Het primeword moet een waarde bevatten.", "Primeword validatie");
+            else System.Windows.MessageBox.Show("Het primeword moet een waarde bevatten.", "Primeword validatie", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
         private void btnPrimeWordVerwijderen_Click(object sender, RoutedEventArgs e)

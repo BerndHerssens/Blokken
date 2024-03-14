@@ -79,18 +79,18 @@ namespace Groepsproject_Blokken
             BerndCrabbeIdleAnimation.LoadedBehavior = MediaState.Manual;
             if (hansMode == true)
             {
-                
+
                 BerndCrabbeIdleAnimation.Source = new Uri("../../Assets/Hansimation.mp4", UriKind.Relative);
 
-               
-               
+
+
 
             }
             else
             {
-               
+
                 BerndCrabbeIdleAnimation.Source = new Uri("../../Assets/Bernd Crabbe Idle Animation Loop.mp4", UriKind.Relative);
-                
+
 
             }
             BerndCrabbeIdleAnimation.Play();
@@ -111,7 +111,7 @@ namespace Groepsproject_Blokken
             timer.Start();
             lblHint.Content = gekozenPrimeword.Hint;
             versnipperdPrimeWord = gekozenPrimeword.Primeword.ToCharArray();
-            
+
         }
 
         private void Media_Ended2(object sender, RoutedEventArgs e)
@@ -581,101 +581,88 @@ namespace Groepsproject_Blokken
 
         private void btnPrimewordGuess_Click(object sender, RoutedEventArgs e)
         {
+            eenGame = new GameLogSP();
             btnPrimewordGuess.IsEnabled = false;
             bool gast = false;                                                                                  // Nodig voor later (wordt uitgelegd), dit reset het ook elke keer en we hebben het nergens anders nodig dus maak het hier gewoon aan.
-            if (hansMode == true)
+            if (hansMode == true) //Hans mode heeft geen gamelog
             {
                 if (gekozenPrimeword.CheckAnswerIfPrimeWord(txtPrimeword.Text) == true)
                 {
-                    eenGame.Score += 200;
-                    MessageBox.Show("Dat is correct! U krijgt 200 punten erbij, uw totaal score bedraagt : " + eenGame.Score.ToString() + "!" + Environment.NewLine + "Wilt u uw highscores zien? Leuke profiel foto? Koop nu de volledige versie, gebruik code BERND voor een gratis Bernd Crabbé knuffel", "Gefeliciteerd!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    txtFinalScore.Text = eenGame.Score.ToString();
+                    gameState.Score += 200;
+                    MessageBox.Show("Dat is correct! U krijgt 200 punten erbij, uw totaal score bedraagt : " + gameState.Score.ToString() + "!" + Environment.NewLine + "Wilt u uw highscores zien? Leuke profiel foto? Koop nu de volledige versie, gebruik code BERND voor een gratis Bernd Crabbé knuffel", "Gefeliciteerd!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    txtFinalScore.Text = gameState.Score.ToString();
                 }
                 else
                 {
-                    MessageBox.Show("Helaas! Het antwoord was " + gekozenPrimeword.Primeword + ", uw totaal score bedraagt : " + eenGame.Score.ToString() + "!" + Environment.NewLine + "Wilt u uw highscores zien? Leuke profiel foto? Koop nu de volledige versie, gebruik code BERND voor een gratis Bernd Crabbé knuffel", "Goed geprobeerd!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Helaas! Het antwoord was " + gekozenPrimeword.Primeword + ", uw totaal score bedraagt : " + gameState.Score.ToString() + "!" + Environment.NewLine + "Wilt u uw highscores zien? Leuke profiel foto? Koop nu de volledige versie, gebruik code BERND voor een gratis Bernd Crabbé knuffel", "Goed geprobeerd!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 FrmLoginRegister frmLoginRegister = new FrmLoginRegister();
                 this.Close();
                 frmLoginRegister.ShowDialog();
-
             }
             else if (ingelogdePlayer != null)                                                                        // Als het geen gast is dan gaan we de properties invullen en schrijven
             {
-                eenGame = new GameLogSP();
-                eenGame.PlayerName = ingelogdePlayer.Name;
-                eenGame.Date = DateTime.Now;
-                eenGame.Score = Convert.ToInt32(gameState.Score);
-                eenGame.GameNumber = eenGame.GetHashCode();
-
-            }
-            else                                                                                                //Voor demo/gast
-            {
-                eenGame = new GameLogSP();
-                eenGame.PlayerName = "Gast";
-                eenGame.Date = DateTime.Now;
-                eenGame.Score = Convert.ToInt32(gameState.Score);
-                eenGame.GameNumber = eenGame.GetHashCode();
-                gast = true;
-            }
-            gekozenPrimeword.CheckAnswerIfPrimeWord(txtPrimeword.Text);                                         //Voeren Bernd zn functie uit
-            if (gekozenPrimeword.CheckAnswerIfPrimeWord(txtPrimeword.Text) == true)                             //Als het correct is dan kijken we naar...
-            {
-                if (gast == false)
+                if (gekozenPrimeword.CheckAnswerIfPrimeWord(txtPrimeword.Text) == true)                             //Als het correct is dan kijken we naar...
                 {
+
                     if (ingelogdePlayer.SPGamesPlayed == null)                                                      // Null = eerste keer dat hij speelt, dus kan niet +1 doen. We zetten het gelijk aan 1, zn eerste spel gespeeld en gewonnen en geven bonuspunten
                     {
                         ingelogdePlayer.SPGamesWon = 1;
                         ingelogdePlayer.SPGamesPlayed = 1;
-                        eenGame.Score += 200;
+                        gameState.Score += 200;
                     }
                     else                                                                                            // Niet de eerste keer dus beide properties hebben een al een int value, we doen ++ bij beide omdat die wint en geven ook bonuspunten
                     {
                         ingelogdePlayer.SPGamesWon++;
                         ingelogdePlayer.SPGamesPlayed++;
-                        eenGame.Score += 200;
+                        gameState.Score += 200;
                     }
+                    MessageBox.Show("Dat is correct! U krijgt 200 punten erbij, uw totaal score bedraagt : " + gameState.Score.ToString() + "!", "Gefeliciteerd!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
-                if (hansMode == false) // hansmode adjustment
+                else //primeword fout
                 {
-                    MessageBox.Show("Dat is correct! U krijgt 200 punten erbij, uw totaal score bedraagt : " + eenGame.Score.ToString() + "!", "Gefeliciteerd!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    txtFinalScore.Text = eenGame.Score.ToString();
-                }
-
-            }
-            else                                                                                                // Het is niet correct dan gaan we..
-            {
-                if (gast == false)
-                {
-                    if (ingelogdePlayer.SPGamesPlayed == null)                                                      // Eerste keer dat hij speelt dus geen int values in de properties als het null is, games played naar 1 maar niet gewonnen dus null -> 0
+                    MessageBox.Show("Helaas! Dat is fout! Uw totaal score bedraagt : " + gameState.Score.ToString() + "!", "Goed gespeeld!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    if (ingelogdePlayer.SPGamesPlayed == null)                                                      // Null = eerste keer dat hij speelt, dus kan niet +1 doen. We zetten het gelijk aan 1, zn eerste spel gespeeld en gewonnen en geven bonuspunten
                     {
-                        ingelogdePlayer.SPGamesWon = 0;
                         ingelogdePlayer.SPGamesPlayed = 1;
                     }
-                    else                                                                                            // Niet eerste keer, gewoon +1 bij game count!
+                    else                                                                                            // Niet de eerste keer dus beide properties hebben een al een int value, we doen ++ bij beide omdat die wint en geven ook bonuspunten
                     {
                         ingelogdePlayer.SPGamesPlayed++;
                     }
                 }
-                MessageBox.Show("Helaas! Het antwoord was " + gekozenPrimeword.Primeword + ", uw totaal score bedraagt : " + eenGame.Score.ToString() + "!", "Goed geprobeerd!", MessageBoxButton.OK, MessageBoxImage.Error);
+                txtFinalScore.Text = gameState.Score.ToString();
+                eenGame.PlayerName = ingelogdePlayer.Name;
+                eenGame.Date = DateTime.Now;
+                eenGame.Score = Convert.ToInt32(gameState.Score);
+                eenGame.GameNumber = eenGame.GetHashCode();
             }
-
-            if (gast == false)                                                                                  // Als het geen gast is dan updaten we de ingelogde player, ik maak hier een bool voor aan ipv Player.Name != Gast, zodat iemand met de acc naam Gast het systeem niet kan omzeilen
+            else                                                                                                //Voor demo/gast
             {
-                if (ingelogdePlayer.SPHighscore < gameState.Score || ingelogdePlayer.SPHighscore == null)       // Als de gamestate score hoger is of null (eerste keer spelen)
-                {
-                    ingelogdePlayer.SPHighscore = gameState.Score;
-                }
+                eenGame.PlayerName = "Gast";
+                eenGame.Date = DateTime.Now;
+                eenGame.Score = Convert.ToInt32(gameState.Score);
+                eenGame.GameNumber = eenGame.GetHashCode();
+            }
+            if (ingelogdePlayer.SPHighscore < gameState.Score || ingelogdePlayer.SPHighscore == null)       // Als de gamestate score hoger is of null (eerste keer spelen)
+            {
+                ingelogdePlayer.SPHighscore = gameState.Score;
                 DataManager.UpdatePlayer(ingelogdePlayer);
                 DataManager.InsertGameLogSP(eenGame);
             }
             else                                                                                                //Als het een gast is dat schrijven we alleen de log, geen account voor de demo, we restarten de demo, optie geven om hier opnieuw te spelen niet nodig.
             {
                 DataManager.InsertGameLogSP(eenGame);
+                FrmLoginRegister frmLoginRegister = new FrmLoginRegister();
+                frmLoginRegister.ShowDialog();
                 this.Close();
-                System.Windows.Forms.Application.Restart();
             }
-
         }
     }
-}
+}                                   //Voeren Bernd zn functie uit
+
+// Als het geen gast is dan updaten we de ingelogde player, ik maak hier een bool voor aan ipv Player.Name != Gast, zodat iemand met de acc naam Gast het systeem niet kan omzeilen
+
+
+
+

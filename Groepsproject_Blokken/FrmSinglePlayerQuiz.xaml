@@ -132,6 +132,7 @@ Value="80" />
                 <Button x:Name="btnPrimewordGuess"
                         Content="Primeword raden"
                         Background="#fea702"
+                        IsDefault="True"
                         Margin="0,20,0,0" Padding="5" Click="btnPrimewordGuess_Click"/>
                 <Button x:Name="btnPlayAgain"
                         Content="Opnieuw spelen"

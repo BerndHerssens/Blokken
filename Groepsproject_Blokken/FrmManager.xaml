@@ -462,7 +462,7 @@
                         Grid.Column="2"
                         Grid.RowSpan="6">
                     <Button x:Name="btnPrimewordToevoegen"
-                            Content="Primeword Toevoegen"
+                            Content="PRIMEWORD TOEVOEGEN"
                             Background="#fea702"
                             FontFamily="{StaticResource BlokkenFont}"
                             Grid.Row="0"
@@ -480,7 +480,7 @@
                         </Button.Resources>
                     </Button>
                     <Button x:Name="btnPrimeWordVerwijderen"
-                            Content="Primeword verwijderen"
+                            Content="PRIMEWORD VERWIJDEREN"
                             Background="#fea702"
                             FontFamily="{StaticResource BlokkenFont}"
                             Grid.Row="0"
@@ -524,7 +524,7 @@
                         </Button.Resources>
                     </Button>
                     <Button x:Name="btnPrimewordAllesResetten"
-        Content="Lijsten Resetten"
+        Content="LIJSTEN RESETTEN"
         Background="#fea702"
         FontFamily="{StaticResource BlokkenFont}"
         Grid.Row="7"
@@ -580,7 +580,7 @@
                                  Width="225" />
                     </GroupBox>
                     <Button x:Name="btnDeletePlayer"
-                            Content="Delete Player"
+                            Content="DELETE PLAYER"
                             Background="#fea702"
                             FontFamily="{StaticResource BlokkenFont}"
                             Grid.Row="0"
@@ -599,7 +599,7 @@
                         </Button.Resources>
                     </Button>
                     <Button x:Name="btnResetWW"
-                            Content="Reset het wachtwoord"
+                            Content="RESET WACHTWOORD"
                             Background="#fea702"
                             FontFamily="{StaticResource BlokkenFont}"
                             Grid.Row="1"
@@ -618,7 +618,7 @@
                         </Button.Resources>
                     </Button>
                     <Button x:Name="btnResetSP"
-                            Content="Reset SP statistics"
+                            Content="RESET SP STATISTICS"
                             Background="#fea702"
                             FontFamily="{StaticResource BlokkenFont}"
                             Grid.Row="2"
@@ -637,7 +637,7 @@
                         </Button.Resources>
                     </Button>
                     <Button x:Name="btnResetVS"
-                            Content="Reset VS statistics"
+                            Content="RESET VS STATISTICS"
                             Background="#fea702"
                             FontFamily="{StaticResource BlokkenFont}"
                             Grid.Row="3"
