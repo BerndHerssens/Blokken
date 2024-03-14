@@ -45,6 +45,7 @@ namespace Groepsproject_Blokken
         bool buzzerPressed = false;
         bool buzzerPlayer1 = false;
         bool buzzerPlayer2 = false;
+        bool questionQueue = true;
         private readonly Image[,] arrImageControls;
         private GameState gameState = new GameState();
         public Player ingelogdePlayer1;
@@ -325,6 +326,7 @@ namespace Groepsproject_Blokken
                         brdImgSpeler3.BorderThickness = new Thickness(0);
                         brdImgSpeler4.BorderThickness = new Thickness(0);
                         EnableDisableAnswers();
+                        questionQueue = true;
                         RandomQuestionPicker();
                         btnAntwoord1.MouseEnter += btnAntwoord1_MouseEnter;
                         btnAntwoord1.MouseLeave += btnAntwoord1_MouseLeave;
@@ -348,7 +350,7 @@ namespace Groepsproject_Blokken
 
         private void Media_Ended(object sender, EventArgs e)
         {
-
+            questionQueue = false;
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -599,7 +601,7 @@ namespace Groepsproject_Blokken
                     }
                     break;
                 case Key.Z:
-                    if (buzzerPressed == false && teller != 10)
+                    if (buzzerPressed == false && questionQueue == false && teller != 10)
                     {
                         buzzerPressed = true;
                         buzzerPlayer1 = true;
@@ -650,7 +652,7 @@ namespace Groepsproject_Blokken
                     }
                     break;
                 case Key.NumPad8:
-                    if (buzzerPressed == false && teller != 10)
+                    if (buzzerPressed == false && questionQueue == false && teller != 10)
                     {
                         buzzerPressed = true;
                         buzzerPlayer2 = true;
@@ -705,6 +707,7 @@ namespace Groepsproject_Blokken
 
 
                 this.audioCue.Play();
+                this.audioCue.MediaEnded += new EventHandler(Media_Ended);
             }
         }
 
