@@ -650,18 +650,27 @@ namespace Groepsproject_Blokken
                 eenGame.Score = Convert.ToInt32(gameState.Score);
                 eenGame.GameNumber = eenGame.GetHashCode();
             }
-            if (ingelogdePlayer.SPHighscore < gameState.Score || ingelogdePlayer.SPHighscore == null)       // Als de gamestate score hoger is of null (eerste keer spelen)
+            if (ingelogdePlayer != null)
             {
-                ingelogdePlayer.SPHighscore = gameState.Score;
-                DataManager.UpdatePlayer(ingelogdePlayer);
-                DataManager.InsertGameLogSP(eenGame);
+                if (ingelogdePlayer.SPHighscore < gameState.Score || ingelogdePlayer.SPHighscore == null)       // Als de gamestate score hoger is of null (eerste keer spelen)
+                {
+                    ingelogdePlayer.SPHighscore = gameState.Score;
+                    DataManager.UpdatePlayer(ingelogdePlayer);
+                }
             }
-            else                                                                                                //Als het een gast is dat schrijven we alleen de log, geen account voor de demo, we restarten de demo, optie geven om hier opnieuw te spelen niet nodig.
+            DataManager.InsertGameLogSP(eenGame);
+            if (ingelogdePlayer == null)                                                                                                //Als het een gast is dat schrijven we alleen de log, geen account voor de demo, we restarten de demo, optie geven om hier opnieuw te spelen niet nodig.
             {
-                DataManager.InsertGameLogSP(eenGame);
+                if (gekozenPrimeword.CheckAnswerIfPrimeWord(txtPrimeword.Text))
+                {
+                    MessageBox.Show("Dat is correct! U krijgt 200 punten erbij, uw totaal score bedraagt : " + gameState.Score.ToString() + "!", "Gefeliciteerd!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                } else
+                {
+                    MessageBox.Show("Helaas! Dat is fout! Uw totaal score bedraagt : " + gameState.Score.ToString() + "!", "Goed gespeeld!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
                 FrmLoginRegister frmLoginRegister = new FrmLoginRegister();
-                frmLoginRegister.ShowDialog();
                 this.Close();
+                frmLoginRegister.ShowDialog();
             }
         }
     }

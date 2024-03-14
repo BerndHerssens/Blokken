@@ -422,6 +422,7 @@ namespace Groepsproject_Blokken
             }
             System.IO.File.WriteAllText("../../PrimeWords/file2.txt", string.Empty);
             listPrimewordsLst2.Clear();
+            ListboxPrimewordsRefresh();
         }
         private void ListboxPrimewordsRefresh()
         {
