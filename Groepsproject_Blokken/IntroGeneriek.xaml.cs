@@ -25,13 +25,13 @@ namespace Groepsproject_Blokken
 
         }
 
-        public Player ingelogdePlayerLoginscreen { get; internal set; }
-        public Player ingelogdePlayer { get; private set; }
+        public Player ingelogdePlayerLoginscreen { get; set; }
+      
 
         private void Intro_MediaEnded(object sender, RoutedEventArgs e)
         {
             MainWindow mainwindow = new MainWindow();
-            mainwindow.ingelogdePlayerLoginscreen = ingelogdePlayer;
+            mainwindow.ingelogdePlayerLoginscreen = ingelogdePlayerLoginscreen;
             this.Close();
             mainwindow.ShowDialog();
         }
