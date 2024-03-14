@@ -61,5 +61,14 @@
     "Player2Score": -250,
     "Winner": "A",
     "Date": "0001-01-01T00:00:00"
+  },
+  {
+    "GameID": 0,
+    "Player1Name": "A",
+    "Player1Score": -550,
+    "Player2Name": "Illyave",
+    "Player2Score": -150,
+    "Winner": "Illyave",
+    "Date": "2024-03-14T18:42:54.2285246+01:00"
   }
 ]

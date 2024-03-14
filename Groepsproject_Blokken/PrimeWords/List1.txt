@@ -1,9 +1,6 @@
 lobbying;uitoefenen van invloed
-juryteam;Panel
-kerfbijl;werktuig
 luxaflex;jaloezieën
 mycelium;hyfen
-babymelk;natuurlijk
 hectisch;chaos
 koplicht;Navigatiedeel van schepen
 quoteren;evenredig verdelen

@@ -20,3 +20,6 @@ huilbaby;nachtmerrie
 hobbykok;thuiskok
 jazzclub;culturele plaats
 leukocyt;afweersysteem
+juryteam;Panel
+kerfbijl;werktuig
+babymelk;natuurlijk

@@ -568,37 +568,37 @@ namespace Groepsproject_Blokken
             switch (e.Key)
             {
                 case Key.Q:
-                    if (correctAnswerClicked == true && buzzerPlayer1 == true && teller != 10)
+                    if (correctAnswerClicked == true && buzzerPlayer1 == true && teller != 15)
                     {
                         gameState.MoveBlockLeft();
                     }
                     break;
                 case Key.D:
-                    if (correctAnswerClicked == true && buzzerPlayer1 == true && teller != 10)
+                    if (correctAnswerClicked == true && buzzerPlayer1 == true && teller != 15)
                     {
                         gameState.MoveBlockRight();
                     }
                     break;
                 case Key.X:
-                    if (correctAnswerClicked == true && buzzerPlayer1 == true && teller != 10)
+                    if (correctAnswerClicked == true && buzzerPlayer1 == true && teller != 15)
                     {
                         gameState.MoveBlockDown();
                     }
                     break;
                 case Key.A:
-                    if (gameState.BlockIsPlaced == true && buzzerPlayer1 == true && teller != 10)
+                    if (gameState.BlockIsPlaced == true && buzzerPlayer1 == true && teller != 15)
                     {
                         gameState.RotateBlockCounterClockwise();
                     }
                     break;
                 case Key.E:
-                    if (correctAnswerClicked == true && buzzerPlayer1 == true && teller != 10)
+                    if (correctAnswerClicked == true && buzzerPlayer1 == true && teller != 15)
                     {
                         gameState.RotateBlockClockWise();
                     }
                     break;
                 case Key.Z:
-                    if (buzzerPressed == false && questionQueue == false && teller != 10)
+                    if (buzzerPressed == false && questionQueue == false && teller != 15)
                     {
                         buzzerPressed = true;
                         buzzerPlayer1 = true;
@@ -619,37 +619,37 @@ namespace Groepsproject_Blokken
                     }
                     break;
                 case Key.NumPad4:
-                    if (correctAnswerClicked == true && buzzerPlayer2 == true && teller != 10)
+                    if (correctAnswerClicked == true && buzzerPlayer2 == true && teller != 15)
                     {
                         gameState.MoveBlockLeft();
                     }
                     break;
                 case Key.NumPad6:
-                    if (correctAnswerClicked == true && buzzerPlayer2 == true && teller != 10)
+                    if (correctAnswerClicked == true && buzzerPlayer2 == true && teller != 15)
                     {
                         gameState.MoveBlockRight();
                     }
                     break;
                 case Key.NumPad2:
-                    if (correctAnswerClicked == true && buzzerPlayer2 == true && teller != 10)
+                    if (correctAnswerClicked == true && buzzerPlayer2 == true && teller != 15)
                     {
                         gameState.MoveBlockDown();
                     }
                     break;
                 case Key.NumPad7:
-                    if (correctAnswerClicked == true && buzzerPlayer2 == true && teller != 10)
+                    if (correctAnswerClicked == true && buzzerPlayer2 == true && teller != 15)
                     {
                         gameState.RotateBlockCounterClockwise();
                     }
                     break;
                 case Key.NumPad9:
-                    if (correctAnswerClicked == true && buzzerPlayer2 == true && teller != 10)
+                    if (correctAnswerClicked == true && buzzerPlayer2 == true && teller != 15)
                     {
                         gameState.RotateBlockClockWise();
                     }
                     break;
                 case Key.NumPad8:
-                    if (buzzerPressed == false && questionQueue == false && teller != 10)
+                    if (buzzerPressed == false && questionQueue == false && teller != 15)
                     {
                         buzzerPressed = true;
                         buzzerPlayer2 = true;
@@ -702,7 +702,7 @@ namespace Groepsproject_Blokken
             {
                 this.audioCue.Open(new Uri(audioCue, UriKind.Relative));
 
-
+                this.audioCue.Volume = 0.4;
                 this.audioCue.Play();
                 this.audioCue.MediaEnded += new EventHandler(Media_Ended);
             }
@@ -713,12 +713,17 @@ namespace Groepsproject_Blokken
             geluidjes.Add("../../Assets/Sounds/Mario Kart Race Start.wav");
             geluidjes.Add("../../Assets/Sounds/Ben Crabbe kan er niet meer tegen.wav");
             geluidjes.Add("../../Assets/Sounds/Boma.wav");
+            geluidjes.Add("../../Assets/Sounds/EEEEEEEEEEEEEEEEEEEEEEE.wav");
             geluidjes.Add("../../Assets/Sounds/Friends.wav");
             geluidjes.Add("../../Assets/Sounds/Kelder Gert.wav");
+            geluidjes.Add("../../Assets/Sounds/Skibidi Fortnite.wav");
             geluidjes.Add("../../Assets/Sounds/Ok Let's Go.wav");
-            geluidjes.Add("../../Assets/Sounds/Plop.wav");            
+            geluidjes.Add("../../Assets/Sounds/Plop.wav");
+            geluidjes.Add("../../Assets/Sounds/Gegagedigedagedago.wav");
             geluidjes.Add("../../Assets/Sounds/Ready for Eddy.wav");
+            geluidjes.Add("../../Assets/Sounds/Kanye.wav");
             geluidjes.Add("../../Assets/Sounds/Windows 95.wav");
+            geluidjes.Add("../../Assets/Sounds/Ben Crabbapple.wav");
             geluidjes.Add("../../Assets/Sounds/Air Horn.wav");
             geluidjes.Add("../../Assets/Sounds/Random.wav");
 
