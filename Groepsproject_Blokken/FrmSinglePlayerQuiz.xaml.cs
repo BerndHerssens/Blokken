@@ -64,6 +64,7 @@ namespace Groepsproject_Blokken
         private DispatcherTimer timer;
         public List<string> gekozenVragenLijsten = new List<string>();
         string json = "";
+        public bool hansMode = false;
         public FrmSinglePlayerQuiz()
         {
             InitializeComponent();
@@ -500,10 +501,13 @@ namespace Groepsproject_Blokken
         }
         private void btnPlayAgain_Click(object sender, RoutedEventArgs e)
         {
+
             MainWindow mainwindow = new MainWindow();
             mainwindow.ingelogdePlayerLoginscreen = ingelogdePlayer;
             this.Close();
             mainwindow.ShowDialog();
+            '
+
         }
         public void PrimeWordCuttingAndShowing()
         {
@@ -541,7 +545,24 @@ namespace Groepsproject_Blokken
         {
             btnPrimewordGuess.IsEnabled = false;
             bool gast = false;                                                                                  // Nodig voor later (wordt uitgelegd), dit reset het ook elke keer en we hebben het nergens anders nodig dus maak het hier gewoon aan.
-            if (ingelogdePlayer != null)                                                                        // Als het geen gast is dan gaan we de properties invullen en schrijven
+            if (hansMode == true)
+            {
+                if (gekozenPrimeword.CheckAnswerIfPrimeWord(txtPrimeword.Text) == true)
+                {
+                    eenGame.Score += 200;
+                    MessageBox.Show("Dat is correct! U krijgt 200 punten erbij, uw totaal score bedraagt : " + eenGame.Score.ToString() + "!" + Environment.NewLine + "Wilt u uw highscores zien? Leuke profiel foto? Koop nu de volledige versie, gebruik code BERND voor een gratis Bernd Crabbé knuffel", "Gefeliciteerd!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    txtFinalScore.Text = eenGame.Score.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Helaas! Het antwoord was " + gekozenPrimeword.Primeword + ", uw totaal score bedraagt : " + eenGame.Score.ToString() + "!" + Environment.NewLine + "Wilt u uw highscores zien? Leuke profiel foto? Koop nu de volledige versie, gebruik code BERND voor een gratis Bernd Crabbé knuffel", "Goed geprobeerd!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                FrmLoginRegister frmLoginRegister = new FrmLoginRegister();
+                this.Close();
+                frmLoginRegister.ShowDialog();
+
+            }
+            else if (ingelogdePlayer != null)                                                                        // Als het geen gast is dan gaan we de properties invullen en schrijven
             {
                 eenGame = new GameLogSP();
                 eenGame.PlayerName = ingelogdePlayer.Name;
@@ -577,8 +598,12 @@ namespace Groepsproject_Blokken
                         eenGame.Score += 200;
                     }
                 }
-                MessageBox.Show("Dat is correct! U krijgt 200 punten erbij, uw totaal score bedraagt : " + eenGame.Score.ToString() + "!", "Gefeliciteerd!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                txtFinalScore.Text = eenGame.Score.ToString();
+                if (hansMode == false) // hansmode adjustment
+                {
+                    MessageBox.Show("Dat is correct! U krijgt 200 punten erbij, uw totaal score bedraagt : " + eenGame.Score.ToString() + "!", "Gefeliciteerd!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    txtFinalScore.Text = eenGame.Score.ToString();
+                }
+
             }
             else                                                                                                // Het is niet correct dan gaan we..
             {

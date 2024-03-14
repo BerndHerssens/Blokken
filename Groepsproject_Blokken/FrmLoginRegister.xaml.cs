@@ -86,7 +86,7 @@ namespace Groepsproject_Blokken
             }
             frmQuizWindow.finalLijstVragen = tempLijstVragen;
             frmQuizWindow.gekozenPrimeword = new PrimeWord("ingekort", "demo");
-            this.Hide();
+            this.Close();
             frmQuizWindow.ShowDialog();
         }
 
@@ -145,6 +145,27 @@ namespace Groepsproject_Blokken
         private void VindIngelogdeGebruiker()
         {
             //Ik heb 3 bools toegevoegd om niet altijd de iteratie moeten uit te voer
+            if (txtUsername.Text == "Hanzie" && txtPassword.Password == "Hanzie") // Hans gamemode
+            {
+                List<Question> tempLijstVragen = new List<Question>();
+                FrmSinglePlayerQuiz frmQuizWindow = new FrmSinglePlayerQuiz();
+                using (StreamReader r = new StreamReader("../../Questionaires/HansVragenlijst"))
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions();
+                    tempLijstVragen.Clear();
+                    string json = r.ReadToEnd(); // Tekst inlezen in een string
+                    tempLijstVragen = JsonSerializer.Deserialize<List<Question>>(json);
+                }
+                frmQuizWindow.finalLijstVragen = tempLijstVragen;
+                frmQuizWindow.gekozenPrimeword = new PrimeWord("ingekort", "demo");
+                frmQuizWindow.hansMode = true;
+                this.Close();
+                frmQuizWindow.ShowDialog();
+                adminGevonden = true;
+                managerGevonden = true;
+                playerGevonden = true;
+
+            }
             if (adminGevonden == false)
             {
                 foreach (Admin admin in adminList)
@@ -190,7 +211,8 @@ namespace Groepsproject_Blokken
                             mainwindow.ingelogdePlayerLoginscreen = ingelogdePlayer;
                             this.Close();
                             mainwindow.ShowDialog();
-                        } else
+                        }
+                        else
                         {
                             this.Hide();
                         }
