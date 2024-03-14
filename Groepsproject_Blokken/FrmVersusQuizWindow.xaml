@@ -28,9 +28,13 @@
         <Viewbox Grid.Row="1" Grid.Column="2" Margin="0,0,0,20" Grid.RowSpan="5">
             <Canvas x:Name="GameCanvas" Width="550" Height="1100" Background="#101010" ClipToBounds="True" Loaded="GameCanvas_Loaded" Visibility="Visible"/>
         </Viewbox>
-        <Image x:Name="imgSpeler1" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Stretch="UniformToFill"/>
-        <Image x:Name="imgSpeler2" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Stretch="UniformToFill"/>
-
+        <Border x:Name="brdImgSpeler1" Grid.ColumnSpan="2" Grid.Row="1">
+            <Image x:Name="imgSpeler1"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Stretch="UniformToFill"/>
+        </Border>
+        <Border x:Name="brdImgSpeler2" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="1">
+            <Image x:Name="imgSpeler2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Stretch="UniformToFill"/>
+        </Border>
+        
         <Grid Grid.Row="2" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="32*"/>

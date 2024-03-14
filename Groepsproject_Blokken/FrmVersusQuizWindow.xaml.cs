@@ -305,6 +305,10 @@ namespace Groepsproject_Blokken
                         buzzerPressed = false;
                         buzzerPlayer1 = false;
                         buzzerPlayer2 = false;
+                        brdImgSpeler1.BorderBrush = null;
+                        brdImgSpeler2.BorderBrush = null;
+                        brdImgSpeler1.BorderThickness = new Thickness(0);
+                        brdImgSpeler2.BorderThickness = new Thickness(0);
                         EnableDisableAnswers();
                         RandomQuestionPicker();
                         btnAntwoord1.MouseEnter += btnAntwoord1_MouseEnter;
@@ -584,6 +588,8 @@ namespace Groepsproject_Blokken
                         buzzerPressed = true;
                         buzzerPlayer1 = true;
                         Overlay.Visibility = Visibility.Visible;
+                        brdImgSpeler1.BorderBrush = (Brush)bc.ConvertFrom("#fea702");
+                        brdImgSpeler1.BorderThickness = new Thickness(5);
                         EnableDisableAnswers();
                     }
                     break;
@@ -623,6 +629,8 @@ namespace Groepsproject_Blokken
                         buzzerPressed = true;
                         buzzerPlayer2 = true;
                         Overlay.Visibility = Visibility.Visible;
+                        brdImgSpeler2.BorderBrush = (Brush)bc.ConvertFrom("#fea702");
+                        brdImgSpeler2.BorderThickness = new Thickness(5);
                         EnableDisableAnswers();
                     }
                     break;
