@@ -1,6 +1,8 @@
+crucifix;christendom
+meetlint;meter voor omtrek
+officium;politiek-juridische term
 lunchbox;eten
 lobbying;uitoefenen van invloed
-malvezij;drank
 jazzclub;culturele plaats
 ijslolly;koude lekkernij
 hobbykok;thuiskok
@@ -24,7 +26,6 @@ quoteren;evenredig verdelen
 lymfevat;menselijke drainagesysteem
 recyclen;hergebruiken
 oxymoron;stijlfiguur
-nachtbus;vervoersdienst
 showbizz;een industrie
 gezwicht;hij is ...
 kilobyte;Unit

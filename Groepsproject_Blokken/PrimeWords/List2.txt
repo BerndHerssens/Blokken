@@ -1,3 +1,2 @@
-crucifix;christendom
-meetlint;meter voor omtrek
-officium;politiek-juridische term
+nachtbus;vervoersdienst
+malvezij;drank

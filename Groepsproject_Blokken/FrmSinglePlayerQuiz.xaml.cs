@@ -506,7 +506,7 @@ namespace Groepsproject_Blokken
             mainwindow.ingelogdePlayerLoginscreen = ingelogdePlayer;
             this.Close();
             mainwindow.ShowDialog();
-            '
+
 
         }
         public void PrimeWordCuttingAndShowing()
