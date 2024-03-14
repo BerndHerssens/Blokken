@@ -540,7 +540,7 @@ namespace Groepsproject_Blokken
         private void btnPlayAgain_Click(object sender, RoutedEventArgs e)
         {
 
-            FrmTitleScreen mainwindow = new FrmTitleScreen();
+            MainWindow mainwindow = new MainWindow();
             mainwindow.ingelogdePlayerLoginscreen = ingelogdePlayer;
             this.Close();
             mainwindow.ShowDialog();
