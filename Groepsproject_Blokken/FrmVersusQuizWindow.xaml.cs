@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -56,11 +57,13 @@ namespace Groepsproject_Blokken
 
         public MediaPlayer buzzerSound = new MediaPlayer();
         public MediaPlayer backgroundMusicPlayer = new MediaPlayer();
+        public MediaPlayer audioCue = new MediaPlayer();
         public MediaPlayer blokkenTick = new MediaPlayer();
 
         private BrushConverter bc = new BrushConverter();
         private List<Question> tempLijstVragen = new List<Question>();
         public List<Question> finalLijstVragen = new List<Question>();
+        public List<String> geluidjes = new List<String>();
         private Random random = new Random();
         private Question nieuweVraag = new Question();
         private GameLogSP eenGame = new GameLogSP();
@@ -79,6 +82,7 @@ namespace Groepsproject_Blokken
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            LijstMetGeluidjesMaken();
             InlezenVragen();
             ProfilePicturesInladen();
             RandomQuestionPicker();
@@ -95,6 +99,8 @@ namespace Groepsproject_Blokken
             ingelogdePlayer2.ImageInladenMetMemoryStream();
             imgSpeler1.Source = ingelogdePlayer1.BMP;
             imgSpeler2.Source = ingelogdePlayer2.BMP;
+            imgSpeler3.Source = ingelogdePlayer1.BMP;
+            imgSpeler4.Source = ingelogdePlayer2.BMP;
         }
         public void InlezenVragen()
         {
@@ -119,14 +125,17 @@ namespace Groepsproject_Blokken
             int randomQuestionIndex = random.Next(0, finalLijstVragen.Count);
             nieuweVraag = finalLijstVragen[randomQuestionIndex];
             finalLijstVragen.RemoveAt(randomQuestionIndex);
-            lblVraag.Content = nieuweVraag.TheQuestion;
-            lblVraag2.Content = nieuweVraag.TheQuestion;
+            Vraag.Text = nieuweVraag.TheQuestion;
+            Vraag2.Text = nieuweVraag.TheQuestion;
             nieuweVraag.InsertAnswersInButtons(btnAntwoord1, btnAntwoord2, btnAntwoord3, btnAntwoord4);
             btnAntwoord1.Background = (Brush)bc.ConvertFrom("#fea702");
             btnAntwoord2.Background = (Brush)bc.ConvertFrom("#fea702");
             btnAntwoord3.Background = (Brush)bc.ConvertFrom("#fea702");
             btnAntwoord4.Background = (Brush)bc.ConvertFrom("#fea702");
             teller++;
+            PlaybackSound();
+            
+            geluidjes.RemoveAt(0);
         }
         public void ShowCorrectAnswer(List<Button> lijstButtons)
         {
@@ -152,8 +161,8 @@ namespace Groepsproject_Blokken
                 }
                 button.Background = Brushes.Green;
                 button.BorderThickness = new Thickness(0);
-                lblScoreSpeler1.Content = "Score P1: " + gameState.ScorePlayerOne.ToString();
-                lblScoreSpeler2.Content = "Score P2: " + gameState.ScorePlayerTwo.ToString();
+                lblScoreSpeler1.Content = gameState.ScorePlayerOne.ToString();
+                lblScoreSpeler2.Content = gameState.ScorePlayerTwo.ToString();
                 correctAnswerClicked = true;
                 gameState.BlockIsPlaced = false;
                 //txtScore.Text = (Convert.ToInt32(txtScore.Text) + 50).ToString();
@@ -170,8 +179,8 @@ namespace Groepsproject_Blokken
                 }
                 button.Background = Brushes.OrangeRed;
                 button.BorderThickness = new Thickness(0);
-                lblScoreSpeler1.Content = "Score P1: " + gameState.ScorePlayerOne.ToString();
-                lblScoreSpeler2.Content = "Score P2: " + gameState.ScorePlayerTwo.ToString();
+                lblScoreSpeler1.Content =  gameState.ScorePlayerOne.ToString();
+                lblScoreSpeler2.Content =  gameState.ScorePlayerTwo.ToString();
 
                 ShowCorrectAnswer(new List<Button> { btnAntwoord1, btnAntwoord2, btnAntwoord3, btnAntwoord4 });
             }
@@ -309,8 +318,12 @@ namespace Groepsproject_Blokken
                         buzzerPlayer2 = false;
                         brdImgSpeler1.BorderBrush = null;
                         brdImgSpeler2.BorderBrush = null;
+                        brdImgSpeler3.BorderBrush = null;
+                        brdImgSpeler4.BorderBrush = null;
                         brdImgSpeler1.BorderThickness = new Thickness(0);
                         brdImgSpeler2.BorderThickness = new Thickness(0);
+                        brdImgSpeler3.BorderThickness = new Thickness(0);
+                        brdImgSpeler4.BorderThickness = new Thickness(0);
                         EnableDisableAnswers();
                         RandomQuestionPicker();
                         btnAntwoord1.MouseEnter += btnAntwoord1_MouseEnter;
@@ -341,8 +354,8 @@ namespace Groepsproject_Blokken
         void timer_Tick(object sender, EventArgs e)
         {
             tellerTimer--;
-            lblScoreSpeler1.Content = "Score P1: " + gameState.ScorePlayerOne.ToString();
-            lblScoreSpeler2.Content = "Score P2: " + gameState.ScorePlayerTwo.ToString();
+            lblScoreSpeler1.Content = gameState.ScorePlayerOne.ToString();
+            lblScoreSpeler2.Content = gameState.ScorePlayerTwo.ToString();
             if (teller == 10 && blockPlaced == true)
             {
                 timer.Stop();
@@ -593,6 +606,10 @@ namespace Groepsproject_Blokken
                         Overlay.Visibility = Visibility.Visible;
                         brdImgSpeler1.BorderBrush = (Brush)bc.ConvertFrom("#fea702");
                         brdImgSpeler1.BorderThickness = new Thickness(5);
+                        brdImgSpeler3.BorderBrush = (Brush)bc.ConvertFrom("#fea702");
+                        brdImgSpeler3.BorderThickness = new Thickness(5);
+                        brdImgSpeler3.Visibility = Visibility.Visible;
+                        brdImgSpeler4.Visibility = Visibility.Hidden;
                         if (!string.IsNullOrEmpty(buzzerSoundPath))
                         {
                             buzzerSound.Open(new Uri(buzzerSoundPath, UriKind.Relative));
@@ -640,6 +657,10 @@ namespace Groepsproject_Blokken
                         Overlay.Visibility = Visibility.Visible;
                         brdImgSpeler2.BorderBrush = (Brush)bc.ConvertFrom("#fea702");
                         brdImgSpeler2.BorderThickness = new Thickness(5);
+                        brdImgSpeler4.BorderBrush = (Brush)bc.ConvertFrom("#fea702");
+                        brdImgSpeler4.BorderThickness = new Thickness(5);
+                        brdImgSpeler4.Visibility = Visibility.Visible;
+                        brdImgSpeler3.Visibility = Visibility.Hidden;
                         if (!string.IsNullOrEmpty(buzzerSoundPath))
                         {
                             buzzerSound.Open(new Uri(buzzerSoundPath, UriKind.Relative));
@@ -675,6 +696,33 @@ namespace Groepsproject_Blokken
             mainwindow.ShowDialog();
         }
 
+        public void PlaybackSound()
+        {
+            string audioCue = geluidjes[0];
+            if (!string.IsNullOrEmpty(audioCue))
+            {
+                this.audioCue.Open(new Uri(audioCue, UriKind.Relative));
+
+
+                this.audioCue.Play();
+            }
+        }
+
+        public void LijstMetGeluidjesMaken()
+        {
+            geluidjes.Add("../../Assets/Sounds/Mario Kart Race Start.wav");
+            geluidjes.Add("../../Assets/Sounds/Ben Crabbe kan er niet meer tegen.wav");
+            geluidjes.Add("../../Assets/Sounds/Boma.wav");
+            geluidjes.Add("../../Assets/Sounds/Friends.wav");
+            geluidjes.Add("../../Assets/Sounds/Kelder Gert.wav");
+            geluidjes.Add("../../Assets/Sounds/Ok Let's Go.wav");
+            geluidjes.Add("../../Assets/Sounds/Plop.wav");            
+            geluidjes.Add("../../Assets/Sounds/Ready for Eddy.wav");
+            geluidjes.Add("../../Assets/Sounds/Windows 95.wav");
+            geluidjes.Add("../../Assets/Sounds/Air Horn.wav");
+            geluidjes.Add("../../Assets/Sounds/Random.wav");
+
+        }
 
     }
 }
