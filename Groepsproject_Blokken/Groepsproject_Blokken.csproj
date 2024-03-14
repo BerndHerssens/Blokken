@@ -143,6 +143,9 @@
     <Compile Include="GameGrid.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="IBlock.cs" />
+    <Compile Include="IntroGeneriek.xaml.cs">
+      <DependentUpon>IntroGeneriek.xaml</DependentUpon>
+    </Compile>
     <Compile Include="JBlock.cs" />
     <Compile Include="LBlock.cs" />
     <Compile Include="ManagerPlus.cs" />
@@ -193,6 +196,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FrmVersusQuizWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IntroGeneriek.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -202,7 +202,7 @@ namespace Groepsproject_Blokken
                         playerGevonden = true;
                         if (isLoginMultiplayer == false)
                         {
-                            MainWindow mainwindow = new MainWindow();
+                            IntroGeneriek mainwindow = new IntroGeneriek();
                             mainwindow.ingelogdePlayerLoginscreen = ingelogdePlayer;
                             this.Close();
                             mainwindow.ShowDialog();
