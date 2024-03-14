@@ -68,8 +68,8 @@ namespace Groepsproject_Blokken
         {
             FrmLoginRegister frmLoginRegister = new FrmLoginRegister();
             backgroundMusicPlayer.Stop();
-            frmLoginRegister.ShowDialog();
             this.Close();
+            frmLoginRegister.ShowDialog();
         }
 
         private void sliderVolume_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
